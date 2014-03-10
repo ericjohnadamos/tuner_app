@@ -22,6 +22,11 @@
 		256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256B089F18CDED4500F856F9 /* Images.xcassets */; };
 		256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C118CDF36200F856F9 /* TMOSplashViewController.m */; };
 		256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C418CDF42E00F856F9 /* TMOMainViewController.m */; };
+		256B08C718CDF90600F856F9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08C618CDF90600F856F9 /* AudioToolbox.framework */; };
+		256B08C918CDF91000F856F9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08C818CDF91000F856F9 /* AVFoundation.framework */; };
+		256B08CB18CDF92200F856F9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CA18CDF92200F856F9 /* CoreFoundation.framework */; };
+		256B08CD18CDF92F00F856F9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CC18CDF92F00F856F9 /* CoreAudio.framework */; };
+		256B08CF18CDF93D00F856F9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CE18CDF93D00F856F9 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		256B08C118CDF36200F856F9 /* TMOSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOSplashViewController.m; sourceTree = "<group>"; };
 		256B08C318CDF42E00F856F9 /* TMOMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOMainViewController.h; sourceTree = "<group>"; };
 		256B08C418CDF42E00F856F9 /* TMOMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOMainViewController.m; sourceTree = "<group>"; };
+		256B08C618CDF90600F856F9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		256B08C818CDF91000F856F9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		256B08CA18CDF92200F856F9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		256B08CC18CDF92F00F856F9 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		256B08CE18CDF93D00F856F9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				256B08CF18CDF93D00F856F9 /* Accelerate.framework in Frameworks */,
+				256B08CD18CDF92F00F856F9 /* CoreAudio.framework in Frameworks */,
+				256B08CB18CDF92200F856F9 /* CoreFoundation.framework in Frameworks */,
+				256B08C918CDF91000F856F9 /* AVFoundation.framework in Frameworks */,
+				256B08C718CDF90600F856F9 /* AudioToolbox.framework in Frameworks */,
 				256B089018CDED4500F856F9 /* CoreGraphics.framework in Frameworks */,
 				256B089218CDED4500F856F9 /* UIKit.framework in Frameworks */,
 				256B088E18CDED4500F856F9 /* Foundation.framework in Frameworks */,
@@ -103,6 +118,11 @@
 		256B088C18CDED4500F856F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				256B08CE18CDF93D00F856F9 /* Accelerate.framework */,
+				256B08CC18CDF92F00F856F9 /* CoreAudio.framework */,
+				256B08CA18CDF92200F856F9 /* CoreFoundation.framework */,
+				256B08C818CDF91000F856F9 /* AVFoundation.framework */,
+				256B08C618CDF90600F856F9 /* AudioToolbox.framework */,
 				256B088D18CDED4500F856F9 /* Foundation.framework */,
 				256B088F18CDED4500F856F9 /* CoreGraphics.framework */,
 				256B089118CDED4500F856F9 /* UIKit.framework */,
