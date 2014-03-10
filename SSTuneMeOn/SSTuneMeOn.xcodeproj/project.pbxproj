@@ -20,6 +20,7 @@
 		256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 256B08AF18CDED4500F856F9 /* InfoPlist.strings */; };
 		256B08B318CDED4500F856F9 /* SSTuneMeOnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08B218CDED4500F856F9 /* SSTuneMeOnTests.m */; };
 		256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256B089F18CDED4500F856F9 /* Images.xcassets */; };
+		256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C118CDF36200F856F9 /* TMOSplashViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		256B08AE18CDED4500F856F9 /* SSTuneMeOnTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SSTuneMeOnTests-Info.plist"; sourceTree = "<group>"; };
 		256B08B018CDED4500F856F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		256B08B218CDED4500F856F9 /* SSTuneMeOnTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSTuneMeOnTests.m; sourceTree = "<group>"; };
+		256B08C018CDF36200F856F9 /* TMOSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOSplashViewController.h; sourceTree = "<group>"; };
+		256B08C118CDF36200F856F9 /* TMOSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOSplashViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,7 @@
 		256B089318CDED4500F856F9 /* SSTuneMeOn */ = {
 			isa = PBXGroup;
 			children = (
+				256B08BD18CDF1AE00F856F9 /* Application Proper */,
 				256B089C18CDED4500F856F9 /* AppDelegate.h */,
 				256B089D18CDED4500F856F9 /* AppDelegate.m */,
 				256B089F18CDED4500F856F9 /* Images.xcassets */,
@@ -143,6 +147,31 @@
 				256B08AF18CDED4500F856F9 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		256B08BD18CDF1AE00F856F9 /* Application Proper */ = {
+			isa = PBXGroup;
+			children = (
+				256B08BF18CDF22A00F856F9 /* Main screen */,
+				256B08BE18CDF21B00F856F9 /* Splash screen */,
+			);
+			name = "Application Proper";
+			sourceTree = "<group>";
+		};
+		256B08BE18CDF21B00F856F9 /* Splash screen */ = {
+			isa = PBXGroup;
+			children = (
+				256B08C018CDF36200F856F9 /* TMOSplashViewController.h */,
+				256B08C118CDF36200F856F9 /* TMOSplashViewController.m */,
+			);
+			name = "Splash screen";
+			sourceTree = "<group>";
+		};
+		256B08BF18CDF22A00F856F9 /* Main screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Main screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +272,7 @@
 			files = (
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
+				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
