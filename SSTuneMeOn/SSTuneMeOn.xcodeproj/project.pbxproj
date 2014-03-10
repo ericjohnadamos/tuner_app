@@ -19,6 +19,7 @@
 		256B08A918CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
 		256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 256B08AF18CDED4500F856F9 /* InfoPlist.strings */; };
 		256B08B318CDED4500F856F9 /* SSTuneMeOnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08B218CDED4500F856F9 /* SSTuneMeOnTests.m */; };
+		256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256B089F18CDED4500F856F9 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */,
+				256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
