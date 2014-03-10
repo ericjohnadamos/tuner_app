@@ -7,23 +7,44 @@
 //
 
 #import "AppDelegate.h"
+#import "TMOSplashViewController.h"
+
+
 @interface AppDelegate ()
 
+@property (nonatomic, retain) TMOSplashViewController* splashController;
 
 @end
 
 
 @implementation AppDelegate
 
+@synthesize splashController = m_splashController;
+
 #pragma mark - Memory deallocation
 
 - (void) dealloc
 {
   self.window = nil;
+  self.splashController = nil;
   
   [super dealloc];
 }
 
+#pragma mark - Lazy loaders
+
+- (TMOSplashViewController*) splashController
+{
+  if (m_splashController == nil)
+  {
+    TMOSplashViewController* splashController
+      = [[TMOSplashViewController alloc] init];
+    
+    m_splashController = splashController;
+  }
+  
+  return m_splashController;
+}
 
 #pragma mark - Application lifecycle
 
