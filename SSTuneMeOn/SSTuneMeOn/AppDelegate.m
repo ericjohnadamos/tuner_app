@@ -15,6 +15,15 @@
 
 @implementation AppDelegate
 
+#pragma mark - Memory deallocation
+
+- (void) dealloc
+{
+  self.window = nil;
+  
+  [super dealloc];
+}
+
 - (BOOL)          application: (UIApplication*) application
 didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 {
