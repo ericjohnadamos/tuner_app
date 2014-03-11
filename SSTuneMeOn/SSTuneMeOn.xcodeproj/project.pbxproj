@@ -27,6 +27,7 @@
 		256B08CB18CDF92200F856F9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CA18CDF92200F856F9 /* CoreFoundation.framework */; };
 		256B08CD18CDF92F00F856F9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CC18CDF92F00F856F9 /* CoreAudio.framework */; };
 		256B08CF18CDF93D00F856F9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CE18CDF93D00F856F9 /* Accelerate.framework */; };
+		256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		256B08CA18CDF92200F856F9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		256B08CC18CDF92F00F856F9 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		256B08CE18CDF93D00F856F9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		256B08D218CDFA0D00F856F9 /* TMOKeyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOKeyHelper.h; sourceTree = "<group>"; };
+		256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOKeyHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,7 @@
 		256B08BD18CDF1AE00F856F9 /* Application Proper */ = {
 			isa = PBXGroup;
 			children = (
+				256B08D018CDF9E600F856F9 /* Core */,
 				256B08BF18CDF22A00F856F9 /* Main screen */,
 				256B08BE18CDF21B00F856F9 /* Splash screen */,
 			);
@@ -197,6 +201,23 @@
 				256B08C418CDF42E00F856F9 /* TMOMainViewController.m */,
 			);
 			name = "Main screen";
+			sourceTree = "<group>";
+		};
+		256B08D018CDF9E600F856F9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				256B08D118CDF9EE00F856F9 /* Helpers */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		256B08D118CDF9EE00F856F9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				256B08D218CDFA0D00F856F9 /* TMOKeyHelper.h */,
+				256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
+				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
