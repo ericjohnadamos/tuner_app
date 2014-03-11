@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		253F033318CF76AF00E8EFA7 /* TMOAudioInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F033218CF76AF00E8EFA7 /* TMOAudioInterface.m */; };
 		256B088E18CDED4500F856F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088D18CDED4500F856F9 /* Foundation.framework */; };
 		256B089018CDED4500F856F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088F18CDED4500F856F9 /* CoreGraphics.framework */; };
 		256B089218CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		253F033118CF76AF00E8EFA7 /* TMOAudioInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOAudioInterface.h; sourceTree = "<group>"; };
+		253F033218CF76AF00E8EFA7 /* TMOAudioInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOAudioInterface.m; sourceTree = "<group>"; };
 		256B088A18CDED4500F856F9 /* SSTuneMeOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTuneMeOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		256B088D18CDED4500F856F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		256B088F18CDED4500F856F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				256B08D118CDF9EE00F856F9 /* Helpers */,
+				253F033118CF76AF00E8EFA7 /* TMOAudioInterface.h */,
+				253F033218CF76AF00E8EFA7 /* TMOAudioInterface.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
+				253F033318CF76AF00E8EFA7 /* TMOAudioInterface.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 			);
@@ -525,6 +531,7 @@
 				256B08B818CDED4500F856F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		256B08B918CDED4500F856F9 /* Build configuration list for PBXNativeTarget "SSTuneMeOnTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +540,7 @@
 				256B08BB18CDED4500F856F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
