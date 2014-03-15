@@ -29,6 +29,8 @@
 		256B08CD18CDF92F00F856F9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CC18CDF92F00F856F9 /* CoreAudio.framework */; };
 		256B08CF18CDF93D00F856F9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CE18CDF93D00F856F9 /* Accelerate.framework */; };
 		256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */; };
+		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
+		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,12 @@
 		256B08CE18CDF93D00F856F9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		256B08D218CDFA0D00F856F9 /* TMOKeyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOKeyHelper.h; sourceTree = "<group>"; };
 		256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOKeyHelper.m; sourceTree = "<group>"; };
+		2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
+		2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
+		2579DC6218D4009300B5DEB0 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		2579DC6318D4009300B5DEB0 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		2579DC6418D4009300B5DEB0 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
+		2579DC6518D4009300B5DEB0 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +217,8 @@
 		256B08D018CDF9E600F856F9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2579DC6118D4005B00B5DEB0 /* Utilities */,
+				2579DC5C18D3FFD700B5DEB0 /* RIO */,
 				256B08D118CDF9EE00F856F9 /* Helpers */,
 				253F033118CF76AF00E8EFA7 /* TMOAudioInterface.h */,
 				253F033218CF76AF00E8EFA7 /* TMOAudioInterface.m */,
@@ -223,6 +233,26 @@
 				256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		2579DC5C18D3FFD700B5DEB0 /* RIO */ = {
+			isa = PBXGroup;
+			children = (
+				2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */,
+				2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */,
+			);
+			name = RIO;
+			sourceTree = "<group>";
+		};
+		2579DC6118D4005B00B5DEB0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2579DC6218D4009300B5DEB0 /* CADebugMacros.h */,
+				2579DC6318D4009300B5DEB0 /* CAStreamBasicDescription.h */,
+				2579DC6418D4009300B5DEB0 /* CAXException.cpp */,
+				2579DC6518D4009300B5DEB0 /* CAXException.h */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +357,8 @@
 				253F033318CF76AF00E8EFA7 /* TMOAudioInterface.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
+				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
+				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +482,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSTuneMeOn/SSTuneMeOn-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "SSTuneMeOn/SSTuneMeOn-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
