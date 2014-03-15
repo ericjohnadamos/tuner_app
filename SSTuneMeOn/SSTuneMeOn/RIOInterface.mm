@@ -9,7 +9,7 @@
 #import "RIOInterface.h"
 #import "CAStreamBasicDescription.h"
 #import "CAXException.h"
-#import "ListenerViewController.h"
+#import "TMOMainViewController.h"
 
 @implementation RIOInterface
 
@@ -59,7 +59,7 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 
 #pragma mark -
 #pragma mark Listener Controls
-- (void)startListening:(ListenerViewController*)aListener {
+- (void)startListening:(TMOMainViewController*)aListener {
 	self.listener = aListener;
 	[self createAUProcessingGraph];
 	[self initializeAndStartProcessingGraph];	

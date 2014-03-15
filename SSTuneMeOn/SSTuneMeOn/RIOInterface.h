@@ -16,7 +16,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <Accelerate/Accelerate.h>
+
 #include <stdlib.h>
+
+#import "TMOMainViewController.h"
 
 @class ListenerViewController;
 
@@ -35,7 +38,7 @@
 
 @interface RIOInterface : NSObject {
 	UIViewController *selectedViewController;
-	ListenerViewController *listener;
+	TMOMainViewController *listener;
 	
 	AUGraph processingGraph;
 	AudioUnit ioUnit;
@@ -57,7 +60,7 @@
 
 @property(nonatomic, assign) id<AVAudioPlayerDelegate> audioPlayerDelegate;
 @property(nonatomic, assign) id<AVAudioSessionDelegate> audioSessionDelegate;
-@property(nonatomic, assign) ListenerViewController *listener;
+@property(nonatomic, assign) TMOMainViewController *listener;
 
 @property(assign) float sampleRate;
 @property(assign) float frequency;
@@ -76,7 +79,7 @@
 - (void)printASBD:(AudioStreamBasicDescription)asbd;
 
 #pragma mark Listener Controls
-- (void)startListening:(ListenerViewController*)aListener;
+- (void)startListening:(TMOMainViewController*)aListener;
 - (void)stopListening;
 
 #pragma mark Generic Audio Controls
