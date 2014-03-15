@@ -36,6 +36,21 @@ static TMOKeyHelper* sm_keyHelper;
   return sm_keyHelper;
 }
 
++ (id) allocWithZone: (NSZone*) zone
+{
+  @synchronized(self)
+  {
+    if (sm_keyHelper == nil)
+    {
+      sm_keyHelper = [super allocWithZone: zone];
+      
+      return sm_keyHelper;
+    }
+  }
+  
+  return nil;
+}
+
 - (void) buildKeyMapping
 {
   NSMutableDictionary* keyMapping
@@ -94,6 +109,7 @@ static TMOKeyHelper* sm_keyHelper;
 	
 	return closestKey;
 }
+
 
 #pragma mark - Memory deallocation
 
