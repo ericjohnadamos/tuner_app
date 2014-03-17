@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+
+#import "RIOInterface.h"
 #import "TMOSplashViewController.h"
 
 
@@ -61,6 +63,15 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   [self.window makeKeyAndVisible];
   
   self.window.rootViewController = self.splashController;
+  /* Getting the interface instance */
+  RIOInterface* rioRef = [RIOInterface sharedInstance];
+  
+  /* Set sample rate and frequency */
+  [rioRef setSampleRate: 44100];
+  [rioRef setFrequency: 294];
+  
+  /* Initialize components */
+  [rioRef initializeAudioSession];
   
   return YES;
 }
