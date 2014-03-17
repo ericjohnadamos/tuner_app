@@ -11,10 +11,14 @@
 
 @interface TMOMainViewController ()
 
+@property (nonatomic, assign) float currentFrequency;
+
 @end
 
 
 @implementation TMOMainViewController
+
+@synthesize currentFrequency;
 
 #pragma mark - Memory management
 
