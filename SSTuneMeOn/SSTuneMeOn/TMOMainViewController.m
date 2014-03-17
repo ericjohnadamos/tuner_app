@@ -51,6 +51,22 @@
   [[RIOInterface sharedInstance] stopListening];
 }
 
+#pragma mark - Key Management
+
+- (void) frequencyChangedWithValue: (float) newFrequency
+{
+  /* This method gets called by the rendering function. Update the UI with
+   * the character type and store it in our string.
+   */
+  
+	self.currentFrequency = newFrequency;
+  
+  NSLog(@"current frequency: %f", self.currentFrequency);
+}
+
+- (void) updateFrequencyLabel
+{
+  /* TODO: Implement me */
 }
 
 @end

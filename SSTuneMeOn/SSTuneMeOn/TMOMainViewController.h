@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface TMOMainViewController : UIViewController
+
+- (void) frequencyChangedWithValue: (float) newFrequency;
 
 @end
