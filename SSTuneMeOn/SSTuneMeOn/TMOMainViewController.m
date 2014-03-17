@@ -39,6 +39,18 @@
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+#pragma mark - Control listeners
+
+- (void) startListener
+{
+  [[RIOInterface sharedInstance] startListening: self];
+}
+
+- (void) stopListener
+{
+  [[RIOInterface sharedInstance] stopListening];
+}
+
 }
 
 @end
