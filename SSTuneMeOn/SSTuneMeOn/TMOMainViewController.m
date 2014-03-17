@@ -8,6 +8,8 @@
 
 #import "TMOMainViewController.h"
 
+#import "RIOInterface.h"
+
 
 @interface TMOMainViewController ()
 
