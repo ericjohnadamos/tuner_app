@@ -38,6 +38,13 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+- (void) didFinishSplashView
+{
+  if ([self.delegate respondsToSelector:
+       @selector(splashViewControllerDidFinishDisplayViews:)])
+  {
+    [self.delegate splashViewControllerDidFinishDisplayViews: self];
+  }
 }
 
 @end
