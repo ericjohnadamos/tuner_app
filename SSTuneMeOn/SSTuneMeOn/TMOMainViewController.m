@@ -15,6 +15,7 @@
 
 @property (nonatomic, assign) float currentFrequency;
 
+@property (nonatomic, retain) UIButton* helpButton;
 @end
 
 
@@ -22,6 +23,7 @@
 
 @synthesize currentFrequency;
 
+@synthesize helpButton = m_helpButton;
 #pragma mark - Memory management
 
 - (void) didReceiveMemoryWarning
@@ -31,6 +33,7 @@
 
 - (void) dealloc
 {
+  self.helpButton = nil;
   [super dealloc];
 }
 
@@ -42,6 +45,34 @@
   
   [self stopListener];
   [self startListener];
+}
+
+#pragma mark - Lazy loaders
+
+- (UIButton*) helpButton
+{
+  if (m_helpButton == nil)
+  {
+    UIButton* helpButton = [UIButton buttonWithType: UIButtonTypeCustom];
+    
+    [helpButton setImage: [UIImage imageNamed: @"todo"]
+                forState: UIControlStateNormal];
+    
+    [helpButton addTarget: self
+                   action: @selector(didTapHelpButton)
+         forControlEvents: UIControlEventTouchUpInside];
+    
+    m_helpButton = [helpButton retain];
+  }
+  
+  return m_helpButton;
+}
+
+#pragma mark - Event handlers
+
+- (void) didTapHelpButton
+{
+  /* TODO: Implement me */
 }
 
 #pragma mark - Control listeners
