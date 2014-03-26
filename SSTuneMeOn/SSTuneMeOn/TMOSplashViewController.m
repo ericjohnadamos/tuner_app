@@ -38,6 +38,58 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+#pragma mark - Private methods
+
+- (void) displaySplashViewAnimated: (BOOL) animated
+{
+  /* Delegate should be implemented in order to handle the animations */
+  if (self.datasource != nil)
+  {
+    NSInteger splashViewCount = 0;
+    if ([self.datasource respondsToSelector: @selector(numberOfSplashViews)])
+    {
+      splashViewCount = [self.datasource numberOfSplashViews];
+    }
+    
+    /* Add all views as a subview */
+    for (NSInteger index = 0; index < splashViewCount; index++)
+    {
+      if ([self.datasource respondsToSelector:
+           @selector(splashViewController:viewAtIndex:)])
+      {
+        NSInteger representedIndex
+          = ABS(((index - (splashViewCount - 1)) % splashViewCount));
+        
+        UIView* presentedView
+          = [self.datasource splashViewController: self
+                                    viewAtIndex: representedIndex];
+        presentedView.tag = index;
+        
+        [self.view addSubview: presentedView];
+      }
+    }
+    
+    /* Dissolve animate them */
+    if (animated)
+    {
+      [self removeSubviewsFromLastIndex: splashViewCount - 1];
+    }
+    else
+    {
+      for (UIView* subview in [self.view subviews])
+      {
+        [subview removeFromSuperview];
+      }
+      
+      [self didFinishSplashView];
+    }
+  }
+  else
+  {
+    [self didFinishSplashView];
+  }
+}
+
 - (void) removeSubviewsFromLastIndex: (NSInteger) index;
 {
   if (index == 0)
