@@ -135,4 +135,32 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
                   completion: nil];
 }
 
+#pragma mark - TMOSplashViewDatasource method
+
+- (NSInteger) numberOfSplashViews
+{
+  return 2;
+}
+
+- (UIView*) splashViewController: (TMOSplashViewController*) controller
+                     viewAtIndex: (NSInteger)                index
+{
+  UIView* myView = [[[UIView alloc] initWithFrame: self.window.bounds]
+                    autorelease];
+  
+  UIColor* color = nil;
+  if (index == 0)
+  {
+    color = [UIColor purpleColor];
+  }
+  else if (index == 1)
+  {
+    color = [UIColor redColor];
+  }
+  
+  myView.backgroundColor = color;
+  
+  return myView;
+}
+
 @end
