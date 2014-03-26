@@ -10,6 +10,7 @@
 
 #import "RIOInterface.h"
 #import "TMOSplashViewController.h"
+#import "TMOMainViewController.h"
 
 
 @interface AppDelegate ()
