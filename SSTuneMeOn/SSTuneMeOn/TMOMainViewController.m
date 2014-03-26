@@ -39,6 +39,11 @@
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+  
+  [self stopListener];
+  [self startListener];
+}
+
 #pragma mark - Control listeners
 
 - (void) startListener
