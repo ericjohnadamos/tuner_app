@@ -38,6 +38,18 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+  
+  BOOL isAnimated = YES;
+  
+  if (   self.delegate != nil
+      && [self.delegate respondsToSelector: @selector(displayWithAnimations)])
+  {
+    isAnimated = [self.delegate displayWithAnimations];
+  }
+  
+  [self displaySplashViewAnimated: isAnimated];
+}
+
 #pragma mark - Private methods
 
 - (void) displaySplashViewAnimated: (BOOL) animated
