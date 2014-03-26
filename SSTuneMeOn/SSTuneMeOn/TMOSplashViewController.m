@@ -16,6 +16,7 @@ static const CGFloat kAnimationDuration = 0.35f;
 #pragma mark - Synthesize properties
 
 @synthesize delegate = m_delegate;
+@synthesize datasource = m_datasource;
 
 #pragma mark - Memory management
 
