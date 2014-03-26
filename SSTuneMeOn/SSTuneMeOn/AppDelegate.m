@@ -14,7 +14,8 @@
 
 static const CGFloat kAnimationDuration = 0.35f;
 
-@interface AppDelegate ()
+
+@interface AppDelegate () <TMOSplashViewDelegate, TMOSplashViewDatasource>
 
 @property (nonatomic, retain) TMOSplashViewController* splashController;
 
