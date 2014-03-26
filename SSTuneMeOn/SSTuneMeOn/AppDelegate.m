@@ -112,4 +112,27 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   
 }
 
+#pragma mark - TMOSplashViewDelegate method
+
+- (BOOL) displayWithAnimations
+{
+  return YES;
+}
+
+- (void) splashViewControllerDidFinishDisplayViews:
+  (TMOSplashViewController*) controller
+{
+  TMOMainViewController* mainViewController
+    = [[[TMOMainViewController alloc] init] autorelease];
+  
+  [UIView transitionWithView: self.window
+                    duration: kAnimationDuration
+                     options: UIViewAnimationOptionTransitionCrossDissolve
+                  animations: ^(void)
+   {
+     self.window.rootViewController = mainViewController;
+   }
+                  completion: nil];
+}
+
 @end
