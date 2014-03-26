@@ -16,6 +16,8 @@
 @property (nonatomic, assign) float currentFrequency;
 
 @property (nonatomic, retain) UIButton* helpButton;
+@property (nonatomic, retain) UIButton* notesButton;
+
 @end
 
 
@@ -24,6 +26,8 @@
 @synthesize currentFrequency;
 
 @synthesize helpButton = m_helpButton;
+@synthesize notesButton = m_notesButton;
+
 #pragma mark - Memory management
 
 - (void) didReceiveMemoryWarning
@@ -34,6 +38,8 @@
 - (void) dealloc
 {
   self.helpButton = nil;
+  self.notesButton = nil;
+  
   [super dealloc];
 }
 
@@ -68,9 +74,33 @@
   return m_helpButton;
 }
 
+- (UIButton*) notesButton
+{
+  if (m_notesButton == nil)
+  {
+    UIButton* notesButton = [UIButton buttonWithType: UIButtonTypeCustom];
+    
+    [notesButton setImage: [UIImage imageNamed: @"todo"]
+                 forState: UIControlStateNormal];
+    
+    [notesButton addTarget: self
+                    action: @selector(didTapNotesButton)
+          forControlEvents: UIControlEventTouchUpInside];
+    
+    m_notesButton = [notesButton retain];
+  }
+  
+  return m_notesButton;
+}
+
 #pragma mark - Event handlers
 
 - (void) didTapHelpButton
+{
+  /* TODO: Implement me */
+}
+
+- (void) didTapNotesButton
 {
   /* TODO: Implement me */
 }
