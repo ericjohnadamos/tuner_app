@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class TMOSplashViewController;
+
+@protocol TMOSplashViewDelegate <NSObject>
+
+- (NSInteger) numberOfSplashViews;
+
+- (UIView*) splashViewController: (TMOSplashViewController*) controller
+                     viewAtIndex: (NSInteger)                index;
+
+- (void) splashViewControllerDidFinishDisplayViews:
+  (TMOSplashViewController*) controller;
+
+@end
 
 @interface TMOSplashViewController : UIViewController
 
