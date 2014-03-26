@@ -28,6 +28,7 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (void) dealloc
 {
   self.delegate = nil;
+  self.datasource = nil;
   
   [super dealloc];
 }
