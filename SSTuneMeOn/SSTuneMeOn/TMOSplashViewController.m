@@ -38,6 +38,34 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+- (void) removeSubviewsFromLastIndex: (NSInteger) index;
+{
+  if (index == 0)
+  {
+    [self performSelector: @selector(didFinishSplashView)
+               withObject: nil
+               afterDelay: kAnimationDelay];
+  }
+  else
+  {
+    UIView* currentView = [self.view viewWithTag: index];
+    
+    [UIView animateWithDuration: kAnimationDuration
+                          delay: kAnimationDelay
+                        options: UIViewAnimationOptionTransitionNone
+                     animations: ^(void)
+     {
+       currentView.alpha = 0.0f;
+     }
+                     completion: ^(BOOL isFinished)
+     {
+       [currentView removeFromSuperview];
+       
+       return [self removeSubviewsFromLastIndex: index - 1];
+     }];
+  }
+}
+
 - (void) didFinishSplashView
 {
   if ([self.delegate respondsToSelector:
