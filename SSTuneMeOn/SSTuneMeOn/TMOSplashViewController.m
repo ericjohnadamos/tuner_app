@@ -8,6 +8,8 @@
 
 #import "TMOSplashViewController.h"
 
+static const CGFloat kAnimationDelay = 2.0f;
+static const CGFloat kAnimationDuration = 0.35f;
 
 @implementation TMOSplashViewController
 
