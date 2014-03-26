@@ -9,12 +9,9 @@
 #import "TMOSplashViewController.h"
 
 
-@interface TMOSplashViewController ()
-
-@end
-
-
 @implementation TMOSplashViewController
+
+
 
 #pragma mark - Memory management
 
