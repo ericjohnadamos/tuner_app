@@ -12,6 +12,7 @@
 #import "TMOSplashViewController.h"
 #import "TMOMainViewController.h"
 
+static const CGFloat kAnimationDuration = 0.35f;
 
 @interface AppDelegate ()
 
