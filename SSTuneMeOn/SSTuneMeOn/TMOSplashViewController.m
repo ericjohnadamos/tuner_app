@@ -11,7 +11,9 @@
 
 @implementation TMOSplashViewController
 
+#pragma mark - Synthesize properties
 
+@synthesize delegate = m_delegate;
 
 #pragma mark - Memory management
 
