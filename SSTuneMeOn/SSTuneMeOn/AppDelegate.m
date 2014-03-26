@@ -76,6 +76,14 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   /* Initialize components */
   [rioRef initializeAudioSession];
   
+  /* Insert the splash view controller */
+  TMOSplashViewController* splashViewController
+    = [[[TMOSplashViewController alloc] init] autorelease];
+  splashViewController.delegate = self;
+  splashViewController.datasource = self;
+  
+  self.window.rootViewController = splashViewController;
+  
   return YES;
 }
 
