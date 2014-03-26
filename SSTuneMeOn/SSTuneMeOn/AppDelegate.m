@@ -21,7 +21,6 @@ static const CGFloat kAnimationDuration = 0.35f;
 
 @end
 
-
 @implementation AppDelegate
 
 @synthesize splashController = m_splashController;
@@ -61,11 +60,8 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   
   /* Override point for customization after application launch. */
   
-  self.window.backgroundColor = [UIColor whiteColor];
-  
   [self.window makeKeyAndVisible];
   
-  self.window.rootViewController = self.splashController;
   /* Getting the interface instance */
   RIOInterface* rioRef = [RIOInterface sharedInstance];
   
