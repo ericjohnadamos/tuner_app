@@ -87,6 +87,10 @@ CGFloat kButtonDimension = 30.0f;
   {
     UIButton* notesButton = [UIButton buttonWithType: UIButtonTypeCustom];
     
+    CGFloat notesXOffset
+      = (self.view.bounds.size.width - kButtonDimension) - kXOffset;
+    notesButton.frame
+      = CGRectMake(notesXOffset, kYOffset, kButtonDimension, kButtonDimension);
     
     [notesButton setImage: [UIImage imageNamed: @"notes"]
                  forState: UIControlStateNormal];
