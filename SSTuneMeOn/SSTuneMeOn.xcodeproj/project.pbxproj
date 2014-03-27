@@ -219,29 +219,29 @@
 			children = (
 				253596E418E4814D0031DECB /* Resources */,
 				256B08D018CDF9E600F856F9 /* Core */,
-				256B08BF18CDF22A00F856F9 /* Main screen */,
-				256B08BE18CDF21B00F856F9 /* Splash screen */,
 				253596ED18E49BBA0031DECB /* Note Selection Screen */,
+				256B08BF18CDF22A00F856F9 /* Main Screen */,
+				256B08BE18CDF21B00F856F9 /* Splash Screen */,
 			);
 			name = "Application Proper";
 			sourceTree = "<group>";
 		};
-		256B08BE18CDF21B00F856F9 /* Splash screen */ = {
+		256B08BE18CDF21B00F856F9 /* Splash Screen */ = {
 			isa = PBXGroup;
 			children = (
 				256B08C018CDF36200F856F9 /* TMOSplashViewController.h */,
 				256B08C118CDF36200F856F9 /* TMOSplashViewController.m */,
 			);
-			name = "Splash screen";
+			name = "Splash Screen";
 			sourceTree = "<group>";
 		};
-		256B08BF18CDF22A00F856F9 /* Main screen */ = {
+		256B08BF18CDF22A00F856F9 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
 				256B08C318CDF42E00F856F9 /* TMOMainViewController.h */,
 				256B08C418CDF42E00F856F9 /* TMOMainViewController.m */,
 			);
-			name = "Main screen";
+			name = "Main Screen";
 			sourceTree = "<group>";
 		};
 		256B08D018CDF9E600F856F9 /* Core */ = {
