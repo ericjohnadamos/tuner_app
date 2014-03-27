@@ -85,7 +85,8 @@ CGFloat kButtonDimension = 30.0f;
   {
     UIButton* notesButton = [UIButton buttonWithType: UIButtonTypeCustom];
     
-    [notesButton setImage: [UIImage imageNamed: @"todo"]
+    
+    [notesButton setImage: [UIImage imageNamed: @"notes"]
                  forState: UIControlStateNormal];
     
     [notesButton addTarget: self
