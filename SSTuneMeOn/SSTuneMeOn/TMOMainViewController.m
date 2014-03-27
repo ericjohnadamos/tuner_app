@@ -53,6 +53,8 @@ CGFloat kButtonDimension = 30.0f;
 {
   [super viewDidLoad];
   
+  
+  [self.view addSubview: self.helpButton];
 }
 
 - (void) viewDidAppear: (BOOL) animated
