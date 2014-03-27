@@ -53,6 +53,7 @@ CGFloat kButtonDimension = 30.0f;
 {
   [super viewDidLoad];
   
+  self.view.backgroundColor = [UIColor blackColor];
   
   [self.view addSubview: self.helpButton];
   [self.view addSubview: self.notesButton];
