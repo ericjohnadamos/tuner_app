@@ -11,6 +11,7 @@
 		253596E818E481570031DECB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E618E481570031DECB /* help.png */; };
 		253596EB18E482660031DECB /* splash1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 253596E918E482660031DECB /* splash1.jpg */; };
 		253596EC18E482660031DECB /* splash2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 253596EA18E482660031DECB /* splash2.jpg */; };
+		253596F018E49BFB0031DECB /* TMONoteSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */; };
 		256B088E18CDED4500F856F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088D18CDED4500F856F9 /* Foundation.framework */; };
 		256B089018CDED4500F856F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088F18CDED4500F856F9 /* CoreGraphics.framework */; };
 		256B089218CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 		253596E618E481570031DECB /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		253596E918E482660031DECB /* splash1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash1.jpg; sourceTree = "<group>"; };
 		253596EA18E482660031DECB /* splash2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash2.jpg; sourceTree = "<group>"; };
+		253596EE18E49BFB0031DECB /* TMONoteSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteSelectionViewController.h; sourceTree = "<group>"; };
+		253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectionViewController.m; sourceTree = "<group>"; };
 		256B088A18CDED4500F856F9 /* SSTuneMeOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTuneMeOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		256B088D18CDED4500F856F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		256B088F18CDED4500F856F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,15 @@
 				253596E618E481570031DECB /* help.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		253596ED18E49BBA0031DECB /* Note Selection Screen */ = {
+			isa = PBXGroup;
+			children = (
+				253596EE18E49BFB0031DECB /* TMONoteSelectionViewController.h */,
+				253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */,
+			);
+			name = "Note Selection Screen";
 			sourceTree = "<group>";
 		};
 		256B088118CDED4500F856F9 = {
@@ -209,6 +221,7 @@
 				256B08D018CDF9E600F856F9 /* Core */,
 				256B08BF18CDF22A00F856F9 /* Main screen */,
 				256B08BE18CDF21B00F856F9 /* Splash screen */,
+				253596ED18E49BBA0031DECB /* Note Selection Screen */,
 			);
 			name = "Application Proper";
 			sourceTree = "<group>";
@@ -374,6 +387,7 @@
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
+				253596F018E49BFB0031DECB /* TMONoteSelectionViewController.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
