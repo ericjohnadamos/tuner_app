@@ -65,6 +65,8 @@ CGFloat kButtonDimension = 30.0f;
   {
     UIButton* helpButton = [UIButton buttonWithType: UIButtonTypeCustom];
     
+    helpButton.frame
+      = CGRectMake(kXOffset, kYOffset, kButtonDimension, kButtonDimension);
     
     [helpButton setImage: [UIImage imageNamed: @"help"]
                 forState: UIControlStateNormal];
