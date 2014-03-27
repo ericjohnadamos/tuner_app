@@ -55,6 +55,7 @@ CGFloat kButtonDimension = 30.0f;
   
   
   [self.view addSubview: self.helpButton];
+  [self.view addSubview: self.notesButton];
 }
 
 - (void) viewDidAppear: (BOOL) animated
