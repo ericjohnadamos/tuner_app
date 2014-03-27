@@ -65,7 +65,8 @@ CGFloat kButtonDimension = 30.0f;
   {
     UIButton* helpButton = [UIButton buttonWithType: UIButtonTypeCustom];
     
-    [helpButton setImage: [UIImage imageNamed: @"todo"]
+    
+    [helpButton setImage: [UIImage imageNamed: @"help"]
                 forState: UIControlStateNormal];
     
     [helpButton addTarget: self
