@@ -11,6 +11,8 @@
 #import "RIOInterface.h"
 
 
+CGFloat kXOffset = 20.0f;
+
 @interface TMOMainViewController ()
 
 @property (nonatomic, assign) float currentFrequency;
