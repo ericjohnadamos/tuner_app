@@ -12,6 +12,7 @@
 
 
 CGFloat kXOffset = 20.0f;
+CGFloat kYOffset = 30.0f;
 
 @interface TMOMainViewController ()
 
