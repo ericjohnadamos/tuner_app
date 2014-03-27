@@ -13,6 +13,7 @@
 		253596EC18E482660031DECB /* splash2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 253596EA18E482660031DECB /* splash2.jpg */; };
 		253596F018E49BFB0031DECB /* TMONoteSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */; };
 		253596F518E49D560031DECB /* TMOHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F418E49D560031DECB /* TMOHelpViewController.m */; };
+		253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F718E4A0630031DECB /* TMODancingAnimationView.m */; };
 		256B088E18CDED4500F856F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088D18CDED4500F856F9 /* Foundation.framework */; };
 		256B089018CDED4500F856F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088F18CDED4500F856F9 /* CoreGraphics.framework */; };
 		256B089218CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
@@ -57,6 +58,8 @@
 		253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectionViewController.m; sourceTree = "<group>"; };
 		253596F318E49D560031DECB /* TMOHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOHelpViewController.h; sourceTree = "<group>"; };
 		253596F418E49D560031DECB /* TMOHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOHelpViewController.m; sourceTree = "<group>"; };
+		253596F618E4A0630031DECB /* TMODancingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMODancingAnimationView.h; sourceTree = "<group>"; };
+		253596F718E4A0630031DECB /* TMODancingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMODancingAnimationView.m; sourceTree = "<group>"; };
 		256B088A18CDED4500F856F9 /* SSTuneMeOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTuneMeOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		256B088D18CDED4500F856F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		256B088F18CDED4500F856F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,6 +147,8 @@
 		253596F118E49CF60031DECB /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				253596F618E4A0630031DECB /* TMODancingAnimationView.h */,
+				253596F718E4A0630031DECB /* TMODancingAnimationView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
+				253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				253596F018E49BFB0031DECB /* TMONoteSelectionViewController.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
