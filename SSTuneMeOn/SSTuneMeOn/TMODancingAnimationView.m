@@ -2,7 +2,7 @@
 //  TMODancingAnimationView.m
 //  SSTuneMeOn
 //
-//  Created by Eric John Adamos on 3/28/14.
+//  Created by Eric John Adamos <ericjohnadamos@gmail.com> on 3/28/14.
 //  Copyright (c) 2014 Eric John Adamos. All rights reserved.
 //
 
@@ -10,22 +10,16 @@
 
 @implementation TMODancingAnimationView
 
-- (id)initWithFrame:(CGRect)frame
+- (id) initWithFrame: (CGRect) frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+  self = [super initWithFrame:frame];
+  
+  if (self != nil)
+  {
+    /* TODO: Implement me */
+  }
+  
+  return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
