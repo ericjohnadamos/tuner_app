@@ -13,41 +13,81 @@
 #import "TMOMainViewController.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
+static const CGFloat kAnimationDelay = 2.0f;
 
 
-@interface AppDelegate () <TMOSplashViewDelegate, TMOSplashViewDatasource>
+@interface AppDelegate ()
 
-@property (nonatomic, retain) TMOSplashViewController* splashController;
+@property (nonatomic, retain) TMOMainViewController* mainController;
+@property (nonatomic, retain) NSArray* splashViews;
 
 @end
 
 @implementation AppDelegate
 
-@synthesize splashController = m_splashController;
+@synthesize window = m_window;
+@synthesize mainController = m_mainController;
+@synthesize splashViews = m_splashViews;
 
 #pragma mark - Memory deallocation
 
 - (void) dealloc
 {
   self.window = nil;
-  self.splashController = nil;
+  self.mainController = nil;
+  self.splashViews = nil;
   
   [super dealloc];
 }
 
 #pragma mark - Lazy loaders
 
-- (TMOSplashViewController*) splashController
+- (TMOMainViewController*) mainController
 {
-  if (m_splashController == nil)
+  if (m_mainController == nil)
   {
-    TMOSplashViewController* splashController
-      = [[TMOSplashViewController alloc] init];
+    TMOMainViewController* mainController
+      = [[TMOMainViewController alloc] init];
     
-    m_splashController = splashController;
+    m_mainController = mainController;
   }
   
-  return m_splashController;
+  return m_mainController;
+}
+
+- (UIWindow*) window
+{
+  if (m_window == nil)
+  {
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    UIWindow* window = [[UIWindow alloc] initWithFrame: rect];
+    
+    m_window = window;
+  }
+  
+  return m_window;
+}
+
+- (NSArray*) splashViews
+{
+  if (m_splashViews == nil)
+  {
+    CGRect windowBounds = self.window.bounds;
+    
+    UIImageView* splashOne = [[UIImageView alloc] initWithImage:
+                              [UIImage imageNamed: @"splash1.jpg"]];
+    splashOne.frame = windowBounds;
+    
+    UIImageView* splashTwo = [[UIImageView alloc] initWithImage:
+                              [UIImage imageNamed: @"splash2.jpg"]];
+    splashTwo.frame = windowBounds;
+    
+    NSArray* splashView = @[splashOne, splashTwo];
+    
+    m_splashViews = [splashView retain];
+  }
+  
+  return m_splashViews;
 }
 
 #pragma mark - Application lifecycle
@@ -55,12 +95,19 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (BOOL)          application: (UIApplication*) application
 didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 {
-  self.window = [[UIWindow alloc] initWithFrame:
-                 [[UIScreen mainScreen] bounds]];
-  
   /* Override point for customization after application launch. */
-  
+
   [self.window makeKeyAndVisible];
+  
+  /* Set the main controller as the root view controller */
+  self.window.rootViewController = self.mainController;
+  
+  /* Insert all image views inside the window view */
+  for (UIView* view in self.splashViews)
+  {
+    [self.window addSubview: view];
+    [self.window bringSubviewToFront: view];
+  }
   
   /* Getting the interface instance */
   RIOInterface* rioRef = [RIOInterface sharedInstance];
@@ -72,91 +119,68 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   /* Initialize components */
   [rioRef initializeAudioSession];
   
-  /* Insert the splash view controller */
-  TMOSplashViewController* splashViewController
-    = [[[TMOSplashViewController alloc] init] autorelease];
-  splashViewController.delegate = self;
-  splashViewController.datasource = self;
-  
-  self.window.rootViewController = splashViewController;
+  /* Remove the splash view */
+  [self fadeSplashView];
   
   return YES;
 }
 
 - (void) applicationWillResignActive: (UIApplication*) application
 {
-  
+  /* TODO: Implement me */
 }
 
 - (void) applicationDidEnterBackground: (UIApplication*) application
 {
-  
+  /* TODO: Implement me */
 }
 
 - (void) applicationWillEnterForeground: (UIApplication*) application
 {
-  
+  /* TODO: Implement me */
 }
 
 - (void) applicationDidBecomeActive: (UIApplication*) application
 {
-  
+  /* TODO: Implement me */
 }
 
 - (void) applicationWillTerminate: (UIApplication*) application
 {
-  
+  /* TODO: Implement me */
 }
 
-#pragma mark - TMOSplashViewDelegate method
+#pragma mark - Private methods
 
-- (BOOL) displayWithAnimations
+- (void) fadeSplashView
 {
-  return YES;
+  [self decrementFadeSplashViewAtIndex: self.splashViews.count - 1];
 }
 
-- (void) splashViewControllerDidFinishDisplayViews:
-  (TMOSplashViewController*) controller
+- (void) decrementFadeSplashViewAtIndex: (NSInteger) index
 {
-  TMOMainViewController* mainViewController
-    = [[[TMOMainViewController alloc] init] autorelease];
-  
-  [UIView transitionWithView: self.window
-                    duration: kAnimationDuration
-                     options: UIViewAnimationOptionTransitionCrossDissolve
-                  animations: ^(void)
-   {
-     self.window.rootViewController = mainViewController;
-   }
-                  completion: nil];
-}
-
-#pragma mark - TMOSplashViewDatasource method
-
-- (NSInteger) numberOfSplashViews
-{
-  return 2;
-}
-
-- (UIView*) splashViewController: (TMOSplashViewController*) controller
-                     viewAtIndex: (NSInteger)                index
-{
-  UIView* myView = [[[UIView alloc] initWithFrame: self.window.bounds]
-                    autorelease];
-  
-  UIColor* color = nil;
-  if (index == 0)
+  if (index < 0)
   {
-    color = [UIColor purpleColor];
+    self.splashViews = nil;
   }
-  else if (index == 1)
+  else if (index >= 0 && index < self.splashViews.count)
   {
-    color = [UIColor redColor];
+    UIView* splashView = self.splashViews[index];
+    
+    [UIView animateWithDuration: kAnimationDuration
+                          delay: kAnimationDelay
+                        options: UIViewAnimationOptionTransitionNone
+                     animations: ^(void)
+     {
+       splashView.alpha = 0.0f;
+     }
+                     completion: ^(BOOL isFinished)
+     {
+       [splashView removeFromSuperview];
+       
+       [self decrementFadeSplashViewAtIndex: index - 1];
+     }];
   }
-  
-  myView.backgroundColor = color;
-  
-  return myView;
 }
 
 @end
