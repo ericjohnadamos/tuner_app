@@ -53,6 +53,12 @@ CGFloat kButtonDimension = 30.0f;
 {
   [super viewDidLoad];
   
+}
+
+- (void) viewDidAppear: (BOOL) animated
+{
+  [super viewDidAppear: animated];
+  
   [self stopListener];
   [self startListener];
 }
