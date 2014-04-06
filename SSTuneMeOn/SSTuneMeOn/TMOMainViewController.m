@@ -190,6 +190,8 @@ CGFloat kButtonDimension = 30.0f;
    */
 	self.currentFrequency = newFrequency;
   
+  [self performSelectorInBackground: @selector(updateFrequencyLabel)
+                         withObject: nil];
 }
 
 - (void) updateFrequencyLabel
