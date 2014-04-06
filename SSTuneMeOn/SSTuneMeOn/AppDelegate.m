@@ -74,15 +74,12 @@ static const CGFloat kAnimationDelay = 2.0f;
   {
     CGRect windowBounds = self.window.bounds;
     
-    UIImageView* splashOne = [[UIImageView alloc] initWithImage:
-                              [UIImage imageNamed: @"splash1.jpg"]];
-    splashOne.frame = windowBounds;
+    UIView* splashOne = [[UIView alloc] initWithFrame: windowBounds];
+    [splashOne autorelease];
     
-    UIImageView* splashTwo = [[UIImageView alloc] initWithImage:
-                              [UIImage imageNamed: @"splash2.jpg"]];
-    splashTwo.frame = windowBounds;
+    splashOne.backgroundColor = [UIColor purpleColor];
     
-    NSArray* splashView = @[splashOne, splashTwo];
+    NSArray* splashView = @[splashOne];
     
     m_splashViews = [splashView retain];
   }
