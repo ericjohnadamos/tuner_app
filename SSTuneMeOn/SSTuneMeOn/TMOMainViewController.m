@@ -66,14 +66,27 @@ CGFloat kButtonDimension = 30.0f;
   
   self.view.backgroundColor = [UIColor blackColor];
   
+  /* Begin calculations of frequency and hertz frames */
+  CGFloat width = 150.0f;
+  CGFloat height = 44.0f;
+  
+  CGFloat xPointForFrequency = CGRectGetMidX(self.view.bounds) - (width * 0.5f);
+  CGFloat yPointForFrequency = 200.0f;
+  
+  self.frequencyLabel.frame
+    = CGRectMake(xPointForFrequency, yPointForFrequency, width, height);
+  
+  CGFloat xPointForHertz = CGRectGetMaxX(self.frequencyLabel.frame);
+  CGFloat yPointForHertz = 200.0f;
+  
+  self.hertzLabel.frame
+    = CGRectMake(xPointForHertz, yPointForHertz, width, height);
+  
+  /* Add as subviews */
   [self.view addSubview: self.helpButton];
   [self.view addSubview: self.notesButton];
-}
-
-- (void) viewDidAppear: (BOOL) animated
-{
-  [super viewDidAppear: animated];
-  
+  [self.view addSubview: self.frequencyLabel];
+  [self.view addSubview: self.hertzLabel];
 }
 
 #pragma mark - Lazy loaders
