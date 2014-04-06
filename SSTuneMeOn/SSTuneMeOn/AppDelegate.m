@@ -159,6 +159,12 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   if (index < 0)
   {
     self.splashViews = nil;
+    
+    if ([self.window.rootViewController isKindOfClass:
+         [TMOMainViewController class]])
+    {
+      [[RIOInterface sharedInstance] startListening: self.mainController];
+    }
   }
   else if (index >= 0 && index < self.splashViews.count)
   {
