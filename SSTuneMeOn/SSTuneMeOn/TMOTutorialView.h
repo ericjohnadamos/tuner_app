@@ -10,4 +10,6 @@
 
 @interface TMOTutorialView : UIView
 
+- (void) loadWebView;
+
 @end
