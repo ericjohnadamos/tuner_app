@@ -34,6 +34,7 @@
 		256B08CF18CDF93D00F856F9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08CE18CDF93D00F856F9 /* Accelerate.framework */; };
 		256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */; };
 		2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578737F18F153FD00AC3D56 /* TMOSplashView.m */; };
+		2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578738218F160C600AC3D56 /* TMOTutorialView.m */; };
 		2578738518F160F300AC3D56 /* splash-one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2578738418F160F300AC3D56 /* splash-one@2x.png */; };
 		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
@@ -87,6 +88,8 @@
 		256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOKeyHelper.m; sourceTree = "<group>"; };
 		2578737E18F153FD00AC3D56 /* TMOSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOSplashView.h; sourceTree = "<group>"; };
 		2578737F18F153FD00AC3D56 /* TMOSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOSplashView.m; sourceTree = "<group>"; };
+		2578738118F160C600AC3D56 /* TMOTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTutorialView.h; sourceTree = "<group>"; };
+		2578738218F160C600AC3D56 /* TMOTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTutorialView.m; sourceTree = "<group>"; };
 		2578738418F160F300AC3D56 /* splash-one@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-one@2x.png"; sourceTree = "<group>"; };
 		2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
 		2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				253596F718E4A0630031DECB /* TMODancingAnimationView.m */,
 				2578737E18F153FD00AC3D56 /* TMOSplashView.h */,
 				2578737F18F153FD00AC3D56 /* TMOSplashView.m */,
+				2578738118F160C600AC3D56 /* TMOTutorialView.h */,
+				2578738218F160C600AC3D56 /* TMOTutorialView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
+				2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */,
 				2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */,
 				253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
