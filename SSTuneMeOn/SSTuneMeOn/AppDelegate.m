@@ -9,17 +9,14 @@
 #import "AppDelegate.h"
 
 #import "RIOInterface.h"
-#import "TMOSplashViewController.h"
 #import "TMOMainViewController.h"
+#import "TMOSplashView.h"
 
-static const CGFloat kAnimationDuration = 0.35f;
-static const CGFloat kAnimationDelay = 2.0f;
-
-
-@interface AppDelegate ()
+@interface AppDelegate () <TMOSplashViewDelegate>
 
 @property (nonatomic, retain) TMOMainViewController* mainController;
-@property (nonatomic, retain) NSArray* splashViews;
+
+@property (nonatomic, retain) TMOSplashView* splashView;
 
 @end
 
@@ -27,7 +24,7 @@ static const CGFloat kAnimationDelay = 2.0f;
 
 @synthesize window = m_window;
 @synthesize mainController = m_mainController;
-@synthesize splashViews = m_splashViews;
+@synthesize splashView = m_splashView;
 
 #pragma mark - Memory deallocation
 
@@ -35,7 +32,7 @@ static const CGFloat kAnimationDelay = 2.0f;
 {
   self.window = nil;
   self.mainController = nil;
-  self.splashViews = nil;
+  self.splashView = nil;
   
   [super dealloc];
 }
@@ -68,23 +65,24 @@ static const CGFloat kAnimationDelay = 2.0f;
   return m_window;
 }
 
-- (NSArray*) splashViews
+- (TMOSplashView*) splashView
 {
-  if (m_splashViews == nil)
+  if (m_splashView == nil)
   {
     CGRect windowBounds = self.window.bounds;
     
-    UIView* splashOne = [[UIView alloc] initWithFrame: windowBounds];
-    [splashOne autorelease];
+    UIView* firstSplashView = [[UIView alloc] initWithFrame: windowBounds];
+    [firstSplashView autorelease];
+    firstSplashView.backgroundColor = [UIColor purpleColor];
     
-    splashOne.backgroundColor = [UIColor purpleColor];
+    TMOSplashView* splashView
+      = [[TMOSplashView alloc] initWithViews: @[firstSplashView]];
+    splashView.delegate = self;
     
-    NSArray* splashView = @[splashOne];
-    
-    m_splashViews = [splashView retain];
+    m_splashView = splashView;
   }
   
-  return m_splashViews;
+  return m_splashView;
 }
 
 #pragma mark - Application lifecycle
@@ -100,11 +98,11 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   self.window.rootViewController = self.mainController;
   
   /* Insert all image views inside the window view */
-  for (UIView* view in self.splashViews)
-  {
-    [self.window addSubview: view];
-    [self.window bringSubviewToFront: view];
-  }
+  [self.window addSubview: self.splashView];
+  
+  /* Load and animate splash view */
+  [self.splashView loadViews];
+  [self.splashView animateFadeSplashView];
   
   /* Getting the interface instance */
   RIOInterface* rioRef = [RIOInterface sharedInstance];
@@ -117,9 +115,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   [rioRef initializeAudioSession];
   [rioRef startPlayback];
   [rioRef stopPlayback];
-  
-  /* Remove the splash view */
-  [self fadeSplashView];
   
   return YES;
 }
@@ -149,42 +144,19 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   /* TODO: Implement me */
 }
 
-#pragma mark - Private methods
+#pragma mark - TMOSplashViewDelegate method
 
-- (void) fadeSplashView
+- (void) splashViewDidFinishRenderingViews: (TMOSplashView*) splashView
 {
-  [self decrementFadeSplashViewAtIndex: self.splashViews.count - 1];
-}
-
-- (void) decrementFadeSplashViewAtIndex: (NSInteger) index
-{
-  if (index < 0)
+  if (self.splashView.superview != nil)
   {
-    self.splashViews = nil;
-    
-    if ([self.window.rootViewController isKindOfClass:
-         [TMOMainViewController class]])
-    {
-      [[RIOInterface sharedInstance] startListening: self.mainController];
-    }
+    [self.splashView removeFromSuperview];
   }
-  else if (index >= 0 && index < self.splashViews.count)
+  
+  if ([self.window.rootViewController isKindOfClass:
+       [TMOMainViewController class]])
   {
-    UIView* splashView = self.splashViews[index];
-    
-    [UIView animateWithDuration: kAnimationDuration
-                          delay: kAnimationDelay
-                        options: UIViewAnimationOptionTransitionNone
-                     animations: ^(void)
-     {
-       splashView.alpha = 0.0f;
-     }
-                     completion: ^(BOOL isFinished)
-     {
-       [splashView removeFromSuperview];
-       
-       [self decrementFadeSplashViewAtIndex: index - 1];
-     }];
+    [[RIOInterface sharedInstance] startListening: self.mainController];
   }
 }
 
