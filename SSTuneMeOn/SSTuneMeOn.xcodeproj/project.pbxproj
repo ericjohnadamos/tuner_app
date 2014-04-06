@@ -224,6 +224,7 @@
 		256B08BD18CDF1AE00F856F9 /* Application Proper */ = {
 			isa = PBXGroup;
 			children = (
+				2578738618F16C8F00AC3D56 /* Foundation */,
 				253596E418E4814D0031DECB /* Resources */,
 				256B08D018CDF9E600F856F9 /* Core */,
 				253596F118E49CF60031DECB /* Custom Views */,
@@ -268,6 +269,13 @@
 				256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		2578738618F16C8F00AC3D56 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Foundation;
 			sourceTree = "<group>";
 		};
 		2579DC5C18D3FFD700B5DEB0 /* RIO */ = {
