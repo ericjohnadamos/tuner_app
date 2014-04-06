@@ -7,22 +7,24 @@
 //
 
 #import "TMOTutorialView.h"
+#import "TMOLocalizedStrings.h"
 
-@interface TMOTutorialView ()
 
-@property (nonatomic, retain) UILabel* tutorialLabel;
+@interface TMOTutorialView () <UIWebViewDelegate>
+
+@property (nonatomic, retain) UIWebView* tutorialWebView;
 
 @end
 
 @implementation TMOTutorialView
 
-@synthesize tutorialLabel = m_tutorialLabel;
+@synthesize tutorialWebView = m_tutorialWebView;
 
 #pragma mark - Memory management
 
 - (void) dealloc
 {
-  self.tutorialLabel = nil;
+  self.tutorialWebView = nil;
   
   [super dealloc];
 }
@@ -35,7 +37,9 @@
   
   if (self != nil)
   {
-    /* TODO: Initialze here */
+    [self addSubview: self.tutorialWebView];
+    
+    [self loadWebView];
   }
   
   return self;
@@ -43,14 +47,72 @@
 
 #pragma mark - Lazy loaders
 
-- (UILabel*) tutorialLabel
+- (UIWebView*) tutorialWebView
 {
-  if (m_tutorialLabel == nil)
+  if (m_tutorialWebView == nil)
   {
-    /* TODO: Implement me */
+    UIWebView* tutorialWebView = [[UIWebView alloc] initWithFrame: self.bounds];
+    
+    tutorialWebView.delegate = self;
+    tutorialWebView.opaque = NO;
+    tutorialWebView.backgroundColor = [UIColor clearColor];
+    
+    tutorialWebView.hidden = YES;
+    tutorialWebView.userInteractionEnabled = YES;
+    tutorialWebView.multipleTouchEnabled =  YES;
+    tutorialWebView.scrollView.scrollEnabled = NO;
+    
+    NSArray* backgroundSubviews
+      = [[[tutorialWebView subviews] objectAtIndex: 0] subviews];
+    
+    for (UIView* subview in backgroundSubviews)
+    {
+      if ([subview isKindOfClass: [UIImageView class]])
+      {
+        subview.hidden = YES;
+      }
+    }
+    
+    m_tutorialWebView = tutorialWebView;
   }
   
-  return m_tutorialLabel;
+  return m_tutorialWebView;
+}
+
+#pragma mark - UIWebViewDelegate method
+
+- (BOOL)           webView: (UIWebView*)              webView
+shouldStartLoadWithRequest: (NSURLRequest*)           request
+            navigationType: (UIWebViewNavigationType) navigationType
+{
+  return YES;
+}
+
+- (void) webViewDidStartLoad: (UIWebView*) webView
+{
+  /* TODO: Implement me */
+}
+
+- (void) webViewDidFinishLoad: (UIWebView*) webView
+{
+  self.tutorialWebView.hidden = NO;
+}
+
+- (void)     webView: (UIWebView*) webView
+didFailLoadWithError: (NSError*)   error
+{
+  /* TODO: Implement me */
+}
+
+#pragma mark - Private method
+
+- (void) loadWebView
+{
+  NSString* htmlString
+    = [TMOLocalizedStrings stringForKey: kTMOTutorialWebViewText];
+  
+  [self.tutorialWebView loadHTMLString: htmlString
+                               baseURL: nil];
 }
 
 @end
