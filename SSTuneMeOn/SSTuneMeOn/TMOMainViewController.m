@@ -23,6 +23,8 @@ CGFloat kButtonDimension = 30.0f;
 @property (nonatomic, retain) UIButton* notesButton;
 
 @property (nonatomic, retain) UILabel* frequencyLabel;
+@property (nonatomic, retain) UILabel* hertzLabel;
+
 @end
 
 
@@ -34,6 +36,8 @@ CGFloat kButtonDimension = 30.0f;
 @synthesize notesButton = m_notesButton;
 
 @synthesize frequencyLabel = m_frequencyLabel;
+@synthesize hertzLabel = m_hertzLabel;
+
 #pragma mark - Memory management
 
 - (void) didReceiveMemoryWarning
@@ -47,6 +51,8 @@ CGFloat kButtonDimension = 30.0f;
   self.notesButton = nil;
   
   self.frequencyLabel = nil;
+  self.hertzLabel = nil;
+  
   [super dealloc];
 }
 
@@ -132,6 +138,23 @@ CGFloat kButtonDimension = 30.0f;
   }
   
   return m_frequencyLabel;
+}
+
+- (UILabel*) hertzLabel
+{
+  if (m_hertzLabel == nil)
+  {
+    UILabel* hertzLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+    
+    hertzLabel.font = [UIFont systemFontOfSize: 20.0f];
+    hertzLabel.textColor = [UIColor orangeColor];
+    hertzLabel.textAlignment = NSTextAlignmentLeft;
+    hertzLabel.text = @"Hz";
+    
+    m_hertzLabel = hertzLabel;
+  }
+  
+  return m_hertzLabel;
 }
 
 #pragma mark - Event handlers
