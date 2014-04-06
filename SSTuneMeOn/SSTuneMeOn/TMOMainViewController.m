@@ -7,6 +7,7 @@
 //
 
 #import "TMOMainViewController.h"
+#import "TMOTutorialView.h"
 
 #import "RIOInterface.h"
 
@@ -16,6 +17,8 @@ CGFloat kYOffset = 30.0f;
 CGFloat kButtonDimension = 30.0f;
 
 @interface TMOMainViewController ()
+
+@property (nonatomic, retain) TMOTutorialView* tutorialView;
 
 @property (nonatomic, assign) float currentFrequency;
 
@@ -29,6 +32,8 @@ CGFloat kButtonDimension = 30.0f;
 
 
 @implementation TMOMainViewController
+
+@synthesize tutorialView = m_tutorialView;
 
 @synthesize currentFrequency;
 
@@ -49,6 +54,8 @@ CGFloat kButtonDimension = 30.0f;
 
 - (void) dealloc
 {
+  self.tutorialView = nil;
+  
   self.helpButton = nil;
   self.notesButton = nil;
   
@@ -87,9 +94,27 @@ CGFloat kButtonDimension = 30.0f;
   [self.view addSubview: self.notesButton];
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
+  
+  [self.view addSubview: self.tutorialView];
 }
 
 #pragma mark - Lazy loaders
+
+- (TMOTutorialView*) tutorialView
+{
+  if (m_tutorialView == nil)
+  {
+    CGRect frame = CGRectMake(0.0f, 20.0f,
+                              CGRectGetWidth(self.view.bounds), 200.0f);
+    
+    TMOTutorialView* tutorialView
+      = [[TMOTutorialView alloc] initWithFrame: frame];
+
+    m_tutorialView = tutorialView;
+  }
+  
+  return m_tutorialView;
+}
 
 - (UIButton*) helpButton
 {
