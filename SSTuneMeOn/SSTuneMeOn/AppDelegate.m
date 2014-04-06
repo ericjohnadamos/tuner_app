@@ -115,6 +115,8 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   
   /* Initialize components */
   [rioRef initializeAudioSession];
+  [rioRef startPlayback];
+  [rioRef stopPlayback];
   
   /* Remove the splash view */
   [self fadeSplashView];
