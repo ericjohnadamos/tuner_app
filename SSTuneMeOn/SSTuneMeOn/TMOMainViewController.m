@@ -108,8 +108,7 @@ static const CGFloat kButtonDimension = 30.0f;
   if (m_tutorialView == nil)
   {
     CGRect frame = CGRectMake(0.0f, 20.0f,
-                              CGRectGetWidth(self.view.bounds), 200.0f);
-    
+                              CGRectGetWidth(self.view.bounds), 220.0f);
     TMOTutorialView* tutorialView
       = [[TMOTutorialView alloc] initWithFrame: frame];
 
