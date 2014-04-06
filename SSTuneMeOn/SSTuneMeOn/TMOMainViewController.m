@@ -22,6 +22,7 @@ CGFloat kButtonDimension = 30.0f;
 @property (nonatomic, retain) UIButton* helpButton;
 @property (nonatomic, retain) UIButton* notesButton;
 
+@property (nonatomic, retain) UILabel* frequencyLabel;
 @end
 
 
@@ -32,6 +33,7 @@ CGFloat kButtonDimension = 30.0f;
 @synthesize helpButton = m_helpButton;
 @synthesize notesButton = m_notesButton;
 
+@synthesize frequencyLabel = m_frequencyLabel;
 #pragma mark - Memory management
 
 - (void) didReceiveMemoryWarning
@@ -44,6 +46,7 @@ CGFloat kButtonDimension = 30.0f;
   self.helpButton = nil;
   self.notesButton = nil;
   
+  self.frequencyLabel = nil;
   [super dealloc];
 }
 
@@ -113,6 +116,22 @@ CGFloat kButtonDimension = 30.0f;
   }
   
   return m_notesButton;
+}
+
+- (UILabel*) frequencyLabel
+{
+  if (m_frequencyLabel == nil)
+  {
+    UILabel* frequencyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+    
+    frequencyLabel.font = [UIFont boldSystemFontOfSize: 24.0f];
+    frequencyLabel.textColor = [UIColor orangeColor];
+    frequencyLabel.textAlignment = NSTextAlignmentRight;
+    
+    m_frequencyLabel = frequencyLabel;
+  }
+  
+  return m_frequencyLabel;
 }
 
 #pragma mark - Event handlers
