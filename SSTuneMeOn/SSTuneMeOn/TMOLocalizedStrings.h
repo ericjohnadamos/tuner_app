@@ -10,6 +10,9 @@
 
 @interface TMOLocalizedStrings : NSObject
 
+extern NSString* const kTMOTutorialWebViewText;
+extern NSString* const kTMOTutorialOkayButtonText;
+
 /* Interface method that returns the string from localizable.strings file
  */
 + (NSString*) stringForKey: (NSString*) key;
