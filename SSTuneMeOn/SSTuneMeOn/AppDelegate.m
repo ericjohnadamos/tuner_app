@@ -71,12 +71,12 @@
   {
     CGRect windowBounds = self.window.bounds;
     
-    UIView* firstSplashView = [[UIView alloc] initWithFrame: windowBounds];
-    [firstSplashView autorelease];
-    firstSplashView.backgroundColor = [UIColor purpleColor];
+    UIImageView* firstImageView = [[UIImageView alloc] initWithImage:
+                                   [UIImage imageNamed: @"splash-one"]];
+    firstImageView.frame = windowBounds;
     
     TMOSplashView* splashView
-      = [[TMOSplashView alloc] initWithViews: @[firstSplashView]];
+      = [[TMOSplashView alloc] initWithViews: @[firstImageView]];
     splashView.delegate = self;
     
     m_splashView = splashView;
