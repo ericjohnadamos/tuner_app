@@ -90,6 +90,9 @@
 - (BOOL)          application: (UIApplication*) application
 didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 {
+  [[UIApplication sharedApplication] setStatusBarStyle:
+   UIStatusBarStyleLightContent];
+  
   /* Override point for customization after application launch. */
 
   [self.window makeKeyAndVisible];
