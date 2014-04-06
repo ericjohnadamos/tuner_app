@@ -99,6 +99,9 @@ static const CGFloat kButtonDimension = 30.0f;
   [self.view addSubview: self.hertzLabel];
   
   [self.view addSubview: self.tutorialView];
+  
+  /* Load tutorial web view */
+  [self.tutorialView loadWebView];
 }
 
 #pragma mark - Lazy loaders
