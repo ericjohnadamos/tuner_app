@@ -201,7 +201,14 @@ static const CGFloat kButtonDimension = 30.0f;
 
 - (void) didTapHelpButton
 {
-  /* TODO: Implement me */
+  self.tutorialView.alpha = 0.0f;
+  self.tutorialView.hidden = NO;
+  
+  [UIView animateWithDuration: kAnimationDuration
+                   animations: ^(void)
+   {
+     self.tutorialView.alpha = 1.0f;
+   }];
 }
 
 - (void) didTapNotesButton
