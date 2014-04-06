@@ -8,7 +8,26 @@
 
 #import "TMOTutorialView.h"
 
+@interface TMOTutorialView ()
+
+@property (nonatomic, retain) UILabel* tutorialLabel;
+
+@end
+
 @implementation TMOTutorialView
+
+@synthesize tutorialLabel = m_tutorialLabel;
+
+#pragma mark - Memory management
+
+- (void) dealloc
+{
+  self.tutorialLabel = nil;
+  
+  [super dealloc];
+}
+
+#pragma mark - Initializer
 
 - (id) initWithFrame: (CGRect) frame
 {
@@ -20,6 +39,18 @@
   }
   
   return self;
+}
+
+#pragma mark - Lazy loaders
+
+- (UILabel*) tutorialLabel
+{
+  if (m_tutorialLabel == nil)
+  {
+    /* TODO: Implement me */
+  }
+  
+  return m_tutorialLabel;
 }
 
 @end
