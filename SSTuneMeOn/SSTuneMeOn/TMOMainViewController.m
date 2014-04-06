@@ -194,6 +194,8 @@ CGFloat kButtonDimension = 30.0f;
 
 - (void) updateFrequencyLabel
 {
+  self.frequencyLabel.text
+    = [NSString stringWithFormat: @"%.f", self.currentFrequency];
 }
 
 @end
