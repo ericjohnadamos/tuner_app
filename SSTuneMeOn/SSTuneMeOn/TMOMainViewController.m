@@ -78,7 +78,7 @@ static const CGFloat kButtonDimension = 30.0f;
   
   /* Begin calculations of frequency and hertz frames */
   CGFloat width = 150.0f;
-  CGFloat height = 44.0f;
+  CGFloat height = 30.0f;
   
   CGFloat xPointForFrequency = CGRectGetMidX(self.view.bounds) - (width * 0.5f);
   CGFloat yPointForFrequency = 200.0f;
