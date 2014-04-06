@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		253596E718E481570031DECB /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E518E481570031DECB /* notes.png */; };
 		253596E818E481570031DECB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E618E481570031DECB /* help.png */; };
-		253596EB18E482660031DECB /* splash1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 253596E918E482660031DECB /* splash1.jpg */; };
-		253596EC18E482660031DECB /* splash2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 253596EA18E482660031DECB /* splash2.jpg */; };
 		253596F018E49BFB0031DECB /* TMONoteSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */; };
 		253596F518E49D560031DECB /* TMOHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F418E49D560031DECB /* TMOHelpViewController.m */; };
 		253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F718E4A0630031DECB /* TMODancingAnimationView.m */; };
@@ -52,8 +50,6 @@
 /* Begin PBXFileReference section */
 		253596E518E481570031DECB /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notes.png; sourceTree = "<group>"; };
 		253596E618E481570031DECB /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
-		253596E918E482660031DECB /* splash1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash1.jpg; sourceTree = "<group>"; };
-		253596EA18E482660031DECB /* splash2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash2.jpg; sourceTree = "<group>"; };
 		253596EE18E49BFB0031DECB /* TMONoteSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteSelectionViewController.h; sourceTree = "<group>"; };
 		253596EF18E49BFB0031DECB /* TMONoteSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectionViewController.m; sourceTree = "<group>"; };
 		253596F318E49D560031DECB /* TMOHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOHelpViewController.h; sourceTree = "<group>"; };
@@ -127,8 +123,6 @@
 		253596E418E4814D0031DECB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				253596E918E482660031DECB /* splash1.jpg */,
-				253596EA18E482660031DECB /* splash2.jpg */,
 				253596E518E481570031DECB /* notes.png */,
 				253596E618E481570031DECB /* help.png */,
 			);
@@ -386,8 +380,6 @@
 			files = (
 				253596E818E481570031DECB /* help.png in Resources */,
 				253596E718E481570031DECB /* notes.png in Resources */,
-				253596EB18E482660031DECB /* splash1.jpg in Resources */,
-				253596EC18E482660031DECB /* splash2.jpg in Resources */,
 				256B089818CDED4500F856F9 /* InfoPlist.strings in Resources */,
 				256B08A018CDED4500F856F9 /* Images.xcassets in Resources */,
 			);
