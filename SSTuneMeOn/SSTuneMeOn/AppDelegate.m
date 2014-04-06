@@ -107,8 +107,10 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   /* Getting the interface instance */
   RIOInterface* rioRef = [RIOInterface sharedInstance];
   
-  /* Set sample rate and frequency */
-  [rioRef setSampleRate: 44100];
+  /* Set sample rate and frequency
+   * Default sample rate is 44.1k Hz
+   */
+  [rioRef setSampleRate: 33100];
   [rioRef setFrequency: 294];
   
   /* Initialize components */
