@@ -35,6 +35,7 @@
 		2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578738218F160C600AC3D56 /* TMOTutorialView.m */; };
 		2578738518F160F300AC3D56 /* splash-one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2578738418F160F300AC3D56 /* splash-one@2x.png */; };
 		2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */; };
+		2578738D18F16DDC00AC3D56 /* TMOLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */; };
 		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		2578738418F160F300AC3D56 /* splash-one@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-one@2x.png"; sourceTree = "<group>"; };
 		2578738718F16D0300AC3D56 /* TMOLocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOLocalizedStrings.h; sourceTree = "<group>"; };
 		2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOLocalizedStrings.m; sourceTree = "<group>"; };
+		2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TMOLocalizable.strings; sourceTree = "<group>"; };
 		2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
 		2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
 		2579DC6218D4009300B5DEB0 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				2578738718F16D0300AC3D56 /* TMOLocalizedStrings.h */,
 				2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */,
+				2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */,
 			);
 			name = Strings;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2578738D18F16DDC00AC3D56 /* TMOLocalizable.strings in Resources */,
 				253596E818E481570031DECB /* help.png in Resources */,
 				253596E718E481570031DECB /* notes.png in Resources */,
 				256B089818CDED4500F856F9 /* InfoPlist.strings in Resources */,
