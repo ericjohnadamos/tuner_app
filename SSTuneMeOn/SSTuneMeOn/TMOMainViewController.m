@@ -12,9 +12,12 @@
 #import "RIOInterface.h"
 
 
-CGFloat kXOffset = 20.0f;
-CGFloat kYOffset = 30.0f;
-CGFloat kButtonDimension = 30.0f;
+static const CGFloat kAnimationDuration = 0.35f;
+
+static const CGFloat kXOffset = 20.0f;
+static const CGFloat kYOffset = 30.0f;
+static const CGFloat kButtonDimension = 30.0f;
+
 
 @interface TMOMainViewController ()
 
