@@ -36,6 +36,7 @@
 		2578738518F160F300AC3D56 /* splash-one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2578738418F160F300AC3D56 /* splash-one@2x.png */; };
 		2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */; };
 		2578738D18F16DDC00AC3D56 /* TMOLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */; };
+		2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578739018F18E6E00AC3D56 /* TMOUserSettings.m */; };
 		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,8 @@
 		2578738718F16D0300AC3D56 /* TMOLocalizedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOLocalizedStrings.h; sourceTree = "<group>"; };
 		2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOLocalizedStrings.m; sourceTree = "<group>"; };
 		2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TMOLocalizable.strings; sourceTree = "<group>"; };
+		2578738F18F18E6E00AC3D56 /* TMOUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOUserSettings.h; sourceTree = "<group>"; };
+		2578739018F18E6E00AC3D56 /* TMOUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOUserSettings.m; sourceTree = "<group>"; };
 		2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
 		2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
 		2579DC6218D4009300B5DEB0 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
@@ -274,6 +277,7 @@
 		2578738618F16C8F00AC3D56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				2578738E18F18E5600AC3D56 /* User Settings */,
 				256B08BE18CDF21B00F856F9 /* Splash Screen */,
 				256B08BF18CDF22A00F856F9 /* Main Screen */,
 				253596F118E49CF60031DECB /* Custom Views */,
@@ -300,6 +304,15 @@
 				253596E618E481570031DECB /* help.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		2578738E18F18E5600AC3D56 /* User Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2578738F18F18E6E00AC3D56 /* TMOUserSettings.h */,
+				2578739018F18E6E00AC3D56 /* TMOUserSettings.m */,
+			);
+			name = "User Settings";
 			sourceTree = "<group>";
 		};
 		2579DC5C18D3FFD700B5DEB0 /* RIO */ = {
@@ -430,6 +443,7 @@
 				253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */,
 				2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
+				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
