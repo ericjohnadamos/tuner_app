@@ -76,7 +76,7 @@
     firstImageView.frame = windowBounds;
     
     TMOSplashView* splashView
-      = [[TMOSplashView alloc] initWithViews: @[firstImageView]];
+      = [[TMOSplashView alloc] initWithViews: @[[firstImageView autorelease]]];
     splashView.delegate = self;
     
     m_splashView = splashView;
