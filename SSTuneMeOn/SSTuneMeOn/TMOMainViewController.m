@@ -20,7 +20,7 @@ static const CGFloat kYOffset = 30.0f;
 static const CGFloat kButtonDimension = 30.0f;
 
 
-@interface TMOMainViewController ()
+@interface TMOMainViewController () <TMOTutorialViewDelegate>
 
 @property (nonatomic, retain) TMOTutorialView* tutorialView;
 
@@ -249,6 +249,24 @@ static const CGFloat kButtonDimension = 30.0f;
 {
   self.frequencyLabel.text
     = [NSString stringWithFormat: @"%.f", self.currentFrequency];
+}
+
+#pragma mark - TMOTutorialViewDelegate methods
+
+- (void) tutorialView: (TMOTutorialView*) tutorialView
+     didTapOkayButton: (UIButton*)        okayButton
+{
+  /* Override the okay button event handler inside the tutorial view */
+  [UIView animateWithDuration: kAnimationDuration
+                   animations: ^(void)
+   {
+     self.tutorialView.alpha = 0.0f;
+   }
+                   completion: ^(BOOL isFinished)
+   {
+     self.tutorialView.alpha = 1.0f;
+     self.tutorialView.hidden = YES;
+   }];
 }
 
 @end
