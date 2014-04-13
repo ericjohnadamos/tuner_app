@@ -80,8 +80,6 @@ static TMOKeyHelper* sm_keyHelper;
                        forKey: @415.8f];
   [frequencyMapping setObject: @"b"
                        forKey: @440.5f];
-  
-  self.frequencyMapping = [frequencyMapping retain];
 }
 
 - (NSString*) closestCharForFrequency: (CGFloat) frequency
