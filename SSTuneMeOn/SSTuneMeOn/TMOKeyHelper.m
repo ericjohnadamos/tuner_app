@@ -67,8 +67,6 @@ static TMOKeyHelper* sm_keyHelper;
   [keyMapping setObject: @440.5f
                  forKey: @"b"];
   
-  self.keyMapping = [keyMapping retain];
-  
   NSMutableDictionary* frequencyMapping
     = [NSMutableDictionary dictionaryWithCapacity: 9];
   
