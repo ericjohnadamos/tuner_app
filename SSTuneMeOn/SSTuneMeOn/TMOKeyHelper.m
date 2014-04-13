@@ -51,6 +51,11 @@ static TMOKeyHelper* sm_keyHelper;
   return nil;
 }
 
+- (id) copyWithZone: (NSZone*) zone
+{
+  return self;
+}
+
 - (void) buildKeyMapping
 {
   NSMutableDictionary* keyMapping
