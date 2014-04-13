@@ -14,6 +14,9 @@ NSString* const kBCLocalizedStringsTableName = @"TMOLocalizable";
 NSString* const kTMOTutorialWebViewText = @"TMOTutorialWebViewText";
 NSString* const kTMOTutorialOkayButtonText = @"TMOTutorialOkayButtonText";
 
+/* Main view */
+NSString* const kTMOHertz = @"TMOHertz";
+
 @implementation TMOLocalizedStrings
 
 + (NSString*) stringForKey: (NSString*) key

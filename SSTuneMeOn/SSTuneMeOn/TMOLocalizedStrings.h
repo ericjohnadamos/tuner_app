@@ -14,6 +14,9 @@
 extern NSString* const kTMOTutorialWebViewText;
 extern NSString* const kTMOTutorialOkayButtonText;
 
+/* Main view */
+extern NSString* const kTMOHertz;
+
 /* Interface method that returns the string from localizable.strings file
  */
 + (NSString*) stringForKey: (NSString*) key;
