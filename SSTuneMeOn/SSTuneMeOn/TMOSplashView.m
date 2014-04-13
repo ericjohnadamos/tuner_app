@@ -63,7 +63,7 @@ static const CGFloat kAnimationDelay = 2.0f;
   return m_views;
 }
 
-- (void) loadViews
+- (void) renderViews
 {
   for (id view in self.views)
   {

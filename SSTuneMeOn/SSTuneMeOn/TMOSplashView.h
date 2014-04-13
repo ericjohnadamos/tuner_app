@@ -30,7 +30,7 @@
 
 /* Insert and bring the subview in front of the main view
  */
-- (void) loadViews;
+- (void) renderViews;
 
 /* Start the fading animation of the splash view
  */
