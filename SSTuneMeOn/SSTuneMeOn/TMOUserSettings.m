@@ -11,6 +11,7 @@
 static TMOUserSettings* sm_userSettings = nil;
 
 static NSString* kIsDefaultsLoaded = @"IsDefaultsLoaded";
+static NSString* kIsFirstTime = @"IsFirstTime";
 static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
 
 @implementation TMOUserSettings
@@ -27,6 +28,21 @@ static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
   NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
   [userDefaults setBool: defaultsLoaded
                  forKey: kIsDefaultsLoaded];
+  [userDefaults synchronize];
+}
+
+- (BOOL) isFirstTime
+{
+  NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+  
+  return [userDefaults boolForKey: kIsFirstTime];
+}
+
+- (void) setFirstTime: (BOOL) firstTime
+{
+  NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+  [userDefaults setBool: firstTime
+                 forKey: kIsFirstTime];
   [userDefaults synchronize];
 }
 
