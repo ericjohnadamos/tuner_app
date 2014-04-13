@@ -31,6 +31,7 @@ static const CGFloat kAnimationDuration = 0.35f;
 
 - (void) dealloc
 {
+  self.delegate = nil;
   self.tutorialWebView = nil;
   self.okayButton = nil;
   
@@ -179,16 +180,26 @@ didFailLoadWithError: (NSError*)   error
 
 - (void) didTapOkayButton
 {
-  [UIView animateWithDuration: kAnimationDuration
-                   animations: ^(void)
+  if (   self.delegate != nil
+      && [self.delegate respondsToSelector:
+          @selector(tutorialView:didTapOkayButton:)])
   {
-    self.alpha = 0.0f;
+    [self.delegate tutorialView: self
+               didTapOkayButton: self.okayButton];
   }
-                   completion: ^(BOOL isFinished)
+  else
   {
-    self.alpha = 1.0f;
-    self.hidden = YES;
-  }];
+    [UIView animateWithDuration: kAnimationDuration
+                     animations: ^(void)
+     {
+       self.alpha = 0.0f;
+     }
+                     completion: ^(BOOL isFinished)
+     {
+       self.alpha = 1.0f;
+       self.hidden = YES;
+     }];
+  }
 }
 
 @end
