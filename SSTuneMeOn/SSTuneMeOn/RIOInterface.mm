@@ -167,7 +167,6 @@ OSStatus RenderFFTCallback (void					*inRefCon,
 		printf("frequency: %f   bin: %d \n", bin*(THIS->sampleRate/bufferCapacity), bin);
 	}
 	
-	
 	return noErr;
 }
 
