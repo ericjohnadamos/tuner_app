@@ -39,6 +39,7 @@ static const CGFloat kButtonDimension = 30.0f;
 
 @implementation TMOMainViewController
 
+@synthesize rioRef = m_rioRef;
 @synthesize currentFrequency;
 
 @synthesize tutorialView = m_tutorialView;
