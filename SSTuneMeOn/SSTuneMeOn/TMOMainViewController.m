@@ -110,6 +110,18 @@ static const CGFloat kButtonDimension = 30.0f;
 
 #pragma mark - Lazy loaders
 
+- (RIOInterface*) rioRef
+{
+  if (m_rioRef == nil)
+  {
+    RIOInterface* rioRef = [RIOInterface sharedInstance];
+    
+    m_rioRef = rioRef;
+  }
+  
+  return m_rioRef;
+}
+
 - (TMOTutorialView*) tutorialView
 {
   if (m_tutorialView == nil)
