@@ -12,6 +12,9 @@
 @protocol TMOTutorialViewDelegate <NSObject>
 
 - (void) tutorialView: (TMOTutorialView*) tutorialView
+         didSetHidden: (BOOL)             isHidden;
+
+- (void) tutorialView: (TMOTutorialView*) tutorialView
      didTapOkayButton: (UIButton*)        okayButton;
 
 @end
