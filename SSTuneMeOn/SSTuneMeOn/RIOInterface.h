@@ -16,12 +16,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <Accelerate/Accelerate.h>
-
 #include <stdlib.h>
 
-#import "TMOMainViewController.h"
-
-@class ListenerViewController;
+@class TMOMainViewController;
 
 /**
  *	This is a singleton class that manages all the low level CoreAudio/RemoteIO
