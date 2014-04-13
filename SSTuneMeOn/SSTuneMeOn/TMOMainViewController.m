@@ -239,12 +239,12 @@ static const CGFloat kButtonDimension = 30.0f;
 
 - (void) startListener
 {
-  [[RIOInterface sharedInstance] startListening: self];
+  [self.rioRef startListening: self];
 }
 
 - (void) stopListener
 {
-  [[RIOInterface sharedInstance] stopListening];
+  [self.rioRef stopListening];
 }
 
 #pragma mark - Key Management
