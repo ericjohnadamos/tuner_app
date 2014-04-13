@@ -73,6 +73,8 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 #pragma mark - 
 #pragma mark Generic Audio Controls
 - (void)initializeAndStartProcessingGraph {
+  AUGraphUninitialize(processingGraph);
+  
 	OSStatus result = AUGraphInitialize(processingGraph);
 	if (result >= 0) {
 		AUGraphStart(processingGraph);
