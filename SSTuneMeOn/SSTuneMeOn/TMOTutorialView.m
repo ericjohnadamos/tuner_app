@@ -202,4 +202,19 @@ didFailLoadWithError: (NSError*)   error
   }
 }
 
+#pragma mark - Overridden methods
+
+- (void) setHidden: (BOOL) hidden
+{
+  [super setHidden: hidden];
+  
+  if (   self.delegate != nil
+      && [self.delegate respondsToSelector:
+          @selector(tutorialView:didSetHidden:)])
+  {
+    [self.delegate tutorialView: self
+                   didSetHidden: hidden];
+  }
+}
+
 @end
