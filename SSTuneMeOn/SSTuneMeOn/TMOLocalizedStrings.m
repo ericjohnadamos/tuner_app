@@ -10,6 +10,7 @@
 
 NSString* const kBCLocalizedStringsTableName = @"TMOLocalizable";
 
+/* Tutorial */
 NSString* const kTMOTutorialWebViewText = @"TMOTutorialWebViewText";
 NSString* const kTMOTutorialOkayButtonText = @"TMOTutorialOkayButtonText";
 

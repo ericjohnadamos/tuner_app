@@ -10,6 +10,7 @@
 
 @interface TMOLocalizedStrings : NSObject
 
+/* Tutorial */
 extern NSString* const kTMOTutorialWebViewText;
 extern NSString* const kTMOTutorialOkayButtonText;
 
