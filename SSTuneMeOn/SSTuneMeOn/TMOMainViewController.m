@@ -10,6 +10,7 @@
 #import "TMOTutorialView.h"
 
 #import "RIOInterface.h"
+#import "TMOLocalizedStrings.h"
 
 
 static const CGFloat kAnimationDuration = 0.35f;
@@ -192,7 +193,7 @@ static const CGFloat kButtonDimension = 30.0f;
     hertzLabel.font = [UIFont systemFontOfSize: 20.0f];
     hertzLabel.textColor = [UIColor orangeColor];
     hertzLabel.textAlignment = NSTextAlignmentLeft;
-    hertzLabel.text = @"Hz";
+    hertzLabel.text = [TMOLocalizedStrings stringForKey: kTMOHertz];
     
     m_hertzLabel = hertzLabel;
   }
