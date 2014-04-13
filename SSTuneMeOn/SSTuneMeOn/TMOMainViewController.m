@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Eric John Adamos. All rights reserved.
 //
 
-#import "TMOMainViewController.h"
-#import "TMOTutorialView.h"
-
 #import "RIOInterface.h"
 #import "TMOLocalizedStrings.h"
+
+#import "TMOUserSettings.h"
+
+#import "TMOMainViewController.h"
+#import "TMOTutorialView.h"
 
 
 static const CGFloat kAnimationDuration = 0.35f;
