@@ -8,6 +8,8 @@
 
 #import "TMOUserSettings.h"
 
+static TMOUserSettings* sm_userSettings = nil;
+
 static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
 
 @implementation TMOUserSettings
@@ -27,6 +29,20 @@ static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
     [userDefaults setValue: keyNote
                     forKey: kUserSettingsKeyNote];
   }
+}
+
+#pragma mark - Public method
+
++ (TMOUserSettings*) sharedInstance
+{
+  if (sm_userSettings == nil)
+  {
+    TMOUserSettings* userSettings = [[TMOUserSettings alloc] init];
+    
+    sm_userSettings = userSettings;
+  }
+  
+  return sm_userSettings;
 }
 
 @end

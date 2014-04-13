@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) NSString* keyNote;
 
++ (TMOUserSettings*) sharedInstance;
+
 @end
