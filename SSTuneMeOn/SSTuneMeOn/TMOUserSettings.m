@@ -60,6 +60,7 @@ static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue: keyNote
                     forKey: kUserSettingsKeyNote];
+    [userDefaults synchronize];
   }
 }
 
