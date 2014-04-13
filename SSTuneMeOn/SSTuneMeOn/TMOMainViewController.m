@@ -106,6 +106,15 @@ static const CGFloat kButtonDimension = 30.0f;
   [self.view addSubview: self.hertzLabel];
   [self.view addSubview: self.tutorialView];
   
+  /* Manage tutorial view */
+  TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
+  if ([userSettings isFirstTime])
+  {
+    userSettings.firstTime = NO;
+  
+    self.tutorialView.alpha = 1.0f;
+    self.tutorialView.hidden = NO;
+  }
 }
 
 #pragma mark - Lazy loaders
