@@ -139,6 +139,7 @@ shouldStartLoadWithRequest: (NSURLRequest*)           request
 - (void) webViewDidFinishLoad: (UIWebView*) webView
 {
   self.tutorialWebView.hidden = NO;
+  self.okayButton.hidden = NO;
 }
 
 - (void)     webView: (UIWebView*) webView
