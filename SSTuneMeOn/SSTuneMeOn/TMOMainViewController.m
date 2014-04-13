@@ -254,16 +254,23 @@ static const CGFloat kButtonDimension = 30.0f;
   /* This method gets called by the rendering function. Update the UI with
    * the character type and store it in our string.
    */
-	self.currentFrequency = newFrequency;
-  
-  [self performSelectorInBackground: @selector(updateFrequencyLabel)
-                         withObject: nil];
+
+  @autoreleasepool
+  {
+    self.currentFrequency = newFrequency;
+    
+    [self performSelectorInBackground: @selector(updateFrequencyLabel)
+                           withObject: nil];
+  }
 }
 
 - (void) updateFrequencyLabel
 {
-  self.frequencyLabel.text
-    = [NSString stringWithFormat: @"%.f", self.currentFrequency];
+  @autoreleasepool
+  {
+    self.frequencyLabel.text
+      = [NSString stringWithFormat: @"%.f", self.currentFrequency];
+  }
 }
 
 #pragma mark - TMOTutorialViewDelegate methods
