@@ -104,7 +104,7 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   [self.window addSubview: self.splashView];
   
   /* Load and animate splash view */
-  [self.splashView loadViews];
+  [self.splashView renderViews];
   [self.splashView animateFadeSplashView];
   
   /* Getting the interface instance */
