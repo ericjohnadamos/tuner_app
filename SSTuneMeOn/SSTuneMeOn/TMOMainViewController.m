@@ -276,6 +276,22 @@ static const CGFloat kButtonDimension = 30.0f;
 #pragma mark - TMOTutorialViewDelegate methods
 
 - (void) tutorialView: (TMOTutorialView*) tutorialView
+         didSetHidden: (BOOL)             isHidden
+{
+  /* If the tutorial view is set to hidden, then begin the frequency listener.
+   * Otherwise, disable it.
+   */
+  if (isHidden)
+  {
+    [self startListener];
+  }
+  else
+  {
+    [self stopListener];
+  }
+}
+
+- (void) tutorialView: (TMOTutorialView*) tutorialView
      didTapOkayButton: (UIButton*)        okayButton
 {
   /* Override the okay button event handler inside the tutorial view */
