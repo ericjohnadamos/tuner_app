@@ -93,6 +93,18 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   [[UIApplication sharedApplication] setStatusBarStyle:
    UIStatusBarStyleLightContent];
   
+  /* Getting the interface instance */
+  RIOInterface* rioRef = [RIOInterface sharedInstance];
+  
+  /* Set sample rate and frequency
+   * Default sample rate is 44.1k Hz
+   */
+  [rioRef setSampleRate: 44100];
+  [rioRef setFrequency: 294];
+  
+  /* Initialize components */
+  [rioRef initializeAudioSession];
+  
   /* Override point for customization after application launch. */
 
   [self.window makeKeyAndVisible];
@@ -107,19 +119,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   [self.splashView renderViews];
   [self.splashView animateFadeSplashView];
   
-  /* Getting the interface instance */
-  RIOInterface* rioRef = [RIOInterface sharedInstance];
-  
-  /* Set sample rate and frequency
-   * Default sample rate is 44.1k Hz
-   */
-  [rioRef setSampleRate: 33100];
-  [rioRef setFrequency: 294];
-  
-  /* Initialize components */
-  [rioRef initializeAudioSession];
-  [rioRef startPlayback];
-  [rioRef stopPlayback];
   
   return YES;
 }
