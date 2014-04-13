@@ -39,9 +39,9 @@ static const CGFloat kButtonDimension = 30.0f;
 
 @implementation TMOMainViewController
 
-@synthesize tutorialView = m_tutorialView;
-
 @synthesize currentFrequency;
+
+@synthesize tutorialView = m_tutorialView;
 
 @synthesize helpButton = m_helpButton;
 @synthesize notesButton = m_notesButton;
@@ -95,16 +95,16 @@ static const CGFloat kButtonDimension = 30.0f;
   self.hertzLabel.frame
     = CGRectMake(xPointForHertz, yPointForHertz, width, height);
   
+  /* Load tutorial web view */
+  [self.tutorialView loadWebView];
+  
   /* Add as subviews */
   [self.view addSubview: self.helpButton];
   [self.view addSubview: self.notesButton];
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
-  
   [self.view addSubview: self.tutorialView];
   
-  /* Load tutorial web view */
-  [self.tutorialView loadWebView];
 }
 
 #pragma mark - Lazy loaders
