@@ -16,4 +16,6 @@
 
 + (TMOUserSettings*) sharedInstance;
 
+- (void) loadDefaults;
+
 @end

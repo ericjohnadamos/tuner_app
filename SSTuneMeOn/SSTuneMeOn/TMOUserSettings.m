@@ -77,4 +77,13 @@ static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
   return sm_userSettings;
 }
 
+- (void) loadDefaults
+{
+  self.defaultsLoaded = YES;
+  
+  self.firstTime = YES;
+  
+  /* TODO: Implement me */
+}
+
 @end
