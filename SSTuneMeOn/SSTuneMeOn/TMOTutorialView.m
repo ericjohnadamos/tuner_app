@@ -97,6 +97,8 @@ static const CGFloat kAnimationDuration = 0.35f;
   {
     UIButton* okayButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     
+    okayButton.hidden = YES;
+    
     NSString* text = [TMOLocalizedStrings stringForKey:
                       kTMOTutorialOkayButtonText];
     
