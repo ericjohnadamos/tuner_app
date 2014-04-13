@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TMOTutorialView;
+@protocol TMOTutorialViewDelegate <NSObject>
+
+- (void) tutorialView: (TMOTutorialView*) tutorialView
+     didTapOkayButton: (UIButton*)        okayButton;
+
+@end
+
 @interface TMOTutorialView : UIView
 
 - (void) loadWebView;
