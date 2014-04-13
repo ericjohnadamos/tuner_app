@@ -10,9 +10,25 @@
 
 static TMOUserSettings* sm_userSettings = nil;
 
+static NSString* kIsDefaultsLoaded = @"IsDefaultsLoaded";
 static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
 
 @implementation TMOUserSettings
+
+- (BOOL) isDefaultsLoaded
+{
+  NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+  
+  return [userDefaults boolForKey: kIsDefaultsLoaded];
+}
+
+- (void) setDefaultsLoaded: (BOOL) defaultsLoaded
+{
+  NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+  [userDefaults setBool: defaultsLoaded
+                 forKey: kIsDefaultsLoaded];
+  [userDefaults synchronize];
+}
 
 - (NSString*) keyNote
 {

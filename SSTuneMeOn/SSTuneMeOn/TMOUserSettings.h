@@ -10,6 +10,7 @@
 
 @interface TMOUserSettings : NSObject
 
+@property (nonatomic, assign, getter = isDefaultsLoaded) BOOL defaultsLoaded;
 @property (nonatomic, assign) NSString* keyNote;
 
 + (TMOUserSettings*) sharedInstance;
