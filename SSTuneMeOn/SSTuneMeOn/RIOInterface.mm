@@ -178,7 +178,6 @@ float MagnitudeSquared(float x, float y) {
 
 void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t capacity) {
 	AudioConverterRef converter;
-	OSStatus err;
 	
 	size_t bytesPerSample = sizeof(float);
 	AudioStreamBasicDescription outFormat = {0};
