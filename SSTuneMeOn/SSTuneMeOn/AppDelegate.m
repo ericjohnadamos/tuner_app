@@ -164,12 +164,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   {
     [self.splashView removeFromSuperview];
   }
-  
-  if ([self.window.rootViewController isKindOfClass:
-       [TMOMainViewController class]])
-  {
-    [[RIOInterface sharedInstance] startListening: self.mainController];
-  }
 }
 
 @end
