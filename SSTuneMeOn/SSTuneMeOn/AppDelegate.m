@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "RIOInterface.h"
 
+#import "TMOUserSettings.h"
+
 #import "TMOMainViewController.h"
 #import "TMOSplashView.h"
 
@@ -119,6 +121,12 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   [self.splashView renderViews];
   [self.splashView animateFadeSplashView];
   
+  /* Check if the defaults are loaded */
+  TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
+  if (![userSettings isDefaultsLoaded])
+  {
+    [userSettings loadDefaults];
+  }
   
   return YES;
 }
