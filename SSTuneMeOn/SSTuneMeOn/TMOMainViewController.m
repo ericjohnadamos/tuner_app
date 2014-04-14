@@ -13,6 +13,7 @@
 
 #import "TMOMainViewController.h"
 #import "TMOTutorialView.h"
+#import "TMOButtonGenerator.h"
 
 
 static const CGFloat kAnimationDuration = 0.35f;
@@ -154,13 +155,9 @@ static const CGFloat kButtonDimension = 30.0f;
 {
   if (m_helpButton == nil)
   {
-    UIButton* helpButton = [UIButton buttonWithType: UIButtonTypeCustom];
-    
-    helpButton.frame
+    CGRect frame
       = CGRectMake(kXOffset, kYOffset, kButtonDimension, kButtonDimension);
-    
-    [helpButton setImage: [UIImage imageNamed: @"help"]
-                forState: UIControlStateNormal];
+    UIButton* helpButton = [TMOButtonGenerator helpButtonWithFrame: frame];
     
     [helpButton addTarget: self
                    action: @selector(didTapHelpButton)
