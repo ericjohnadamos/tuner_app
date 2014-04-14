@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB918FC41C2006266FD /* TMOTheme.m */; };
 		253596E718E481570031DECB /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E518E481570031DECB /* notes.png */; };
 		253596E818E481570031DECB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E618E481570031DECB /* help.png */; };
 		253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F718E4A0630031DECB /* TMODancingAnimationView.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		252E8DB818FC41C2006266FD /* TMOTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTheme.h; sourceTree = "<group>"; };
+		252E8DB918FC41C2006266FD /* TMOTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTheme.m; sourceTree = "<group>"; };
 		253596E518E481570031DECB /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notes.png; sourceTree = "<group>"; };
 		253596E618E481570031DECB /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		253596F618E4A0630031DECB /* TMODancingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMODancingAnimationView.h; sourceTree = "<group>"; };
@@ -130,6 +133,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		252E8DBB18FC429E006266FD /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				252E8DB818FC41C2006266FD /* TMOTheme.h */,
+				252E8DB918FC41C2006266FD /* TMOTheme.m */,
+			);
+			name = Themes;
+			sourceTree = "<group>";
+		};
 		253596E418E4814D0031DECB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +289,7 @@
 		2578738618F16C8F00AC3D56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				252E8DBB18FC429E006266FD /* Themes */,
 				2578738E18F18E5600AC3D56 /* User Settings */,
 				256B08BE18CDF21B00F856F9 /* Splash Screen */,
 				256B08BF18CDF22A00F856F9 /* Main Screen */,
@@ -446,6 +459,7 @@
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
+				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
