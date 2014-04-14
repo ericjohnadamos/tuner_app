@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB918FC41C2006266FD /* TMOTheme.m */; };
+		252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DC018FC483D006266FD /* TMOStandardThemeHelpers.m */; };
 		253596E718E481570031DECB /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E518E481570031DECB /* notes.png */; };
 		253596E818E481570031DECB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E618E481570031DECB /* help.png */; };
 		253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F718E4A0630031DECB /* TMODancingAnimationView.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		252E8DB818FC41C2006266FD /* TMOTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTheme.h; sourceTree = "<group>"; };
 		252E8DB918FC41C2006266FD /* TMOTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTheme.m; sourceTree = "<group>"; };
+		252E8DBF18FC483D006266FD /* TMOStandardThemeHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOStandardThemeHelpers.h; sourceTree = "<group>"; };
+		252E8DC018FC483D006266FD /* TMOStandardThemeHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOStandardThemeHelpers.m; sourceTree = "<group>"; };
 		253596E518E481570031DECB /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notes.png; sourceTree = "<group>"; };
 		253596E618E481570031DECB /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		253596F618E4A0630031DECB /* TMODancingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMODancingAnimationView.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 			children = (
 				252E8DB818FC41C2006266FD /* TMOTheme.h */,
 				252E8DB918FC41C2006266FD /* TMOTheme.m */,
+				252E8DBF18FC483D006266FD /* TMOStandardThemeHelpers.h */,
+				252E8DC018FC483D006266FD /* TMOStandardThemeHelpers.m */,
 			);
 			name = Themes;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */,
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
