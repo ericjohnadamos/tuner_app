@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB618FC412E006266FD /* TMOStandardTheme.m */; };
 		252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB918FC41C2006266FD /* TMOTheme.m */; };
+		252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */; };
 		252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DC018FC483D006266FD /* TMOStandardThemeHelpers.m */; };
 		253596E718E481570031DECB /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E518E481570031DECB /* notes.png */; };
 		253596E818E481570031DECB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E618E481570031DECB /* help.png */; };
@@ -59,6 +60,8 @@
 		252E8DB618FC412E006266FD /* TMOStandardTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOStandardTheme.m; sourceTree = "<group>"; };
 		252E8DB818FC41C2006266FD /* TMOTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTheme.h; sourceTree = "<group>"; };
 		252E8DB918FC41C2006266FD /* TMOTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTheme.m; sourceTree = "<group>"; };
+		252E8DBC18FC42E9006266FD /* TMOButtonGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOButtonGenerator.h; sourceTree = "<group>"; };
+		252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOButtonGenerator.m; sourceTree = "<group>"; };
 		252E8DBF18FC483D006266FD /* TMOStandardThemeHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOStandardThemeHelpers.h; sourceTree = "<group>"; };
 		252E8DC018FC483D006266FD /* TMOStandardThemeHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOStandardThemeHelpers.m; sourceTree = "<group>"; };
 		253596E518E481570031DECB /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notes.png; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				2578737F18F153FD00AC3D56 /* TMOSplashView.m */,
 				2578738118F160C600AC3D56 /* TMOTutorialView.h */,
 				2578738218F160C600AC3D56 /* TMOTutorialView.m */,
+				252E8DBC18FC42E9006266FD /* TMOButtonGenerator.h */,
+				252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */,
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
+				252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
 				2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */,
 				2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */,
