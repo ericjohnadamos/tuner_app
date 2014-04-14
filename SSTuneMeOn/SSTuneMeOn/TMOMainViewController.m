@@ -173,15 +173,12 @@ static const CGFloat kButtonDimension = 30.0f;
 {
   if (m_notesButton == nil)
   {
-    UIButton* notesButton = [UIButton buttonWithType: UIButtonTypeCustom];
-    
     CGFloat notesXOffset
       = (self.view.bounds.size.width - kButtonDimension) - kXOffset;
-    notesButton.frame
+    CGRect frame
       = CGRectMake(notesXOffset, kYOffset, kButtonDimension, kButtonDimension);
-    
-    [notesButton setImage: [UIImage imageNamed: @"notes"]
-                 forState: UIControlStateNormal];
+    UIButton* notesButton
+      = [TMOButtonGenerator selectionButtonWithFrame: frame];
     
     [notesButton addTarget: self
                     action: @selector(didTapNotesButton)
