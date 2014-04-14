@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB618FC412E006266FD /* TMOStandardTheme.m */; };
 		252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB918FC41C2006266FD /* TMOTheme.m */; };
 		252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DC018FC483D006266FD /* TMOStandardThemeHelpers.m */; };
 		253596E718E481570031DECB /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E518E481570031DECB /* notes.png */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		252E8DB518FC412E006266FD /* TMOStandardTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOStandardTheme.h; sourceTree = "<group>"; };
+		252E8DB618FC412E006266FD /* TMOStandardTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOStandardTheme.m; sourceTree = "<group>"; };
 		252E8DB818FC41C2006266FD /* TMOTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTheme.h; sourceTree = "<group>"; };
 		252E8DB918FC41C2006266FD /* TMOTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTheme.m; sourceTree = "<group>"; };
 		252E8DBF18FC483D006266FD /* TMOStandardThemeHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOStandardThemeHelpers.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 		252E8DBB18FC429E006266FD /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				252E8DB518FC412E006266FD /* TMOStandardTheme.h */,
+				252E8DB618FC412E006266FD /* TMOStandardTheme.m */,
 				252E8DB818FC41C2006266FD /* TMOTheme.h */,
 				252E8DB918FC41C2006266FD /* TMOTheme.m */,
 				252E8DBF18FC483D006266FD /* TMOStandardThemeHelpers.h */,
@@ -467,6 +472,7 @@
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
 				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
+				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
