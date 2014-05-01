@@ -21,7 +21,11 @@ static const CGFloat kAnimationDuration = 0.35f;
 static const CGFloat kXOffset = 20.0f;
 static const CGFloat kYOffset = 30.0f;
 static const CGFloat kButtonDimension = 30.0f;
+#pragma mark - Navbar Constants
 
+static const CGFloat kNavBarHeight = 44.0f;
+static const CGFloat kNavButtonHeight = 44.0f;
+static const CGFloat kNavButtonWidth = 44.0f;
 
 @interface TMOMainViewController () <TMOTutorialViewDelegate>
 
