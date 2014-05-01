@@ -13,5 +13,6 @@
 - (void) skinButton: (UIButton*) button;
 - (void) skinHelpButton: (UIButton*) button;
 - (void) skinSelectionButton: (UIButton*) button;
+- (void) skinNavigationTitleLabel: (UILabel*) label;
 
 @end
