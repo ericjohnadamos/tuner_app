@@ -12,5 +12,8 @@
 
 extern NSString* const kThemeHelpImage;
 extern NSString* const kThemeSelectionImage;
+extern CGFloat const kThemeNavBarTitleFontSize;
+extern NSString* const kThemeNavBarTitleFontName;
+extern NSString* const kThemeNavBarTitleFontColor;
 
 @end
