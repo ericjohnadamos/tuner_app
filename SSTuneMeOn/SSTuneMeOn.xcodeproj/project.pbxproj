@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */; };
 		0AF9F8031911B5AB00E1FB02 /* icn_acoustic_string_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F7E71911B5AB00E1FB02 /* icn_acoustic_string_1@2x.png */; };
 		0AF9F8041911B5AB00E1FB02 /* icn_acoustic_string_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F7E81911B5AB00E1FB02 /* icn_acoustic_string_2@2x.png */; };
 		0AF9F8051911B5AB00E1FB02 /* icn_acoustic_string_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F7E91911B5AB00E1FB02 /* icn_acoustic_string_3@2x.png */; };
@@ -84,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AB1D0BD1911C967002E2BDF /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		0AF9F7E71911B5AB00E1FB02 /* icn_acoustic_string_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_acoustic_string_1@2x.png"; path = "images/icn_acoustic_string_1@2x.png"; sourceTree = "<group>"; };
 		0AF9F7E81911B5AB00E1FB02 /* icn_acoustic_string_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_acoustic_string_2@2x.png"; path = "images/icn_acoustic_string_2@2x.png"; sourceTree = "<group>"; };
 		0AF9F7E91911B5AB00E1FB02 /* icn_acoustic_string_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_acoustic_string_3@2x.png"; path = "images/icn_acoustic_string_3@2x.png"; sourceTree = "<group>"; };
@@ -198,6 +201,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AB1D0BC1911C814002E2BDF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0AB1D0BD1911C967002E2BDF /* UIColor+HexString.h */,
+				0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		252E8DBB18FC429E006266FD /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +372,7 @@
 		2578738618F16C8F00AC3D56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0AB1D0BC1911C814002E2BDF /* Extensions */,
 				252E8DBB18FC429E006266FD /* Themes */,
 				2578738E18F18E5600AC3D56 /* User Settings */,
 				256B08BE18CDF21B00F856F9 /* Splash Screen */,
@@ -591,6 +604,7 @@
 				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
+				0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,14 +14,16 @@
 #import "TMOMainViewController.h"
 #import "TMOTutorialView.h"
 #import "TMOButtonGenerator.h"
-
+#import "TMOTheme.h"
+#import "TMOStandardTheme.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
-static const CGFloat kXOffset = 20.0f;
-static const CGFloat kYOffset = 30.0f;
-static const CGFloat kButtonDimension = 30.0f;
+#pragma mark - Navbar Constants
 
+static const CGFloat kNavBarHeight = 44.0f;
+static const CGFloat kNavButtonHeight = 44.0f;
+static const CGFloat kNavButtonWidth = 44.0f;
 
 @interface TMOMainViewController () <TMOTutorialViewDelegate>
 
@@ -29,6 +31,8 @@ static const CGFloat kButtonDimension = 30.0f;
 
 @property (nonatomic, assign) float currentFrequency;
 
+@property (nonatomic, retain) UIView* navBarView;
+@property (nonatomic, retain) UILabel* titleLabel;
 @property (nonatomic, retain) UIButton* helpButton;
 @property (nonatomic, retain) UIButton* notesButton;
 
@@ -45,7 +49,9 @@ static const CGFloat kButtonDimension = 30.0f;
 
 @synthesize tutorialView = m_tutorialView;
 
+@synthesize navBarView = m_navBarView;
 @synthesize helpButton = m_helpButton;
+@synthesize titleLabel = m_titleLabel;
 @synthesize notesButton = m_notesButton;
 
 @synthesize frequencyLabel = m_frequencyLabel;
@@ -64,6 +70,8 @@ static const CGFloat kButtonDimension = 30.0f;
 {
   self.tutorialView = nil;
   
+  self.navBarView = nil;
+  self.titleLabel = nil;
   self.helpButton = nil;
   self.notesButton = nil;
   
@@ -78,6 +86,11 @@ static const CGFloat kButtonDimension = 30.0f;
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+  
+  if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+  {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+  }
   
   self.view.backgroundColor = [UIColor blackColor];
   
@@ -101,8 +114,13 @@ static const CGFloat kButtonDimension = 30.0f;
   [self.tutorialView loadWebView];
   
   /* Add as subviews */
-  [self.view addSubview: self.helpButton];
-  [self.view addSubview: self.notesButton];
+  
+  /* Add fake nav bar*/
+  [self.navBarView addSubview: self.titleLabel];
+  [self.navBarView addSubview: self.helpButton];
+  [self.navBarView addSubview: self.notesButton];
+  [self.view addSubview: self.navBarView];
+  
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
   [self.view addSubview: self.tutorialView];
@@ -151,12 +169,52 @@ static const CGFloat kButtonDimension = 30.0f;
   return m_tutorialView;
 }
 
+- (UIView*) navBarView
+{
+  if (m_navBarView == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    CGFloat statusBarHeight
+      = [UIApplication sharedApplication].statusBarFrame.size.height;
+
+    m_navBarView = [[UIView alloc] init];
+    m_navBarView.frame = CGRectMake(0.0f,
+                                    statusBarHeight,
+                                    viewSize.height,
+                                    kNavBarHeight);
+  }
+  return m_navBarView;
+}
+
+- (UILabel*) titleLabel
+{
+  if (m_titleLabel == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    m_titleLabel = [[UILabel alloc] init];
+    m_titleLabel.frame = CGRectMake(kNavButtonWidth,
+                                    0.0f,
+                                    viewSize.width - (kNavButtonWidth * 2),
+                                    kNavBarHeight);
+    m_titleLabel.textAlignment = NSTextAlignmentCenter;
+
+    /* Add theming */
+    TMOTheme* theme = [TMOStandardTheme sharedInstance];
+    [theme skinNavigationTitleLabel: m_titleLabel];
+    
+    m_titleLabel.text = [TMOLocalizedStrings stringForKey: kTMOAcousticGuitar];
+  }
+  return m_titleLabel;
+}
+
 - (UIButton*) helpButton
 {
   if (m_helpButton == nil)
   {
-    CGRect frame
-      = CGRectMake(kXOffset, kYOffset, kButtonDimension, kButtonDimension);
+    CGRect frame = CGRectMake(0.0f,
+                              0.0f,
+                              kNavButtonWidth,
+                              kNavButtonHeight);
     UIButton* helpButton = [TMOButtonGenerator helpButtonWithFrame: frame];
     
     [helpButton addTarget: self
@@ -165,7 +223,6 @@ static const CGFloat kButtonDimension = 30.0f;
     
     m_helpButton = [helpButton retain];
   }
-  
   return m_helpButton;
 }
 
@@ -173,13 +230,15 @@ static const CGFloat kButtonDimension = 30.0f;
 {
   if (m_notesButton == nil)
   {
-    CGFloat notesXOffset
-      = (self.view.bounds.size.width - kButtonDimension) - kXOffset;
-    CGRect frame
-      = CGRectMake(notesXOffset, kYOffset, kButtonDimension, kButtonDimension);
+    CGSize viewSize = self.view.frame.size;
+    CGFloat notesXOffset = viewSize.width - kNavButtonWidth;
+    CGRect frame = CGRectMake(notesXOffset,
+                              0.0f,
+                              kNavButtonWidth,
+                              kNavButtonHeight);
     UIButton* notesButton
       = [TMOButtonGenerator selectionButtonWithFrame: frame];
-    
+
     [notesButton addTarget: self
                     action: @selector(didTapNotesButton)
           forControlEvents: UIControlEventTouchUpInside];

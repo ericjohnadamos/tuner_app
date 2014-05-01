@@ -8,6 +8,7 @@
 
 #import "TMOStandardTheme.h"
 #import "TMOStandardThemeHelpers.h"
+#import "UIColor+HexString.h"
 
 static TMOStandardTheme* sm_theme = nil;
 
@@ -34,14 +35,22 @@ static TMOStandardTheme* sm_theme = nil;
 
 - (void) skinHelpButton: (UIButton*) button
 {
-  [button setImage: [UIImage imageNamed: kTMOStandardThemeHelpersHelpImage]
+  [button setImage: [UIImage imageNamed: kThemeHelpImage]
           forState: UIControlStateNormal];
 }
 
 - (void) skinSelectionButton: (UIButton*) button
 {
-  [button setImage: [UIImage imageNamed: kTMOStandardThemeHelpersSelectionImage]
+  [button setImage: [UIImage imageNamed: kThemeSelectionImage]
           forState: UIControlStateNormal];
+}
+
+- (void) skinNavigationTitleLabel: (UILabel*) label
+{
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont fontWithName: kThemeNavBarTitleFontName
+                               size: kThemeNavBarTitleFontSize];
+  label.textColor = [UIColor colorWithHexString: kThemeNavBarTitleFontColor];
 }
 
 @end

@@ -11,3 +11,8 @@
 
 /* Main view */
 "TMOHertz" = "Hz";
+
+/* Navigation Bar */
+"TMOAcousticGuitar" = "Acoustic Guitar";
+"TMOBassGuitar" = "Bass Guitar";
+

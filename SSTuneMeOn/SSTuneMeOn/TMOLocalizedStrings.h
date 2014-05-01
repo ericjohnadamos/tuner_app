@@ -17,6 +17,10 @@ extern NSString* const kTMOTutorialOkayButtonText;
 /* Main view */
 extern NSString* const kTMOHertz;
 
+/* Navigation Bar */
+extern NSString* const kTMOAcousticGuitar;
+extern NSString* const kTMOBassGuitar;
+
 /* Interface method that returns the string from localizable.strings file
  */
 + (NSString*) stringForKey: (NSString*) key;

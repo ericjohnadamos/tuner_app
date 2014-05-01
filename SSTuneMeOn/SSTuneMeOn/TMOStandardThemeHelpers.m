@@ -10,7 +10,10 @@
 
 @implementation TMOStandardThemeHelpers
 
-NSString* const kTMOStandardThemeHelpersHelpImage = @"help";
-NSString* const kTMOStandardThemeHelpersSelectionImage = @"notes";
+NSString* const kThemeHelpImage = @"navbar_btn_help";
+NSString* const kThemeSelectionImage = @"navbar_btn_select";
+CGFloat const kThemeNavBarTitleFontSize = 20.0f;
+NSString* const kThemeNavBarTitleFontName = @"HelveticaNeue-Light";
+NSString* const kThemeNavBarTitleFontColor = @"#FFFFFF";
 
 @end
