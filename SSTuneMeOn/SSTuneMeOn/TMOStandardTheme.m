@@ -34,13 +34,13 @@ static TMOStandardTheme* sm_theme = nil;
 
 - (void) skinHelpButton: (UIButton*) button
 {
-  [button setImage: [UIImage imageNamed: kTMOStandardThemeHelpersHelpImage]
+  [button setImage: [UIImage imageNamed: kThemeHelpImage]
           forState: UIControlStateNormal];
 }
 
 - (void) skinSelectionButton: (UIButton*) button
 {
-  [button setImage: [UIImage imageNamed: kTMOStandardThemeHelpersSelectionImage]
+  [button setImage: [UIImage imageNamed: kThemeSelectionImage]
           forState: UIControlStateNormal];
 }
 
