@@ -14,7 +14,8 @@
 #import "TMOMainViewController.h"
 #import "TMOTutorialView.h"
 #import "TMOButtonGenerator.h"
-
+#import "TMOTheme.h"
+#import "TMOStandardTheme.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -33,6 +34,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 
 @property (nonatomic, assign) float currentFrequency;
 
+@property (nonatomic, retain) UILabel* titleLabel;
 @property (nonatomic, retain) UIButton* helpButton;
 @property (nonatomic, retain) UIButton* notesButton;
 
@@ -50,6 +52,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 @synthesize tutorialView = m_tutorialView;
 
 @synthesize helpButton = m_helpButton;
+@synthesize titleLabel = m_titleLabel;
 @synthesize notesButton = m_notesButton;
 
 @synthesize frequencyLabel = m_frequencyLabel;
@@ -68,6 +71,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 {
   self.tutorialView = nil;
   
+  self.titleLabel = nil;
   self.helpButton = nil;
   self.notesButton = nil;
   
@@ -107,6 +111,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
   /* Add as subviews */
   [self.view addSubview: self.helpButton];
   [self.view addSubview: self.notesButton];
+  [self.navBarView addSubview: self.titleLabel];
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
   [self.view addSubview: self.tutorialView];
@@ -153,6 +158,27 @@ static const CGFloat kNavButtonWidth = 44.0f;
   }
   
   return m_tutorialView;
+}
+
+- (UILabel*) titleLabel
+{
+  if (m_titleLabel == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    m_titleLabel = [[UILabel alloc] init];
+    m_titleLabel.frame = CGRectMake(kNavButtonWidth,
+                                    0.0f,
+                                    viewSize.width - (kNavButtonWidth * 2),
+                                    kNavBarHeight);
+    m_titleLabel.textAlignment = NSTextAlignmentCenter;
+
+    /* Add theming */
+    TMOTheme* theme = [TMOStandardTheme sharedInstance];
+    [theme skinNavigationTitleLabel: m_titleLabel];
+    
+    m_titleLabel.text = [TMOLocalizedStrings stringForKey: kTMOAcousticGuitar];
+  }
+  return m_titleLabel;
 }
 
 - (UIButton*) helpButton
