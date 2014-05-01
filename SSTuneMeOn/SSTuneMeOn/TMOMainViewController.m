@@ -110,8 +110,9 @@ static const CGFloat kNavButtonWidth = 44.0f;
   
   /* Add as subviews */
   [self.view addSubview: self.helpButton];
-  [self.view addSubview: self.notesButton];
+  
   [self.navBarView addSubview: self.titleLabel];
+  [self.navBarView addSubview: self.notesButton];
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
   [self.view addSubview: self.tutorialView];
@@ -195,7 +196,6 @@ static const CGFloat kNavButtonWidth = 44.0f;
     
     m_helpButton = [helpButton retain];
   }
-  
   return m_helpButton;
 }
 
@@ -203,13 +203,15 @@ static const CGFloat kNavButtonWidth = 44.0f;
 {
   if (m_notesButton == nil)
   {
-    CGFloat notesXOffset
-      = (self.view.bounds.size.width - kButtonDimension) - kXOffset;
-    CGRect frame
-      = CGRectMake(notesXOffset, kYOffset, kButtonDimension, kButtonDimension);
+    CGSize viewSize = self.view.frame.size;
+    CGFloat notesXOffset = viewSize.width - kNavButtonWidth;
+    CGRect frame = CGRectMake(notesXOffset,
+                              0.0f,
+                              kNavButtonWidth,
+                              kNavButtonHeight);
     UIButton* notesButton
       = [TMOButtonGenerator selectionButtonWithFrame: frame];
-    
+
     [notesButton addTarget: self
                     action: @selector(didTapNotesButton)
           forControlEvents: UIControlEventTouchUpInside];
