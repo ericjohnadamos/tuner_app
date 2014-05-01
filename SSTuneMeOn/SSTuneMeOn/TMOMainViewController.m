@@ -109,9 +109,9 @@ static const CGFloat kNavButtonWidth = 44.0f;
   [self.tutorialView loadWebView];
   
   /* Add as subviews */
-  [self.view addSubview: self.helpButton];
   
   [self.navBarView addSubview: self.titleLabel];
+  [self.navBarView addSubview: self.helpButton];
   [self.navBarView addSubview: self.notesButton];
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
@@ -186,8 +186,10 @@ static const CGFloat kNavButtonWidth = 44.0f;
 {
   if (m_helpButton == nil)
   {
-    CGRect frame
-      = CGRectMake(kXOffset, kYOffset, kButtonDimension, kButtonDimension);
+    CGRect frame = CGRectMake(0.0f,
+                              0.0f,
+                              kNavButtonWidth,
+                              kNavButtonHeight);
     UIButton* helpButton = [TMOButtonGenerator helpButtonWithFrame: frame];
     
     [helpButton addTarget: self
