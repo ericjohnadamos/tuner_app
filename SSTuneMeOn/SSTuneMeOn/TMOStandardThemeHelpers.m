@@ -10,7 +10,7 @@
 
 @implementation TMOStandardThemeHelpers
 
-NSString* const kTMOStandardThemeHelpersHelpImage = @"help";
-NSString* const kTMOStandardThemeHelpersSelectionImage = @"notes";
+NSString* const kThemeHelpImage = @"navbar_btn_help";
+NSString* const kThemeSelectionImage = @"navbar_btn_select";
 
 @end

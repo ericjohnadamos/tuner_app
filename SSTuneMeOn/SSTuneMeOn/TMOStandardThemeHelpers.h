@@ -10,7 +10,7 @@
 
 @interface TMOStandardThemeHelpers : NSObject
 
-extern NSString* const kTMOStandardThemeHelpersHelpImage;
-extern NSString* const kTMOStandardThemeHelpersSelectionImage;
+extern NSString* const kThemeHelpImage;
+extern NSString* const kThemeSelectionImage;
 
 @end
