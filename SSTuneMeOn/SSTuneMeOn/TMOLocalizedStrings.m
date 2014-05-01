@@ -17,6 +17,11 @@ NSString* const kTMOTutorialOkayButtonText = @"TMOTutorialOkayButtonText";
 /* Main view */
 NSString* const kTMOHertz = @"TMOHertz";
 
+/* Navigation Bar */
+NSString* const kTMOAcousticGuitar = @"TMOAcousticGuitar";
+NSString* const kTMOBassGuitar = @"TMOBassGuitar";
+
+
 @implementation TMOLocalizedStrings
 
 + (NSString*) stringForKey: (NSString*) key
