@@ -19,9 +19,6 @@
 
 static const CGFloat kAnimationDuration = 0.35f;
 
-static const CGFloat kXOffset = 20.0f;
-static const CGFloat kYOffset = 30.0f;
-static const CGFloat kButtonDimension = 30.0f;
 #pragma mark - Navbar Constants
 
 static const CGFloat kNavBarHeight = 44.0f;
@@ -34,6 +31,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 
 @property (nonatomic, assign) float currentFrequency;
 
+@property (nonatomic, retain) UIView* navBarView;
 @property (nonatomic, retain) UILabel* titleLabel;
 @property (nonatomic, retain) UIButton* helpButton;
 @property (nonatomic, retain) UIButton* notesButton;
@@ -51,6 +49,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 
 @synthesize tutorialView = m_tutorialView;
 
+@synthesize navBarView = m_navBarView;
 @synthesize helpButton = m_helpButton;
 @synthesize titleLabel = m_titleLabel;
 @synthesize notesButton = m_notesButton;
@@ -71,6 +70,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 {
   self.tutorialView = nil;
   
+  self.navBarView = nil;
   self.titleLabel = nil;
   self.helpButton = nil;
   self.notesButton = nil;
@@ -86,6 +86,11 @@ static const CGFloat kNavButtonWidth = 44.0f;
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+  
+  if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+  {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+  }
   
   self.view.backgroundColor = [UIColor blackColor];
   
@@ -110,9 +115,12 @@ static const CGFloat kNavButtonWidth = 44.0f;
   
   /* Add as subviews */
   
+  /* Add fake nav bar*/
   [self.navBarView addSubview: self.titleLabel];
   [self.navBarView addSubview: self.helpButton];
   [self.navBarView addSubview: self.notesButton];
+  [self.view addSubview: self.navBarView];
+  
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
   [self.view addSubview: self.tutorialView];
@@ -159,6 +167,23 @@ static const CGFloat kNavButtonWidth = 44.0f;
   }
   
   return m_tutorialView;
+}
+
+- (UIView*) navBarView
+{
+  if (m_navBarView == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    CGFloat statusBarHeight
+      = [UIApplication sharedApplication].statusBarFrame.size.height;
+
+    m_navBarView = [[UIView alloc] init];
+    m_navBarView.frame = CGRectMake(0.0f,
+                                    statusBarHeight,
+                                    viewSize.height,
+                                    kNavBarHeight);
+  }
+  return m_navBarView;
 }
 
 - (UILabel*) titleLabel
