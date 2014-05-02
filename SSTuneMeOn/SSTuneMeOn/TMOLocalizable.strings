@@ -16,3 +16,7 @@
 "TMOAcousticGuitar" = "Acoustic Guitar";
 "TMOBassGuitar" = "Bass Guitar";
 
+/* Note Group Names */
+"TMONoteGroupNameAcoustic" = "Acoustic";
+"TMONoteGroupNameBass" = "Bass";
+
