@@ -21,6 +21,10 @@ extern NSString* const kTMOHertz;
 extern NSString* const kTMOAcousticGuitar;
 extern NSString* const kTMOBassGuitar;
 
+/* Note Group Names */
+extern NSString* const kTMONoteGroupNameAcoustic;
+extern NSString* const kTMONoteGroupNameBass;
+
 /* Interface method that returns the string from localizable.strings file
  */
 + (NSString*) stringForKey: (NSString*) key;
