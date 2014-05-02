@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */; };
 		0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADE81913DD6A00DF37B5 /* TMONote.m */; };
+		0AF1ADEC1913F1E000DF37B5 /* TMONoteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADEB1913F1E000DF37B5 /* TMONoteGroup.m */; };
 		0AF9F8031911B5AB00E1FB02 /* icn_acoustic_string_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F7E71911B5AB00E1FB02 /* icn_acoustic_string_1@2x.png */; };
 		0AF9F8041911B5AB00E1FB02 /* icn_acoustic_string_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F7E81911B5AB00E1FB02 /* icn_acoustic_string_2@2x.png */; };
 		0AF9F8051911B5AB00E1FB02 /* icn_acoustic_string_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F7E91911B5AB00E1FB02 /* icn_acoustic_string_3@2x.png */; };
@@ -90,6 +91,8 @@
 		0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		0AF1ADE71913DD6A00DF37B5 /* TMONote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONote.h; sourceTree = "<group>"; };
 		0AF1ADE81913DD6A00DF37B5 /* TMONote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONote.m; sourceTree = "<group>"; };
+		0AF1ADEA1913F1E000DF37B5 /* TMONoteGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteGroup.h; sourceTree = "<group>"; };
+		0AF1ADEB1913F1E000DF37B5 /* TMONoteGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteGroup.m; sourceTree = "<group>"; };
 		0AF9F7E71911B5AB00E1FB02 /* icn_acoustic_string_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_acoustic_string_1@2x.png"; path = "images/icn_acoustic_string_1@2x.png"; sourceTree = "<group>"; };
 		0AF9F7E81911B5AB00E1FB02 /* icn_acoustic_string_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_acoustic_string_2@2x.png"; path = "images/icn_acoustic_string_2@2x.png"; sourceTree = "<group>"; };
 		0AF9F7E91911B5AB00E1FB02 /* icn_acoustic_string_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_acoustic_string_3@2x.png"; path = "images/icn_acoustic_string_3@2x.png"; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 			children = (
 				0AF1ADE71913DD6A00DF37B5 /* TMONote.h */,
 				0AF1ADE81913DD6A00DF37B5 /* TMONote.m */,
+				0AF1ADEA1913F1E000DF37B5 /* TMONoteGroup.h */,
+				0AF1ADEB1913F1E000DF37B5 /* TMONoteGroup.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
 				252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */,
 				0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */,
+				0AF1ADEC1913F1E000DF37B5 /* TMONoteGroup.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
 				2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */,
 				2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */,
