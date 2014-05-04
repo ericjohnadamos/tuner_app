@@ -14,6 +14,7 @@
 @property (nonatomic, assign, getter = isFirstTime) BOOL firstTime;
 @property (nonatomic, assign) NSString* keyNote;
 @property (nonatomic, assign) NSInteger noteGroupIndex;
+@property (nonatomic, assign) NSInteger noteIndex;
 
 + (TMOUserSettings*) sharedInstance;
 

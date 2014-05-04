@@ -13,6 +13,7 @@
 @interface TMOUserSettings ()
 
 @property (nonatomic, retain) NSNumber* noteIndexNumber;
+@property (nonatomic, retain) NSNumber* noteGroupIndexNumber;
 @end
 
 static TMOUserSettings* sm_userSettings = nil;
@@ -21,13 +22,16 @@ static NSString* kIsDefaultsLoaded = @"IsDefaultsLoaded";
 static NSString* kIsFirstTime = @"IsFirstTime";
 static NSString* kUserSettingsKeyNote = @"UserSettingsKeyNote";
 static NSString* kUserSettingsNoteGroupIndex = @"UserSettingsNoteGroupIndex";
+static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 
 @implementation TMOUserSettings
 @synthesize noteIndexNumber = m_noteIndexNumber;
+@synthesize noteGroupIndexNumber = m_noteGroupIndexNumber;
 #pragma mark - Memory management
 
 - (void) dealloc
 {
+  self.noteIndexNumber = nil;
   self.noteGroupIndexNumber = nil;
   [super dealloc];
 }
@@ -111,6 +115,39 @@ static NSString* kUserSettingsNoteGroupIndex = @"UserSettingsNoteGroupIndex";
   [userDefaults synchronize];
   
   self.noteGroupIndexNumber = @(noteGroupIndex);
+  self.selectedNote = nil;
+}
+
+- (NSInteger) noteIndex
+{
+  NSInteger noteIndex = 0;
+  
+  if (self.noteIndexNumber == nil)
+  {
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* noteNumber
+      = [userDefaults valueForKey: kUserSettingsNoteIndex];
+    
+    if (noteNumber != nil)
+    {
+      noteIndex = [noteNumber integerValue];
+    }
+    self.noteIndexNumber = noteNumber;
+  }
+  else
+  {
+    noteIndex = [self.noteIndexNumber integerValue];
+  }
+  return noteIndex;
+}
+
+- (void) setNoteIndex: (NSInteger) noteIndex
+{
+  NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+  [userDefaults setValue: @(noteIndex)
+                  forKey: kUserSettingsNoteIndex];
+  [userDefaults synchronize];
+  self.noteIndexNumber = @(noteIndex);
   self.selectedNote = nil;
 }
 
