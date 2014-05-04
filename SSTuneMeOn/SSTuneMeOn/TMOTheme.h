@@ -18,5 +18,6 @@
 - (void) skinNavigationBar: (UIView*) navBarView;
 - (void) skinNavigationTitleLabel: (UILabel*) label;
 - (void) skinNotesPickerView: (UIPickerView*) pickerView;
+- (void) skinNotesPickerLabel: (UILabel*) label;
 
 @end

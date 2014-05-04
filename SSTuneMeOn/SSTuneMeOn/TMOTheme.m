@@ -50,4 +50,9 @@
   /* TODO: Implement default */
 }
 
+- (void) skinNotesPickerLabel: (UILabel*) label
+{
+  /* TODO: Implement default */
+}
+
 @end
