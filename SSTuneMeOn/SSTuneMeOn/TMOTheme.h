@@ -17,5 +17,6 @@
 - (void) skinCancelButton: (UIButton*) button;
 - (void) skinNavigationBar: (UIView*) navBarView;
 - (void) skinNavigationTitleLabel: (UILabel*) label;
+- (void) skinNotesPickerView: (UIPickerView*) pickerView;
 
 @end

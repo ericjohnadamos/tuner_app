@@ -45,4 +45,9 @@
   /* TODO: Implement default */
 }
 
+- (void) skinNotesPickerView: (UIPickerView*) pickerView
+{
+  /* TODO: Implement default */
+}
+
 @end
