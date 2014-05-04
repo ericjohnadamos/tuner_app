@@ -51,6 +51,12 @@ static TMOStandardTheme* sm_theme = nil;
           forState: UIControlStateNormal];
 }
 
+- (void) skinCancelButton: (UIButton*) button
+{
+  [button setImage: [UIImage imageNamed: kThemeCancelImage]
+          forState: UIControlStateNormal];
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   label.backgroundColor = [UIColor clearColor];
