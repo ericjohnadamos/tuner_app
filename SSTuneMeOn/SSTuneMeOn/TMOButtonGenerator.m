@@ -46,4 +46,15 @@
   return button;
 }
 
++ (UIButton*) cancelButtonWithFrame: (CGRect) frame
+{
+  UIButton* button = [UIButton buttonWithType: UIButtonTypeCustom];
+  button.frame = frame;
+  
+  TMOTheme* theme = [TMOStandardTheme sharedInstance];
+  [theme skinCancelButton: button];
+  
+  return button;
+}
+
 @end
