@@ -20,3 +20,6 @@
 "TMONoteGroupNameAcoustic" = "Acoustic";
 "TMONoteGroupNameBass" = "Bass";
 
+/* Note Selector View */
+"TMONoteSelectorNavTitle" = "Select an instrument/note";
+
