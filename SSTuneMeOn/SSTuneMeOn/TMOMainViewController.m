@@ -26,7 +26,9 @@ static const CGFloat kNavBarHeight = 44.0f;
 static const CGFloat kNavButtonHeight = 44.0f;
 static const CGFloat kNavButtonWidth = 44.0f;
 
-@interface TMOMainViewController () <TMOTutorialViewDelegate>
+@interface TMOMainViewController ()
+  <TMOTutorialViewDelegate,
+   TMONoteSelectorViewDelegate>
 
 @property (nonatomic, retain) TMOTutorialView* tutorialView;
 
@@ -407,6 +409,21 @@ static const CGFloat kNavButtonWidth = 44.0f;
      self.tutorialView.alpha = 1.0f;
      self.tutorialView.hidden = YES;
    }];
+}
+
+#pragma mark - TMONoteSelectorViewDelegate methods
+
+- (void) noteSelectorView: (TMONoteSelectorView*) noteSelector
+            didSelectNote: (TMONote*)             note
+            fromNoteGroup: (TMONoteGroup*)        noteGroup
+{
+  /* TODO handle newly selected note */
+}
+
+- (void) noteSelectorViewDidDismiss: (TMONoteSelectorView*) noteSelectorView
+{
+  self.notesButton.enabled = YES;
+  [self startListener];
 }
 
 @end
