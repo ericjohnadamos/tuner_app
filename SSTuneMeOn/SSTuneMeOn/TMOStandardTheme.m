@@ -71,4 +71,10 @@ static TMOStandardTheme* sm_theme = nil;
   label.textColor = [UIColor colorWithHexString: kThemeNavBarTitleFontColor];
 }
 
+- (void) skinNotesPickerView: (UIPickerView*) pickerView
+{
+  pickerView.backgroundColor
+    = [UIColor colorWithHexString: kThemeNotesPickerBackgroundColor];
+}
+
 @end
