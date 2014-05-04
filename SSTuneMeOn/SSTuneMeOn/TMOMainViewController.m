@@ -321,7 +321,20 @@ static const CGFloat kNavButtonWidth = 44.0f;
 
 - (void) didTapNotesButton
 {
-  /* TODO: Implement me */
+  if (self.notesSelectorView.hidden)
+  {
+    [self stopListener];
+    self.notesButton.enabled = NO;
+  }
+
+  self.notesSelectorView.alpha = 0.0f;
+  self.notesSelectorView.hidden = NO;
+  
+  [UIView animateWithDuration: kAnimationDuration
+                   animations: ^(void)
+   {
+     self.notesSelectorView.alpha = 1.0f;
+   }];
 }
 
 #pragma mark - Control listeners
