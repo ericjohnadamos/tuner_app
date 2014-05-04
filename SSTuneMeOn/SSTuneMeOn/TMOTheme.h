@@ -14,6 +14,7 @@
 - (void) skinHelpButton: (UIButton*) button;
 - (void) skinSelectionButton: (UIButton*) button;
 - (void) skinDoneButton: (UIButton*) button;
+- (void) skinCancelButton: (UIButton*) button;
 - (void) skinNavigationTitleLabel: (UILabel*) label;
 
 @end

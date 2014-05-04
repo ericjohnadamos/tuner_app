@@ -30,6 +30,11 @@
   /* TODO: Implement default */
 }
 
+- (void) skinCancelButton: (UIButton*) button
+{
+  /* TODO: Implement default */
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   /* TODO: Implement default */
