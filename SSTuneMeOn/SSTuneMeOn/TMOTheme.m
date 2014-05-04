@@ -25,6 +25,11 @@
   /* TODO: Implement if you want to have a core design for selection button */
 }
 
+- (void) skinDoneButton: (UIButton*) button
+{
+  /* TODO: Implement default */
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   /* TODO: Implement default */
