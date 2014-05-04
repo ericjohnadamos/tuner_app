@@ -19,5 +19,6 @@
 - (void) skinNavigationTitleLabel: (UILabel*) label;
 - (void) skinNotesPickerView: (UIPickerView*) pickerView;
 - (void) skinNotesPickerLabel: (UILabel*) label;
+- (void) skinSelectedNotesPickerLabel: (UILabel*) label;
 
 @end
