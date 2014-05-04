@@ -163,9 +163,11 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 {
   if (sm_userSettings == nil)
   {
-    TMOUserSettings* userSettings = [[TMOUserSettings alloc] init];
-    
-    sm_userSettings = userSettings;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken,
+   ^{
+      sm_userSettings = [TMOUserSettings new];
+    });
   }
   
   return sm_userSettings;
