@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TMONote;
+
 @interface TMOUserSettings : NSObject
 
 @property (nonatomic, assign, getter = isDefaultsLoaded) BOOL defaultsLoaded;
@@ -19,5 +21,7 @@
 + (TMOUserSettings*) sharedInstance;
 
 - (void) loadDefaults;
+
+- (TMONote*) selectedNote;
 
 @end

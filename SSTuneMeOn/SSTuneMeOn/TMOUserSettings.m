@@ -9,11 +9,14 @@
 #import "TMOUserSettings.h"
 #import "TMONotesOrganizer.h"
 #import "TMONoteGroup.h"
+#import "TMONote.h"
 
 @interface TMOUserSettings ()
 
 @property (nonatomic, retain) NSNumber* noteIndexNumber;
 @property (nonatomic, retain) NSNumber* noteGroupIndexNumber;
+@property (nonatomic, retain) TMONote* selectedNote;
+
 @end
 
 static TMOUserSettings* sm_userSettings = nil;
@@ -27,12 +30,15 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 @implementation TMOUserSettings
 @synthesize noteIndexNumber = m_noteIndexNumber;
 @synthesize noteGroupIndexNumber = m_noteGroupIndexNumber;
+@synthesize selectedNote = m_selectedNote;
+
 #pragma mark - Memory management
 
 - (void) dealloc
 {
   self.noteIndexNumber = nil;
   self.noteGroupIndexNumber = nil;
+  self.selectedNote = nil;
   [super dealloc];
 }
 
@@ -172,6 +178,31 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
   self.firstTime = YES;
   
   /* TODO: Implement me */
+}
+
+- (TMONote*) selectedNote
+{
+  if (self.selectedNote == nil)
+  {
+    TMONote* selectedNote = nil;
+    
+    TMONotesOrganizer* organizer = [TMONotesOrganizer sharedInstance];
+    NSArray* noteGroups = organizer.allGroups;
+    NSInteger groupIndex = self.noteGroupIndex;
+    NSInteger noteIndex = self.noteIndex;
+    
+    if (noteGroups.count > groupIndex)
+    {
+      NSArray* notes = ((TMONoteGroup*) noteGroups[groupIndex]).notes;
+      
+      if (notes.count > noteIndex)
+      {
+        selectedNote = notes[noteIndex];
+      }
+    }
+    self.selectedNote = selectedNote;
+  }
+  return self.selectedNote;
 }
 
 @end
