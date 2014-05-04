@@ -77,4 +77,16 @@ static TMOStandardTheme* sm_theme = nil;
     = [UIColor colorWithHexString: kThemeNotesPickerBackgroundColor];
 }
 
+- (void) skinNotesPickerLabel: (UILabel*) label
+{
+  UIFont* font = [UIFont fontWithName: kThemeNotesPickerTitleFontName
+                                 size: kThemeNotesPickerTitleFontSize];
+  UIColor* color
+    = [UIColor colorWithHexString: kThemeNotesPickerTitleFontColor];
+  
+  label.font = font;
+  label.textColor = color;
+  label.textAlignment = NSTextAlignmentCenter;
+}
+
 @end
