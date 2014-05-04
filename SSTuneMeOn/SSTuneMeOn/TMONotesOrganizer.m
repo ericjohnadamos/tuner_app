@@ -13,7 +13,7 @@
 
 @interface TMONotesOrganizer ()
 
-@property (nonatomic, retain) NSDictionary* noteGroupMap;
+@property (nonatomic, retain) NSArray* noteGroups;
 
 @end
 
@@ -22,21 +22,21 @@
 static TMONotesOrganizer* sm_sharedInstance;
 
 @implementation TMONotesOrganizer
-@synthesize noteGroupMap = m_noteGroupMap;
+@synthesize noteGroups = m_noteGroups;
 
 #pragma mark - Memory management
 
 - (void) dealloc
 {
-  self.noteGroupMap = nil;
+  self.noteGroups = nil;
   [super dealloc];
 }
 
 #pragma mark - Getters
 
-- (NSDictionary*) noteGroupMap
+- (NSArray*) noteGroups
 {
-  if (m_noteGroupMap == nil)
+  if (m_noteGroups == nil)
   {
     /* Create and group notes here */
 
@@ -66,47 +66,17 @@ static TMONotesOrganizer* sm_sharedInstance;
       = [[TMONoteGroup alloc] initWithGroupName: bassGroupName
                                           notes: bassNotes];
     
-    NSDictionary* noteGroupMap = @{@"acoustic": acousticGroup,
-                                   @"bass": bassGroup};
-    m_noteGroupMap = [noteGroupMap retain];
+    NSArray* noteGroups = @[acousticGroup, bassGroup];
+    m_noteGroups = [noteGroups retain];
   }
-  return m_noteGroupMap;
+  return m_noteGroups;
 }
 
 #pragma mark - Public methods
 
 - (NSArray*) allGroups
 {
-  return self.noteGroupMap != nil ? self.noteGroupMap.allValues : nil;
-}
-
-- (NSArray*) groupKeys
-{
-  return self.noteGroupMap != nil ? self.noteGroupMap.allKeys : nil;
-}
-
-- (TMONoteGroup*) groupForKey: (NSString*) key
-{
-  TMONoteGroup* group = nil;
-  
-  if (self.noteGroupMap != nil)
-  {
-    group = self.noteGroupMap[key];
-  }
-  return group;
-}
-
-- (TMONote*) noteWithGroupKey: (NSString*) key
-                        index: (NSInteger) index
-{
-  TMONote* note = nil;
-  TMONoteGroup* group = [self groupForKey: key];
-  
-  if (group != nil && group.notes.count > index)
-  {
-    note = group.notes[index];
-  }
-  return note;
+  return self.noteGroups;
 }
 
 #pragma mark - Static methods

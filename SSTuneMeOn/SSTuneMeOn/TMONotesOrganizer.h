@@ -17,11 +17,4 @@
 
 - (NSArray*) allGroups;
 
-- (NSArray*) groupKeys;
-
-- (TMONoteGroup*) groupForKey: (NSString*) key;
-
-- (TMONote*) noteWithGroupKey: (NSString*) key
-                        index: (NSInteger) index;
-
 @end
