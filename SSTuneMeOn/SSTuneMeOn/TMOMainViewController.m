@@ -187,8 +187,10 @@ static const CGFloat kNavButtonWidth = 44.0f;
     m_navBarView = [[UIView alloc] init];
     m_navBarView.frame = CGRectMake(0.0f,
                                     statusBarHeight,
-                                    viewSize.height,
+                                    viewSize.width,
                                     kNavBarHeight);
+    TMOTheme* theme = [TMOStandardTheme sharedInstance];
+    [theme skinNavigationBar: m_navBarView];
   }
   return m_navBarView;
 }
