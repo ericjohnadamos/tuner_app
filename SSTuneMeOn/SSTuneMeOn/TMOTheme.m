@@ -35,6 +35,11 @@
   /* TODO: Implement default */
 }
 
+- (void) skinNavigationBar: (UIView*) navBarView
+{
+  /* TODO: Implement default */
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   /* TODO: Implement default */
