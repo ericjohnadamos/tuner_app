@@ -45,12 +45,60 @@ static TMOStandardTheme* sm_theme = nil;
           forState: UIControlStateNormal];
 }
 
+- (void) skinDoneButton: (UIButton*) button
+{
+  [button setImage: [UIImage imageNamed: kThemeDoneImage]
+          forState: UIControlStateNormal];
+}
+
+- (void) skinCancelButton: (UIButton*) button
+{
+  [button setImage: [UIImage imageNamed: kThemeCancelImage]
+          forState: UIControlStateNormal];
+}
+
+- (void) skinNavigationBar: (UIView*) navBarView
+{
+  navBarView.backgroundColor
+    = [UIColor colorWithHexString: kThemeNavBarBackgroundColor];
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   label.backgroundColor = [UIColor clearColor];
   label.font = [UIFont fontWithName: kThemeNavBarTitleFontName
                                size: kThemeNavBarTitleFontSize];
   label.textColor = [UIColor colorWithHexString: kThemeNavBarTitleFontColor];
+}
+
+- (void) skinNotesPickerView: (UIPickerView*) pickerView
+{
+  pickerView.backgroundColor
+    = [UIColor colorWithHexString: kThemeNotesPickerBackgroundColor];
+}
+
+- (void) skinNotesPickerLabel: (UILabel*) label
+{
+  UIFont* font = [UIFont fontWithName: kThemeNotesPickerTitleFontName
+                                 size: kThemeNotesPickerTitleFontSize];
+  UIColor* color
+    = [UIColor colorWithHexString: kThemeNotesPickerTitleFontColor];
+  
+  label.font = font;
+  label.textColor = color;
+  label.textAlignment = NSTextAlignmentCenter;
+}
+
+- (void) skinSelectedNotesPickerLabel: (UILabel*) label
+{
+  UIFont* font = [UIFont fontWithName: kThemeNotesPickerTitleFontName
+                                 size: kThemeNotesPickerTitleFontSizeSelected];
+  UIColor* color
+    = [UIColor colorWithHexString: kThemeNotesPickerTitleFontColor];
+  
+  label.font = font;
+  label.textColor = color;
+  label.textAlignment = NSTextAlignmentCenter;
 }
 
 @end

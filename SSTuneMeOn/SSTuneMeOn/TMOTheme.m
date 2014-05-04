@@ -25,7 +25,37 @@
   /* TODO: Implement if you want to have a core design for selection button */
 }
 
+- (void) skinDoneButton: (UIButton*) button
+{
+  /* TODO: Implement default */
+}
+
+- (void) skinCancelButton: (UIButton*) button
+{
+  /* TODO: Implement default */
+}
+
+- (void) skinNavigationBar: (UIView*) navBarView
+{
+  /* TODO: Implement default */
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
+{
+  /* TODO: Implement default */
+}
+
+- (void) skinNotesPickerView: (UIPickerView*) pickerView
+{
+  /* TODO: Implement default */
+}
+
+- (void) skinNotesPickerLabel: (UILabel*) label
+{
+  /* TODO: Implement default */
+}
+
+- (void) skinSelectedNotesPickerLabel: (UILabel*) label
 {
   /* TODO: Implement default */
 }

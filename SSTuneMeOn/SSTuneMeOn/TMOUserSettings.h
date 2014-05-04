@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@class TMONote;
+
 @interface TMOUserSettings : NSObject
 
 @property (nonatomic, assign, getter = isDefaultsLoaded) BOOL defaultsLoaded;
 @property (nonatomic, assign, getter = isFirstTime) BOOL firstTime;
 @property (nonatomic, assign) NSString* keyNote;
+@property (nonatomic, assign) NSInteger noteGroupIndex;
+@property (nonatomic, assign) NSInteger noteIndex;
 
 + (TMOUserSettings*) sharedInstance;
 
 - (void) loadDefaults;
+
+- (TMONote*) selectedNote;
 
 @end

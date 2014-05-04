@@ -16,6 +16,7 @@
 #import "TMOButtonGenerator.h"
 #import "TMOTheme.h"
 #import "TMOStandardTheme.h"
+#import "TMONoteSelectorView.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -25,7 +26,9 @@ static const CGFloat kNavBarHeight = 44.0f;
 static const CGFloat kNavButtonHeight = 44.0f;
 static const CGFloat kNavButtonWidth = 44.0f;
 
-@interface TMOMainViewController () <TMOTutorialViewDelegate>
+@interface TMOMainViewController ()
+  <TMOTutorialViewDelegate,
+   TMONoteSelectorViewDelegate>
 
 @property (nonatomic, retain) TMOTutorialView* tutorialView;
 
@@ -35,6 +38,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 @property (nonatomic, retain) UILabel* titleLabel;
 @property (nonatomic, retain) UIButton* helpButton;
 @property (nonatomic, retain) UIButton* notesButton;
+@property (nonatomic, retain) TMONoteSelectorView* notesSelectorView;
 
 @property (nonatomic, retain) UILabel* frequencyLabel;
 @property (nonatomic, retain) UILabel* hertzLabel;
@@ -53,6 +57,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 @synthesize helpButton = m_helpButton;
 @synthesize titleLabel = m_titleLabel;
 @synthesize notesButton = m_notesButton;
+@synthesize notesSelectorView = m_notesSelectorView;
 
 @synthesize frequencyLabel = m_frequencyLabel;
 @synthesize hertzLabel = m_hertzLabel;
@@ -74,6 +79,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
   self.titleLabel = nil;
   self.helpButton = nil;
   self.notesButton = nil;
+  self.notesSelectorView = nil;
   
   self.frequencyLabel = nil;
   self.hertzLabel = nil;
@@ -123,6 +129,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
   
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
+  [self.view addSubview: self.notesSelectorView];
   [self.view addSubview: self.tutorialView];
   
   /* Manage tutorial view */
@@ -180,8 +187,10 @@ static const CGFloat kNavButtonWidth = 44.0f;
     m_navBarView = [[UIView alloc] init];
     m_navBarView.frame = CGRectMake(0.0f,
                                     statusBarHeight,
-                                    viewSize.height,
+                                    viewSize.width,
                                     kNavBarHeight);
+    TMOTheme* theme = [TMOStandardTheme sharedInstance];
+    [theme skinNavigationBar: m_navBarView];
   }
   return m_navBarView;
 }
@@ -249,6 +258,24 @@ static const CGFloat kNavButtonWidth = 44.0f;
   return m_notesButton;
 }
 
+- (TMONoteSelectorView*) notesSelectorView
+{
+  if (m_notesSelectorView == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    CGFloat statusBarHeight
+      = [UIApplication sharedApplication].statusBarFrame.size.height;
+    m_notesSelectorView = [[TMONoteSelectorView alloc] init];
+    m_notesSelectorView.frame = CGRectMake(0.0f,
+                                           statusBarHeight,
+                                           viewSize.width,
+                                           viewSize.height);
+    m_notesSelectorView.delegate = self;
+    m_notesSelectorView.hidden = YES;
+  }
+  return m_notesSelectorView;
+}
+
 - (UILabel*) frequencyLabel
 {
   if (m_frequencyLabel == nil)
@@ -298,7 +325,20 @@ static const CGFloat kNavButtonWidth = 44.0f;
 
 - (void) didTapNotesButton
 {
-  /* TODO: Implement me */
+  if (self.notesSelectorView.hidden)
+  {
+    [self stopListener];
+    self.notesButton.enabled = NO;
+  }
+
+  self.notesSelectorView.alpha = 0.0f;
+  self.notesSelectorView.hidden = NO;
+  
+  [UIView animateWithDuration: kAnimationDuration
+                   animations: ^(void)
+   {
+     self.notesSelectorView.alpha = 1.0f;
+   }];
 }
 
 #pragma mark - Control listeners
@@ -371,6 +411,21 @@ static const CGFloat kNavButtonWidth = 44.0f;
      self.tutorialView.alpha = 1.0f;
      self.tutorialView.hidden = YES;
    }];
+}
+
+#pragma mark - TMONoteSelectorViewDelegate methods
+
+- (void) noteSelectorView: (TMONoteSelectorView*) noteSelector
+            didSelectNote: (TMONote*)             note
+            fromNoteGroup: (TMONoteGroup*)        noteGroup
+{
+  /* TODO handle newly selected note */
+}
+
+- (void) noteSelectorViewDidDismiss: (TMONoteSelectorView*) noteSelectorView
+{
+  self.notesButton.enabled = YES;
+  [self startListener];
 }
 
 @end

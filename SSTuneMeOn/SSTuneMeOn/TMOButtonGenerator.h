@@ -12,5 +12,7 @@
 
 + (UIButton*) helpButtonWithFrame: (CGRect) frame;
 + (UIButton*) selectionButtonWithFrame: (CGRect) frame;
++ (UIButton*) doneButtonWithFrame: (CGRect) frame;
++ (UIButton*) cancelButtonWithFrame: (CGRect) frame;
 
 @end

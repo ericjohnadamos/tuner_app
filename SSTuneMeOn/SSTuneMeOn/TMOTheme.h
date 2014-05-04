@@ -13,6 +13,12 @@
 - (void) skinButton: (UIButton*) button;
 - (void) skinHelpButton: (UIButton*) button;
 - (void) skinSelectionButton: (UIButton*) button;
+- (void) skinDoneButton: (UIButton*) button;
+- (void) skinCancelButton: (UIButton*) button;
+- (void) skinNavigationBar: (UIView*) navBarView;
 - (void) skinNavigationTitleLabel: (UILabel*) label;
+- (void) skinNotesPickerView: (UIPickerView*) pickerView;
+- (void) skinNotesPickerLabel: (UILabel*) label;
+- (void) skinSelectedNotesPickerLabel: (UILabel*) label;
 
 @end

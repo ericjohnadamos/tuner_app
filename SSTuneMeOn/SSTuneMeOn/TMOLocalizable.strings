@@ -16,3 +16,10 @@
 "TMOAcousticGuitar" = "Acoustic Guitar";
 "TMOBassGuitar" = "Bass Guitar";
 
+/* Note Group Names */
+"TMONoteGroupNameAcoustic" = "Acoustic";
+"TMONoteGroupNameBass" = "Bass";
+
+/* Note Selector View */
+"TMONoteSelectorNavTitle" = "Select an instrument/note";
+

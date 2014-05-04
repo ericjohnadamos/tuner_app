@@ -21,6 +21,13 @@ NSString* const kTMOHertz = @"TMOHertz";
 NSString* const kTMOAcousticGuitar = @"TMOAcousticGuitar";
 NSString* const kTMOBassGuitar = @"TMOBassGuitar";
 
+/* Note Group Names */
+NSString* const kTMONoteGroupNameAcoustic = @"TMONoteGroupNameAcoustic";
+NSString* const kTMONoteGroupNameBass = @"TMONoteGroupNameBass";
+
+/* Note Selector View */
+NSString* const kTMONoteSelectorNavTitle = @"TMONoteSelectorNavTitle";
+
 
 @implementation TMOLocalizedStrings
 
