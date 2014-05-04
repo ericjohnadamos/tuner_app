@@ -45,6 +45,12 @@ static TMOStandardTheme* sm_theme = nil;
           forState: UIControlStateNormal];
 }
 
+- (void) skinDoneButton: (UIButton*) button
+{
+  [button setImage: [UIImage imageNamed: kThemeDoneImage]
+          forState: UIControlStateNormal];
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   label.backgroundColor = [UIColor clearColor];
