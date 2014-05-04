@@ -89,4 +89,16 @@ static TMOStandardTheme* sm_theme = nil;
   label.textAlignment = NSTextAlignmentCenter;
 }
 
+- (void) skinSelectedNotesPickerLabel: (UILabel*) label
+{
+  UIFont* font = [UIFont fontWithName: kThemeNotesPickerTitleFontName
+                                 size: kThemeNotesPickerTitleFontSizeSelected];
+  UIColor* color
+    = [UIColor colorWithHexString: kThemeNotesPickerTitleFontColor];
+  
+  label.font = font;
+  label.textColor = color;
+  label.textAlignment = NSTextAlignmentCenter;
+}
+
 @end
