@@ -18,4 +18,13 @@ extern CGFloat const kThemeNavBarTitleFontSize;
 extern NSString* const kThemeNavBarTitleFontName;
 extern NSString* const kThemeNavBarTitleFontColor;
 
+/* Notes Selector View */
+extern NSString* const kThemeDoneImage;
+extern NSString* const kThemeCancelImage;
+extern NSString* const kThemeNotesPickerBackgroundColor;
+extern NSString* const kThemeNotesPickerTitleFontName;
+extern NSString* const kThemeNotesPickerTitleFontColor;
+extern CGFloat const kThemeNotesPickerTitleFontSize;
+extern CGFloat const kThemeNotesPickerTitleFontSizeSelected;
+
 @end
