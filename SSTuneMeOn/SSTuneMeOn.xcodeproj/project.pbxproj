@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AA57AF419148716009A842F /* TMONoteSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA57AF319148716009A842F /* TMONoteSelectorView.m */; };
 		0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */; };
 		0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADE81913DD6A00DF37B5 /* TMONote.m */; };
 		0AF1ADEC1913F1E000DF37B5 /* TMONoteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADEB1913F1E000DF37B5 /* TMONoteGroup.m */; };
@@ -88,6 +89,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AA57AF219148716009A842F /* TMONoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteSelectorView.h; sourceTree = "<group>"; };
+		0AA57AF319148716009A842F /* TMONoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectorView.m; sourceTree = "<group>"; };
 		0AB1D0BD1911C967002E2BDF /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		0AF1ADE71913DD6A00DF37B5 /* TMONote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONote.h; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				2578738218F160C600AC3D56 /* TMOTutorialView.m */,
 				252E8DBC18FC42E9006266FD /* TMOButtonGenerator.h */,
 				252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */,
+				0AA57AF219148716009A842F /* TMONoteSelectorView.h */,
+				0AA57AF319148716009A842F /* TMONoteSelectorView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -622,6 +627,7 @@
 				252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */,
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
+				0AA57AF419148716009A842F /* TMONoteSelectorView.m in Sources */,
 				252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */,
 				0AF1ADF01913F5BF00DF37B5 /* TMONotesOrganizer.m in Sources */,
 				0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */,
