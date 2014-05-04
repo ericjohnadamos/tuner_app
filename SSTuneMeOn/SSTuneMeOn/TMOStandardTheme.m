@@ -57,6 +57,12 @@ static TMOStandardTheme* sm_theme = nil;
           forState: UIControlStateNormal];
 }
 
+- (void) skinNavigationBar: (UIView*) navBarView
+{
+  navBarView.backgroundColor
+    = [UIColor colorWithHexString: kThemeNavBarBackgroundColor];
+}
+
 - (void) skinNavigationTitleLabel: (UILabel*) label
 {
   label.backgroundColor = [UIColor clearColor];
