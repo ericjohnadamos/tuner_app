@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TMONoteSelectorView : NSObject
+@class TMONoteSelectorView;
+@class TMONote;
+@class TMONoteGroup;
+
+@protocol TMONoteSelectorViewDelegate <NSObject>
+
+- (void) noteSelectorViewDidDismiss: (TMONoteSelectorView*) noteSelectorView;
+- (void) noteSelectorView: (TMONoteSelectorView*) noteSelector
+            didSelectNote: (TMONote*)             note
+            fromNoteGroup: (TMONoteGroup*)        noteGroup;
+@end
+
+@interface TMONoteSelectorView : UIView
+
+@property (nonatomic, retain) id<TMONoteSelectorViewDelegate> delegate;
 
 @end
