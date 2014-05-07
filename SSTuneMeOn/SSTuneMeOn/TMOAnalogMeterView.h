@@ -15,4 +15,6 @@
  * 1 to the rightmost side of the meter 
  */
 - (void) updateToVariance: (CGFloat) variance;
+- (void) start;
+- (void) stop;
 @end

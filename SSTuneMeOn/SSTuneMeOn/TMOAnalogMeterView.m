@@ -167,6 +167,7 @@ static const CGFloat kTuneModerate = 0.05f;
   [self.layer addSublayer: self.containerLayer];
   self.current = -1.0f;
 }
+
 - (UIColor*) colorFromPercentDelta: (CGFloat) percentDelta
 {
   UIColor* color = nil;
@@ -191,4 +192,27 @@ static const CGFloat kTuneModerate = 0.05f;
 {
   self.target = variance;
 }
+
+- (void) start
+{
+  NSTimer* timer = [NSTimer timerWithTimeInterval: 1 / 60.0f
+                                           target: self
+                                         selector: @selector(update)
+                                         userInfo: nil
+                                          repeats: YES];
+  
+	[[NSRunLoop mainRunLoop] addTimer: timer
+                            forMode: NSDefaultRunLoopMode];
+  
+  self.timer = timer;
+}
+
+- (void) stop
+{
+  [self.timer invalidate];
+  self.timer = nil;
+  self.current = -1.0f;
+  self.target = -1.0f;
+}
+
 @end
