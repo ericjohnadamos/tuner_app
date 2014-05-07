@@ -7,8 +7,93 @@
 //
 
 #import "TMOAnalogMeterView.h"
+#import <CoreGraphics/CoreGraphics.h>
+#import "UIColor+HexString.h"
+@interface TMOAnalogMeterView ()
+
+@property (nonatomic, retain) UIImageView* meterBGView;
+@property (nonatomic, retain) UIView* pinView;
+@property (nonatomic, retain) CALayer* containerLayer;
+@end
 
 @implementation TMOAnalogMeterView
+@synthesize meterBGView = m_meterBGView;
+@synthesize pinView = m_pinView;;
+@synthesize containerLayer = m_containerLayer;
+#pragma nark - Memory management
 
+- (void) dealloc
+{
+  self.meterBGView = nil;
+  self.pinView = nil;
+  self.containerLayer = nil;
+  [super dealloc];
+}
 
+#pragma mark - Initializations
+
+- (id) initWithFrame: (CGRect) frame
+{
+  if (self = [super initWithFrame:frame])
+  {
+    [self initializeView];
+  }
+  return self;
+}
+
+#pragma mark - View getters
+
+- (UIImageView*) meterBGView
+{
+  if (m_meterBGView == nil)
+  {
+    m_meterBGView = [UIImageView new];
+    m_meterBGView.image = [UIImage imageNamed: @"tune_indicator"];
+    m_meterBGView.frame = CGRectMake(0.0f, 0.0f, kViewWidth, kViewHeight);
+  }
+  return m_meterBGView;
+}
+
+- (UIView*) pinView
+{
+  if (m_pinView == nil)
+  {
+    m_pinView = [UIView new];
+    m_pinView.frame = CGRectMake((kViewWidth - kPinWidth) / 2,
+                                   kViewHeight - kPinHeight,
+                                   kPinWidth,
+                                   kPinHeight);
+    UIImage* maskLayer = [UIImage imageNamed: @"tuner_pin_mask"];
+    CALayer* pinViewMask = [CALayer layer];
+    
+    pinViewMask.contents = (id) maskLayer.CGImage;
+    pinViewMask.frame = m_pinView.bounds;
+    m_pinView.layer.mask = pinViewMask;
+    
+    m_pinView.backgroundColor = [UIColor greenColor];
+  }
+  return m_pinView;
+}
+
+- (CALayer*) containerLayer
+{
+  if (m_containerLayer == nil)
+  {
+    m_containerLayer = [CALayer layer];
+    m_containerLayer.shadowColor = [UIColor greenColor].CGColor;
+    m_containerLayer.shadowRadius = 4.0f;
+    m_containerLayer.shadowOffset = CGSizeMake(0.f, 0.f);
+    m_containerLayer.shadowOpacity = 1.f;
+  }
+  return m_containerLayer;
+}
+#pragma mark - Private methods
+
+- (void) initializeView
+{
+  [self addSubview: self.meterBGView];
+  
+  [self.containerLayer addSublayer: self.pinView.layer];
+  [self.layer addSublayer: self.containerLayer];
+}
 @end
