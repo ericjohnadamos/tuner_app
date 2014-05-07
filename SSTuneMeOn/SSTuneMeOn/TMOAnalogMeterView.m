@@ -167,5 +167,24 @@ static const CGFloat kTuneModerate = 0.05f;
   [self.layer addSublayer: self.containerLayer];
   self.current = -1.0f;
 }
+- (UIColor*) colorFromPercentDelta: (CGFloat) percentDelta
+{
+  UIColor* color = nil;
+  percentDelta = ABS(percentDelta);
+  
+  if (percentDelta > kTuneBad)
+  {
+    color = self.redColor;
+  }
+  else if (percentDelta > kTuneModerate)
+  {
+    color = self.orangeColor;
+  }
+  else
+  {
+    color = self.greenColor;
+  }
+  return color;
+}
 }
 @end
