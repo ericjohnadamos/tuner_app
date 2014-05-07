@@ -215,4 +215,49 @@ static const CGFloat kTuneModerate = 0.05f;
   self.target = -1.0f;
 }
 
+- (void) update
+{
+  /* Speed changes with respect to distance */
+  CGFloat speed = kBaseSpeed + kBaseSpeed * ABS(self.current - self.target);
+
+  /* Compute change in percent */
+  CGFloat percentDelta = self.current < self.target ?
+    self.current + speed : self.current - speed;
+
+  /* Save for next iteration */
+  self.current = percentDelta;
+
+  percentDelta = MAX(-1.0f, percentDelta);
+  percentDelta = MIN(1.0f, percentDelta);
+  CGFloat relPercentage = ABS(percentDelta);
+
+  /* Translate percent delta to angles */
+  CGFloat degrees = kStartingAngle * percentDelta * -1.0f + 90.0f;
+  CGFloat pinDeg = kStartingAngle * percentDelta * -1.0f;
+
+  /* Compute points alon circle */
+  CGFloat x = kCenterPointX + kMeterRadius * cosf(DEGREES_TO_RADIANS(degrees));
+  CGFloat y = kCenterPointY + kMeterRadius * sinf(DEGREES_TO_RADIANS(degrees));
+
+  CGPoint position = CGPointMake(x, y);
+  CGFloat opacity = 1.0f - (kOpacityConstant * relPercentage);
+  UIColor* color = [self colorFromPercentDelta: percentDelta];
+  CGFloat shadowRadius
+    = kBaseShadowRadius + kShadowRadiusConstant * relPercentage;
+  CATransform3D transform
+    = CATransform3DRotate(CATransform3DIdentity,
+                          DEGREES_TO_RADIANS(pinDeg),
+                          0.0f,
+                          0.0f,
+                          1.0f);
+
+  /* Apply changes */
+  self.pinView.layer.transform = transform;
+  self.pinView.layer.position = position;
+  self.pinView.layer.opacity = opacity;
+  self.pinView.backgroundColor = color;
+  self.containerLayer.shadowColor = color.CGColor;
+  self.containerLayer.shadowRadius = shadowRadius;
+}
+
 @end
