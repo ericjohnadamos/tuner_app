@@ -9,6 +9,11 @@
 #import "TMOAnalogMeterView.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import "UIColor+HexString.h"
+
+#define RADIANS_TO_DEGREES(radians) ((radians) * (180.0 / M_PI))
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
+
 @interface TMOAnalogMeterView ()
 
 @property (nonatomic, retain) UIImageView* meterBGView;
