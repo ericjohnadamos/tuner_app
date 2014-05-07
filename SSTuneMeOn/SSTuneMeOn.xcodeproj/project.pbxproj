@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA358101916456E000A5948 /* TMOAnalogMeterView.m */; };
 		0AA57AF419148716009A842F /* TMONoteSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA57AF319148716009A842F /* TMONoteSelectorView.m */; };
 		0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */; };
 		0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADE81913DD6A00DF37B5 /* TMONote.m */; };
@@ -89,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AA3580F1916456E000A5948 /* TMOAnalogMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOAnalogMeterView.h; sourceTree = "<group>"; };
+		0AA358101916456E000A5948 /* TMOAnalogMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOAnalogMeterView.m; sourceTree = "<group>"; };
 		0AA57AF219148716009A842F /* TMONoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteSelectorView.h; sourceTree = "<group>"; };
 		0AA57AF319148716009A842F /* TMONoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectorView.m; sourceTree = "<group>"; };
 		0AB1D0BD1911C967002E2BDF /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */,
 				0AA57AF219148716009A842F /* TMONoteSelectorView.h */,
 				0AA57AF319148716009A842F /* TMONoteSelectorView.m */,
+				0AA3580F1916456E000A5948 /* TMOAnalogMeterView.h */,
+				0AA358101916456E000A5948 /* TMOAnalogMeterView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
+				0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */,
 				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
