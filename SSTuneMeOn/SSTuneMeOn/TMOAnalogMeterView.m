@@ -215,6 +215,25 @@ static const CGFloat kTuneModerate = 0.05f;
   self.target = -1.0f;
 }
 
+- (void) startTest
+{
+  [NSTimer scheduledTimerWithTimeInterval: 1.0f
+                                   target: self
+                                 selector: @selector(timerFired)
+                                 userInfo: nil
+                                  repeats: YES];
+}
+
+#pragma mark - Private
+
+- (void) timerFired
+{
+  CGFloat rand =  arc4random() % 200;
+  rand = rand - 100.0f;
+  rand = rand == 0? rand : rand / 100.0f;
+  self.target = rand;
+}
+
 - (void) update
 {
   /* Speed changes with respect to distance */

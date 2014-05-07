@@ -17,4 +17,6 @@
 - (void) updateToVariance: (CGFloat) variance;
 - (void) start;
 - (void) stop;
+- (void) startTest;
+
 @end
