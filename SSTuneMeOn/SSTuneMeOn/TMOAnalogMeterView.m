@@ -14,6 +14,9 @@
 @property (nonatomic, retain) UIImageView* meterBGView;
 @property (nonatomic, retain) UIView* pinView;
 @property (nonatomic, retain) CALayer* containerLayer;
+@property (nonatomic, assign) CGFloat target;
+@property (nonatomic, assign) CGFloat current;
+@property (nonatomic, retain) NSTimer* timer;
 @end
 
 static const CGFloat kViewWidth = 320.0f;
@@ -39,6 +42,7 @@ static const CGFloat kTuneModerate = 0.05f;
 @synthesize meterBGView = m_meterBGView;
 @synthesize pinView = m_pinView;;
 @synthesize containerLayer = m_containerLayer;
+@synthesize timer = m_timer;
 #pragma nark - Memory management
 
 - (void) dealloc
