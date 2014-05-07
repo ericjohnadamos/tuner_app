@@ -17,6 +17,10 @@
 @property (nonatomic, assign) CGFloat target;
 @property (nonatomic, assign) CGFloat current;
 @property (nonatomic, retain) NSTimer* timer;
+@property (nonatomic, assign) UIColor* greenColor;
+@property (nonatomic, assign) UIColor* orangeColor;
+@property (nonatomic, assign) UIColor* redColor;
+
 @end
 
 static const CGFloat kViewWidth = 320.0f;
@@ -42,7 +46,11 @@ static const CGFloat kTuneModerate = 0.05f;
 @synthesize meterBGView = m_meterBGView;
 @synthesize pinView = m_pinView;;
 @synthesize containerLayer = m_containerLayer;
+@synthesize greenColor = m_greenColor;
+@synthesize orangeColor = m_orangeColor;
+@synthesize redColor = m_redColor;
 @synthesize timer = m_timer;
+
 #pragma nark - Memory management
 
 - (void) dealloc
@@ -50,6 +58,9 @@ static const CGFloat kTuneModerate = 0.05f;
   self.meterBGView = nil;
   self.pinView = nil;
   self.containerLayer = nil;
+  self.greenColor = nil;
+  self.orangeColor = nil;
+  self.redColor = nil;
   [super dealloc];
 }
 
@@ -110,6 +121,37 @@ static const CGFloat kTuneModerate = 0.05f;
   }
   return m_containerLayer;
 }
+
+#pragma mark - Getters
+
+- (UIColor*) greenColor
+{
+  if (m_greenColor == nil)
+  {
+    m_greenColor = [UIColor colorWithHexString: @"#00D800"];
+  }
+  return m_greenColor;
+}
+
+- (UIColor*) orangeColor
+{
+  if (m_orangeColor == nil)
+  {
+    m_orangeColor = [UIColor colorWithHexString: @"#EB8520"];
+  }
+  return m_orangeColor;
+}
+
+- (UIColor*) redColor
+{
+  if (m_redColor == nil)
+  {
+    m_redColor = [UIColor colorWithHexString: @"#D80000"];
+  }
+  return m_redColor;
+}
+
+
 #pragma mark - Private methods
 
 - (void) initializeView
@@ -118,5 +160,7 @@ static const CGFloat kTuneModerate = 0.05f;
   
   [self.containerLayer addSublayer: self.pinView.layer];
   [self.layer addSublayer: self.containerLayer];
+  self.current = -1.0f;
+}
 }
 @end
