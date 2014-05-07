@@ -10,4 +10,9 @@
 
 @interface TMOAnalogMeterView : UIView
 
+/**
+ * A -1 variance will move the pin to leftmost, 0 to the center,
+ * 1 to the rightmost side of the meter 
+ */
+- (void) updateToVariance: (CGFloat) variance;
 @end

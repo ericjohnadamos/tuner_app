@@ -186,5 +186,9 @@ static const CGFloat kTuneModerate = 0.05f;
   }
   return color;
 }
+
+- (void) updateToVariance: (CGFloat) variance
+{
+  self.target = variance;
 }
 @end
