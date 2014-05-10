@@ -7,43 +7,66 @@
 //
 
 #import "TMOTunerViewController.h"
+#import "TMOAnalogMeterView.h"
 
 @interface TMOTunerViewController ()
 
+@property (nonatomic, retain) TMOAnalogMeterView* analogMeterView;
+
 @end
 
+static const CGFloat kViewWidth = 320.0f;
+static const CGFloat kViewHeight = 171.0f;
+
 @implementation TMOTunerViewController
+@synthesize analogMeterView = m_analogMeterView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark - Memory management
+
+- (void) dealloc
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self.analogMeterView = nil;
+  [super dealloc];
 }
 
-- (void)viewDidLoad
+#pragma mark - Initializations
+
+- (id) initWithFrame: (CGRect) frame
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  if (self = [super init])
+  {
+    self.view.frame = CGRectMake(frame.origin.x,
+                                 frame.origin.y,
+                                 kViewWidth,
+                                 kViewHeight);
+  }
+  return self;
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - View Controller Lifecycle
+
+- (void) viewDidLoad
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super viewDidLoad];
+  [self.view addSubview: self.analogMeterView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) didReceiveMemoryWarning
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+  [super didReceiveMemoryWarning];
 }
-*/
+
+#pragma mark - View Getters
+
+- (TMOAnalogMeterView*) analogMeterView
+{
+  if (m_analogMeterView == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    CGRect frame = CGRectMake(0.0f, 0.0f, viewSize.width, viewSize.height);
+    m_analogMeterView = [[TMOAnalogMeterView alloc] initWithFrame: frame];
+  }
+  return m_analogMeterView;
+}
 
 @end

@@ -10,4 +10,6 @@
 
 @interface TMOTunerViewController : UIViewController
 
+- (id) initWithFrame: (CGRect) frame;
+
 @end
