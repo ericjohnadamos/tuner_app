@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TMOFrequencyListener.h"
 
-@interface TMOTunerViewController : UIViewController
+@class TMONote;
+@class TMONoteGroup;
+
+@interface TMOTunerViewController : UIViewController <TMOFrequencyListener>
 
 - (id) initWithFrame: (CGRect) frame;
+- (void) updateWithNote: (TMONote*)      note
+              noteGroup: (TMONoteGroup*) noteGroup;
 
 @end
