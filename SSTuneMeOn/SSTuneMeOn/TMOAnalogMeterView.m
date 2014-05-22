@@ -41,11 +41,11 @@ static const CGFloat kBaseSpeed =  0.005f;
 static const CGFloat kUpdateRate = 1 / 60.0f;
 static const CGFloat kStartingAngle = 60.0f;
 static const CGFloat kBaseShadowRadius = 4.0f;
-static const CGFloat kShadowRadiusConstant = 16.0f;
-static const CGFloat kOpacityConstant = 0.8f;
+static const CGFloat kShadowRadiusConstant = 10.0f;
+static const CGFloat kOpacityConstant = 0.5f;
 
-static const CGFloat kTuneBad = 0.5f;
-static const CGFloat kTuneModerate = 0.05f;
+static const CGFloat kTuneBad = 0.4f;
+static const CGFloat kTuneModerate = 0.1f;
 
 @implementation TMOAnalogMeterView
 @synthesize meterBGView = m_meterBGView;
