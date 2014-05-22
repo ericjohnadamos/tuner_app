@@ -44,24 +44,6 @@ static const CGFloat kNavButtonWidth = 44.0f;
 static const CGFloat kStringIconWidth = 10.0f;
 static const CGFloat kStringIconHeight = 21.0f;
 
-static NSString* sm_sixStringImages[]
-  = {
-    @"icn_acoustic_string_1",
-    @"icn_acoustic_string_2",
-    @"icn_acoustic_string_3",
-    @"icn_acoustic_string_4",
-    @"icn_acoustic_string_5",
-    @"icn_acoustic_string_6"
-  };
-
-static NSString* sm_fourStringImages[]
-  = {
-    @"icn_bass_string_1",
-    @"icn_bass_string_2",
-    @"icn_bass_string_3",
-    @"icn_bass_string_4"
-  };
-
 @implementation TMONoteSelectorView
 @synthesize theme = m_theme;
 @synthesize pickerView = m_pickerView;
@@ -237,7 +219,7 @@ static NSString* sm_fourStringImages[]
                    (containerSize.height - kStringIconHeight) / 2,
                    kStringIconWidth,
                    kStringIconHeight);
-    m_iconView.image = [UIImage imageNamed: sm_sixStringImages[0]];
+    m_iconView.image = [self.theme iconForSixStringsWithIndex: 0];
   }
   return m_iconView;
 }
@@ -401,7 +383,7 @@ static NSString* sm_fourStringImages[]
     
     if (imageIndex != NSNotFound)
     {
-      image = [UIImage imageNamed: sm_sixStringImages[imageIndex]];
+      image = [self.theme iconForSixStringsWithIndex: imageIndex];
     }
   }
   else if (self.selectedGroup.notes.count == 4)
@@ -411,7 +393,7 @@ static NSString* sm_fourStringImages[]
     
     if (imageIndex != NSNotFound)
     {
-      image = [UIImage imageNamed: sm_fourStringImages[imageIndex]];
+      image = [self.theme iconFourStringsWithIndex: imageIndex];
     }
   }
   return image;
