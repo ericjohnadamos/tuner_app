@@ -59,7 +59,7 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 
 #pragma mark -
 #pragma mark Listener Controls
-- (void)startListening:(TMOMainViewController*)aListener {
+- (void)startListening:(id<TMOFrequencyListener>)aListener {
 	self.listener = aListener;
 	[self createAUProcessingGraph];
 	[self initializeAndStartProcessingGraph];	
