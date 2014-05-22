@@ -15,7 +15,8 @@
 
 @property (nonatomic, retain) NSNumber* noteIndexNumber;
 @property (nonatomic, retain) NSNumber* noteGroupIndexNumber;
-@property (nonatomic, retain) TMONote* selectedNote;
+@property (nonatomic, retain) TMONote* internalSelectedNote;
+@property (nonatomic, retain) TMONoteGroup* internalSelectedGroup;
 
 @end
 
@@ -30,7 +31,8 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 @implementation TMOUserSettings
 @synthesize noteIndexNumber = m_noteIndexNumber;
 @synthesize noteGroupIndexNumber = m_noteGroupIndexNumber;
-@synthesize selectedNote = m_selectedNote;
+@synthesize internalSelectedNote = m_internalSelectedNote;
+@synthesize internalSelectedGroup = m_internalSelectedGroup;
 
 #pragma mark - Memory management
 
@@ -38,7 +40,8 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 {
   self.noteIndexNumber = nil;
   self.noteGroupIndexNumber = nil;
-  self.selectedNote = nil;
+  self.internalSelectedNote = nil;
+  self.internalSelectedGroup = nil;
   [super dealloc];
 }
 
@@ -121,7 +124,8 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
   [userDefaults synchronize];
   
   self.noteGroupIndexNumber = @(noteGroupIndex);
-  self.selectedNote = nil;
+  self.internalSelectedGroup = nil;
+  self.internalSelectedNote = nil;
 }
 
 - (NSInteger) noteIndex
@@ -154,7 +158,7 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
                   forKey: kUserSettingsNoteIndex];
   [userDefaults synchronize];
   self.noteIndexNumber = @(noteIndex);
-  self.selectedNote = nil;
+  self.internalSelectedNote = nil;
 }
 
 #pragma mark - Public method
@@ -184,27 +188,33 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 
 - (TMONote*) selectedNote
 {
-  if (self.selectedNote == nil)
+  if (self.self.internalSelectedNote == nil)
   {
-    TMONote* selectedNote = nil;
+    NSInteger noteIndex = self.noteIndex;
+    TMONoteGroup* selectedGroup = [self selectedGroup];
     
+    if (selectedGroup.notes.count > noteIndex)
+    {
+      self.self.internalSelectedNote = selectedGroup.notes[noteIndex];
+    }
+  }
+  return self.internalSelectedNote;
+}
+
+- (TMONoteGroup*) selectedGroup
+{
+  if (self.internalSelectedGroup == nil)
+  {
     TMONotesOrganizer* organizer = [TMONotesOrganizer sharedInstance];
     NSArray* noteGroups = organizer.allGroups;
     NSInteger groupIndex = self.noteGroupIndex;
-    NSInteger noteIndex = self.noteIndex;
     
     if (noteGroups.count > groupIndex)
     {
-      NSArray* notes = ((TMONoteGroup*) noteGroups[groupIndex]).notes;
-      
-      if (notes.count > noteIndex)
-      {
-        selectedNote = notes[noteIndex];
-      }
+      self.internalSelectedGroup = noteGroups[groupIndex];
     }
-    self.selectedNote = selectedNote;
   }
-  return self.selectedNote;
+  return self.internalSelectedGroup;
 }
 
 @end

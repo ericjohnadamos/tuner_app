@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class TMONote;
+@class TMONoteGroup;
 
 @interface TMOUserSettings : NSObject
 
@@ -19,9 +20,8 @@
 @property (nonatomic, assign) NSInteger noteIndex;
 
 + (TMOUserSettings*) sharedInstance;
-
 - (void) loadDefaults;
-
 - (TMONote*) selectedNote;
+- (TMONoteGroup*) selectedGroup;
 
 @end
