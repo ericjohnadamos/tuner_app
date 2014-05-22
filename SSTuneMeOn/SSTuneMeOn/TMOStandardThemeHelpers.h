@@ -42,4 +42,12 @@ extern NSString* const kThemeNoteIconTunedImageNameB;
 extern NSString* const kThemeNoteIconTunedImageNameD;
 extern NSString* const kThemeNoteIconTunedImageNameE;
 extern NSString* const kThemeNoteIconTunedImageNameG;
+
+/* Frequency Label */
+extern NSString* const kThemeFrequencyLabelFontName;
+extern NSString* const kThemeFrequencyLabelNumberFontColor;
+extern NSString* const kThemeFrequencyLabelUnitFontColor;
+extern CGFloat const kThemeFrequencyLabelNumberFontSize;
+extern CGFloat const kThemeFrequencyLabelUnitFontSize;
+
 @end

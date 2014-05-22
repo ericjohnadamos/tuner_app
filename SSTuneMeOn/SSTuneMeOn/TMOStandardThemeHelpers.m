@@ -56,4 +56,12 @@ NSString* const kThemeNoteIconTunedImageNameB = @"note_B_tuned";
 NSString* const kThemeNoteIconTunedImageNameD = @"note_D_tuned";
 NSString* const kThemeNoteIconTunedImageNameE = @"note_E_tuned";
 NSString* const kThemeNoteIconTunedImageNameG = @"note_G_tuned";
+
+/* Frequency Label */
+NSString* const kThemeFrequencyLabelFontName = @"HelveticaNeue-Thin";
+NSString* const kThemeFrequencyLabelNumberFontColor = @"#666666";
+NSString* const kThemeFrequencyLabelUnitFontColor = @"#A5666666";
+CGFloat const kThemeFrequencyLabelNumberFontSize = 20.0f;
+CGFloat const kThemeFrequencyLabelUnitFontSize = 14.0f;
+
 @end
