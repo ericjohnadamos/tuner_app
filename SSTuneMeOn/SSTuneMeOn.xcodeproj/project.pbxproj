@@ -99,6 +99,7 @@
 		0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		0AB919D8191BB99200410C00 /* TMOTunerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTunerViewController.h; sourceTree = "<group>"; };
 		0AB919D9191BB99200410C00 /* TMOTunerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTunerViewController.m; sourceTree = "<group>"; };
+		0AB919DB191BBE1100410C00 /* TMOFrequencyListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMOFrequencyListener.h; sourceTree = "<group>"; };
 		0AF1ADE71913DD6A00DF37B5 /* TMONote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONote.h; sourceTree = "<group>"; };
 		0AF1ADE81913DD6A00DF37B5 /* TMONote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONote.m; sourceTree = "<group>"; };
 		0AF1ADEA1913F1E000DF37B5 /* TMONoteGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteGroup.h; sourceTree = "<group>"; };
@@ -499,6 +500,7 @@
 			children = (
 				2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */,
 				2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */,
+				0AB919DB191BBE1100410C00 /* TMOFrequencyListener.h */,
 			);
 			name = RIO;
 			sourceTree = "<group>";
