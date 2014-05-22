@@ -27,4 +27,27 @@ extern NSString* const kThemeNotesPickerTitleFontColor;
 extern CGFloat const kThemeNotesPickerTitleFontSize;
 extern CGFloat const kThemeNotesPickerTitleFontSizeSelected;
 
+/* Note strings icons */
+extern NSString* const kThemeSixStringImages[];
+extern NSString* const kThemeFourStringImages[];
+
+/* Note icon images */
+extern NSString* const kThemeNoteIconImageNameA;
+extern NSString* const kThemeNoteIconImageNameB;
+extern NSString* const kThemeNoteIconImageNameD;
+extern NSString* const kThemeNoteIconImageNameE;
+extern NSString* const kThemeNoteIconImageNameG;
+extern NSString* const kThemeNoteIconTunedImageNameA;
+extern NSString* const kThemeNoteIconTunedImageNameB;
+extern NSString* const kThemeNoteIconTunedImageNameD;
+extern NSString* const kThemeNoteIconTunedImageNameE;
+extern NSString* const kThemeNoteIconTunedImageNameG;
+
+/* Frequency Label */
+extern NSString* const kThemeFrequencyLabelFontName;
+extern NSString* const kThemeFrequencyLabelNumberFontColor;
+extern NSString* const kThemeFrequencyLabelUnitFontColor;
+extern CGFloat const kThemeFrequencyLabelNumberFontSize;
+extern CGFloat const kThemeFrequencyLabelUnitFontSize;
+
 @end

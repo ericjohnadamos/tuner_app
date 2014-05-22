@@ -10,9 +10,27 @@
 #import "TMOStandardThemeHelpers.h"
 #import "UIColor+HexString.h"
 
+@interface TMOStandardTheme ()
+
+@property (nonatomic, retain) NSDictionary* notesIconNames;
+@property (nonatomic, retain) NSDictionary* tunedNotesIconNames;
+
+@end
+
 static TMOStandardTheme* sm_theme = nil;
 
 @implementation TMOStandardTheme
+@synthesize notesIconNames = m_notesIconNames;
+@synthesize tunedNotesIconNames = m_tunedNotesIconNames;
+
+#pragma mark - Memory management
+
+- (void) dealloc
+{
+  self.notesIconNames = nil;
+  self.tunedNotesIconNames = nil;
+  [super dealloc];
+}
 
 #pragma mark - Initializer
 
@@ -27,6 +45,45 @@ static TMOStandardTheme* sm_theme = nil;
   
   return sm_theme;
 }
+
+#pragma mark - Getters
+
+- (NSDictionary*) notesIconNames
+{
+  if (m_notesIconNames == nil)
+  {
+    m_notesIconNames =
+      @{
+        @"A" : kThemeNoteIconImageNameA,
+        @"B" : kThemeNoteIconImageNameB,
+        @"D" : kThemeNoteIconImageNameD,
+        @"E" : kThemeNoteIconImageNameE,
+        @"G" : kThemeNoteIconImageNameG,
+      };
+    
+    [m_notesIconNames retain];
+  }
+  return m_notesIconNames;
+}
+
+- (NSDictionary*) tunedNotesIconNames
+{
+  if (m_tunedNotesIconNames == nil)
+  {
+    m_tunedNotesIconNames =
+    @{
+      @"A" : kThemeNoteIconTunedImageNameA,
+      @"B" : kThemeNoteIconTunedImageNameB,
+      @"D" : kThemeNoteIconTunedImageNameD,
+      @"E" : kThemeNoteIconTunedImageNameE,
+      @"G" : kThemeNoteIconTunedImageNameG,
+    };
+    [m_tunedNotesIconNames retain];
+  }
+  return m_tunedNotesIconNames;
+}
+
+#pragma mark - TMOTheme methods
 
 - (void) skinButton: (UIButton*) button
 {
@@ -99,6 +156,79 @@ static TMOStandardTheme* sm_theme = nil;
   label.font = font;
   label.textColor = color;
   label.textAlignment = NSTextAlignmentCenter;
+}
+
+- (UIImage*) iconForSixStringsWithIndex: (NSInteger) index
+{
+  return [UIImage imageNamed: kThemeSixStringImages[index]];
+}
+
+- (UIImage*) iconFourStringsWithIndex: (NSInteger) index
+{
+  return [UIImage imageNamed: kThemeFourStringImages[index]];
+}
+
+- (UIImage*) noteIconForNoteWithName: (NSString*) noteName
+{
+  return [UIImage imageNamed: self.notesIconNames[noteName]];
+}
+
+- (UIImage*) highlightedNoteIconForNoteWithName: (NSString*) noteName
+{
+  return [UIImage imageNamed: self.tunedNotesIconNames[noteName]];
+}
+
+- (void) skinFrequencyLabel: (UILabel*) label
+{
+  label.textAlignment = NSTextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+}
+
+- (NSAttributedString*) attributedStringForFrequencyLabelWithString:
+    (NSString*) string
+{
+  NSRange rangeSpace = [string rangeOfString: @" "
+                                     options: NSBackwardsSearch];
+  NSRange valueRange
+    = NSMakeRange(0, MIN(rangeSpace.location, string.length));
+  
+  NSMutableAttributedString* attrString
+    = [[NSMutableAttributedString alloc] initWithString: string];
+  
+  /* Frequency value attributes */
+  UIFont* numberFont
+    = [UIFont fontWithName: kThemeFrequencyLabelFontName
+                      size: kThemeFrequencyLabelNumberFontSize];
+  UIColor* numberColor
+    = [UIColor colorWithHexString: kThemeFrequencyLabelNumberFontColor];
+  
+  [attrString addAttribute: NSFontAttributeName
+                     value: numberFont
+                     range: valueRange];
+  [attrString addAttribute: NSForegroundColorAttributeName
+                     value: numberColor
+                     range: valueRange];
+  
+  /* Frequency unit attributes */
+  if (rangeSpace.location != NSNotFound)
+  {
+    NSRange unitRange
+      = NSMakeRange(rangeSpace.location + 1,
+                    string.length - rangeSpace.location -1);
+    UIFont* unitFont
+      = [UIFont fontWithName: kThemeFrequencyLabelFontName
+                        size: kThemeFrequencyLabelUnitFontSize];
+    UIColor* unitColor
+      = [UIColor colorWithHexString: kThemeFrequencyLabelUnitFontColor];
+    
+    [attrString addAttribute: NSFontAttributeName
+                       value: unitFont
+                       range: unitRange];
+    [attrString addAttribute: NSForegroundColorAttributeName
+                       value: unitColor
+                       range: unitRange];
+  }
+  return attrString;
 }
 
 @end

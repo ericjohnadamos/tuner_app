@@ -37,7 +37,7 @@
   if (self = [super init])
   {
     self.name = name;
-    self.frequency = self.frequency;
+    self.frequency = frequency;
   }
   return self;
 }

@@ -10,6 +10,7 @@
 		0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA358101916456E000A5948 /* TMOAnalogMeterView.m */; };
 		0AA57AF419148716009A842F /* TMONoteSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA57AF319148716009A842F /* TMONoteSelectorView.m */; };
 		0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */; };
+		0AB919DA191BB99200410C00 /* TMOTunerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB919D9191BB99200410C00 /* TMOTunerViewController.m */; };
 		0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADE81913DD6A00DF37B5 /* TMONote.m */; };
 		0AF1ADEC1913F1E000DF37B5 /* TMONoteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADEB1913F1E000DF37B5 /* TMONoteGroup.m */; };
 		0AF1ADF01913F5BF00DF37B5 /* TMONotesOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF1ADEF1913F5BF00DF37B5 /* TMONotesOrganizer.m */; };
@@ -96,6 +97,9 @@
 		0AA57AF319148716009A842F /* TMONoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectorView.m; sourceTree = "<group>"; };
 		0AB1D0BD1911C967002E2BDF /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		0AB919D8191BB99200410C00 /* TMOTunerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTunerViewController.h; sourceTree = "<group>"; };
+		0AB919D9191BB99200410C00 /* TMOTunerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTunerViewController.m; sourceTree = "<group>"; };
+		0AB919DB191BBE1100410C00 /* TMOFrequencyListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMOFrequencyListener.h; sourceTree = "<group>"; };
 		0AF1ADE71913DD6A00DF37B5 /* TMONote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONote.h; sourceTree = "<group>"; };
 		0AF1ADE81913DD6A00DF37B5 /* TMONote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONote.m; sourceTree = "<group>"; };
 		0AF1ADEA1913F1E000DF37B5 /* TMONoteGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteGroup.h; sourceTree = "<group>"; };
@@ -223,6 +227,15 @@
 				0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		0AB919D7191BB7CF00410C00 /* Tuner View */ = {
+			isa = PBXGroup;
+			children = (
+				0AB919D8191BB99200410C00 /* TMOTunerViewController.h */,
+				0AB919D9191BB99200410C00 /* TMOTunerViewController.m */,
+			);
+			name = "Tuner View";
 			sourceTree = "<group>";
 		};
 		0AF1ADE61913DBD000DF37B5 /* Data */ = {
@@ -411,6 +424,7 @@
 		2578738618F16C8F00AC3D56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0AB919D7191BB7CF00410C00 /* Tuner View */,
 				0AF1ADED1913F5A100DF37B5 /* Notes Organizer */,
 				0AF1ADE61913DBD000DF37B5 /* Data */,
 				0AB1D0BC1911C814002E2BDF /* Extensions */,
@@ -486,6 +500,7 @@
 			children = (
 				2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */,
 				2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */,
+				0AB919DB191BBE1100410C00 /* TMOFrequencyListener.h */,
 			);
 			name = RIO;
 			sourceTree = "<group>";
@@ -637,6 +652,7 @@
 				0AF1ADF01913F5BF00DF37B5 /* TMONotesOrganizer.m in Sources */,
 				0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */,
 				0AF1ADEC1913F1E000DF37B5 /* TMONoteGroup.m in Sources */,
+				0AB919DA191BB99200410C00 /* TMOTunerViewController.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
 				2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */,
 				2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */,

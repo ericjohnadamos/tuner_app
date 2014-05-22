@@ -12,6 +12,4 @@
 
 @property (nonatomic, assign) RIOInterface* rioRef;
 
-- (void) frequencyChangedWithValue: (float) newFrequency;
-
 @end

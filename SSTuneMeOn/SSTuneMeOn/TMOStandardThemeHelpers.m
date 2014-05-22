@@ -27,4 +27,41 @@ NSString* const kThemeNotesPickerTitleFontColor = @"#FFFFFF";
 CGFloat const kThemeNotesPickerTitleFontSize = 20.0f;
 CGFloat const kThemeNotesPickerTitleFontSizeSelected = 40.0f;
 
+/* Note strings icons */
+NSString* const kThemeSixStringImages[]
+  = {
+    @"icn_acoustic_string_1",
+    @"icn_acoustic_string_2",
+    @"icn_acoustic_string_3",
+    @"icn_acoustic_string_4",
+    @"icn_acoustic_string_5",
+    @"icn_acoustic_string_6"
+  };
+NSString* const kThemeFourStringImages[]
+  = {
+    @"icn_bass_string_1",
+    @"icn_bass_string_2",
+    @"icn_bass_string_3",
+    @"icn_bass_string_4"
+  };
+
+/* Note icon images */
+NSString* const kThemeNoteIconImageNameA = @"note_A_untuned";
+NSString* const kThemeNoteIconImageNameB = @"note_B_untuned";
+NSString* const kThemeNoteIconImageNameD = @"note_D_untuned";
+NSString* const kThemeNoteIconImageNameE = @"note_E_untuned";
+NSString* const kThemeNoteIconImageNameG = @"note_G_untuned";
+NSString* const kThemeNoteIconTunedImageNameA = @"note_A_tuned";
+NSString* const kThemeNoteIconTunedImageNameB = @"note_B_tuned";
+NSString* const kThemeNoteIconTunedImageNameD = @"note_D_tuned";
+NSString* const kThemeNoteIconTunedImageNameE = @"note_E_tuned";
+NSString* const kThemeNoteIconTunedImageNameG = @"note_G_tuned";
+
+/* Frequency Label */
+NSString* const kThemeFrequencyLabelFontName = @"HelveticaNeue-Thin";
+NSString* const kThemeFrequencyLabelNumberFontColor = @"#666666";
+NSString* const kThemeFrequencyLabelUnitFontColor = @"#A5666666";
+CGFloat const kThemeFrequencyLabelNumberFontSize = 20.0f;
+CGFloat const kThemeFrequencyLabelUnitFontSize = 14.0f;
+
 @end
