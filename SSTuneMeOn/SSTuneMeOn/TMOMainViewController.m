@@ -17,6 +17,7 @@
 #import "TMOTheme.h"
 #import "TMOStandardTheme.h"
 #import "TMONoteSelectorView.h"
+#import "TMOFrequencyListener.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -27,7 +28,8 @@ static const CGFloat kNavButtonHeight = 44.0f;
 static const CGFloat kNavButtonWidth = 44.0f;
 
 @interface TMOMainViewController ()
-  <TMOTutorialViewDelegate,
+  <TMOFrequencyListener,
+   TMOTutorialViewDelegate,
    TMONoteSelectorViewDelegate>
 
 @property (nonatomic, retain) TMOTutorialView* tutorialView;
@@ -353,7 +355,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
   [self.rioRef stopListening];
 }
 
-#pragma mark - Key Management
+#pragma mark - TMOFrequencyListener
 
 - (void) frequencyChangedWithValue: (float) newFrequency
 {
