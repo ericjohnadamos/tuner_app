@@ -27,4 +27,7 @@ extern NSString* const kThemeNotesPickerTitleFontColor;
 extern CGFloat const kThemeNotesPickerTitleFontSize;
 extern CGFloat const kThemeNotesPickerTitleFontSizeSelected;
 
+/* Note strings icons */
+extern NSString* const kThemeSixStringImages[];
+extern NSString* const kThemeFourStringImages[];
 @end

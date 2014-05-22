@@ -27,4 +27,21 @@ NSString* const kThemeNotesPickerTitleFontColor = @"#FFFFFF";
 CGFloat const kThemeNotesPickerTitleFontSize = 20.0f;
 CGFloat const kThemeNotesPickerTitleFontSizeSelected = 40.0f;
 
+/* Note strings icons */
+NSString* const kThemeSixStringImages[]
+  = {
+    @"icn_acoustic_string_1",
+    @"icn_acoustic_string_2",
+    @"icn_acoustic_string_3",
+    @"icn_acoustic_string_4",
+    @"icn_acoustic_string_5",
+    @"icn_acoustic_string_6"
+  };
+NSString* const kThemeFourStringImages[]
+  = {
+    @"icn_bass_string_1",
+    @"icn_bass_string_2",
+    @"icn_bass_string_3",
+    @"icn_bass_string_4"
+  };
 @end
