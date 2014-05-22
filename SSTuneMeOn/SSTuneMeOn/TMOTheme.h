@@ -20,5 +20,12 @@
 - (void) skinNotesPickerView: (UIPickerView*) pickerView;
 - (void) skinNotesPickerLabel: (UILabel*) label;
 - (void) skinSelectedNotesPickerLabel: (UILabel*) label;
+- (UIImage*) iconForSixStringsWithIndex: (NSInteger) index;
+- (UIImage*) iconFourStringsWithIndex: (NSInteger) index;
+- (UIImage*) noteIconForNoteWithName: (NSString*) noteName;
+- (UIImage*) highlightedNoteIconForNoteWithName: (NSString*) noteName;
+- (void) skinFrequencyLabel: (UILabel*) label;
+- (NSAttributedString*) attributedStringForFrequencyLabelWithString:
+    (NSString*) string;
 
 @end

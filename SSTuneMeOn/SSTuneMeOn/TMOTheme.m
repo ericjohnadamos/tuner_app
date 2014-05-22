@@ -60,4 +60,40 @@
   /* TODO: Implement default */
 }
 
+- (UIImage*) iconForSixStringsWithIndex: (NSInteger) index
+{
+  /* TODO: Implement default */
+  return nil;
+}
+
+- (UIImage*) iconFourStringsWithIndex: (NSInteger) index
+{
+  /* TODO: Implement default */
+  return nil;
+}
+
+- (UIImage*) noteIconForNoteWithName: (NSString*) noteName
+{
+  /* TODO: Implement default */
+  return nil;
+}
+
+- (UIImage*) highlightedNoteIconForNoteWithName: (NSString*) noteName
+{
+  /* TODO: Implement default */
+  return nil;
+}
+
+- (void) skinFrequencyLabel: (UILabel*) label
+{
+  /* TODO: Implement default */
+}
+
+- (NSAttributedString*) attributedStringForFrequencyLabelWithString:
+    (NSString*) string
+{
+  /* TODO: Implement default */
+  return nil;
+}
+
 @end
