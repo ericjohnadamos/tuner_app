@@ -30,4 +30,16 @@ extern CGFloat const kThemeNotesPickerTitleFontSizeSelected;
 /* Note strings icons */
 extern NSString* const kThemeSixStringImages[];
 extern NSString* const kThemeFourStringImages[];
+
+/* Note icon images */
+extern NSString* const kThemeNoteIconImageNameA;
+extern NSString* const kThemeNoteIconImageNameB;
+extern NSString* const kThemeNoteIconImageNameD;
+extern NSString* const kThemeNoteIconImageNameE;
+extern NSString* const kThemeNoteIconImageNameG;
+extern NSString* const kThemeNoteIconTunedImageNameA;
+extern NSString* const kThemeNoteIconTunedImageNameB;
+extern NSString* const kThemeNoteIconTunedImageNameD;
+extern NSString* const kThemeNoteIconTunedImageNameE;
+extern NSString* const kThemeNoteIconTunedImageNameG;
 @end

@@ -44,4 +44,16 @@ NSString* const kThemeFourStringImages[]
     @"icn_bass_string_3",
     @"icn_bass_string_4"
   };
+
+/* Note icon images */
+NSString* const kThemeNoteIconImageNameA = @"note_A_untuned";
+NSString* const kThemeNoteIconImageNameB = @"note_B_untuned";
+NSString* const kThemeNoteIconImageNameD = @"note_D_untuned";
+NSString* const kThemeNoteIconImageNameE = @"note_E_untuned";
+NSString* const kThemeNoteIconImageNameG = @"note_G_untuned";
+NSString* const kThemeNoteIconTunedImageNameA = @"note_A_tuned";
+NSString* const kThemeNoteIconTunedImageNameB = @"note_B_tuned";
+NSString* const kThemeNoteIconTunedImageNameD = @"note_D_tuned";
+NSString* const kThemeNoteIconTunedImageNameE = @"note_E_tuned";
+NSString* const kThemeNoteIconTunedImageNameG = @"note_G_tuned";
 @end
