@@ -18,6 +18,7 @@
 #import "TMOStandardTheme.h"
 #import "TMONoteSelectorView.h"
 #import "TMOFrequencyListener.h"
+#import "TMOTunerViewController.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -26,6 +27,7 @@ static const CGFloat kAnimationDuration = 0.35f;
 static const CGFloat kNavBarHeight = 44.0f;
 static const CGFloat kNavButtonHeight = 44.0f;
 static const CGFloat kNavButtonWidth = 44.0f;
+static const CGFloat kTunerViewHeight = 171.0f;;
 
 @interface TMOMainViewController ()
   <TMOFrequencyListener,
@@ -41,6 +43,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 @property (nonatomic, retain) UIButton* helpButton;
 @property (nonatomic, retain) UIButton* notesButton;
 @property (nonatomic, retain) TMONoteSelectorView* notesSelectorView;
+@property (nonatomic, retain) TMOTunerViewController* tunerViewController;
 
 @property (nonatomic, retain) UILabel* frequencyLabel;
 @property (nonatomic, retain) UILabel* hertzLabel;
@@ -60,6 +63,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
 @synthesize titleLabel = m_titleLabel;
 @synthesize notesButton = m_notesButton;
 @synthesize notesSelectorView = m_notesSelectorView;
+@synthesize tunerViewController = m_tunerViewController;
 
 @synthesize frequencyLabel = m_frequencyLabel;
 @synthesize hertzLabel = m_hertzLabel;
@@ -82,6 +86,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
   self.helpButton = nil;
   self.notesButton = nil;
   self.notesSelectorView = nil;
+  self.tunerViewController = nil;
   
   self.frequencyLabel = nil;
   self.hertzLabel = nil;
@@ -128,6 +133,10 @@ static const CGFloat kNavButtonWidth = 44.0f;
   [self.navBarView addSubview: self.helpButton];
   [self.navBarView addSubview: self.notesButton];
   [self.view addSubview: self.navBarView];
+  
+  /* Add tuner view */
+  [self addChildViewController: self.tunerViewController];
+  [self.view addSubview: self.tunerViewController.view];
   
   [self.view addSubview: self.frequencyLabel];
   [self.view addSubview: self.hertzLabel];
@@ -278,6 +287,23 @@ static const CGFloat kNavButtonWidth = 44.0f;
   return m_notesSelectorView;
 }
 
+- (TMOTunerViewController*) tunerViewController
+{
+  if (m_tunerViewController == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    CGFloat statusBarHeight
+      = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGRect frame = CGRectMake(0.0f,
+                              kNavBarHeight + statusBarHeight,
+                              viewSize.width,
+                              kTunerViewHeight);
+    m_tunerViewController
+      = [[TMOTunerViewController alloc] initWithFrame: frame];
+  }
+  return m_tunerViewController;
+}
+
 - (UILabel*) frequencyLabel
 {
   if (m_frequencyLabel == nil)
@@ -369,6 +395,8 @@ static const CGFloat kNavButtonWidth = 44.0f;
     
     [self performSelectorInBackground: @selector(updateFrequencyLabel)
                            withObject: nil];
+    
+    [self.tunerViewController frequencyChangedWithValue: newFrequency];
   }
 }
 
@@ -421,7 +449,7 @@ static const CGFloat kNavButtonWidth = 44.0f;
             didSelectNote: (TMONote*)             note
             fromNoteGroup: (TMONoteGroup*)        noteGroup
 {
-  /* TODO handle newly selected note */
+  [self.tunerViewController updateWithNote: note noteGroup: noteGroup];
 }
 
 - (void) noteSelectorViewDidDismiss: (TMONoteSelectorView*) noteSelectorView
