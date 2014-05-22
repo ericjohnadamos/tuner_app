@@ -134,6 +134,7 @@ static const CGFloat kTuneModerate = 0.05f;
   if (m_greenColor == nil)
   {
     m_greenColor = [UIColor colorWithHexString: @"#00D800"];
+    [m_greenColor retain];
   }
   return m_greenColor;
 }
@@ -143,6 +144,7 @@ static const CGFloat kTuneModerate = 0.05f;
   if (m_orangeColor == nil)
   {
     m_orangeColor = [UIColor colorWithHexString: @"#EB8520"];
+    [m_orangeColor retain];
   }
   return m_orangeColor;
 }
@@ -152,6 +154,7 @@ static const CGFloat kTuneModerate = 0.05f;
   if (m_redColor == nil)
   {
     m_redColor = [UIColor colorWithHexString: @"#D80000"];
+    [m_redColor retain];
   }
   return m_redColor;
 }
