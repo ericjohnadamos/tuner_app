@@ -21,6 +21,7 @@
 @property (nonatomic, retain) CALayer* containerLayer;
 @property (nonatomic, assign) CGFloat target;
 @property (nonatomic, assign) CGFloat current;
+@property (nonatomic, assign) CGFloat currentSpeed;
 @property (nonatomic, retain) NSTimer* timer;
 @property (nonatomic, assign) UIColor* greenColor;
 @property (nonatomic, assign) UIColor* orangeColor;
@@ -38,6 +39,7 @@ static const CGFloat kCenterPointX = 160.0f;
 static const CGFloat kCenterPointY= 0.0f;
 
 static const CGFloat kBaseSpeed =  0.005f;
+static const CGFloat kAcceleration =  1.3f;
 static const CGFloat kUpdateRate = 1 / 60.0f;
 static const CGFloat kStartingAngle = 60.0f;
 static const CGFloat kBaseShadowRadius = 4.0f;
@@ -193,12 +195,19 @@ static const CGFloat kTuneModerate = 0.1f;
 
 - (void) updateToVariance: (CGFloat) variance
 {
-  self.target = variance;
+  if (!((self.current > variance && self.current > self.target)
+      || (self.current < variance && self.current < variance)))
+  {
+    self.currentSpeed = 0;
+  }
+  
+  self.target = MAX(-1.0f, variance);
+  self.target = MIN(1.0f, variance);
 }
 
 - (void) start
 {
-  NSTimer* timer = [NSTimer timerWithTimeInterval: 1 / 60.0f
+  NSTimer* timer = [NSTimer timerWithTimeInterval: kUpdateRate
                                            target: self
                                          selector: @selector(update)
                                          userInfo: nil
@@ -233,24 +242,42 @@ static const CGFloat kTuneModerate = 0.1f;
 {
   CGFloat rand =  arc4random() % 200;
   rand = rand - 100.0f;
-  rand = rand == 0? rand : rand / 100.0f;
-  self.target = rand;
+  rand = rand == 0 ? rand : rand / 100.0f;
+  [self updateToVariance: rand];
 }
 
 - (void) update
 {
   /* Speed changes with respect to distance */
-  CGFloat speed = kBaseSpeed + kBaseSpeed * ABS(self.current - self.target);
-
+  if (self.currentSpeed == 0)
+  {
+    self.currentSpeed = kBaseSpeed;
+  }
+  else
+  {
+    self.currentSpeed *= kAcceleration;
+  }
+  
   /* Compute change in percent */
-  CGFloat percentDelta = self.current < self.target ?
-    self.current + speed : self.current - speed;
+  CGFloat percentDelta = 0;
+  
+  if (self.current < self.target)
+  {
+    percentDelta = MIN(self.target, self.current + self.currentSpeed);
+  }
+  else
+  {
+    percentDelta = MAX(self.target, self.current - self.currentSpeed);
+  }
+  
+  if (percentDelta == self.target)
+  {
+    self.currentSpeed = 0;
+  }
 
   /* Save for next iteration */
   self.current = percentDelta;
 
-  percentDelta = MAX(-1.0f, percentDelta);
-  percentDelta = MIN(1.0f, percentDelta);
   CGFloat relPercentage = ABS(percentDelta);
 
   /* Translate percent delta to angles */
@@ -263,23 +290,27 @@ static const CGFloat kTuneModerate = 0.1f;
 
   CGPoint position = CGPointMake(x, y);
   CGFloat opacity = 1.0f - (kOpacityConstant * relPercentage);
-  UIColor* color = [self colorFromPercentDelta: percentDelta];
   CGFloat shadowRadius
     = kBaseShadowRadius + kShadowRadiusConstant * relPercentage;
-  CATransform3D transform
-    = CATransform3DRotate(CATransform3DIdentity,
-                          DEGREES_TO_RADIANS(pinDeg),
-                          0.0f,
-                          0.0f,
-                          1.0f);
+  
+  @autoreleasepool
+  {
+    UIColor* color = [self colorFromPercentDelta: percentDelta];
+    CATransform3D transform
+      = CATransform3DRotate(CATransform3DIdentity,
+                            DEGREES_TO_RADIANS(pinDeg),
+                            0.0f,
+                            0.0f,
+                            1.0f);
 
-  /* Apply changes */
-  self.pinView.layer.transform = transform;
-  self.pinView.layer.position = position;
-  self.pinView.layer.opacity = opacity;
-  self.pinView.backgroundColor = color;
-  self.containerLayer.shadowColor = color.CGColor;
-  self.containerLayer.shadowRadius = shadowRadius;
+    /* Apply changes */
+    self.pinView.layer.transform = transform;
+    self.pinView.layer.position = position;
+    self.pinView.layer.opacity = opacity;
+    self.pinView.backgroundColor = color;
+    self.containerLayer.shadowColor = color.CGColor;
+    self.containerLayer.shadowRadius = shadowRadius;
+  }
 }
 
 @end
