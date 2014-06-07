@@ -128,12 +128,13 @@ static const CGFloat kAnimationDuration = 0.35f;
   }
 }
 
-- (void) didFinishSplashView
+- (void) animationDidStop: (CAAnimation*) anim
+                 finished: (BOOL)flag
 {
   if ([self.delegate respondsToSelector:
-       @selector(splashViewControllerDidFinishDisplayViews:)])
+       @selector(splashViewControllerDidFinishAnimation:)])
   {
-    [self.delegate splashViewControllerDidFinishDisplayViews: self];
+    [self.delegate splashViewControllerDidFinishAnimation: self];
   }
 }
 

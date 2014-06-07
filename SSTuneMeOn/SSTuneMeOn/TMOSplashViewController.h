@@ -16,26 +16,16 @@
 @optional
 
 /**
- * By default it is set to YES.
- *
- * returns BOOL as isAnimated
- */
-- (BOOL) displayWithAnimations;
-
-/**
  * Additional methods that will make after splash animations
  *
  * param controller as the instance of the splash view controller
  *
  * no return
  */
-- (void) splashViewControllerDidFinishDisplayViews:
-(TMOSplashViewController*) controller;
+- (void) splashViewControllerDidFinishAnimation:
+  (TMOSplashViewController*) controller;
 
 @end
-
-@end
-
 
 @interface TMOSplashViewController : UIViewController
 
