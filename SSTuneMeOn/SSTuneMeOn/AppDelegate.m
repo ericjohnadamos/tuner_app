@@ -12,13 +12,10 @@
 #import "TMOUserSettings.h"
 
 #import "TMOMainViewController.h"
-#import "TMOSplashView.h"
 
-@interface AppDelegate () <TMOSplashViewDelegate>
+@interface AppDelegate ()
 
 @property (nonatomic, retain) TMOMainViewController* mainController;
-
-@property (nonatomic, retain) TMOSplashView* splashView;
 
 @end
 
@@ -26,7 +23,6 @@
 
 @synthesize window = m_window;
 @synthesize mainController = m_mainController;
-@synthesize splashView = m_splashView;
 
 #pragma mark - Memory deallocation
 
@@ -34,7 +30,6 @@
 {
   self.window = nil;
   self.mainController = nil;
-  self.splashView = nil;
   
   [super dealloc];
 }
@@ -67,26 +62,6 @@
   return m_window;
 }
 
-- (TMOSplashView*) splashView
-{
-  if (m_splashView == nil)
-  {
-    CGRect windowBounds = self.window.bounds;
-    
-    UIImageView* firstImageView = [[UIImageView alloc] initWithImage:
-                                   [UIImage imageNamed: @"splash-one"]];
-    firstImageView.frame = windowBounds;
-    
-    TMOSplashView* splashView
-      = [[TMOSplashView alloc] initWithViews: @[[firstImageView autorelease]]];
-    splashView.delegate = self;
-    
-    m_splashView = splashView;
-  }
-  
-  return m_splashView;
-}
-
 #pragma mark - Application lifecycle
 
 - (BOOL)          application: (UIApplication*) application
@@ -113,13 +88,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   
   /* Set the main controller as the root view controller */
   self.window.rootViewController = self.mainController;
-  
-  /* Insert all image views inside the window view */
-  [self.window addSubview: self.splashView];
-  
-  /* Load and animate splash view */
-  [self.splashView renderViews];
-  [self.splashView animateFadeSplashView];
   
   /* Check if the defaults are loaded */
   TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
@@ -154,16 +122,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 - (void) applicationWillTerminate: (UIApplication*) application
 {
   /* TODO: Implement me */
-}
-
-#pragma mark - TMOSplashViewDelegate method
-
-- (void) splashViewDidFinishRenderingViews: (TMOSplashView*) splashView
-{
-  if (self.splashView.superview != nil)
-  {
-    [self.splashView removeFromSuperview];
-  }
 }
 
 @end
