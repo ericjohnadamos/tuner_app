@@ -16,7 +16,6 @@ static const CGFloat kAnimationDuration = 0.35f;
 #pragma mark - Synthesize properties
 
 @synthesize delegate = m_delegate;
-@synthesize datasource = m_datasource;
 
 #pragma mark - Memory management
 
@@ -28,7 +27,6 @@ static const CGFloat kAnimationDuration = 0.35f;
 - (void) dealloc
 {
   self.delegate = nil;
-  self.datasource = nil;
   
   [super dealloc];
 }

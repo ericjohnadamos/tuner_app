@@ -34,35 +34,11 @@
 
 @end
 
-
-@protocol TMOSplashViewDatasource <NSObject>
-
-@required
-
-/**
- * Define the number of views to display
- *
- * returns NSInteger as the number of splash views
- */
-- (NSInteger) numberOfSplashViews;
-
-/**
- * Identify each views given index
- *
- * param controller as the instance of the splash view controller
- * param index as the index of the displayed view
- *
- * returns UIView as the view of the given index
- */
-- (UIView*) splashViewController: (TMOSplashViewController*) controller
-                     viewAtIndex: (NSInteger)                index;
-
 @end
 
 
 @interface TMOSplashViewController : UIViewController
 
 @property (nonatomic, assign) id<TMOSplashViewDelegate> delegate;
-@property (nonatomic, assign) id<TMOSplashViewDatasource> datasource;
 
 @end
