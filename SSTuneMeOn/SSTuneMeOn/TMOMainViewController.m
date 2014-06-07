@@ -19,6 +19,7 @@
 #import "TMONoteSelectorView.h"
 #import "TMOFrequencyListener.h"
 #import "TMOTunerViewController.h"
+#import "TMOSplashViewController.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -32,7 +33,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @interface TMOMainViewController ()
   <TMOFrequencyListener,
    TMOTutorialViewDelegate,
-   TMONoteSelectorViewDelegate>
+   TMONoteSelectorViewDelegate,
+   TMOSplashViewDelegate>
 
 @property (nonatomic, retain) TMOTutorialView* tutorialView;
 
@@ -44,9 +46,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @property (nonatomic, retain) UIButton* notesButton;
 @property (nonatomic, retain) TMONoteSelectorView* notesSelectorView;
 @property (nonatomic, retain) TMOTunerViewController* tunerViewController;
-
-@property (nonatomic, retain) UILabel* frequencyLabel;
-@property (nonatomic, retain) UILabel* hertzLabel;
+@property (nonatomic, retain) TMOSplashViewController* splashController;
+@property (nonatomic, retain) UIImageView* stageView;
 
 @end
 
@@ -64,9 +65,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize notesButton = m_notesButton;
 @synthesize notesSelectorView = m_notesSelectorView;
 @synthesize tunerViewController = m_tunerViewController;
-
-@synthesize frequencyLabel = m_frequencyLabel;
-@synthesize hertzLabel = m_hertzLabel;
+@synthesize splashController = m_splashController;
+@synthesize stageView = m_stageView;
 
 #pragma mark - Memory management
 
@@ -87,9 +87,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.notesButton = nil;
   self.notesSelectorView = nil;
   self.tunerViewController = nil;
-  
-  self.frequencyLabel = nil;
-  self.hertzLabel = nil;
+  self.splashController = nil;
   
   [super dealloc];
 }
@@ -107,26 +105,16 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   
   self.view.backgroundColor = [UIColor blackColor];
   
-  /* Begin calculations of frequency and hertz frames */
-  CGFloat width = 150.0f;
-  CGFloat height = 30.0f;
+  /* Add the stage */
+  [self.view addSubview: self.stageView];
   
-  CGFloat xPointForFrequency = CGRectGetMidX(self.view.bounds) - (width * 0.5f);
-  CGFloat yPointForFrequency = 200.0f;
-  
-  self.frequencyLabel.frame
-    = CGRectMake(xPointForFrequency, yPointForFrequency, width, height);
-  
-  CGFloat xPointForHertz = CGRectGetMaxX(self.frequencyLabel.frame);
-  CGFloat yPointForHertz = 200.0f;
-  
-  self.hertzLabel.frame
-    = CGRectMake(xPointForHertz, yPointForHertz, width, height);
+  [self addChildViewController: self.splashController];
+  [self.view addSubview: self.splashController.view];
   
   /* Load tutorial web view */
   [self.tutorialView loadWebView];
   
-  /* Add as subviews */
+  /* Add subviews */
   
   /* Add fake nav bar*/
   [self.navBarView addSubview: self.titleLabel];
@@ -137,11 +125,11 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   /* Add tuner view */
   [self addChildViewController: self.tunerViewController];
   [self.view addSubview: self.tunerViewController.view];
-  
-  [self.view addSubview: self.frequencyLabel];
-  [self.view addSubview: self.hertzLabel];
   [self.view addSubview: self.notesSelectorView];
   [self.view addSubview: self.tutorialView];
+  
+  self.tunerViewController.view.alpha = 0.0f;
+  self.navBarView.alpha = 0.0f;
   
   /* Manage tutorial view */
   TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
@@ -304,37 +292,30 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   return m_tunerViewController;
 }
 
-- (UILabel*) frequencyLabel
+- (TMOSplashViewController*) splashController
 {
-  if (m_frequencyLabel == nil)
+  if (m_splashController == nil)
   {
-    UILabel* frequencyLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    
-    frequencyLabel.font = [UIFont boldSystemFontOfSize: 24.0f];
-    frequencyLabel.textColor = [UIColor orangeColor];
-    frequencyLabel.textAlignment = NSTextAlignmentRight;
-    
-    m_frequencyLabel = frequencyLabel;
+    m_splashController = [TMOSplashViewController new];
+    m_splashController.delegate = self;
   }
-  
-  return m_frequencyLabel;
+  return m_splashController;
 }
 
-- (UILabel*) hertzLabel
+- (UIImageView*) stageView
 {
-  if (m_hertzLabel == nil)
+  if (m_stageView == nil)
   {
-    UILabel* hertzLabel = [[UILabel alloc] initWithFrame: CGRectZero];
-    
-    hertzLabel.font = [UIFont systemFontOfSize: 20.0f];
-    hertzLabel.textColor = [UIColor orangeColor];
-    hertzLabel.textAlignment = NSTextAlignmentLeft;
-    hertzLabel.text = [TMOLocalizedStrings stringForKey: kTMOHertz];
-    
-    m_hertzLabel = hertzLabel;
+    CGSize viewSize = self.view.frame.size;
+
+    m_stageView = [UIImageView new];
+    m_stageView.image = [UIImage imageNamed: @"stage"];
+    m_stageView.frame = CGRectMake(0.0f,
+                                   viewSize.height - 40.0f,
+                                   viewSize.width,
+                                   40.0f);
   }
-  
-  return m_hertzLabel;
+  return m_stageView;
 }
 
 #pragma mark - Event handlers
@@ -392,20 +373,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   @autoreleasepool
   {
     self.currentFrequency = newFrequency;
-    
-    [self performSelectorInBackground: @selector(updateFrequencyLabel)
-                           withObject: nil];
-    
-    [self.tunerViewController frequencyChangedWithValue: newFrequency];
-  }
-}
 
-- (void) updateFrequencyLabel
-{
-  @autoreleasepool
-  {
-    self.frequencyLabel.text
-      = [NSString stringWithFormat: @"%.f", self.currentFrequency];
+    [self.tunerViewController frequencyChangedWithValue: newFrequency];
   }
 }
 
@@ -456,6 +425,29 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 {
   self.notesButton.enabled = YES;
   [self startListener];
+}
+
+#pragma mark - TMOSplashViewDelegate
+
+- (void) splashViewControllerDidFinishAnimation:
+          (TMOSplashViewController*) controller
+{
+  [self startListener];
+  
+  [UIView animateWithDuration: 0.35f
+                   animations:
+    ^{
+        self.splashController.view.alpha = 0.0f;
+        self.tunerViewController.view.alpha = 1.0f;
+        self.navBarView.alpha = 1.0f;
+     }
+                   completion: ^(BOOL finished)
+    {
+     
+       [self.splashController.view removeFromSuperview];
+       [self.splashController removeFromParentViewController];
+       self.splashController = nil;
+     }];
 }
 
 @end
