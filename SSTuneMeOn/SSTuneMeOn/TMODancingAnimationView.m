@@ -90,4 +90,26 @@
   return m_processQueue;
 }
 
+#pragma mark - Private methods
+
+- (void) animationDidStop: (CAAnimation*) anim
+                 finished: (BOOL)flag
+{
+  if (self.animationQueue.count == 0)
+  {
+    [self.dancerLayer addAnimation: self.defaultAnimation
+                            forKey: @"contents"];
+  }
+  else
+  {
+    CAKeyframeAnimation* animation = [self.animationQueue lastObject];
+    
+    /* Apply animation and remove from queue */
+    [self.dancerLayer addAnimation: animation
+                            forKey: @"contents"];
+    [self.animationQueue removeLastObject];
+    
+  }
+}
+
 @end
