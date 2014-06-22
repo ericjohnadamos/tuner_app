@@ -8,6 +8,8 @@
 
 #import "TMODancingAnimationView.h"
 #import <CoreGraphics/CoreGraphics.h>
+#import "TMOAnimationHelper.h"
+
 @interface TMODancingAnimationView ()
 
 @property (nonatomic, retain) CALayer* dancerLayer;
@@ -52,6 +54,40 @@
     self.defaultAnimation.delegate = self;
   }
   return self;
+}
+
+#pragma mark - Getters
+
+- (CALayer*) dancerLayer
+{
+  if (m_dancerLayer == nil)
+  {
+    CGFloat width = 320.0f;
+    CGFloat height = 333.0f;
+    
+    m_dancerLayer = [CALayer layer];
+    m_dancerLayer.frame = CGRectMake(0.0f, 0.0f, width, height);
+  }
+  return m_dancerLayer;
+}
+
+- (NSMutableArray*) animationQueue
+{
+  if (m_animationQueue == nil)
+  {
+    m_animationQueue = [NSMutableArray new];
+  }
+  return m_animationQueue;
+}
+
+- (dispatch_queue_t) processQueue
+{
+  if (m_processQueue == nil)
+  {
+    m_processQueue = dispatch_queue_create("TMODancingAnimationQueueName",
+                                           DISPATCH_QUEUE_SERIAL);
+  }
+  return m_processQueue;
 }
 
 @end
