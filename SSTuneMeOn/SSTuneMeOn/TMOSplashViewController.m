@@ -8,6 +8,7 @@
 
 #import "TMOSplashViewController.h"
 #import <CoreGraphics/CoreGraphics.h>
+#import "TMOAnimationHelper.h"
 
 @interface TMOSplashViewController ()
 
@@ -16,7 +17,6 @@
 @property (nonatomic, retain) UIImageView* stageView;
 @property (nonatomic, retain) UIImageView* logoView;
 @property (nonatomic, retain) UIView* backgroundView;
-@property (nonatomic, retain) NSArray* animationImages;
 
 @end
 
@@ -31,7 +31,6 @@
 @synthesize stageView = m_stageView;
 @synthesize logoView = m_logoView;
 @synthesize backgroundView = m_backgroundView;
-@synthesize animationImages = m_animationImages;
 
 #pragma mark - Memory management
 
@@ -48,7 +47,6 @@
   self.stageView = nil;
   self.logoView = nil;
   self.backgroundView = nil;
-  self.animationImages = nil;
   
   [super dealloc];
 }
@@ -96,7 +94,6 @@
     
     m_dancerLayer = [CALayer layer];
     m_dancerLayer.frame = CGRectMake(0.0f, 0.0f, width, height);
-    m_dancerLayer.contents = (id) ((UIImage*) self.animationImages[0]).CGImage;
   }
   return m_dancerLayer;
 }
@@ -149,99 +146,17 @@
   return m_backgroundView;
 }
 
-- (NSArray*) animationImages
-{
-  if (m_animationImages == nil)
-  {
-    m_animationImages
-      = [[NSArray alloc]
-          initWithArray:
-            @[[UIImage imageNamed: @"intro_001.png"],
-              [UIImage imageNamed: @"intro_002.png"],
-              [UIImage imageNamed: @"intro_003.png"],
-              [UIImage imageNamed: @"intro_004.png"],
-              [UIImage imageNamed: @"intro_005.png"],
-              [UIImage imageNamed: @"intro_006.png"],
-              [UIImage imageNamed: @"intro_007.png"],
-              [UIImage imageNamed: @"intro_008.png"],
-              [UIImage imageNamed: @"intro_009.png"],
-              [UIImage imageNamed: @"intro_010.png"],
-              [UIImage imageNamed: @"intro_011.png"],
-              [UIImage imageNamed: @"intro_012.png"],
-              [UIImage imageNamed: @"intro_013.png"],
-              [UIImage imageNamed: @"intro_014.png"],
-              [UIImage imageNamed: @"intro_015.png"],
-              [UIImage imageNamed: @"intro_016.png"],
-              [UIImage imageNamed: @"intro_017.png"],
-              [UIImage imageNamed: @"intro_018.png"],
-              [UIImage imageNamed: @"intro_019.png"],
-              [UIImage imageNamed: @"intro_020.png"],
-              [UIImage imageNamed: @"intro_021.png"],
-              [UIImage imageNamed: @"intro_022.png"],
-              [UIImage imageNamed: @"intro_023.png"],
-              [UIImage imageNamed: @"intro_024.png"],
-              [UIImage imageNamed: @"intro_025.png"],
-              [UIImage imageNamed: @"intro_026.png"],
-              [UIImage imageNamed: @"intro_027.png"],
-              [UIImage imageNamed: @"intro_028.png"],
-              [UIImage imageNamed: @"intro_029.png"],
-              [UIImage imageNamed: @"intro_030.png"],
-              [UIImage imageNamed: @"intro_031.png"],
-              [UIImage imageNamed: @"intro_032.png"],
-              [UIImage imageNamed: @"intro_033.png"],
-              [UIImage imageNamed: @"intro_034.png"],
-              [UIImage imageNamed: @"intro_035.png"],
-              [UIImage imageNamed: @"intro_036.png"],
-              [UIImage imageNamed: @"intro_037.png"],
-              [UIImage imageNamed: @"intro_038.png"],
-              [UIImage imageNamed: @"intro_039.png"],
-              [UIImage imageNamed: @"intro_040.png"],
-              [UIImage imageNamed: @"intro_041.png"],
-              [UIImage imageNamed: @"intro_042.png"],
-              [UIImage imageNamed: @"intro_043.png"],
-              [UIImage imageNamed: @"intro_044.png"],
-              [UIImage imageNamed: @"intro_045.png"],
-              [UIImage imageNamed: @"intro_046.png"],
-              [UIImage imageNamed: @"intro_047.png"],
-              [UIImage imageNamed: @"intro_048.png"],
-              [UIImage imageNamed: @"intro_049.png"],
-              [UIImage imageNamed: @"intro_050.png"],
-              [UIImage imageNamed: @"intro_051.png"],
-              [UIImage imageNamed: @"intro_052.png"],
-              [UIImage imageNamed: @"intro_053.png"],
-              [UIImage imageNamed: @"intro_054.png"],
-              [UIImage imageNamed: @"intro_055.png"],
-              [UIImage imageNamed: @"intro_056.png"],
-              [UIImage imageNamed: @"intro_057.png"],
-              [UIImage imageNamed: @"intro_058.png"],
-              [UIImage imageNamed: @"intro_059.png"]]];
-  }
-  return m_animationImages;
-}
-
 #pragma mark - Private methods
 
 - (void) startAnimation
 {
   CAKeyframeAnimation* animationSequence
-    = [CAKeyframeAnimation animationWithKeyPath: @"contents"];
-  animationSequence.calculationMode = kCAAnimationLinear;
-  animationSequence.autoreverses = NO;
-  animationSequence.duration = 2.00;
-  animationSequence.repeatCount = 0;
-  animationSequence.fillMode = kCAFillModeBoth;
-  animationSequence.removedOnCompletion = NO;
+    = [[TMOAnimationHelper sharedHelper] animationForKey: kAnimationKeySplash];
   
-  NSMutableArray* animationSequenceArray = [[NSMutableArray alloc] init];
-  [animationSequenceArray autorelease];
-  
-  for (UIImage* image in self.animationImages)
-  {
-    [animationSequenceArray addObject:(id)image.CGImage];
-  }
-  
-  animationSequence.values = animationSequenceArray;
   animationSequence.delegate = self;
+  
+  /* Overwrite duration too make it slower to have a dramatic effect */
+  animationSequence.duration = 3.0f;
   
   [self.dancerLayer addAnimation: animationSequence
                           forKey: @"contents"];

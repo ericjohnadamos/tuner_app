@@ -89,7 +89,7 @@ static const CGFloat kTuneModerate = 0.1f;
   if (m_meterBGView == nil)
   {
     m_meterBGView = [UIImageView new];
-    m_meterBGView.image = [UIImage imageNamed: @"tune_indicator"];
+    m_meterBGView.image = [UIImage imageNamed: @"tune_indicator.png"];
     m_meterBGView.frame = CGRectMake(0.0f, 0.0f, kViewWidth, kViewHeight);
   }
   return m_meterBGView;

@@ -10,4 +10,8 @@
 
 @interface TMODancingAnimationView : UIView
 
+- (void) startAnimating;
+
+- (void) enqueueAnimationWithKey: (NSString*) animationKey;
+
 @end
