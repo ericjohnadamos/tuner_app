@@ -37,15 +37,20 @@
   [super dealloc];
 }
 
+#pragma mark - Intialisation
+
 - (id) initWithFrame: (CGRect) frame
 {
-  self = [super initWithFrame:frame];
-  
-  if (self != nil)
+  if (self = [super initWithFrame: frame])
   {
-    /* TODO: Implement me */
+    [self.layer addSublayer: self.dancerLayer];
+    
+    self.defaultAnimation
+      = [[TMOAnimationHelper sharedHelper]
+          animationForKey: kAnimationKeyDefault];
+    
+    self.defaultAnimation.delegate = self;
   }
-  
   return self;
 }
 
