@@ -13,6 +13,8 @@
 
 #import "TMOMainViewController.h"
 
+#import "TMOAnimationHelper.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, retain) TMOMainViewController* mainController;
@@ -69,6 +71,8 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 {
   [[UIApplication sharedApplication] setStatusBarStyle:
    UIStatusBarStyleLightContent];
+  
+  [[TMOAnimationHelper sharedHelper] loadAllAnimations];
   
   /* Getting the interface instance */
   RIOInterface* rioRef = [RIOInterface sharedInstance];
