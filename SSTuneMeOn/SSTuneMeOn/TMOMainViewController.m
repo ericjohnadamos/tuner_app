@@ -20,6 +20,8 @@
 #import "TMOFrequencyListener.h"
 #import "TMOTunerViewController.h"
 #import "TMOSplashViewController.h"
+#import "TMODancingAnimationView.h"
+#import "TMOAnimationHelper.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -48,6 +50,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @property (nonatomic, retain) TMOTunerViewController* tunerViewController;
 @property (nonatomic, retain) TMOSplashViewController* splashController;
 @property (nonatomic, retain) UIImageView* stageView;
+@property (nonatomic, retain) TMODancingAnimationView* animationView;
 
 @end
 
@@ -67,6 +70,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize tunerViewController = m_tunerViewController;
 @synthesize splashController = m_splashController;
 @synthesize stageView = m_stageView;
+@synthesize animationView = m_animationView;
 
 #pragma mark - Memory management
 
@@ -88,6 +92,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.notesSelectorView = nil;
   self.tunerViewController = nil;
   self.splashController = nil;
+  self.animationView = nil;
   
   [super dealloc];
 }
@@ -107,6 +112,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   
   /* Add the stage */
   [self.view addSubview: self.stageView];
+  [self.view addSubview: self.animationView];
+  [self.animationView startAnimating];
   
   [self addChildViewController: self.splashController];
   [self.view addSubview: self.splashController.view];
@@ -318,6 +325,28 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   return m_stageView;
 }
 
+- (TMODancingAnimationView*) animationView
+{
+  if (m_animationView == nil)
+  {
+    CGSize viewSize = self.view.frame.size;
+    CGFloat height = 243.0f;
+    
+    CGFloat statusBarHeight
+      = [UIApplication sharedApplication].statusBarFrame.size.height;
+    
+    CGRect frame
+      = CGRectMake(0.0f,
+                   viewSize.height - height
+                      - kNavBarHeight - statusBarHeight - 20.0f,
+                   viewSize.width,
+                   height);
+    
+    m_animationView = [[TMODancingAnimationView alloc] initWithFrame: frame];
+  }
+  return m_animationView;
+}
+
 #pragma mark - Event handlers
 
 - (void) didTapHelpButton
@@ -432,8 +461,6 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 - (void) splashViewControllerDidFinishAnimation:
           (TMOSplashViewController*) controller
 {
-  [self startListener];
-  
   [UIView animateWithDuration: 0.35f
                    animations:
     ^{
