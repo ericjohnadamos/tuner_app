@@ -112,4 +112,11 @@
   }
 }
 
+#pragma mark - Public methods
+
+- (void) startAnimating
+{
+  [self.dancerLayer addAnimation: self.defaultAnimation
+                          forKey: @"contents"];
+}
 @end

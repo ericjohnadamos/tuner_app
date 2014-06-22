@@ -10,4 +10,6 @@
 
 @interface TMODancingAnimationView : UIView
 
+- (void) startAnimating;
+
 @end
