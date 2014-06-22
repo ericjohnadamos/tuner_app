@@ -4160,6 +4160,8 @@
 		0AA358101916456E000A5948 /* TMOAnalogMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOAnalogMeterView.m; sourceTree = "<group>"; };
 		0AA57AF219148716009A842F /* TMONoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteSelectorView.h; sourceTree = "<group>"; };
 		0AA57AF319148716009A842F /* TMONoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteSelectorView.m; sourceTree = "<group>"; };
+		0AAF864A194B221000700DBF /* TMOAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOAnimationHelper.h; sourceTree = "<group>"; };
+		0AAF864B194B221000700DBF /* TMOAnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOAnimationHelper.m; sourceTree = "<group>"; };
 		0AB1D0BD1911C967002E2BDF /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		0AB1D0BE1911C967002E2BDF /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		0AB919D8191BB99200410C00 /* TMOTunerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTunerViewController.h; sourceTree = "<group>"; };
@@ -6395,6 +6397,15 @@
 			path = dance_07;
 			sourceTree = "<group>";
 		};
+		0AAF8649194B205F00700DBF /* Animation Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0AAF864A194B221000700DBF /* TMOAnimationHelper.h */,
+				0AAF864B194B221000700DBF /* TMOAnimationHelper.m */,
+			);
+			name = "Animation Helper";
+			sourceTree = "<group>";
+		};
 		0AB1D0BC1911C814002E2BDF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -6600,6 +6611,7 @@
 		2578738618F16C8F00AC3D56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0AAF8649194B205F00700DBF /* Animation Helper */,
 				0AB919D7191BB7CF00410C00 /* Tuner View */,
 				0AF1ADED1913F5A100DF37B5 /* Notes Organizer */,
 				0AF1ADE61913DBD000DF37B5 /* Data */,
@@ -8868,6 +8880,7 @@
 				253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */,
 				2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
+				0AAF864C194B221000700DBF /* TMOAnimationHelper.m in Sources */,
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
