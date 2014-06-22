@@ -25,6 +25,18 @@
 @synthesize defaultAnimation = m_defaultAnimation;
 @synthesize animationQueue = m_animationQueue;
 @synthesize processQueue = m_processQueue;
+
+#pragma mark - Memory management
+
+- (void) dealloc
+{
+  self.dancerLayer = nil;
+  self.defaultAnimation = nil;
+  self.animationQueue = nil;
+
+  [super dealloc];
+}
+
 - (id) initWithFrame: (CGRect) frame
 {
   self = [super initWithFrame:frame];
