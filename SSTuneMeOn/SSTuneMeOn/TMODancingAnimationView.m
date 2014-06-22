@@ -119,4 +119,16 @@
   [self.dancerLayer addAnimation: self.defaultAnimation
                           forKey: @"contents"];
 }
+
+- (void) enqueueAnimationWithKey: (NSString*) animationKey
+{
+  CAKeyframeAnimation* animation
+    = [[TMOAnimationHelper sharedHelper]
+        animationForKey: animationKey];
+  
+  animation.delegate = self;
+  
+  [self.animationQueue addObject: animation];
+}
+
 @end

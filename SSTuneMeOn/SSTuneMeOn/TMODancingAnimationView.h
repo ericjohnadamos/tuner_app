@@ -12,4 +12,6 @@
 
 - (void) startAnimating;
 
+- (void) enqueueAnimationWithKey: (NSString*) animationKey;
+
 @end
