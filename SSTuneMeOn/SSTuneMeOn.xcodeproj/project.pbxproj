@@ -2111,6 +2111,7 @@
 		2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578739018F18E6E00AC3D56 /* TMOUserSettings.m */; };
 		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
+		25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -4256,6 +4257,8 @@
 		2579DC6318D4009300B5DEB0 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		2579DC6418D4009300B5DEB0 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
 		2579DC6518D4009300B5DEB0 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		25DC5ECE195B3DED00F907EA /* TMOProgressDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressDot.h; sourceTree = "<group>"; };
+		25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressDot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -6482,6 +6485,8 @@
 				0AA57AF319148716009A842F /* TMONoteSelectorView.m */,
 				0AA3580F1916456E000A5948 /* TMOAnalogMeterView.h */,
 				0AA358101916456E000A5948 /* TMOAnalogMeterView.m */,
+				25DC5ECE195B3DED00F907EA /* TMOProgressDot.h */,
+				25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -8882,6 +8887,7 @@
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				0AAF864C194B221000700DBF /* TMOAnimationHelper.m in Sources */,
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
+				25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
 				0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */,
