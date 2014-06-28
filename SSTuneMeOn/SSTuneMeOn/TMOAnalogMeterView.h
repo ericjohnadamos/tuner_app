@@ -18,5 +18,6 @@
 - (void) start;
 - (void) stop;
 - (void) startTest;
+- (UIColor*) colorFromPercentDelta: (CGFloat) percentDelta;
 
 @end
