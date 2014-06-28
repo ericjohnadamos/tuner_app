@@ -20,6 +20,8 @@
 
 @end
 
+CGFloat kTuneVrianceThreshold = 0.1;
+
 static TMOUserSettings* sm_userSettings = nil;
 
 static NSString* kIsDefaultsLoaded = @"IsDefaultsLoaded";

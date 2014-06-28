@@ -25,6 +25,7 @@
 @property (nonatomic, retain) UILabel* frequencyLabel;
 @property (nonatomic, assign) BOOL isTuned;
 @property (nonatomic, assign) CGFloat currentFrequency;
+@property (nonatomic, assign) CGFloat currentVariance;
 @property (nonatomic, retain) NSTimer* timer;
 
 @end
@@ -246,6 +247,10 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
     {
       self.frequencyLabel.attributedText
         = [self.theme attributedStringForFrequencyLabelWithString: freqText];
+      
+      self.frequencyLabel.textColor
+        = [self.analogMeterView colorFromPercentDelta: self.currentVariance];
+      
     });
   }
 }
@@ -282,9 +287,21 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 - (void) frequencyChangedWithValue: (float) newFrequency
 {
   self.currentFrequency = newFrequency;
-  [self.analogMeterView
-    updateToVariance: [self varianceForFrequency: self.currentFrequency
-                             withTargetFrequency: self.note.frequency]];
+  
+  CGFloat newVariance = [self varianceForFrequency: self.currentFrequency
+                               withTargetFrequency: self.note.frequency];
+  [self.analogMeterView updateToVariance: newVariance];
+  self.currentVariance = newVariance;
+  
+  BOOL newIsTuned = (newVariance <= kTuneVrianceThreshold);
+  
+  if (newIsTuned != self.isTuned)
+  {
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+     [self updateNoteIcon];
+    });
+  }
 }
 
 #pragma mark - Public methods
@@ -294,9 +311,12 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 {
   self.note = note;
   self.noteGroup = noteGroup;
-  
-  [self updateNoteIcon];
-  [self updateStringIcon];
+
+  dispatch_async(dispatch_get_main_queue(), ^(void)
+  {
+    [self updateNoteIcon];
+    [self updateStringIcon];
+  });
 }
 
 @end
