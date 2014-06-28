@@ -473,7 +473,6 @@ static const CGFloat kTunerViewHeight = 171.0f;;
      
        [self.splashController.view removeFromSuperview];
        [self.splashController removeFromParentViewController];
-       self.splashController = nil;
      }];
 }
 
