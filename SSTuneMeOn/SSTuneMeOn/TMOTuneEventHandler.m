@@ -31,7 +31,7 @@ static BOOL sm_isActive = YES;
       [self varianceForFrequency: newFrequency
              withTargetFrequency: targetNote.frequency];
   
-    BOOL isTuned = (newVariance <= kTuneVrianceThreshold);
+    BOOL isTuned = (ABS(newVariance) <= kTuneVrianceThreshold);
     
     if (isTuned)
     {
