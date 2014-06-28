@@ -524,7 +524,7 @@ static const CGFloat kStringIconHeight = 21.0f;
       break;
   }
   pickerLabel.text = title;
-  return pickerLabel;
+  return [pickerLabel autorelease];
 }
 
 @end

@@ -53,6 +53,7 @@ static TMONotesOrganizer* sm_sharedInstance;
     TMONoteGroup* acousticGroup
       = [[TMONoteGroup alloc] initWithGroupName: acousticGroupName
                                           notes: acousticNotes];
+    [acousticGroup autorelease];
     
     /* Acoustic */
     NSString* bassGroupName
@@ -65,6 +66,7 @@ static TMONotesOrganizer* sm_sharedInstance;
     TMONoteGroup* bassGroup
       = [[TMONoteGroup alloc] initWithGroupName: bassGroupName
                                           notes: bassNotes];
+    [bassGroup autorelease];
     
     NSArray* noteGroups = @[acousticGroup, bassGroup];
     m_noteGroups = [noteGroups retain];
