@@ -228,7 +228,7 @@ static TMOStandardTheme* sm_theme = nil;
                        value: unitColor
                        range: unitRange];
   }
-  return attrString;
+  return [attrString autorelease];
 }
 
 @end
