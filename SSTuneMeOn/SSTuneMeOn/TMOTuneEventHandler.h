@@ -13,6 +13,6 @@ typedef void(^TuneEventCallback)(void);
 
 @interface TMOTuneEventHandler : NSObject <TMOFrequencyListener>
 
-@property (nonatomic, assign) TuneEventCallback callback;
+@property (nonatomic, copy) TuneEventCallback callback;
 
 @end
