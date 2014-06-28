@@ -11,6 +11,8 @@
 @class TMONote;
 @class TMONoteGroup;
 
+extern CGFloat kTuneVrianceThreshold;
+
 @interface TMOUserSettings : NSObject
 
 @property (nonatomic, assign, getter = isDefaultsLoaded) BOOL defaultsLoaded;
