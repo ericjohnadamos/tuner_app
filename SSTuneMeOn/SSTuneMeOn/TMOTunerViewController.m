@@ -293,7 +293,7 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   [self.analogMeterView updateToVariance: newVariance];
   self.currentVariance = newVariance;
   
-  BOOL newIsTuned = (newVariance <= kTuneVrianceThreshold);
+  BOOL newIsTuned = (ABS(newVariance) <= kTuneVrianceThreshold);
   
   if (!self.isTuned && newIsTuned != self.isTuned)
   {
