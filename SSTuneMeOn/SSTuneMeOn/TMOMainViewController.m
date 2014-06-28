@@ -22,6 +22,7 @@
 #import "TMOSplashViewController.h"
 #import "TMODancingAnimationView.h"
 #import "TMOAnimationHelper.h"
+#import "TMOTuneEventHandler.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -51,6 +52,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @property (nonatomic, retain) TMOSplashViewController* splashController;
 @property (nonatomic, retain) UIImageView* stageView;
 @property (nonatomic, retain) TMODancingAnimationView* animationView;
+@property (nonatomic, retain) TMOTuneEventHandler* eventHandler;
 
 @end
 
@@ -71,6 +73,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize splashController = m_splashController;
 @synthesize stageView = m_stageView;
 @synthesize animationView = m_animationView;
+@synthesize eventHandler = m_eventHandler;
 
 #pragma mark - Memory management
 
@@ -147,6 +150,13 @@ static const CGFloat kTunerViewHeight = 171.0f;;
     self.tutorialView.alpha = 1.0f;
     self.tutorialView.hidden = NO;
   }
+  
+  /* Handle successfull tune events */
+  self.eventHandler.callback = ^(void)
+  {
+    /* TODO Handle progress view */
+    [self.animationView enqueueNextAnimation];
+  };
 }
 
 #pragma mark - Lazy loaders
@@ -347,6 +357,15 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   return m_animationView;
 }
 
+- (TMOTuneEventHandler*) eventHandler
+{
+  if (m_eventHandler == nil)
+  {
+    m_eventHandler = [TMOTuneEventHandler new];
+  }
+  return m_eventHandler;
+}
+
 #pragma mark - Event handlers
 
 - (void) didTapHelpButton
@@ -404,6 +423,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
     self.currentFrequency = newFrequency;
 
     [self.tunerViewController frequencyChangedWithValue: newFrequency];
+    [self.eventHandler frequencyChangedWithValue: newFrequency];
   }
 }
 
@@ -447,7 +467,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
             didSelectNote: (TMONote*)             note
             fromNoteGroup: (TMONoteGroup*)        noteGroup
 {
-  [self.tunerViewController updateWithNote: note noteGroup: noteGroup];
+  [self.tunerViewController updateWithNote: note
+                                 noteGroup: noteGroup];
 }
 
 - (void) noteSelectorViewDidDismiss: (TMONoteSelectorView*) noteSelectorView
