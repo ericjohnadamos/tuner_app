@@ -295,7 +295,7 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   
   BOOL newIsTuned = (newVariance <= kTuneVrianceThreshold);
   
-  if (newIsTuned != self.isTuned)
+  if (!self.isTuned && newIsTuned != self.isTuned)
   {
     dispatch_async(dispatch_get_main_queue(), ^(void)
     {
@@ -314,6 +314,7 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 
   dispatch_async(dispatch_get_main_queue(), ^(void)
   {
+    self.isTuned = NO;
     [self updateNoteIcon];
     [self updateStringIcon];
   });
