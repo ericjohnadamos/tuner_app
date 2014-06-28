@@ -164,4 +164,28 @@
   [self.animationQueue addObject: animation];
 }
 
+- (void) loadNextAnimation
+{
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
+  {
+    if (self.animationStack.count == 0)
+    {
+      [self.animationStack addObjectsFromArray: self.animationKeys];
+    }
+    
+    /* Randomly get next animation from animation stack */
+    NSInteger nextAnimIndex =  arc4random() % self.animationStack.count;
+    
+    NSString* nextAnimationKey
+      = [self.animationStack objectAtIndex: nextAnimIndex];
+    [self.animationStack removeObjectAtIndex: nextAnimIndex];
+    
+    self.nextAnimation
+      = [[TMOAnimationHelper sharedHelper]
+          animationForKey: nextAnimationKey];
+    
+    self.nextAnimation.delegate = self;
+  });
+}
+
 @end
