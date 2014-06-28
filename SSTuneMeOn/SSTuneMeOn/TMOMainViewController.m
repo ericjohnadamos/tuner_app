@@ -423,8 +423,11 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   {
     self.currentFrequency = newFrequency;
 
-    [self.tunerViewController frequencyChangedWithValue: newFrequency];
-    [self.eventHandler frequencyChangedWithValue: newFrequency];
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+      [self.tunerViewController frequencyChangedWithValue: newFrequency];
+      [self.eventHandler frequencyChangedWithValue: newFrequency];
+    });
   }
 }
 
