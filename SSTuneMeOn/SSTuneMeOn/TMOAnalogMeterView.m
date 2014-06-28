@@ -293,24 +293,29 @@ static const CGFloat kTuneModerate = 0.1f;
   CGFloat shadowRadius
     = kBaseShadowRadius + kShadowRadiusConstant * relPercentage;
   
-  @autoreleasepool
+  dispatch_async(dispatch_get_main_queue(), ^
   {
-    UIColor* color = [self colorFromPercentDelta: percentDelta];
-    CATransform3D transform
-      = CATransform3DRotate(CATransform3DIdentity,
-                            DEGREES_TO_RADIANS(pinDeg),
-                            0.0f,
-                            0.0f,
-                            1.0f);
-
-    /* Apply changes */
-    self.pinView.layer.transform = transform;
-    self.pinView.layer.position = position;
-    self.pinView.layer.opacity = opacity;
-    self.pinView.backgroundColor = color;
-    self.containerLayer.shadowColor = color.CGColor;
-    self.containerLayer.shadowRadius = shadowRadius;
-  }
+    @autoreleasepool
+    {
+      
+        UIColor* color = [self colorFromPercentDelta: percentDelta];
+        CATransform3D transform
+          = CATransform3DRotate(CATransform3DIdentity,
+                                DEGREES_TO_RADIANS(pinDeg),
+                                0.0f,
+                                0.0f,
+                                1.0f);
+        
+        /* Apply changes */
+        self.pinView.layer.transform = transform;
+        self.pinView.layer.position = position;
+        self.pinView.layer.opacity = opacity;
+        self.pinView.backgroundColor = color;
+        self.containerLayer.shadowColor = color.CGColor;
+        self.containerLayer.shadowRadius = shadowRadius;
+      
+    }
+  });
 }
 
 @end
