@@ -188,4 +188,21 @@
   });
 }
 
+- (void) enqueueNextAnimation
+{
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
+  {
+    if (self.nextAnimation == nil)
+    {
+      [self enqueueNextAnimation];
+    }
+    else
+    {
+      [self.animationQueue addObject: self.nextAnimation];
+      self.nextAnimation = nil;
+      [self loadNextAnimation];
+    }
+  });
+}
+
 @end
