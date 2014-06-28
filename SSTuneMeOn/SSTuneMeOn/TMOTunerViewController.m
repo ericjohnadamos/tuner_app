@@ -241,7 +241,9 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
       = [NSString stringWithFormat: @"%0.0f %@",
                                     self.currentFrequency,
                                     hertzString];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
       self.frequencyLabel.attributedText
         = [self.theme attributedStringForFrequencyLabelWithString: freqText];
     });
