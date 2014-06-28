@@ -1,0 +1,45 @@
+//
+//  TMOProgressView.h
+//  SSTuneMeOn
+//
+//  Created by Eric John Adamos on 6/28/14.
+//  Copyright (c) 2014 Eric John Adamos. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class TMOProgressView;
+
+@protocol TMOProgressViewDataSource <NSObject>
+
+- (NSInteger) progressCountWithView: (TMOProgressView*) view;
+
+@end
+
+@protocol TMOProgressViewDelegate <NSObject>
+
+- (UIView*) progressView: (TMOProgressView*) view
+                 atIndex: (NSInteger)        index;
+
+- (NSTimeInterval) progressViewAnimationInterval: (TMOProgressView*) view;
+
+- (BOOL) progressView: (TMOProgressView*) view
+   selectStateAtIndex: (NSInteger)        index;
+
+@end
+
+@interface TMOProgressView : UIView
+
+@property (nonatomic, assign) id<TMOProgressViewDataSource> dataSource;
+@property (nonatomic, assign) id<TMOProgressViewDelegate> delegate;
+
+/*
+ * Loads all the views given
+ * Dependent on the datasource and delegate implementation
+ */
+- (void) load;
+
+- (void) startAnimations;
+- (void) stopAnimations;
+
+@end

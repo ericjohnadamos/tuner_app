@@ -2083,6 +2083,7 @@
 		253596E718E481570031DECB /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E518E481570031DECB /* notes.png */; };
 		253596E818E481570031DECB /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 253596E618E481570031DECB /* help.png */; };
 		253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253596F718E4A0630031DECB /* TMODancingAnimationView.m */; };
+		25544A12195E59E500420476 /* TMOProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544A11195E59E500420476 /* TMOProgressView.m */; };
 		256B088E18CDED4500F856F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088D18CDED4500F856F9 /* Foundation.framework */; };
 		256B089018CDED4500F856F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088F18CDED4500F856F9 /* CoreGraphics.framework */; };
 		256B089218CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
@@ -2112,6 +2113,7 @@
 		2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578739018F18E6E00AC3D56 /* TMOUserSettings.m */; };
 		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
+		25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -4216,6 +4218,8 @@
 		253596E618E481570031DECB /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		253596F618E4A0630031DECB /* TMODancingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMODancingAnimationView.h; sourceTree = "<group>"; };
 		253596F718E4A0630031DECB /* TMODancingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMODancingAnimationView.m; sourceTree = "<group>"; };
+		25544A10195E59E500420476 /* TMOProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressView.h; sourceTree = "<group>"; };
+		25544A11195E59E500420476 /* TMOProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressView.m; sourceTree = "<group>"; };
 		256B088A18CDED4500F856F9 /* SSTuneMeOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTuneMeOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		256B088D18CDED4500F856F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		256B088F18CDED4500F856F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -4259,6 +4263,8 @@
 		2579DC6318D4009300B5DEB0 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		2579DC6418D4009300B5DEB0 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
 		2579DC6518D4009300B5DEB0 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		25DC5ECE195B3DED00F907EA /* TMOProgressDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressDot.h; sourceTree = "<group>"; };
+		25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressDot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -6494,6 +6500,10 @@
 				0AA57AF319148716009A842F /* TMONoteSelectorView.m */,
 				0AA3580F1916456E000A5948 /* TMOAnalogMeterView.h */,
 				0AA358101916456E000A5948 /* TMOAnalogMeterView.m */,
+				25DC5ECE195B3DED00F907EA /* TMOProgressDot.h */,
+				25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */,
+				25544A10195E59E500420476 /* TMOProgressView.h */,
+				25544A11195E59E500420476 /* TMOProgressView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -8895,10 +8905,12 @@
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				0AAF864C194B221000700DBF /* TMOAnimationHelper.m in Sources */,
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
+				25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
 				0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */,
 				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
+				25544A12195E59E500420476 /* TMOProgressView.m in Sources */,
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
 				0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */,
