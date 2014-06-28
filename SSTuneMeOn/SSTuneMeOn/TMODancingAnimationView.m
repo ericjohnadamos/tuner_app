@@ -14,6 +14,9 @@
 
 @property (nonatomic, retain) CALayer* dancerLayer;
 @property (nonatomic, retain) CAKeyframeAnimation* defaultAnimation;
+@property (nonatomic, retain) CAKeyframeAnimation* nextAnimation;
+@property (nonatomic, retain) NSArray* animationKeys;
+@property (nonatomic, retain) NSMutableArray* animationStack;
 @property (nonatomic, retain) NSMutableArray* animationQueue;
 @property (nonatomic, assign) dispatch_queue_t processQueue;
 
@@ -27,6 +30,9 @@
 @synthesize defaultAnimation = m_defaultAnimation;
 @synthesize animationQueue = m_animationQueue;
 @synthesize processQueue = m_processQueue;
+@synthesize nextAnimation = m_nextAnimation;
+@synthesize animationKeys = m_animationKeys;
+@synthesize animationStack = m_animationStack;
 
 #pragma mark - Memory management
 
@@ -88,6 +94,33 @@
                                            DISPATCH_QUEUE_SERIAL);
   }
   return m_processQueue;
+}
+
+- (NSArray*) animationKeys
+{
+  if (m_animationKeys == nil)
+  {
+    m_animationKeys
+      = [[NSArray alloc] initWithObjects:
+          kAnimationKeyDance1,
+          kAnimationKeyDance2,
+          kAnimationKeyDance3,
+          kAnimationKeyDance4,
+          kAnimationKeyDance5,
+          kAnimationKeyDance6,
+          kAnimationKeyDance7,
+          nil];
+  }
+  return m_animationKeys;
+}
+
+- (NSMutableArray*) animationStack
+{
+  if (m_animationStack == nil)
+  {
+    m_animationStack = [NSMutableArray new];
+  }
+  return m_animationStack;
 }
 
 #pragma mark - Private methods
