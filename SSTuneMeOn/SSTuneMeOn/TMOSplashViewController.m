@@ -161,8 +161,6 @@
   
   [self.dancerLayer addAnimation: animationSequence
                           forKey: @"contents"];
-  
-  [animationSequence autorelease];
 }
 
 - (void) animationDidStop: (CAAnimation*) anim
