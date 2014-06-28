@@ -13,13 +13,18 @@
 #import "TMOStandardTheme.h"
 #import "TMOLocalizedStrings.h"
 #import "TMOUserSettings.h"
+#import "TMOProgressView.h"
+#import "TMOProgressDot.h"
 
 @interface TMOTunerViewController ()
+  <TMOProgressViewDataSource,
+   TMOProgressViewDelegate>
 
 @property (nonatomic, assign) TMOTheme* theme;
 @property (nonatomic, retain) TMONote* note;
 @property (nonatomic, retain) TMONoteGroup* noteGroup;
 @property (nonatomic, retain) TMOAnalogMeterView* analogMeterView;
+@property (nonatomic, retain) TMOProgressView* progressView;
 @property (nonatomic, retain) UIImageView* noteIconView;
 @property (nonatomic, retain) UIImageView* stringIconView;
 @property (nonatomic, retain) UILabel* frequencyLabel;
@@ -38,12 +43,16 @@ static const CGFloat kNoteIconWidth = 70.0f;
 static const CGFloat kNoteIconHeight = 79.0f;
 static const CGFloat kFrequencyLabelHeight = 20.0f;
 static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
+static const CGFloat kProgressViewSquareArea = 10.0f;
+static const CGFloat kProgressViewMargin = 2.0f;
 
 @implementation TMOTunerViewController
+
 @synthesize theme = m_theme;
 @synthesize note = m_note;
 @synthesize noteGroup = m_noteGroup;
 @synthesize analogMeterView = m_analogMeterView;
+@synthesize progressView = m_progressView;
 @synthesize noteIconView = m_noteIconView;
 @synthesize stringIconView = m_stringIconView;;
 @synthesize frequencyLabel = m_frequencyLabel;
@@ -59,10 +68,12 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   self.note = nil;;
   self.noteGroup = nil;
   self.analogMeterView = nil;
+  self.progressView = nil;
   self.noteIconView = nil;
   self.stringIconView = nil;
   self.frequencyLabel = nil;
   self.timer = nil;
+  
   [super dealloc];
 }
 
@@ -91,6 +102,7 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   [self.view addSubview: self.noteIconView];
   [self.view addSubview: self.stringIconView];
   [self.view addSubview: self.frequencyLabel];
+  [self.view addSubview: self.progressView];
   
   /* Update UI based on values */
   [self updateNoteIcon];
@@ -98,6 +110,9 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 
   [self.analogMeterView start];
   [self startUpdateFrequencyLabel];
+  
+  [self.progressView load];
+  [self.progressView startAnimations];
 }
 
 - (void) didReceiveMemoryWarning
@@ -116,6 +131,26 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
     m_analogMeterView = [[TMOAnalogMeterView alloc] initWithFrame: frame];
   }
   return m_analogMeterView;
+}
+
+- (TMOProgressView*) progressView
+{
+  if (m_progressView == nil)
+  {
+    CGFloat width = 84.0f;
+    CGFloat x = (self.view.frame.size.width - width) * 0.5f;
+    CGRect frame = CGRectMake(x, kProgressViewMargin,
+                              width, kProgressViewSquareArea);
+    
+    m_progressView = [[TMOProgressView alloc] initWithFrame: frame];
+    
+    m_progressView.backgroundColor = [UIColor clearColor];
+    
+    m_progressView.dataSource = self;
+    m_progressView.delegate = self;
+  }
+  
+  return m_progressView;
 }
 
 - (UIImageView*) noteIconView
@@ -285,6 +320,40 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   [self.analogMeterView
     updateToVariance: [self varianceForFrequency: self.currentFrequency
                              withTargetFrequency: self.note.frequency]];
+}
+
+#pragma mark - TMOProgressViewDataSource
+
+- (NSInteger) progressCountWithView: (TMOProgressView*) view
+{
+  return 5;
+}
+
+#pragma mark - TMOProgressViewDelegate
+
+- (UIView*) progressView: (TMOProgressView*) view
+                 atIndex: (NSInteger)        index
+{
+  CGFloat x = (  kProgressViewSquareArea
+               + ((kProgressViewSquareArea + kProgressViewMargin) * index));
+  CGFloat y = kNoteIconHeight + kFrequencyLabelHeight + kProgressViewMargin;
+  
+  CGRect frame = CGRectMake(x, y,
+                            kProgressViewSquareArea, kProgressViewSquareArea);
+  
+  return [[[TMOProgressDot alloc] initWithFrame: frame] autorelease];
+}
+
+- (NSTimeInterval) progressViewAnimationInterval: (TMOProgressView*) view
+{
+  return 3.0f;
+}
+
+- (BOOL) progressView: (TMOProgressView*) view
+   selectStateAtIndex: (NSInteger)        index
+{
+  /* TODO: Kevin implement this */
+  return (index == 2);
 }
 
 #pragma mark - Public methods
