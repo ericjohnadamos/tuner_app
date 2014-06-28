@@ -199,14 +199,9 @@ static TMOStandardTheme* sm_theme = nil;
   UIFont* numberFont
     = [UIFont fontWithName: kThemeFrequencyLabelFontName
                       size: kThemeFrequencyLabelNumberFontSize];
-  UIColor* numberColor
-    = [UIColor colorWithHexString: kThemeFrequencyLabelNumberFontColor];
   
   [attrString addAttribute: NSFontAttributeName
                      value: numberFont
-                     range: valueRange];
-  [attrString addAttribute: NSForegroundColorAttributeName
-                     value: numberColor
                      range: valueRange];
   
   /* Frequency unit attributes */
@@ -218,14 +213,9 @@ static TMOStandardTheme* sm_theme = nil;
     UIFont* unitFont
       = [UIFont fontWithName: kThemeFrequencyLabelFontName
                         size: kThemeFrequencyLabelUnitFontSize];
-    UIColor* unitColor
-      = [UIColor colorWithHexString: kThemeFrequencyLabelUnitFontColor];
     
     [attrString addAttribute: NSFontAttributeName
                        value: unitFont
-                       range: unitRange];
-    [attrString addAttribute: NSForegroundColorAttributeName
-                       value: unitColor
                        range: unitRange];
   }
   return [attrString autorelease];
