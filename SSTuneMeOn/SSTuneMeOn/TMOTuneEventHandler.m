@@ -14,7 +14,7 @@
 
 @end
 
-static NSInteger kInactiveDuration = 7;
+static NSInteger kInactiveDuration = 8;
 
 static BOOL sm_isActive = YES;
 
@@ -46,6 +46,7 @@ static BOOL sm_isActive = YES;
       {
         self.callback();
       }
+      sm_isActive = NO;
     }
   }
 }
