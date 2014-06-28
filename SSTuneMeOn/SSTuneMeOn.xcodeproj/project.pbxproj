@@ -2039,6 +2039,7 @@
 		0A0212511943FCAD00FC0322 /* dance_07_390@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A020AFE1943FCAD00FC0322 /* dance_07_390@2x.png */; };
 		0A0212521943FCAD00FC0322 /* dance_07_391@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A020AFF1943FCAD00FC0322 /* dance_07_391@2x.png */; };
 		0A0212531943FCAD00FC0322 /* dance_07_392@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A020B001943FCAD00FC0322 /* dance_07_392@2x.png */; };
+		0A392659195E9C6A00058DF9 /* TMOTuneEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A392658195E9C6A00058DF9 /* TMOTuneEventHandler.m */; };
 		0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA358101916456E000A5948 /* TMOAnalogMeterView.m */; };
 		0AA57AF419148716009A842F /* TMONoteSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA57AF319148716009A842F /* TMONoteSelectorView.m */; };
 		0AAF864C194B221000700DBF /* TMOAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF864B194B221000700DBF /* TMOAnimationHelper.m */; };
@@ -4156,6 +4157,8 @@
 		0A020AFE1943FCAD00FC0322 /* dance_07_390@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dance_07_390@2x.png"; sourceTree = "<group>"; };
 		0A020AFF1943FCAD00FC0322 /* dance_07_391@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dance_07_391@2x.png"; sourceTree = "<group>"; };
 		0A020B001943FCAD00FC0322 /* dance_07_392@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dance_07_392@2x.png"; sourceTree = "<group>"; };
+		0A392657195E9C6A00058DF9 /* TMOTuneEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTuneEventHandler.h; sourceTree = "<group>"; };
+		0A392658195E9C6A00058DF9 /* TMOTuneEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOTuneEventHandler.m; sourceTree = "<group>"; };
 		0AA3580F1916456E000A5948 /* TMOAnalogMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOAnalogMeterView.h; sourceTree = "<group>"; };
 		0AA358101916456E000A5948 /* TMOAnalogMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOAnalogMeterView.m; sourceTree = "<group>"; };
 		0AA57AF219148716009A842F /* TMONoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteSelectorView.h; sourceTree = "<group>"; };
@@ -6397,6 +6400,15 @@
 			path = dance_07;
 			sourceTree = "<group>";
 		};
+		0A392656195E9BA100058DF9 /* Tune Event Handler */ = {
+			isa = PBXGroup;
+			children = (
+				0A392657195E9C6A00058DF9 /* TMOTuneEventHandler.h */,
+				0A392658195E9C6A00058DF9 /* TMOTuneEventHandler.m */,
+			);
+			name = "Tune Event Handler";
+			sourceTree = "<group>";
+		};
 		0AAF8649194B205F00700DBF /* Animation Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -6611,6 +6623,7 @@
 		2578738618F16C8F00AC3D56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0A392656195E9BA100058DF9 /* Tune Event Handler */,
 				0AAF8649194B205F00700DBF /* Animation Helper */,
 				0AB919D7191BB7CF00410C00 /* Tuner View */,
 				0AF1ADED1913F5A100DF37B5 /* Notes Organizer */,
@@ -8889,6 +8902,7 @@
 				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
 				0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */,
+				0A392659195E9C6A00058DF9 /* TMOTuneEventHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
