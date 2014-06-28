@@ -96,6 +96,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.tunerViewController = nil;
   self.splashController = nil;
   self.animationView = nil;
+  self.eventHandler = nil;
   
   [super dealloc];
 }
