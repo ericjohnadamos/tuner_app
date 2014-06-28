@@ -58,6 +58,8 @@
           animationForKey: kAnimationKeyDefault];
     
     self.defaultAnimation.delegate = self;
+
+    [self loadNextAnimation];
   }
   return self;
 }
