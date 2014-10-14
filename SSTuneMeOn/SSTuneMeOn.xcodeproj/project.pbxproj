@@ -4223,7 +4223,7 @@
 		253596F718E4A0630031DECB /* TMODancingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMODancingAnimationView.m; sourceTree = "<group>"; };
 		25544A10195E59E500420476 /* TMOProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressView.h; sourceTree = "<group>"; };
 		25544A11195E59E500420476 /* TMOProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressView.m; sourceTree = "<group>"; };
-		256B088A18CDED4500F856F9 /* SSTuneMeOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTuneMeOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		256B088A18CDED4500F856F9 /* Tune Me On.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Me On.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		256B088D18CDED4500F856F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		256B088F18CDED4500F856F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		256B089118CDED4500F856F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -6534,7 +6534,7 @@
 		256B088B18CDED4500F856F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				256B088A18CDED4500F856F9 /* SSTuneMeOn.app */,
+				256B088A18CDED4500F856F9 /* Tune Me On.app */,
 				256B08A518CDED4500F856F9 /* SSTuneMeOnTests.xctest */,
 			);
 			name = Products;
@@ -6758,7 +6758,7 @@
 			);
 			name = SSTuneMeOn;
 			productName = SSTuneMeOn;
-			productReference = 256B088A18CDED4500F856F9 /* SSTuneMeOn.app */;
+			productReference = 256B088A18CDED4500F856F9 /* Tune Me On.app */;
 			productType = "com.apple.product-type.application";
 		};
 		256B08A418CDED4500F856F9 /* SSTuneMeOnTests */ = {
@@ -6788,6 +6788,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Eric John Adamos";
 				TargetAttributes = {
+					256B088918CDED4500F856F9 = {
+						DevelopmentTeam = 942J3JFWZX;
+					};
 					256B08A418CDED4500F856F9 = {
 						TestTargetID = 256B088918CDED4500F856F9;
 					};
@@ -9048,11 +9051,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSTuneMeOn/SSTuneMeOn-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "SSTuneMeOn/SSTuneMeOn-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "Tune Me On";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9063,10 +9069,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSTuneMeOn/SSTuneMeOn-Prefix.pch";
 				INFOPLIST_FILE = "SSTuneMeOn/SSTuneMeOn-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "Tune Me On";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
