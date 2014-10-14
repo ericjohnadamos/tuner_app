@@ -14,12 +14,12 @@
 
 - (NSInteger) progressCountWithView: (TMOProgressView*) view;
 
+- (UIView*) progressView: (TMOProgressView*) view
+                 atIndex: (NSInteger)        index;
+
 @end
 
 @protocol TMOProgressViewDelegate <NSObject>
-
-- (UIView*) progressView: (TMOProgressView*) view
-                 atIndex: (NSInteger)        index;
 
 - (NSTimeInterval) progressViewAnimationInterval: (TMOProgressView*) view;
 
