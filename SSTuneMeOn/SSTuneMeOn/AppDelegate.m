@@ -78,7 +78,7 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
   /* Set sample rate and frequency
    * Default sample rate is 44.1k Hz
    */
-  [rioRef setSampleRate: 44100];
+  [rioRef setSampleRate: 22050];
   [rioRef setFrequency: 294];
   
   /* Initialize components */
