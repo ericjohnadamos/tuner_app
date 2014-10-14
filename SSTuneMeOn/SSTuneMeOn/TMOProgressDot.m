@@ -42,6 +42,11 @@
   return m_fillColor;
 }
 
+- (void) setFillColor: (UIColor*) fillColor
+{
+  m_fillColor = fillColor;
+}
+
 - (UIColor*) strokeColor
 {
   if (m_strokeColor == nil)
@@ -87,6 +92,15 @@
             animated: (BOOL) animated
 {
   /* Handle the updates here */
+  
+  if (selected)
+  {
+    self.fillColor = [UIColor greenColor];
+  }
+  else
+  {
+    self.fillColor = [UIColor clearColor];
+  }
 }
 
 @end
