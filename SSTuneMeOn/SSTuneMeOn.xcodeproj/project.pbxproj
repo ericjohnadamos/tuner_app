@@ -2076,6 +2076,7 @@
 		0AF9F81C1911B5AB00E1FB02 /* stage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F8001911B5AB00E1FB02 /* stage@2x.png */; };
 		0AF9F81D1911B5AB00E1FB02 /* tune_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F8011911B5AB00E1FB02 /* tune_indicator@2x.png */; };
 		0AF9F81E1911B5AB00E1FB02 /* tuner_pin_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F8021911B5AB00E1FB02 /* tuner_pin_mask@2x.png */; };
+		251C75F419961D9300199515 /* TMOProgressControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 251C75F319961D9300199515 /* TMOProgressControl.m */; };
 		252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB618FC412E006266FD /* TMOStandardTheme.m */; };
 		252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB918FC41C2006266FD /* TMOTheme.m */; };
 		252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */; };
@@ -4206,6 +4207,8 @@
 		0AF9F8001911B5AB00E1FB02 /* stage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stage@2x.png"; path = "images/stage@2x.png"; sourceTree = "<group>"; };
 		0AF9F8011911B5AB00E1FB02 /* tune_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tune_indicator@2x.png"; path = "images/tune_indicator@2x.png"; sourceTree = "<group>"; };
 		0AF9F8021911B5AB00E1FB02 /* tuner_pin_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tuner_pin_mask@2x.png"; path = "images/tuner_pin_mask@2x.png"; sourceTree = "<group>"; };
+		251C75F219961D9300199515 /* TMOProgressControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressControl.h; sourceTree = "<group>"; };
+		251C75F319961D9300199515 /* TMOProgressControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressControl.m; sourceTree = "<group>"; };
 		252E8DB518FC412E006266FD /* TMOStandardTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOStandardTheme.h; sourceTree = "<group>"; };
 		252E8DB618FC412E006266FD /* TMOStandardTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOStandardTheme.m; sourceTree = "<group>"; };
 		252E8DB818FC41C2006266FD /* TMOTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTheme.h; sourceTree = "<group>"; };
@@ -6462,6 +6465,15 @@
 			name = "Notes Organizer";
 			sourceTree = "<group>";
 		};
+		251C75F119961D6900199515 /* Progress Control */ = {
+			isa = PBXGroup;
+			children = (
+				251C75F219961D9300199515 /* TMOProgressControl.h */,
+				251C75F319961D9300199515 /* TMOProgressControl.m */,
+			);
+			name = "Progress Control";
+			sourceTree = "<group>";
+		};
 		252E8DBB18FC429E006266FD /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -6488,6 +6500,7 @@
 		253596F118E49CF60031DECB /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				251C75F119961D6900199515 /* Progress Control */,
 				253596F618E4A0630031DECB /* TMODancingAnimationView.h */,
 				253596F718E4A0630031DECB /* TMODancingAnimationView.m */,
 				2578737E18F153FD00AC3D56 /* TMOSplashView.h */,
@@ -8905,6 +8918,7 @@
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				0AAF864C194B221000700DBF /* TMOAnimationHelper.m in Sources */,
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
+				251C75F419961D9300199515 /* TMOProgressControl.m in Sources */,
 				25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
