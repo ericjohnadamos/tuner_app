@@ -142,16 +142,6 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.tunerViewController.view.alpha = 0.0f;
   self.navBarView.alpha = 0.0f;
   
-  /* Manage tutorial view */
-  TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
-  if ([userSettings isFirstTime])
-  {
-    userSettings.firstTime = NO;
-  
-    self.tutorialView.alpha = 1.0f;
-    self.tutorialView.hidden = NO;
-  }
-  
   /* Handle successfull tune events */
   self.eventHandler.callback = ^(void)
   {
@@ -486,9 +476,22 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 - (void) splashViewControllerDidFinishAnimation:
           (TMOSplashViewController*) controller
 {
+  TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
+  
+  BOOL isFirstTime = [userSettings isFirstTime];
+  
   [UIView animateWithDuration: 0.35f
                    animations:
     ^{
+        /* Manage tutorial view */
+        if (isFirstTime)
+        {
+          userSettings.firstTime = NO;
+          
+          self.tutorialView.alpha = 1.0f;
+          self.tutorialView.hidden = NO;
+        }
+        
         self.splashController.view.alpha = 0.0f;
         self.tunerViewController.view.alpha = 1.0f;
         self.navBarView.alpha = 1.0f;
