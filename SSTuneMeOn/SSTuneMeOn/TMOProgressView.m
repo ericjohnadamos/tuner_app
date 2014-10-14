@@ -72,20 +72,19 @@
    */
   bool validDataSource = (   self.dataSource != nil
                           && [self.dataSource respondsToSelector:
-                              @selector(progressCountWithView:)]);
-  bool validDelegate = (   self.delegate != nil
-                        && [self.delegate respondsToSelector:
-                            @selector(progressView:atIndex:)]);
+                              @selector(progressCountWithView:)]
+                          && [self.dataSource respondsToSelector:
+                              @selector(progressView:atIndex:)]);
   
-  if (validDataSource && validDelegate)
+  if (validDataSource)
   {
     /* Load all progress dots needed */
     NSInteger count = [self.dataSource progressCountWithView: self];
     
     for (NSInteger index = 0; index < count; index++)
     {
-      UIView* view = [self.delegate progressView: self
-                                         atIndex: index];
+      UIView* view = [self.dataSource progressView: self
+                                           atIndex: index];
       
       if (view != nil && [view isKindOfClass: [UIView class]])
       {
@@ -138,7 +137,7 @@
     for (NSInteger index = 0; index < count; index++)
     {
       BOOL isSelected = [self.delegate progressView: self
-                                selectStateAtIndex: index];
+                                 selectStateAtIndex: index];
       
       UIView* subview = [self.subviews objectAtIndex: index];
       
