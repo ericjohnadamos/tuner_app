@@ -154,7 +154,7 @@ TMOAnimationHelper* sm_sharedHelper;
   animationSequence.duration = images.count / 30;
   animationSequence.repeatCount = 0;
   animationSequence.fillMode = kCAFillModeForwards;
-  animationSequence.removedOnCompletion = YES;
+  animationSequence.removedOnCompletion = NO;
   animationSequence.values = images;
   animationSequence.delegate = self;
   return animationSequence;
