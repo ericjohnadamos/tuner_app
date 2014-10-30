@@ -130,7 +130,7 @@
     
 		x += diameter + space ;
 	}
-	
+
 	CGContextRestoreGState(context);
 }
 
@@ -144,7 +144,7 @@
     return;
   }
 
-	m_currentPage = MIN(MAX(0, pageNumber), self.numberOfPages - 1);
+	m_currentPage = MIN(MAX(-1, pageNumber), self.numberOfPages - 1);
 	
 	if (!self.defersCurrentPageDisplay)
   {
@@ -292,7 +292,7 @@
     return;
   }
   
-	[self setNeedsDisplay];
+  [self setNeedsDisplay];
 }
 
 - (CGSize) sizeForNumberOfPages: (NSInteger) pageCount

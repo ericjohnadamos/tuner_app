@@ -143,10 +143,17 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.navBarView.alpha = 0.0f;
   
   /* Handle successfull tune events */
-  self.eventHandler.callback = ^(void)
+  self.eventHandler.callback = ^(BOOL doesPerformCombo)
   {
-    /* TODO Handle progress view */
-    [self.animationView enqueueNextAnimation];
+    if (doesPerformCombo)
+    {
+      [self.animationView enqueueNextAnimation];
+      [self.tunerViewController increaseProgress];
+    }
+    else
+    {
+      [self.tunerViewController decreaseProgress];
+    }
   };
 }
 

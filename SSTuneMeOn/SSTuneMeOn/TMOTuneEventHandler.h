@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TMOFrequencyListener.h"
 
-typedef void(^TuneEventCallback)(void);
+typedef void(^TuneEventCallback)(BOOL);
 
 @interface TMOTuneEventHandler : NSObject <TMOFrequencyListener>
 

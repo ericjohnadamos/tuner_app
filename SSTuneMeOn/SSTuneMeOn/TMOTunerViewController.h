@@ -17,5 +17,7 @@
 - (id) initWithFrame: (CGRect) frame;
 - (void) updateWithNote: (TMONote*)      note
               noteGroup: (TMONoteGroup*) noteGroup;
+- (void) increaseProgress;
+- (void) decreaseProgress;
 
 @end

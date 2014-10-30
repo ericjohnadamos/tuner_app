@@ -128,8 +128,9 @@
 #pragma mark - Private methods
 
 - (void) animationDidStop: (CAAnimation*) anim
-                 finished: (BOOL)flag
+                 finished: (BOOL)         flag
 {
+  [self.dancerLayer removeAllAnimations];
   if (self.animationQueue.count == 0)
   {
     [self.dancerLayer addAnimation: self.defaultAnimation
@@ -143,7 +144,6 @@
     [self.dancerLayer addAnimation: animation
                             forKey: @"contents"];
     [self.animationQueue removeLastObject];
-    
   }
 }
 
@@ -194,13 +194,10 @@
 {
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^
   {
-    if (self.nextAnimation == nil)
-    {
-      [self enqueueNextAnimation];
-    }
-    else
+    if (self.nextAnimation != nil)
     {
       [self.animationQueue addObject: self.nextAnimation];
+      
       self.nextAnimation = nil;
       [self loadNextAnimation];
     }

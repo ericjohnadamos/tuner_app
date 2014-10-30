@@ -360,16 +360,7 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 
 - (void) pageControlClicked: (id) sender
 {
-  /* TODO: Implement me
-   * TMOProgressControl* progressControl = (TMOProgressControl*) sender;
-   */
-  
-	if (self.progressControl.currentPage < 4)
-	{
-		self.progressControl.currentPage = self.progressControl.currentPage++;
-		
-    [self.progressControl updateCurrentPageDisplay];
-	}
+  [self increaseProgress];
 }
 
 #pragma mark - Public methods
@@ -386,6 +377,26 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
     [self updateNoteIcon];
     [self updateStringIcon];
   });
+}
+
+- (void) increaseProgress
+{
+  if (self.progressControl.currentPage < self.progressControl.numberOfPages)
+	{
+		self.progressControl.currentPage = ++self.progressControl.currentPage;
+		
+    [self.progressControl updateCurrentPageDisplay];
+	}
+}
+
+- (void) decreaseProgress
+{
+  if (self.progressControl.currentPage >= 0)
+	{
+		self.progressControl.currentPage = --self.progressControl.currentPage;
+		
+    [self.progressControl updateCurrentPageDisplay];
+	}
 }
 
 @end

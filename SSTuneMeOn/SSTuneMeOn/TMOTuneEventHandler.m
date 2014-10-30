@@ -10,15 +10,21 @@
 #import "TMOUserSettings.h"
 #import "TMONote.h"
 
-@interface TMOTuneEventHandler ()
-
-@end
-
+static NSInteger kMaxHitCount = 10;
 static NSInteger kInactiveDuration = 8;
 
 static BOOL sm_isActive = YES;
 
+
+@interface TMOTuneEventHandler ()
+
+@property (nonatomic, assign) NSInteger hitCount;
+
+@end
+
+
 @implementation TMOTuneEventHandler
+
 @synthesize callback = m_callback;
 
 - (void) frequencyChangedWithValue: (float) newFrequency
@@ -35,18 +41,50 @@ static BOOL sm_isActive = YES;
     
     if (isTuned)
     {
-      dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                                  (int64_t)(kInactiveDuration * NSEC_PER_SEC)),
-                                  dispatch_get_main_queue(), ^
-      {
-        sm_isActive = YES;
-      });
+      self.hitCount++;
       
-      if (self.callback != nil)
+      if (self.hitCount == kMaxHitCount)
       {
-        self.callback();
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                                     (int64_t)(  kInactiveDuration
+                                               * NSEC_PER_SEC)),
+                       dispatch_get_main_queue(), ^
+                       {
+                         sm_isActive = YES;
+                       });
+        
+        if (self.callback != nil)
+        {
+          self.callback(true);
+        }
+        
+        sm_isActive = NO;
+        self.hitCount = 0;
       }
-      sm_isActive = NO;
+    }
+    else
+    {
+      self.hitCount--;
+      
+      if (self.hitCount == -kMaxHitCount)
+      {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                                     (int64_t)(  kInactiveDuration
+                                               * NSEC_PER_SEC)),
+                       dispatch_get_main_queue(), ^
+                       {
+                         sm_isActive = YES;
+                       });
+        
+        if (self.callback != nil)
+        {
+          self.callback(false);
+        }
+        
+        sm_isActive = NO;
+        
+        self.hitCount = 0;
+      }
     }
   }
 }
