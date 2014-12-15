@@ -11,5 +11,6 @@
 @interface TMOMainViewController : UIViewController
 
 @property (nonatomic, assign) RIOInterface* rioRef;
+@property (nonatomic, assign) NSMutableArray* medianPitchFollow;
 
 @end

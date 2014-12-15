@@ -155,6 +155,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
       [self.tunerViewController decreaseProgress];
     }
   };
+  
+  self.medianPitchFollow = [[NSMutableArray alloc] initWithCapacity: 22];
 }
 
 #pragma mark - Lazy loaders
@@ -412,18 +414,61 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 
 - (void) frequencyChangedWithValue: (float) newFrequency
 {
-  /* This method gets called by the rendering function. Update the UI with
-   * the character type and store it in our string.
-   */
-
   @autoreleasepool
   {
-    self.currentFrequency = newFrequency;
+    /* This method gets called by the rendering function. Update the UI with
+     * the character type and store it in our string.
+     */
+    double value = newFrequency;
+    
+    NSNumber* nsnum = [NSNumber numberWithDouble: value];
+    
+    [self.medianPitchFollow insertObject: nsnum
+                                 atIndex: 0];
+    
+    if (self.medianPitchFollow.count > 22)
+    {
+      [self.medianPitchFollow removeObjectAtIndex:
+       self.medianPitchFollow.count - 1];
+    }
+    
+    double median = 0;
+    
+    if (self.medianPitchFollow.count >= 2)
+    {
+      NSSortDescriptor* highestToLowest
+        = [NSSortDescriptor sortDescriptorWithKey: @"self"
+                                        ascending: NO];
+      
+      NSMutableArray* tempSort = [NSMutableArray arrayWithArray:
+                                  self.medianPitchFollow];
+      
+      [tempSort sortUsingDescriptors: [NSArray arrayWithObject: highestToLowest]];
+      
+      if (tempSort.count % 2 == 0)
+      {
+        double first = 0, second = 0;
+        
+        first = [[tempSort objectAtIndex: tempSort.count /2 - 1] doubleValue];
+        second = [[tempSort objectAtIndex:tempSort.count / 2] doubleValue];
+        median = (first+second) / 2;
+        value = median;
+      }
+      else
+      {
+        median = [[tempSort objectAtIndex: tempSort.count / 2] doubleValue];
+        value = median;
+      }
+      
+      [tempSort removeAllObjects];
+      tempSort = nil;
+    }
+    self.currentFrequency = value;
 
     dispatch_async(dispatch_get_main_queue(), ^(void)
     {
-      [self.tunerViewController frequencyChangedWithValue: newFrequency];
-      [self.eventHandler frequencyChangedWithValue: newFrequency];
+      [self.tunerViewController frequencyChangedWithValue: value];
+      [self.eventHandler frequencyChangedWithValue: value];
     });
   }
 }

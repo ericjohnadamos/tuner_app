@@ -165,8 +165,8 @@ OSStatus RenderFFTCallback (void					*inRefCon,
 		memset(outputBuffer, 0, n*sizeof(SInt16));
 		
 		// Update the UI with our newly acquired frequency value.
-		[THIS->listener frequencyChangedWithValue:bin*(THIS->sampleRate/bufferCapacity)];
-		printf("frequency: %f   bin: %d \n", bin*(THIS->sampleRate/bufferCapacity), bin);
+		[THIS->listener frequencyChangedWithValue: ((bin*THIS->sampleRate)/bufferCapacity)];
+		printf("frequency: %f   bin: %d \n", ((bin*THIS->sampleRate)/bufferCapacity), bin);
 	}
 	
 	return noErr;
@@ -201,7 +201,7 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 
 /* Setup our FFT */
 - (void)realFFTSetup {
-	UInt32 maxFrames = 4096;
+	UInt32 maxFrames = 8192;
 	dataBuffer = (void*)malloc(maxFrames * sizeof(SInt16));
 	outputBuffer = (float*)malloc(maxFrames *sizeof(float));
 	log2n = log2f(maxFrames);
@@ -331,11 +331,11 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 	bytesPerSample = sizeof(SInt16);
 	asbd.mFormatID = kAudioFormatLinearPCM;
 	asbd.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-	asbd.mBitsPerChannel = 8 * bytesPerSample;
+	asbd.mBitsPerChannel = 16;
 	asbd.mFramesPerPacket = 1;
 	asbd.mChannelsPerFrame = 1;	
-	asbd.mBytesPerPacket = bytesPerSample * asbd.mFramesPerPacket;
-	asbd.mBytesPerFrame = bytesPerSample * asbd.mChannelsPerFrame;			
+	asbd.mBytesPerPacket = 2;
+	asbd.mBytesPerFrame = 2;
 	asbd.mSampleRate = sampleRate;		
 	
 	streamFormat = asbd;
