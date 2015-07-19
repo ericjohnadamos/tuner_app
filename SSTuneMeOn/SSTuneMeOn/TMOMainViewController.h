@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TMOPitchDetector.h"
 
 @interface TMOMainViewController : UIViewController
 
-@property (nonatomic, assign) RIOInterface* rioRef;
+@property (nonatomic, strong) TMOPitchDetector* pitchDetector;
 @property (nonatomic, assign) NSMutableArray* medianPitchFollow;
+
+- (void) updateToFrequency: (double) frequency;
 
 @end

@@ -23,6 +23,9 @@
 #import "TMODancingAnimationView.h"
 #import "TMOAnimationHelper.h"
 #import "TMOTuneEventHandler.h"
+#import "TMOPitchDetector.h"
+#import "TMONoteHelper.h"
+#import "TMOKVOService.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
 
@@ -53,13 +56,14 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @property (nonatomic, retain) UIImageView* stageView;
 @property (nonatomic, retain) TMODancingAnimationView* animationView;
 @property (nonatomic, retain) TMOTuneEventHandler* eventHandler;
+@property (nonatomic, retain) TMONoteHelper* noteHelper;
+@property (nonatomic, retain) TMOKVOService* kvoService;
 
 @end
 
 
 @implementation TMOMainViewController
 
-@synthesize rioRef = m_rioRef;
 @synthesize currentFrequency;
 
 @synthesize tutorialView = m_tutorialView;
@@ -74,6 +78,9 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize stageView = m_stageView;
 @synthesize animationView = m_animationView;
 @synthesize eventHandler = m_eventHandler;
+@synthesize pitchDetector = m_pitchDetector;
+@synthesize noteHelper = m_noteHelper;
+@synthesize kvoService = m_kvoService;
 
 #pragma mark - Memory management
 
@@ -97,6 +104,9 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.splashController = nil;
   self.animationView = nil;
   self.eventHandler = nil;
+  self.pitchDetector = nil;
+  self.noteHelper = nil;
+  self.kvoService = nil;
   
   [super dealloc];
 }
@@ -157,21 +167,11 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   };
   
   self.medianPitchFollow = [[NSMutableArray alloc] initWithCapacity: 22];
+  
+  self.noteHelper = [[TMONoteHelper alloc] init];
 }
 
 #pragma mark - Lazy loaders
-
-- (RIOInterface*) rioRef
-{
-  if (m_rioRef == nil)
-  {
-    RIOInterface* rioRef = [RIOInterface sharedInstance];
-    
-    m_rioRef = rioRef;
-  }
-  
-  return m_rioRef;
-}
 
 - (TMOTutorialView*) tutorialView
 {
@@ -402,12 +402,12 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 
 - (void) startListener
 {
-  [self.rioRef startListening: self];
+  [[TMOPitchDetector sharedDetector] TurnOnMicrophoneTuner: self];
 }
 
 - (void) stopListener
 {
-  [self.rioRef stopListening];
+  [[TMOPitchDetector sharedDetector] TurnOffMicrophone];
 }
 
 #pragma mark - TMOFrequencyListener
@@ -481,14 +481,15 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   /* If the tutorial view is set to hidden, then begin the frequency listener.
    * Otherwise, disable it.
    */
-  if (isHidden)
+  SEL listenerAction = @selector(startListener);
+  if (!isHidden)
   {
-    [self startListener];
+    listenerAction = @selector(stopListener);
   }
-  else
-  {
-    [self stopListener];
-  }
+  
+  [self performSelectorOnMainThread: @selector(startListener)
+                         withObject: nil
+                      waitUntilDone: YES];
 }
 
 - (void) tutorialView: (TMOTutorialView*) tutorialView
@@ -554,6 +555,12 @@ static const CGFloat kTunerViewHeight = 171.0f;;
        [self.splashController.view removeFromSuperview];
        [self.splashController removeFromParentViewController];
      }];
+}
+
+- (void) updateToFrequency: (double) frequency
+{
+  [self.eventHandler frequencyChangedWithValue: frequency];
+  [self.tunerViewController frequencyChangedWithValue: frequency];
 }
 
 @end
