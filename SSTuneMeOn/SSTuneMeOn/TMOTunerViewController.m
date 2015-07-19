@@ -384,8 +384,11 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   if (self.progressControl.currentPage < self.progressControl.numberOfPages)
 	{
 		self.progressControl.currentPage = ++self.progressControl.currentPage;
-		
-    [self.progressControl updateCurrentPageDisplay];
+
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+      [self.progressControl updateCurrentPageDisplay];
+    });
 	}
 }
 
