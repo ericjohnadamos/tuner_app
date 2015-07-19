@@ -2116,6 +2116,7 @@
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
 		25A2BD861B2A9ADE006350A5 /* TMONoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2BD851B2A9ADE006350A5 /* TMONoteHelper.m */; };
 		25A2BD8A1B2AACAD006350A5 /* TMOKVOService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2BD891B2AACAD006350A5 /* TMOKVOService.m */; };
+		25B1399B1B1606F4009A4161 /* TMOPitchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B1399A1B1606F4009A4161 /* TMOPitchDetector.m */; };
 		25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */; };
 /* End PBXBuildFile section */
 
@@ -4272,6 +4273,8 @@
 		25A2BD851B2A9ADE006350A5 /* TMONoteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteHelper.m; sourceTree = "<group>"; };
 		25A2BD881B2AACAD006350A5 /* TMOKVOService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOKVOService.h; sourceTree = "<group>"; };
 		25A2BD891B2AACAD006350A5 /* TMOKVOService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOKVOService.m; sourceTree = "<group>"; };
+		25B139991B1606F4009A4161 /* TMOPitchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOPitchDetector.h; sourceTree = "<group>"; };
+		25B1399A1B1606F4009A4161 /* TMOPitchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOPitchDetector.m; sourceTree = "<group>"; };
 		25DC5ECE195B3DED00F907EA /* TMOProgressDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressDot.h; sourceTree = "<group>"; };
 		25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressDot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -6634,6 +6637,7 @@
 			isa = PBXGroup;
 			children = (
 				25A2BD871B2AAC86006350A5 /* Observers */,
+				25B139981B1606BF009A4161 /* Pitch Detector */,
 				2579DC6118D4005B00B5DEB0 /* Utilities */,
 				2579DC5C18D3FFD700B5DEB0 /* RIO */,
 				256B08D118CDF9EE00F856F9 /* Helpers */,
@@ -6757,6 +6761,15 @@
 				25A2BD891B2AACAD006350A5 /* TMOKVOService.m */,
 			);
 			name = Observers;
+			sourceTree = "<group>";
+		};
+		25B139981B1606BF009A4161 /* Pitch Detector */ = {
+			isa = PBXGroup;
+			children = (
+				25B139991B1606F4009A4161 /* TMOPitchDetector.h */,
+				25B1399A1B1606F4009A4161 /* TMOPitchDetector.m */,
+			);
+			name = "Pitch Detector";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -8935,6 +8948,7 @@
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
 				2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */,
 				2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */,
+				25B1399B1B1606F4009A4161 /* TMOPitchDetector.m in Sources */,
 				253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */,
 				2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
