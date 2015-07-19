@@ -124,22 +124,25 @@ TMOAnimationHelper* sm_sharedHelper;
   CGFloat width = 320.0f;
   CGFloat height = 333.0f;
   
-  for (NSUInteger cnt = 1; cnt <= length; cnt++)
+  @synchronized ([UIImage class])
   {
-    NSString* imageName
-      = [NSString stringWithFormat: @"%@_%03d@2x", prefix, cnt];
-    NSString* fileLocation
-      = [[NSBundle mainBundle] pathForResource: imageName
-                                        ofType: @"png"];
-    /* Preload image */
-    UIImage* frameImage = [UIImage imageWithContentsOfFile: fileLocation];
-    UIGraphicsBeginImageContext(CGSizeMake(width, height));
-    CGRect rect = CGRectMake(0, 0, width, height);
-    [frameImage drawInRect: rect];
-    UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [images addObject: (id) renderedImage.CGImage];
+    for (NSUInteger cnt = 1; cnt <= length; cnt++)
+    {
+      NSString* imageName = [NSString stringWithFormat:
+                             @"%@_%03lu@2x", prefix, (unsigned long)cnt];
+      NSString* fileLocation
+        = [[NSBundle mainBundle] pathForResource: imageName
+                                          ofType: @"png"];
+      /* Preload image */
+      UIImage* frameImage = [UIImage imageWithContentsOfFile: fileLocation];
+      UIGraphicsBeginImageContext(CGSizeMake(width, height));
+      CGRect rect = CGRectMake(0, 0, width, height);
+      [frameImage drawInRect: rect];
+      UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+      UIGraphicsEndImageContext();
+      
+      [images addObject: (id) renderedImage.CGImage];
+    }
   }
   return images;
 }
@@ -157,6 +160,7 @@ TMOAnimationHelper* sm_sharedHelper;
   animationSequence.removedOnCompletion = NO;
   animationSequence.values = images;
   animationSequence.delegate = self;
+  
   return animationSequence;
 }
 
