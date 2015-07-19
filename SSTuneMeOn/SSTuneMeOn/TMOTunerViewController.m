@@ -360,7 +360,7 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 
 - (void) pageControlClicked: (id) sender
 {
-  [self increaseProgress];
+  /* Nothing to do */
 }
 
 #pragma mark - Public methods
