@@ -10,7 +10,7 @@
 #import "TMOUserSettings.h"
 #import "TMONote.h"
 
-static NSInteger kMaxHitCount = 10;
+static NSInteger kMaxHitCount = 5;
 static NSInteger kInactiveDuration = 8;
 
 static BOOL sm_isActive = YES;
