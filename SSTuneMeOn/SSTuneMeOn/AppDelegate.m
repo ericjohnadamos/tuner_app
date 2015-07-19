@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RIOInterface.h"
 
 #import "TMOUserSettings.h"
 
@@ -71,17 +70,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 {
   [[UIApplication sharedApplication] setStatusBarStyle:
    UIStatusBarStyleLightContent];
-  
-  /* Getting the interface instance */
-  RIOInterface* rioRef = [RIOInterface sharedInstance];
-  
-  /* Set sample rate and frequency
-   * Default sample rate is 44.1k Hz
-   */
-  [rioRef setSampleRate: 22050];
-  
-  /* Initialize components */
-  [rioRef initializeAudioSession];
   
   /* Override point for customization after application launch. */
 
