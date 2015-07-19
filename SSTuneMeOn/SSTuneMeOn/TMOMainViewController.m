@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Eric John Adamos. All rights reserved.
 //
 
-#import "RIOInterface.h"
 #import "TMOLocalizedStrings.h"
 
 #import "TMOUserSettings.h"

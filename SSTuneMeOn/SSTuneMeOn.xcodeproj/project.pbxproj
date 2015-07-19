@@ -2112,7 +2112,6 @@
 		2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */; };
 		2578738D18F16DDC00AC3D56 /* TMOLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */; };
 		2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578739018F18E6E00AC3D56 /* TMOUserSettings.m */; };
-		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
 		25A2BD861B2A9ADE006350A5 /* TMONoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2BD851B2A9ADE006350A5 /* TMONoteHelper.m */; };
 		25A2BD8A1B2AACAD006350A5 /* TMOKVOService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2BD891B2AACAD006350A5 /* TMOKVOService.m */; };
@@ -4263,8 +4262,6 @@
 		2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TMOLocalizable.strings; sourceTree = "<group>"; };
 		2578738F18F18E6E00AC3D56 /* TMOUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOUserSettings.h; sourceTree = "<group>"; };
 		2578739018F18E6E00AC3D56 /* TMOUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOUserSettings.m; sourceTree = "<group>"; };
-		2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
-		2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
 		2579DC6218D4009300B5DEB0 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		2579DC6318D4009300B5DEB0 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		2579DC6418D4009300B5DEB0 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
@@ -6639,7 +6636,7 @@
 				25A2BD871B2AAC86006350A5 /* Observers */,
 				25B139981B1606BF009A4161 /* Pitch Detector */,
 				2579DC6118D4005B00B5DEB0 /* Utilities */,
-				2579DC5C18D3FFD700B5DEB0 /* RIO */,
+				2579DC5C18D3FFD700B5DEB0 /* Frequency Listener */,
 				256B08D118CDF9EE00F856F9 /* Helpers */,
 			);
 			name = Core;
@@ -6733,14 +6730,12 @@
 			name = "User Settings";
 			sourceTree = "<group>";
 		};
-		2579DC5C18D3FFD700B5DEB0 /* RIO */ = {
+		2579DC5C18D3FFD700B5DEB0 /* Frequency Listener */ = {
 			isa = PBXGroup;
 			children = (
-				2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */,
-				2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */,
 				0AB919DB191BBE1100410C00 /* TMOFrequencyListener.h */,
 			);
-			name = RIO;
+			name = "Frequency Listener";
 			sourceTree = "<group>";
 		};
 		2579DC6118D4005B00B5DEB0 /* Utilities */ = {
@@ -8962,7 +8957,6 @@
 				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
 				25A2BD8A1B2AACAD006350A5 /* TMOKVOService.m in Sources */,
 				25544A12195E59E500420476 /* TMOProgressView.m in Sources */,
-				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
 				0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */,
 				0A392659195E9C6A00058DF9 /* TMOTuneEventHandler.m in Sources */,
