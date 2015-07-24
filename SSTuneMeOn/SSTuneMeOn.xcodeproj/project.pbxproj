@@ -2095,8 +2095,6 @@
 		256B08A718CDED4500F856F9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08A618CDED4500F856F9 /* XCTest.framework */; };
 		256B08A818CDED4500F856F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088D18CDED4500F856F9 /* Foundation.framework */; };
 		256B08A918CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
-		256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 256B08AF18CDED4500F856F9 /* InfoPlist.strings */; };
-		256B08B318CDED4500F856F9 /* SSTuneMeOnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08B218CDED4500F856F9 /* SSTuneMeOnTests.m */; };
 		256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256B089F18CDED4500F856F9 /* Images.xcassets */; };
 		256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C118CDF36200F856F9 /* TMOSplashViewController.m */; };
 		256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C418CDF42E00F856F9 /* TMOMainViewController.m */; };
@@ -8918,7 +8916,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */,
 				256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8967,7 +8964,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				256B08B318CDED4500F856F9 /* SSTuneMeOnTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9005,6 +9001,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -9034,10 +9031,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7s armv8 armv7";
 			};
 			name = Debug;
 		};
@@ -9045,6 +9043,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -9068,16 +9067,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7s armv8 armv7";
 			};
 			name = Release;
 		};
 		256B08B718CDED4500F856F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -9090,6 +9091,7 @@
 				PRODUCT_NAME = "Tune Me On";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7s armv8 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9097,6 +9099,7 @@
 		256B08B818CDED4500F856F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -9108,6 +9111,7 @@
 				PRODUCT_NAME = "Tune Me On";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7s armv8 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
