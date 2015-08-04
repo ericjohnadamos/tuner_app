@@ -61,30 +61,30 @@ static TMOKeyHelper* sm_keyHelper;
   NSMutableDictionary* keyMapping
     = [NSMutableDictionary dictionaryWithCapacity: 9];
   
-  [keyMapping setObject: @466.7f
+  [keyMapping setObject: @130.8f
                  forKey: @"c"];
-  [keyMapping setObject: @494.4f
+  [keyMapping setObject: @146.8f
                  forKey: @"d"];
-  [keyMapping setObject: @523.8f
+  [keyMapping setObject: @164.8f
                  forKey: @"e"];
-  [keyMapping setObject: @415.8f
+  [keyMapping setObject: @220.0f
                  forKey: @"a"];
-  [keyMapping setObject: @440.5f
+  [keyMapping setObject: @246.9f
                  forKey: @"b"];
   
   NSMutableDictionary* frequencyMapping
     = [NSMutableDictionary dictionaryWithCapacity: 9];
   
   [frequencyMapping setObject: @"c"
-                       forKey: @466.7f];
+                       forKey: @130.8f];
   [frequencyMapping setObject: @"d"
-                       forKey: @494.4];
+                       forKey: @146.8f];
   [frequencyMapping setObject: @"e"
-                       forKey: @523.8f];
+                       forKey: @164.8f];
   [frequencyMapping setObject: @"a"
-                       forKey: @415.8f];
+                       forKey: @220.0f];
   [frequencyMapping setObject: @"b"
-                       forKey: @440.5f];
+                       forKey: @246.9f];
 }
 
 - (NSString*) closestCharForFrequency: (CGFloat) frequency
