@@ -25,9 +25,6 @@
 - (void) dealloc
 {
   self.fillColor = nil;
-  self.strokeColor = nil;
-  
-  [super dealloc];
 }
 
 #pragma mark - Lazy loaders

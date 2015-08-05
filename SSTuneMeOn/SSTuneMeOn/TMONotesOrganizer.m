@@ -13,7 +13,7 @@
 
 @interface TMONotesOrganizer ()
 
-@property (nonatomic, retain) NSArray* noteGroups;
+@property (nonatomic, strong) NSArray* noteGroups;
 
 @end
 
@@ -26,11 +26,6 @@ static TMONotesOrganizer* sm_sharedInstance;
 
 #pragma mark - Memory management
 
-- (void) dealloc
-{
-  self.noteGroups = nil;
-  [super dealloc];
-}
 
 #pragma mark - Getters
 
@@ -53,7 +48,6 @@ static TMONotesOrganizer* sm_sharedInstance;
     TMONoteGroup* acousticGroup
       = [[TMONoteGroup alloc] initWithGroupName: acousticGroupName
                                           notes: acousticNotes];
-    [acousticGroup autorelease];
     
     /* Acoustic */
     NSString* bassGroupName
@@ -66,10 +60,9 @@ static TMONotesOrganizer* sm_sharedInstance;
     TMONoteGroup* bassGroup
       = [[TMONoteGroup alloc] initWithGroupName: bassGroupName
                                           notes: bassNotes];
-    [bassGroup autorelease];
     
     NSArray* noteGroups = @[acousticGroup, bassGroup];
-    m_noteGroups = [noteGroups retain];
+    m_noteGroups = noteGroups;
   }
   return m_noteGroups;
 }

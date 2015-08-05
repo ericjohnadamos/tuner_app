@@ -23,10 +23,6 @@ static const CGFloat kAnimationDelay = 2.0f;
 - (void) dealloc
 {
   self.delegate = nil;
-  
-  self.views = nil;
-  
-  [super dealloc];
 }
 
 #pragma mark - Initializer
@@ -50,7 +46,6 @@ static const CGFloat kAnimationDelay = 2.0f;
   if (m_views == nil)
   {
     UIView* splashOne = [[UIView alloc] initWithFrame: self.bounds];
-    [splashOne autorelease];
     
     splashOne.backgroundColor = [UIColor blackColor];
     

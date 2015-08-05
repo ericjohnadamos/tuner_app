@@ -11,7 +11,7 @@
 @interface TMONoteGroup : NSObject
 
 @property (nonatomic, copy) NSString* groupName;
-@property (nonatomic, retain, readonly) NSArray* notes;
+@property (nonatomic, strong, readonly) NSArray* notes;
 
 - (id) initWithGroupName: (NSString*) groupName
                    notes: (NSArray*)  notes;

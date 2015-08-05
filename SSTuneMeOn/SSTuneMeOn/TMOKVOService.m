@@ -493,8 +493,6 @@ static NSString* describe_options(NSKeyValueObservingOptions options)
 - (void) dealloc
 {
   [self unobserveAll];
-  
-  [super dealloc];
 }
 
 #pragma mark Properties -

@@ -11,9 +11,9 @@
 
 @interface TMOAnimationHelper ()
 
-@property (nonatomic, retain) NSDictionary* animationKeyMap;
-@property (nonatomic, retain) NSDictionary* animationLengthMap;
-@property (nonatomic, retain) NSMutableDictionary* animationCache;
+@property (nonatomic, strong) NSDictionary* animationKeyMap;
+@property (nonatomic, strong) NSDictionary* animationLengthMap;
+@property (nonatomic, strong) NSMutableDictionary* animationCache;
 
 @end
 
@@ -43,12 +43,6 @@ TMOAnimationHelper* sm_sharedHelper;
 
 #pragma mark - Memory management
 
-- (void) dealloc
-{
-  self.animationKeyMap = nil;
-  self.animationLengthMap = nil;
-  [super dealloc];
-}
 
 #pragma mark - Static methods
 
@@ -81,7 +75,6 @@ TMOAnimationHelper* sm_sharedHelper;
           kAnimationKeyDance6: @"dance_06",
           kAnimationKeyDance7: @"dance_07"};
     
-    [m_animationKeyMap retain];
   }
   return m_animationKeyMap;
 }
@@ -101,7 +94,6 @@ TMOAnimationHelper* sm_sharedHelper;
           kAnimationKeyDance6: @(289),
           kAnimationKeyDance7: @(392)};
     
-    [m_animationLengthMap retain];
   }
   return m_animationLengthMap;
 }

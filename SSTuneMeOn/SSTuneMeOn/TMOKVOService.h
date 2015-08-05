@@ -44,7 +44,7 @@ typedef void
 /* Observer that is being notified on key-value change. Must be specified on
  * initialization
  */
-@property (atomic, assign, readonly) id observer;
+@property (atomic, weak, readonly) id observer;
 
 /* @abstract - Registers observer for key-value change notification.
  * @param object The object to observe.

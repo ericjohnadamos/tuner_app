@@ -16,7 +16,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, retain) TMOMainViewController* mainController;
+@property (nonatomic, strong) TMOMainViewController* mainController;
 
 @end
 
@@ -24,16 +24,6 @@
 
 @synthesize window = m_window;
 @synthesize mainController = m_mainController;
-
-#pragma mark - Memory deallocation
-
-- (void) dealloc
-{
-  self.window = nil;
-  self.mainController = nil;
-  
-  [super dealloc];
-}
 
 #pragma mark - Lazy loaders
 

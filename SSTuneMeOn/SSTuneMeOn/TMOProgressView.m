@@ -12,9 +12,9 @@
 
 @interface TMOProgressView ()
 
-@property (nonatomic, retain) NSTimer* timer;
+@property (nonatomic, strong) NSTimer* timer;
 
-@property (nonatomic, assign) TMOTheme* theme;
+@property (nonatomic, weak) TMOTheme* theme;
 
 @end
 
@@ -35,9 +35,6 @@
   self.theme = nil;
   
   [self.timer invalidate];
-  self.timer = nil;
-  
-  [super dealloc];
 }
 
 #pragma mark - Lazy loaders

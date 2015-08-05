@@ -114,12 +114,5 @@ static TMOKeyHelper* sm_keyHelper;
 
 #pragma mark - Memory deallocation
 
-- (void) dealloc
-{
-  self.keyMapping = nil;
-  self.frequencyMapping = nil;
-  
-  [super dealloc];
-}
 
 @end

@@ -17,8 +17,8 @@ static const CGFloat kAnimationDuration = 0.35f;
 
 @interface TMOTutorialView () <UIWebViewDelegate>
 
-@property (nonatomic, retain) UIWebView* tutorialWebView;
-@property (nonatomic, retain) UIButton* okayButton;
+@property (nonatomic, strong) UIWebView* tutorialWebView;
+@property (nonatomic, strong) UIButton* okayButton;
 
 @end
 
@@ -31,11 +31,7 @@ static const CGFloat kAnimationDuration = 0.35f;
 
 - (void) dealloc
 {
-  self.delegate = nil;
-  self.tutorialWebView = nil;
-  self.okayButton = nil;
-  
-  [super dealloc];
+  self.delegate = nil; 
 }
 
 #pragma mark - Initializer
@@ -116,7 +112,7 @@ static const CGFloat kAnimationDuration = 0.35f;
                    action: @selector(didTapOkayButton)
          forControlEvents: UIControlEventTouchUpInside];
     
-    m_okayButton = [okayButton retain];
+    m_okayButton = okayButton;
   }
   
   return m_okayButton;

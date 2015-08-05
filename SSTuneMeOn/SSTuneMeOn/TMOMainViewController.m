@@ -41,22 +41,22 @@ static const CGFloat kTunerViewHeight = 171.0f;;
    TMONoteSelectorViewDelegate,
    TMOSplashViewDelegate>
 
-@property (nonatomic, retain) TMOTutorialView* tutorialView;
+@property (nonatomic, strong) TMOTutorialView* tutorialView;
 
 @property (nonatomic, assign) float currentFrequency;
 
-@property (nonatomic, retain) UIView* navBarView;
-@property (nonatomic, retain) UILabel* titleLabel;
-@property (nonatomic, retain) UIButton* helpButton;
-@property (nonatomic, retain) UIButton* notesButton;
-@property (nonatomic, retain) TMONoteSelectorView* notesSelectorView;
-@property (nonatomic, retain) TMOTunerViewController* tunerViewController;
-@property (nonatomic, retain) TMOSplashViewController* splashController;
-@property (nonatomic, retain) UIImageView* stageView;
-@property (nonatomic, retain) TMODancingAnimationView* animationView;
-@property (nonatomic, retain) TMOTuneEventHandler* eventHandler;
-@property (nonatomic, retain) TMONoteHelper* noteHelper;
-@property (nonatomic, retain) TMOKVOService* kvoService;
+@property (nonatomic, strong) UIView* navBarView;
+@property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, strong) UIButton* helpButton;
+@property (nonatomic, strong) UIButton* notesButton;
+@property (nonatomic, strong) TMONoteSelectorView* notesSelectorView;
+@property (nonatomic, strong) TMOTunerViewController* tunerViewController;
+@property (nonatomic, strong) TMOSplashViewController* splashController;
+@property (nonatomic, strong) UIImageView* stageView;
+@property (nonatomic, strong) TMODancingAnimationView* animationView;
+@property (nonatomic, strong) TMOTuneEventHandler* eventHandler;
+@property (nonatomic, strong) TMONoteHelper* noteHelper;
+@property (nonatomic, strong) TMOKVOService* kvoService;
 
 @end
 
@@ -80,35 +80,6 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize pitchDetector = m_pitchDetector;
 @synthesize noteHelper = m_noteHelper;
 @synthesize kvoService = m_kvoService;
-
-#pragma mark - Memory management
-
-- (void) didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  
-  /* TODO: Implement purge views */
-}
-
-- (void) dealloc
-{
-  self.tutorialView = nil;
-  
-  self.navBarView = nil;
-  self.titleLabel = nil;
-  self.helpButton = nil;
-  self.notesButton = nil;
-  self.notesSelectorView = nil;
-  self.tunerViewController = nil;
-  self.splashController = nil;
-  self.animationView = nil;
-  self.eventHandler = nil;
-  self.pitchDetector = nil;
-  self.noteHelper = nil;
-  self.kvoService = nil;
-  
-  [super dealloc];
-}
 
 #pragma mark - Application lifecycle
 
@@ -156,6 +127,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   {
     if (doesPerformCombo)
     {
+      __weak typeof(self) weakSelf = self;
+      
       [self.animationView enqueueNextAnimation];
       [self.tunerViewController increaseProgress];
     }
@@ -245,7 +218,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
                    action: @selector(didTapHelpButton)
          forControlEvents: UIControlEventTouchUpInside];
     
-    m_helpButton = [helpButton retain];
+    m_helpButton = helpButton;
   }
   return m_helpButton;
 }
@@ -267,7 +240,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
                     action: @selector(didTapNotesButton)
           forControlEvents: UIControlEventTouchUpInside];
     
-    m_notesButton = [notesButton retain];
+    m_notesButton = notesButton;
   }
   
   return m_notesButton;

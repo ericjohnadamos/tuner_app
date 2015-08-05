@@ -14,25 +14,20 @@
 
 #pragma mark - Memory management
 
-- (void) dealloc
-{
-  self.name = nil;
-  [super dealloc];
-}
 
 #pragma mark - Static methods
 
 + (TMONote*) noteWithName: (NSString*) name
                 frequency: (CGFloat)   frequency
 {
-  return [[[self alloc] initiWithName: name
-                            frequency: frequency] autorelease];
+  return [[self alloc] initWithName: name
+                           frequency: frequency];
 }
 
 #pragma mark - Public methods
 
-- (id) initiWithName: (NSString*) name
-           frequency: (CGFloat)   frequency
+- (id) initWithName: (NSString*) name
+          frequency: (CGFloat)   frequency
 {
   if (self = [super init])
   {

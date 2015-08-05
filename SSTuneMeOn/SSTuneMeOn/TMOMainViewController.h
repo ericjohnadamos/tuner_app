@@ -12,7 +12,7 @@
 @interface TMOMainViewController : UIViewController
 
 @property (nonatomic, strong) TMOPitchDetector* pitchDetector;
-@property (nonatomic, assign) NSMutableArray* medianPitchFollow;
+@property (nonatomic, strong) NSMutableArray* medianPitchFollow;
 
 - (void) updateToFrequency: (double) frequency;
 

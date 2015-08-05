@@ -33,8 +33,6 @@
 {
   self.onColor = nil;
   self.offColor = nil;
-	
-	[super dealloc];
 }
 
 #pragma mark - Initalizers
@@ -213,7 +211,6 @@
 
 - (void) setOnColor: (UIColor*) aColor
 {
-	[aColor retain];
   
   m_onColor = nil;
   m_onColor = aColor;
@@ -228,7 +225,6 @@
 
 - (void) setOffColor: (UIColor*) aColor
 {
-	[aColor retain];
   
   m_offColor = nil;
   m_offColor = aColor;

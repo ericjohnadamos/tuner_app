@@ -30,8 +30,8 @@
 
 @interface TMOProgressView : UIView
 
-@property (nonatomic, assign) id<TMOProgressViewDataSource> dataSource;
-@property (nonatomic, assign) id<TMOProgressViewDelegate> delegate;
+@property (nonatomic, weak) id<TMOProgressViewDataSource> dataSource;
+@property (nonatomic, weak) id<TMOProgressViewDelegate> delegate;
 
 /*
  * Loads all the views given

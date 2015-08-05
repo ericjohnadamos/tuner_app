@@ -16,8 +16,8 @@
 + (TMONote*) noteWithName: (NSString*) name
                 frequency: (CGFloat)   frequency;
 
-- (id) initiWithName: (NSString*) name
-           frequency: (CGFloat)   frequency;
+- (id) initWithName: (NSString*) name
+          frequency: (CGFloat)   frequency;
 
 - (BOOL) isEqualToNote: (TMONote*) aNote;
 

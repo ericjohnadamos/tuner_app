@@ -19,19 +19,19 @@
 
 @interface TMOTunerViewController ()
 
-@property (nonatomic, assign) TMOTheme* theme;
-@property (nonatomic, retain) TMONote* note;
-@property (nonatomic, retain) TMONoteGroup* noteGroup;
-@property (nonatomic, retain) TMOAnalogMeterView* analogMeterView;
-@property (nonatomic, retain) UIImageView* noteIconView;
-@property (nonatomic, retain) UIImageView* stringIconView;
-@property (nonatomic, retain) UILabel* frequencyLabel;
+@property (nonatomic, weak) TMOTheme* theme;
+@property (nonatomic, strong) TMONote* note;
+@property (nonatomic, strong) TMONoteGroup* noteGroup;
+@property (nonatomic, strong) TMOAnalogMeterView* analogMeterView;
+@property (nonatomic, strong) UIImageView* noteIconView;
+@property (nonatomic, strong) UIImageView* stringIconView;
+@property (nonatomic, strong) UILabel* frequencyLabel;
 @property (nonatomic, assign) BOOL isTuned;
 @property (nonatomic, assign) CGFloat currentFrequency;
 @property (nonatomic, assign) CGFloat currentVariance;
-@property (nonatomic, retain) NSTimer* timer;
+@property (nonatomic, strong) NSTimer* timer;
 
-@property (nonatomic, retain) TMOProgressControl* progressControl;
+@property (nonatomic, strong) TMOProgressControl* progressControl;
 
 @end
 
@@ -65,17 +65,6 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
 - (void) dealloc
 {
   self.theme = nil;
-  self.note = nil;;
-  self.noteGroup = nil;
-  self.analogMeterView = nil;
-  self.noteIconView = nil;
-  self.stringIconView = nil;
-  self.frequencyLabel = nil;
-  self.timer = nil;
-  
-  self.progressControl = nil;
-  
-  [super dealloc];
 }
 
 #pragma mark - Initializations
@@ -218,7 +207,6 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   if (m_note == nil)
   {
     m_note = [[TMOUserSettings sharedInstance] selectedNote];
-    [m_note retain];
   }
   return m_note;
 }
@@ -228,7 +216,6 @@ static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
   if (m_noteGroup == nil)
   {
     m_noteGroup = [[TMOUserSettings sharedInstance] selectedGroup];
-    [m_noteGroup retain];
   }
   return m_noteGroup;
 }

@@ -12,8 +12,8 @@
 
 @interface TMOStandardTheme ()
 
-@property (nonatomic, retain) NSDictionary* notesIconNames;
-@property (nonatomic, retain) NSDictionary* tunedNotesIconNames;
+@property (nonatomic, strong) NSDictionary* notesIconNames;
+@property (nonatomic, strong) NSDictionary* tunedNotesIconNames;
 
 @end
 
@@ -25,12 +25,6 @@ static TMOStandardTheme* sm_theme = nil;
 
 #pragma mark - Memory management
 
-- (void) dealloc
-{
-  self.notesIconNames = nil;
-  self.tunedNotesIconNames = nil;
-  [super dealloc];
-}
 
 #pragma mark - Initializer
 
@@ -61,7 +55,6 @@ static TMOStandardTheme* sm_theme = nil;
         @"G" : kThemeNoteIconImageNameG,
       };
     
-    [m_notesIconNames retain];
   }
   return m_notesIconNames;
 }
@@ -78,7 +71,6 @@ static TMOStandardTheme* sm_theme = nil;
       @"E" : kThemeNoteIconTunedImageNameE,
       @"G" : kThemeNoteIconTunedImageNameG,
     };
-    [m_tunedNotesIconNames retain];
   }
   return m_tunedNotesIconNames;
 }
@@ -218,7 +210,7 @@ static TMOStandardTheme* sm_theme = nil;
                        value: unitFont
                        range: unitRange];
   }
-  return [attrString autorelease];
+  return attrString;
 }
 
 @end
