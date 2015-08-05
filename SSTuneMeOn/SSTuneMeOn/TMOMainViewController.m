@@ -27,6 +27,7 @@
 #import "TMOKVOService.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
+static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
 
 #pragma mark - Navbar Constants
 
@@ -77,7 +78,6 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize stageView = m_stageView;
 @synthesize animationView = m_animationView;
 @synthesize eventHandler = m_eventHandler;
-@synthesize pitchDetector = m_pitchDetector;
 @synthesize noteHelper = m_noteHelper;
 @synthesize kvoService = m_kvoService;
 
@@ -122,25 +122,104 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.tunerViewController.view.alpha = 0.0f;
   self.navBarView.alpha = 0.0f;
   
+  __block __weak typeof (self) weakSelf = self;
+  
   /* Handle successfull tune events */
   self.eventHandler.callback = ^(BOOL doesPerformCombo)
   {
     if (doesPerformCombo)
     {
-      __weak typeof(self) weakSelf = self;
-      
-      [self.animationView enqueueNextAnimation];
-      [self.tunerViewController increaseProgress];
+    
+      [weakSelf.animationView enqueueNextAnimation];
+      [weakSelf.tunerViewController increaseProgress];
     }
     else
     {
-      [self.tunerViewController decreaseProgress];
+      [weakSelf.tunerViewController decreaseProgress];
     }
   };
   
   self.medianPitchFollow = [[NSMutableArray alloc] initWithCapacity: 22];
   
   self.noteHelper = [[TMONoteHelper alloc] init];
+  
+  AVAudioSession* session = [AVAudioSession sharedInstance];
+  NSError* error;
+  
+  [session setCategory: AVAudioSessionCategoryPlayAndRecord
+                 error: &error];
+  if (error)
+  {
+    NSLog(@"Error setting up audio session category: %@",
+          error.localizedDescription);
+  }
+  
+  [session setActive: YES
+               error: &error];
+  if (error)
+  {
+    NSLog(@"Error setting up audio session active: %@",
+          error.localizedDescription);
+  }
+  
+  self.audioPlotTime.plotType = EZPlotTypeBuffer;
+  
+  self.audioPlotFreq.shouldFill = YES;
+  self.audioPlotFreq.plotType = EZPlotTypeBuffer;
+  self.audioPlotFreq.shouldCenterYAxis = NO;
+  
+  self.microphone = [EZMicrophone microphoneWithDelegate: self];
+  
+  /* Create an instance of the EZAudioFFTRolling to keep a history of the
+   * incoming audio data and calculate the FFT.
+   */
+  Float64 sampleRate = self.microphone.audioStreamBasicDescription.mSampleRate;
+  self.fft
+    = [EZAudioFFTRolling fftWithWindowSize: FFTViewControllerFFTWindowSize
+                                sampleRate: sampleRate
+                                  delegate: self];
+  
+  [self.microphone startFetchingAudio];
+}
+
+-(void)    microphone: (EZMicrophone*) microphone
+     hasAudioReceived: (float **)      buffer
+       withBufferSize: (UInt32)        bufferSize
+ withNumberOfChannels: (UInt32)        numberOfChannels
+{
+  /* Calculate the FFT, will trigger EZAudioFFTDelegate */
+  [self.fft computeFFTWithBuffer: buffer[0]
+                  withBufferSize: bufferSize];
+  
+  __weak typeof (self) weakSelf = self;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [weakSelf.audioPlotTime updateBuffer:buffer[0]
+                          withBufferSize:bufferSize];
+  });
+}
+
+- (void)        fft: (EZAudioFFT*) fft
+ updatedWithFFTData: (float*)      fftData
+         bufferSize: (vDSP_Length) bufferSize
+{
+  float maxFrequency = [fft maxFrequency];
+  
+  NSString* noteName = [EZAudioUtilities
+                        noteNameStringForFrequency: maxFrequency
+                                     includeOctave: YES];
+  
+  NSLog(@"%@", [NSString stringWithFormat:
+                @"Highest Note: %@,\nFrequency: %.2f",
+                noteName, maxFrequency]);
+  
+  __weak typeof (self) weakSelf = self;
+  dispatch_async(dispatch_get_main_queue(), ^
+  {
+    [weakSelf.audioPlotFreq updateBuffer: fftData
+                          withBufferSize: (UInt32)bufferSize];
+    
+    [self updateToFrequency: maxFrequency];
+  });
 }
 
 #pragma mark - Lazy loaders
@@ -374,12 +453,12 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 
 - (void) startListener
 {
-  [[TMOPitchDetector sharedDetector] TurnOnMicrophoneTuner: self];
+  [self.microphone startFetchingAudio];
 }
 
 - (void) stopListener
 {
-  [[TMOPitchDetector sharedDetector] TurnOffMicrophone];
+  [self.microphone stopFetchingAudio];
 }
 
 #pragma mark - TMOFrequencyListener

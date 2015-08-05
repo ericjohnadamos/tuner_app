@@ -39,12 +39,12 @@ static TMONotesOrganizer* sm_sharedInstance;
     NSString* acousticGroupName
       = [TMOLocalizedStrings stringForKey: @"TMONoteGroupNameAcoustic"];
     NSArray* acousticNotes
-      = @[[TMONote noteWithName: @"E" frequency: 329.6f],
-          [TMONote noteWithName: @"B" frequency: 246.9f],
-          [TMONote noteWithName: @"G" frequency: 196.0f],
-          [TMONote noteWithName: @"D" frequency: 146.8f],
-          [TMONote noteWithName: @"A" frequency: 110.0f],
-          [TMONote noteWithName: @"E" frequency: 82.41f]];
+      = @[[TMONote noteWithName: @"E" frequency: 659.25f],
+          [TMONote noteWithName: @"B" frequency: 987.77f],
+          [TMONote noteWithName: @"G" frequency: 392.0f],
+          [TMONote noteWithName: @"D" frequency: 293.66f],
+          [TMONote noteWithName: @"A" frequency: 440.0f],
+          [TMONote noteWithName: @"E" frequency: 659.25f]];
     TMONoteGroup* acousticGroup
       = [[TMONoteGroup alloc] initWithGroupName: acousticGroupName
                                           notes: acousticNotes];
@@ -53,10 +53,10 @@ static TMONotesOrganizer* sm_sharedInstance;
     NSString* bassGroupName
       = [TMOLocalizedStrings stringForKey: @"TMONoteGroupNameBass"];
     NSArray* bassNotes
-      = @[[TMONote noteWithName: @"G" frequency: 196.0f],
-          [TMONote noteWithName: @"D" frequency: 146.8f],
-          [TMONote noteWithName: @"A" frequency: 110.0f],
-          [TMONote noteWithName: @"E" frequency: 82.41f]];
+      = @[[TMONote noteWithName: @"G" frequency: 392.0f],
+          [TMONote noteWithName: @"D" frequency: 293.66f],
+          [TMONote noteWithName: @"A" frequency: 440.0f],
+          [TMONote noteWithName: @"E" frequency: 659.25f]];
     TMONoteGroup* bassGroup
       = [[TMONoteGroup alloc] initWithGroupName: bassGroupName
                                           notes: bassNotes];
