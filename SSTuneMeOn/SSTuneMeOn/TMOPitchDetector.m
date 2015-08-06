@@ -62,13 +62,13 @@
   AVAudioSession* session = [AVAudioSession sharedInstance];
   
   /* Fix this sample rate, as Human Pitch Range A0(27.5Hz) to B8(7900Hz) */
-  sampleRate = 44100;
+  sampleRate = 22050;
   
   /* % of frame overlap */
   percentageOfOverlap = [userDefaults integerForKey: @"percentageOfOverlap"];
   kBufferSize = [userDefaults integerForKey: @"kBufferSize"];
   
-  if (kBufferSize == 0) kBufferSize = 8192;
+  if (kBufferSize == 0) kBufferSize = 2048;
   
   [session setPreferredSampleRate: sampleRate
                             error: &err];
