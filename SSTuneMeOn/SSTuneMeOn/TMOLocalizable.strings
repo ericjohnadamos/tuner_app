@@ -17,7 +17,7 @@
 "TMOBassGuitar" = "Bass Guitar";
 
 /* Note Group Names */
-"TMONoteGroupNameAcoustic" = "Acoustic";
+"TMONoteGroupNameAcoustic" = "Guitar";
 "TMONoteGroupNameBass" = "Bass";
 
 /* Note Selector View */

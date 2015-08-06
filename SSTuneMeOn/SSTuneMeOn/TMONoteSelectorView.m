@@ -20,17 +20,17 @@
   <UIPickerViewDataSource,
    UIPickerViewDelegate>
 
-@property (nonatomic, assign) TMOTheme* theme;
-@property (nonatomic, retain) UIPickerView* pickerView;
-@property (nonatomic, retain) NSArray* noteGroups;
-@property (nonatomic, retain) TMONoteGroup* selectedGroup;
-@property (nonatomic, retain) TMONote* selectedNote;
-@property (nonatomic, retain) UIView* navBarView;
-@property (nonatomic, retain) UIButton* doneButton;
-@property (nonatomic, retain) UIButton* cancelButton;
-@property (nonatomic, retain) UILabel* titleLabel;
-@property (nonatomic, retain) UIView* iconContainer;
-@property (nonatomic, retain) UIImageView* iconView;
+@property (nonatomic, weak) TMOTheme* theme;
+@property (nonatomic, strong) UIPickerView* pickerView;
+@property (nonatomic, strong) NSArray* noteGroups;
+@property (nonatomic, strong) TMONoteGroup* selectedGroup;
+@property (nonatomic, strong) TMONote* selectedNote;
+@property (nonatomic, strong) UIView* navBarView;
+@property (nonatomic, strong) UIButton* doneButton;
+@property (nonatomic, strong) UIButton* cancelButton;
+@property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, strong) UIView* iconContainer;
+@property (nonatomic, strong) UIImageView* iconView;
 
 @end
 
@@ -63,18 +63,6 @@ static const CGFloat kStringIconHeight = 21.0f;
 - (void) dealloc
 {
   self.theme = nil;
-  self.pickerView = nil;
-  self.noteGroups = nil;
-  self.selectedGroup = nil;
-  self.selectedNote = nil;
-  self.navBarView = nil;
-  self.doneButton = nil;
-  self.cancelButton = nil;
-  self.titleLabel = nil;
-  self.iconContainer = nil;
-  self.iconView = nil;
-  self.delegate = nil;
-  [super dealloc];
 }
 
 #pragma mark - Initializers
@@ -145,7 +133,7 @@ static const CGFloat kStringIconHeight = 21.0f;
                      action: @selector(didTapCancelButton:)
            forControlEvents: UIControlEventTouchUpInside];
     
-    m_cancelButton = [cancelButton retain];
+    m_cancelButton = cancelButton;
   }
   return m_cancelButton;
 }
@@ -168,7 +156,7 @@ static const CGFloat kStringIconHeight = 21.0f;
                  action: @selector(didTapDoneButton:)
        forControlEvents: UIControlEventTouchUpInside];
 
-    m_doneButton = [doneButton retain];
+    m_doneButton = doneButton;
   }
   return m_doneButton;
 }
@@ -240,7 +228,6 @@ static const CGFloat kStringIconHeight = 21.0f;
   if (m_noteGroups == nil)
   {
     m_noteGroups = [[TMONotesOrganizer sharedInstance] allGroups];
-    [m_noteGroups retain];
   }
   return m_noteGroups;
 }
@@ -253,7 +240,6 @@ static const CGFloat kStringIconHeight = 21.0f;
     /* Retrive index from settings */
     NSInteger index = [TMOUserSettings sharedInstance].noteGroupIndex;
     m_selectedGroup = self.noteGroups[index];
-    [m_selectedGroup retain];
   }
   return m_selectedGroup;
 }
@@ -266,7 +252,6 @@ static const CGFloat kStringIconHeight = 21.0f;
     /* Retrive index from settings */
     NSInteger index = [TMOUserSettings sharedInstance].noteIndex;
     m_selectedNote = self.selectedGroup.notes[index];
-    [m_selectedNote retain];
   }
   return m_selectedNote;
 }
@@ -524,7 +509,7 @@ static const CGFloat kStringIconHeight = 21.0f;
       break;
   }
   pickerLabel.text = title;
-  return [pickerLabel autorelease];
+  return pickerLabel;
 }
 
 @end

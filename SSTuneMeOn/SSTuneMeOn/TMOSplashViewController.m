@@ -12,11 +12,11 @@
 
 @interface TMOSplashViewController ()
 
-@property (nonatomic, retain) CALayer* dancerLayer;
-@property (nonatomic, retain) UIView* containerView;
-@property (nonatomic, retain) UIImageView* stageView;
-@property (nonatomic, retain) UIImageView* logoView;
-@property (nonatomic, retain) UIView* backgroundView;
+@property (nonatomic, strong) CALayer* dancerLayer;
+@property (nonatomic, strong) UIView* containerView;
+@property (nonatomic, strong) UIImageView* stageView;
+@property (nonatomic, strong) UIImageView* logoView;
+@property (nonatomic, strong) UIView* backgroundView;
 
 @end
 
@@ -41,14 +41,7 @@
 
 - (void) dealloc
 {
-  self.delegate = nil;
-  self.dancerLayer = nil;
-  self.containerView = nil;
-  self.stageView = nil;
-  self.logoView = nil;
-  self.backgroundView = nil;
-  
-  [super dealloc];
+  self.delegate = nil; 
 }
 
 #pragma mark - Application lifecycle

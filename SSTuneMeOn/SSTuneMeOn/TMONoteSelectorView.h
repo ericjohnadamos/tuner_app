@@ -22,6 +22,6 @@
 
 @interface TMONoteSelectorView : UIView
 
-@property (nonatomic, retain) id<TMONoteSelectorViewDelegate> delegate;
+@property (nonatomic, strong) id<TMONoteSelectorViewDelegate> delegate;
 
 @end

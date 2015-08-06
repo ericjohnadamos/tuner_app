@@ -10,7 +10,7 @@
 
 @interface TMONoteGroup ()
 
-@property (nonatomic, retain) NSArray* notes;
+@property (nonatomic, strong) NSArray* notes;
 
 @end
 
@@ -18,12 +18,6 @@
 @synthesize groupName = m_groupName;
 @synthesize notes = m_notes;
 
-- (void) dealloc
-{
-  self.groupName = nil;
-  self.notes = nil;
-  [super dealloc];
-}
 
 #pragma mark - Public methods
 

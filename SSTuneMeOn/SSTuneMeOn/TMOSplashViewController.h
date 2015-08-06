@@ -29,6 +29,6 @@
 
 @interface TMOSplashViewController : UIViewController
 
-@property (nonatomic, assign) id<TMOSplashViewDelegate> delegate;
+@property (nonatomic, weak) id<TMOSplashViewDelegate> delegate;
 
 @end

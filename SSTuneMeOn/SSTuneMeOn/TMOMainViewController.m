@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Eric John Adamos. All rights reserved.
 //
 
-#import "RIOInterface.h"
 #import "TMOLocalizedStrings.h"
 
 #import "TMOUserSettings.h"
@@ -23,8 +22,12 @@
 #import "TMODancingAnimationView.h"
 #import "TMOAnimationHelper.h"
 #import "TMOTuneEventHandler.h"
+#import "TMOPitchDetector.h"
+#import "TMONoteHelper.h"
+#import "TMOKVOService.h"
 
 static const CGFloat kAnimationDuration = 0.35f;
+static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
 
 #pragma mark - Navbar Constants
 
@@ -39,27 +42,28 @@ static const CGFloat kTunerViewHeight = 171.0f;;
    TMONoteSelectorViewDelegate,
    TMOSplashViewDelegate>
 
-@property (nonatomic, retain) TMOTutorialView* tutorialView;
+@property (nonatomic, strong) TMOTutorialView* tutorialView;
 
 @property (nonatomic, assign) float currentFrequency;
 
-@property (nonatomic, retain) UIView* navBarView;
-@property (nonatomic, retain) UILabel* titleLabel;
-@property (nonatomic, retain) UIButton* helpButton;
-@property (nonatomic, retain) UIButton* notesButton;
-@property (nonatomic, retain) TMONoteSelectorView* notesSelectorView;
-@property (nonatomic, retain) TMOTunerViewController* tunerViewController;
-@property (nonatomic, retain) TMOSplashViewController* splashController;
-@property (nonatomic, retain) UIImageView* stageView;
-@property (nonatomic, retain) TMODancingAnimationView* animationView;
-@property (nonatomic, retain) TMOTuneEventHandler* eventHandler;
+@property (nonatomic, strong) UIView* navBarView;
+@property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, strong) UIButton* helpButton;
+@property (nonatomic, strong) UIButton* notesButton;
+@property (nonatomic, strong) TMONoteSelectorView* notesSelectorView;
+@property (nonatomic, strong) TMOTunerViewController* tunerViewController;
+@property (nonatomic, strong) TMOSplashViewController* splashController;
+@property (nonatomic, strong) UIImageView* stageView;
+@property (nonatomic, strong) TMODancingAnimationView* animationView;
+@property (nonatomic, strong) TMOTuneEventHandler* eventHandler;
+@property (nonatomic, strong) TMONoteHelper* noteHelper;
+@property (nonatomic, strong) TMOKVOService* kvoService;
 
 @end
 
 
 @implementation TMOMainViewController
 
-@synthesize rioRef = m_rioRef;
 @synthesize currentFrequency;
 
 @synthesize tutorialView = m_tutorialView;
@@ -74,32 +78,8 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 @synthesize stageView = m_stageView;
 @synthesize animationView = m_animationView;
 @synthesize eventHandler = m_eventHandler;
-
-#pragma mark - Memory management
-
-- (void) didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  
-  /* TODO: Implement purge views */
-}
-
-- (void) dealloc
-{
-  self.tutorialView = nil;
-  
-  self.navBarView = nil;
-  self.titleLabel = nil;
-  self.helpButton = nil;
-  self.notesButton = nil;
-  self.notesSelectorView = nil;
-  self.tunerViewController = nil;
-  self.splashController = nil;
-  self.animationView = nil;
-  self.eventHandler = nil;
-  
-  [super dealloc];
-}
+@synthesize noteHelper = m_noteHelper;
+@synthesize kvoService = m_kvoService;
 
 #pragma mark - Application lifecycle
 
@@ -142,27 +122,107 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   self.tunerViewController.view.alpha = 0.0f;
   self.navBarView.alpha = 0.0f;
   
+  __block __weak typeof (self) weakSelf = self;
+  
   /* Handle successfull tune events */
-  self.eventHandler.callback = ^(void)
+  self.eventHandler.callback = ^(BOOL doesPerformCombo)
   {
-    /* TODO Handle progress view */
-    [self.animationView enqueueNextAnimation];
+    if (doesPerformCombo)
+    {
+    
+      [weakSelf.animationView enqueueNextAnimation];
+      [weakSelf.tunerViewController increaseProgress];
+    }
+    else
+    {
+      [weakSelf.tunerViewController decreaseProgress];
+    }
   };
+  
+  self.medianPitchFollow = [[NSMutableArray alloc] initWithCapacity: 22];
+  
+  self.noteHelper = [[TMONoteHelper alloc] init];
+  
+  AVAudioSession* session = [AVAudioSession sharedInstance];
+  NSError* error;
+  
+  [session setCategory: AVAudioSessionCategoryPlayAndRecord
+                 error: &error];
+  if (error)
+  {
+    NSLog(@"Error setting up audio session category: %@",
+          error.localizedDescription);
+  }
+  
+  [session setActive: YES
+               error: &error];
+  if (error)
+  {
+    NSLog(@"Error setting up audio session active: %@",
+          error.localizedDescription);
+  }
+  
+  self.audioPlotTime.plotType = EZPlotTypeBuffer;
+  
+  self.audioPlotFreq.shouldFill = YES;
+  self.audioPlotFreq.plotType = EZPlotTypeBuffer;
+  self.audioPlotFreq.shouldCenterYAxis = NO;
+  
+  self.microphone = [EZMicrophone microphoneWithDelegate: self];
+  
+  /* Create an instance of the EZAudioFFTRolling to keep a history of the
+   * incoming audio data and calculate the FFT.
+   */
+  Float64 sampleRate = self.microphone.audioStreamBasicDescription.mSampleRate;
+  self.fft
+    = [EZAudioFFTRolling fftWithWindowSize: FFTViewControllerFFTWindowSize
+                                sampleRate: sampleRate
+                                  delegate: self];
+  
+  [self.microphone startFetchingAudio];
+}
+
+-(void)    microphone: (EZMicrophone*) microphone
+     hasAudioReceived: (float **)      buffer
+       withBufferSize: (UInt32)        bufferSize
+ withNumberOfChannels: (UInt32)        numberOfChannels
+{
+  /* Calculate the FFT, will trigger EZAudioFFTDelegate */
+  [self.fft computeFFTWithBuffer: buffer[0]
+                  withBufferSize: bufferSize];
+  
+  __weak typeof (self) weakSelf = self;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [weakSelf.audioPlotTime updateBuffer:buffer[0]
+                          withBufferSize:bufferSize];
+  });
+}
+
+- (void)        fft: (EZAudioFFT*) fft
+ updatedWithFFTData: (float*)      fftData
+         bufferSize: (vDSP_Length) bufferSize
+{
+  float maxFrequency = [fft maxFrequency];
+  
+  NSString* noteName = [EZAudioUtilities
+                        noteNameStringForFrequency: maxFrequency
+                                     includeOctave: YES];
+  
+  NSLog(@"%@", [NSString stringWithFormat:
+                @"Highest Note: %@,\nFrequency: %.2f",
+                noteName, maxFrequency]);
+  
+  __weak typeof (self) weakSelf = self;
+  dispatch_async(dispatch_get_main_queue(), ^
+  {
+    [weakSelf.audioPlotFreq updateBuffer: fftData
+                          withBufferSize: (UInt32)bufferSize];
+    
+    [self updateToFrequency: maxFrequency];
+  });
 }
 
 #pragma mark - Lazy loaders
-
-- (RIOInterface*) rioRef
-{
-  if (m_rioRef == nil)
-  {
-    RIOInterface* rioRef = [RIOInterface sharedInstance];
-    
-    m_rioRef = rioRef;
-  }
-  
-  return m_rioRef;
-}
 
 - (TMOTutorialView*) tutorialView
 {
@@ -237,7 +297,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
                    action: @selector(didTapHelpButton)
          forControlEvents: UIControlEventTouchUpInside];
     
-    m_helpButton = [helpButton retain];
+    m_helpButton = helpButton;
   }
   return m_helpButton;
 }
@@ -259,7 +319,7 @@ static const CGFloat kTunerViewHeight = 171.0f;;
                     action: @selector(didTapNotesButton)
           forControlEvents: UIControlEventTouchUpInside];
     
-    m_notesButton = [notesButton retain];
+    m_notesButton = notesButton;
   }
   
   return m_notesButton;
@@ -393,30 +453,73 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 
 - (void) startListener
 {
-  [self.rioRef startListening: self];
+  [self.microphone startFetchingAudio];
 }
 
 - (void) stopListener
 {
-  [self.rioRef stopListening];
+  [self.microphone stopFetchingAudio];
 }
 
 #pragma mark - TMOFrequencyListener
 
 - (void) frequencyChangedWithValue: (float) newFrequency
 {
-  /* This method gets called by the rendering function. Update the UI with
-   * the character type and store it in our string.
-   */
-
   @autoreleasepool
   {
-    self.currentFrequency = newFrequency;
+    /* This method gets called by the rendering function. Update the UI with
+     * the character type and store it in our string.
+     */
+    double value = newFrequency;
+    
+    NSNumber* nsnum = [NSNumber numberWithDouble: value];
+    
+    [self.medianPitchFollow insertObject: nsnum
+                                 atIndex: 0];
+    
+    if (self.medianPitchFollow.count > 22)
+    {
+      [self.medianPitchFollow removeObjectAtIndex:
+       self.medianPitchFollow.count - 1];
+    }
+    
+    double median = 0;
+    
+    if (self.medianPitchFollow.count >= 2)
+    {
+      NSSortDescriptor* highestToLowest
+        = [NSSortDescriptor sortDescriptorWithKey: @"self"
+                                        ascending: NO];
+      
+      NSMutableArray* tempSort = [NSMutableArray arrayWithArray:
+                                  self.medianPitchFollow];
+      
+      [tempSort sortUsingDescriptors: [NSArray arrayWithObject: highestToLowest]];
+      
+      if (tempSort.count % 2 == 0)
+      {
+        double first = 0, second = 0;
+        
+        first = [[tempSort objectAtIndex: tempSort.count /2 - 1] doubleValue];
+        second = [[tempSort objectAtIndex:tempSort.count / 2] doubleValue];
+        median = (first+second) / 2;
+        value = median;
+      }
+      else
+      {
+        median = [[tempSort objectAtIndex: tempSort.count / 2] doubleValue];
+        value = median;
+      }
+      
+      [tempSort removeAllObjects];
+      tempSort = nil;
+    }
+    self.currentFrequency = value;
 
     dispatch_async(dispatch_get_main_queue(), ^(void)
     {
-      [self.tunerViewController frequencyChangedWithValue: newFrequency];
-      [self.eventHandler frequencyChangedWithValue: newFrequency];
+      [self.tunerViewController frequencyChangedWithValue: value];
+      [self.eventHandler frequencyChangedWithValue: value];
     });
   }
 }
@@ -429,14 +532,15 @@ static const CGFloat kTunerViewHeight = 171.0f;;
   /* If the tutorial view is set to hidden, then begin the frequency listener.
    * Otherwise, disable it.
    */
-  if (isHidden)
+  SEL listenerAction = @selector(startListener);
+  if (!isHidden)
   {
-    [self startListener];
+    listenerAction = @selector(stopListener);
   }
-  else
-  {
-    [self stopListener];
-  }
+  
+  [self performSelectorOnMainThread: @selector(startListener)
+                         withObject: nil
+                      waitUntilDone: YES];
 }
 
 - (void) tutorialView: (TMOTutorialView*) tutorialView
@@ -476,12 +580,15 @@ static const CGFloat kTunerViewHeight = 171.0f;;
 - (void) splashViewControllerDidFinishAnimation:
           (TMOSplashViewController*) controller
 {
+  TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
+  
+  BOOL isFirstTime = [userSettings isFirstTime];
+  
   [UIView animateWithDuration: 0.35f
                    animations:
     ^{
         /* Manage tutorial view */
-        TMOUserSettings* userSettings = [TMOUserSettings sharedInstance];
-        if ([userSettings isFirstTime])
+        if (isFirstTime)
         {
           userSettings.firstTime = NO;
           
@@ -499,6 +606,12 @@ static const CGFloat kTunerViewHeight = 171.0f;;
        [self.splashController.view removeFromSuperview];
        [self.splashController removeFromParentViewController];
      }];
+}
+
+- (void) updateToFrequency: (double) frequency
+{
+  [self.eventHandler frequencyChangedWithValue: frequency];
+  [self.tunerViewController frequencyChangedWithValue: frequency];
 }
 
 @end

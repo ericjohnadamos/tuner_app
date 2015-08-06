@@ -21,7 +21,7 @@
 
 @interface TMOTutorialView : UIView
 
-@property (nonatomic, assign) id<TMOTutorialViewDelegate> delegate;
+@property (nonatomic, weak) id<TMOTutorialViewDelegate> delegate;
 
 - (void) loadWebView;
 

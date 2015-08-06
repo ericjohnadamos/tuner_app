@@ -17,9 +17,9 @@
 
 @interface TMOSplashView : UIView
 
-@property (nonatomic, assign) id<TMOSplashViewDelegate> delegate;
+@property (nonatomic, weak) id<TMOSplashViewDelegate> delegate;
 
-@property (nonatomic, retain) NSArray* views;
+@property (nonatomic, strong) NSArray* views;
 
 /* Initializer method which also sets splash views
  *

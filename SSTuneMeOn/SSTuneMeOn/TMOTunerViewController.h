@@ -15,7 +15,10 @@
 @interface TMOTunerViewController : UIViewController <TMOFrequencyListener>
 
 - (id) initWithFrame: (CGRect) frame;
+- (void) frequencyChangedWithValue: (float) newFrequency;
 - (void) updateWithNote: (TMONote*)      note
               noteGroup: (TMONoteGroup*) noteGroup;
+- (void) increaseProgress;
+- (void) decreaseProgress;
 
 @end

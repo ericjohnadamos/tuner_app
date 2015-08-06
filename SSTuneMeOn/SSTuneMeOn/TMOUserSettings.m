@@ -13,14 +13,14 @@
 
 @interface TMOUserSettings ()
 
-@property (nonatomic, retain) NSNumber* noteIndexNumber;
-@property (nonatomic, retain) NSNumber* noteGroupIndexNumber;
-@property (nonatomic, retain) TMONote* internalSelectedNote;
-@property (nonatomic, retain) TMONoteGroup* internalSelectedGroup;
+@property (nonatomic, strong) NSNumber* noteIndexNumber;
+@property (nonatomic, strong) NSNumber* noteGroupIndexNumber;
+@property (nonatomic, strong) TMONote* internalSelectedNote;
+@property (nonatomic, strong) TMONoteGroup* internalSelectedGroup;
 
 @end
 
-CGFloat kTuneVrianceThreshold = 0.1;
+CGFloat kTuneVrianceThreshold = 0.1f;
 
 static TMOUserSettings* sm_userSettings = nil;
 
@@ -38,14 +38,6 @@ static NSString* kUserSettingsNoteIndex = @"UserSettingsNoteIndex";
 
 #pragma mark - Memory management
 
-- (void) dealloc
-{
-  self.noteIndexNumber = nil;
-  self.noteGroupIndexNumber = nil;
-  self.internalSelectedNote = nil;
-  self.internalSelectedGroup = nil;
-  [super dealloc];
-}
 
 - (BOOL) isDefaultsLoaded
 {

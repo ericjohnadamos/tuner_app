@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RIOInterface.h"
 
 #import "TMOUserSettings.h"
 
@@ -17,7 +16,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, retain) TMOMainViewController* mainController;
+@property (nonatomic, strong) TMOMainViewController* mainController;
 
 @end
 
@@ -25,16 +24,6 @@
 
 @synthesize window = m_window;
 @synthesize mainController = m_mainController;
-
-#pragma mark - Memory deallocation
-
-- (void) dealloc
-{
-  self.window = nil;
-  self.mainController = nil;
-  
-  [super dealloc];
-}
 
 #pragma mark - Lazy loaders
 
@@ -71,18 +60,6 @@ didFinishLaunchingWithOptions: (NSDictionary*)  launchOptions
 {
   [[UIApplication sharedApplication] setStatusBarStyle:
    UIStatusBarStyleLightContent];
-  
-  /* Getting the interface instance */
-  RIOInterface* rioRef = [RIOInterface sharedInstance];
-  
-  /* Set sample rate and frequency
-   * Default sample rate is 44.1k Hz
-   */
-  [rioRef setSampleRate: 44100];
-  [rioRef setFrequency: 294];
-  
-  /* Initialize components */
-  [rioRef initializeAudioSession];
   
   /* Override point for customization after application launch. */
 

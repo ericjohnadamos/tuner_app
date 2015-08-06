@@ -16,16 +16,16 @@
 
 @interface TMOAnalogMeterView ()
 
-@property (nonatomic, retain) UIImageView* meterBGView;
-@property (nonatomic, retain) UIView* pinView;
-@property (nonatomic, retain) CALayer* containerLayer;
+@property (nonatomic, strong) UIImageView* meterBGView;
+@property (nonatomic, strong) UIView* pinView;
+@property (nonatomic, strong) CALayer* containerLayer;
 @property (nonatomic, assign) CGFloat target;
 @property (nonatomic, assign) CGFloat current;
 @property (nonatomic, assign) CGFloat currentSpeed;
-@property (nonatomic, retain) NSTimer* timer;
-@property (nonatomic, assign) UIColor* greenColor;
-@property (nonatomic, assign) UIColor* orangeColor;
-@property (nonatomic, assign) UIColor* redColor;
+@property (nonatomic, strong) NSTimer* timer;
+@property (nonatomic, strong) UIColor* greenColor;
+@property (nonatomic, strong) UIColor* orangeColor;
+@property (nonatomic, strong) UIColor* redColor;
 
 @end
 
@@ -57,19 +57,6 @@ static const CGFloat kTuneModerate = 0.1f;
 @synthesize orangeColor = m_orangeColor;
 @synthesize redColor = m_redColor;
 @synthesize timer = m_timer;
-
-#pragma nark - Memory management
-
-- (void) dealloc
-{
-  self.meterBGView = nil;
-  self.pinView = nil;
-  self.containerLayer = nil;
-  self.greenColor = nil;
-  self.orangeColor = nil;
-  self.redColor = nil;
-  [super dealloc];
-}
 
 #pragma mark - Initializations
 
@@ -136,7 +123,6 @@ static const CGFloat kTuneModerate = 0.1f;
   if (m_greenColor == nil)
   {
     m_greenColor = [UIColor colorWithHexString: @"#00D800"];
-    [m_greenColor retain];
   }
   return m_greenColor;
 }
@@ -146,7 +132,6 @@ static const CGFloat kTuneModerate = 0.1f;
   if (m_orangeColor == nil)
   {
     m_orangeColor = [UIColor colorWithHexString: @"#EB8520"];
-    [m_orangeColor retain];
   }
   return m_orangeColor;
 }
@@ -156,7 +141,6 @@ static const CGFloat kTuneModerate = 0.1f;
   if (m_redColor == nil)
   {
     m_redColor = [UIColor colorWithHexString: @"#D80000"];
-    [m_redColor retain];
   }
   return m_redColor;
 }

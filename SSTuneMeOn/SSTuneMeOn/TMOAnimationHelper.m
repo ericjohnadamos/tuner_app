@@ -11,9 +11,9 @@
 
 @interface TMOAnimationHelper ()
 
-@property (nonatomic, retain) NSDictionary* animationKeyMap;
-@property (nonatomic, retain) NSDictionary* animationLengthMap;
-@property (nonatomic, retain) NSMutableDictionary* animationCache;
+@property (nonatomic, strong) NSDictionary* animationKeyMap;
+@property (nonatomic, strong) NSDictionary* animationLengthMap;
+@property (nonatomic, strong) NSMutableDictionary* animationCache;
 
 @end
 
@@ -43,12 +43,6 @@ TMOAnimationHelper* sm_sharedHelper;
 
 #pragma mark - Memory management
 
-- (void) dealloc
-{
-  self.animationKeyMap = nil;
-  self.animationLengthMap = nil;
-  [super dealloc];
-}
 
 #pragma mark - Static methods
 
@@ -81,7 +75,6 @@ TMOAnimationHelper* sm_sharedHelper;
           kAnimationKeyDance6: @"dance_06",
           kAnimationKeyDance7: @"dance_07"};
     
-    [m_animationKeyMap retain];
   }
   return m_animationKeyMap;
 }
@@ -101,7 +94,6 @@ TMOAnimationHelper* sm_sharedHelper;
           kAnimationKeyDance6: @(289),
           kAnimationKeyDance7: @(392)};
     
-    [m_animationLengthMap retain];
   }
   return m_animationLengthMap;
 }
@@ -124,22 +116,25 @@ TMOAnimationHelper* sm_sharedHelper;
   CGFloat width = 320.0f;
   CGFloat height = 333.0f;
   
-  for (NSUInteger cnt = 1; cnt <= length; cnt++)
+  @synchronized ([UIImage class])
   {
-    NSString* imageName
-      = [NSString stringWithFormat: @"%@_%03d@2x", prefix, cnt];
-    NSString* fileLocation
-      = [[NSBundle mainBundle] pathForResource: imageName
-                                        ofType: @"png"];
-    /* Preload image */
-    UIImage* frameImage = [UIImage imageWithContentsOfFile: fileLocation];
-    UIGraphicsBeginImageContext(CGSizeMake(width, height));
-    CGRect rect = CGRectMake(0, 0, width, height);
-    [frameImage drawInRect: rect];
-    UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [images addObject: (id) renderedImage.CGImage];
+    for (NSUInteger cnt = 1; cnt <= length; cnt++)
+    {
+      NSString* imageName = [NSString stringWithFormat:
+                             @"%@_%03lu@2x", prefix, (unsigned long)cnt];
+      NSString* fileLocation
+        = [[NSBundle mainBundle] pathForResource: imageName
+                                          ofType: @"png"];
+      /* Preload image */
+      UIImage* frameImage = [UIImage imageWithContentsOfFile: fileLocation];
+      UIGraphicsBeginImageContext(CGSizeMake(width, height));
+      CGRect rect = CGRectMake(0, 0, width, height);
+      [frameImage drawInRect: rect];
+      UIImage* renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+      UIGraphicsEndImageContext();
+      
+      [images addObject: (id) renderedImage.CGImage];
+    }
   }
   return images;
 }
@@ -154,9 +149,10 @@ TMOAnimationHelper* sm_sharedHelper;
   animationSequence.duration = images.count / 30;
   animationSequence.repeatCount = 0;
   animationSequence.fillMode = kCAFillModeForwards;
-  animationSequence.removedOnCompletion = YES;
+  animationSequence.removedOnCompletion = NO;
   animationSequence.values = images;
   animationSequence.delegate = self;
+  
   return animationSequence;
 }
 

@@ -15,23 +15,23 @@
 #import "TMOUserSettings.h"
 #import "TMOProgressView.h"
 #import "TMOProgressDot.h"
+#import "TMOProgressControl.h"
 
 @interface TMOTunerViewController ()
-  <TMOProgressViewDataSource,
-   TMOProgressViewDelegate>
 
-@property (nonatomic, assign) TMOTheme* theme;
-@property (nonatomic, retain) TMONote* note;
-@property (nonatomic, retain) TMONoteGroup* noteGroup;
-@property (nonatomic, retain) TMOAnalogMeterView* analogMeterView;
-@property (nonatomic, retain) TMOProgressView* progressView;
-@property (nonatomic, retain) UIImageView* noteIconView;
-@property (nonatomic, retain) UIImageView* stringIconView;
-@property (nonatomic, retain) UILabel* frequencyLabel;
+@property (nonatomic, weak) TMOTheme* theme;
+@property (nonatomic, strong) TMONote* note;
+@property (nonatomic, strong) TMONoteGroup* noteGroup;
+@property (nonatomic, strong) TMOAnalogMeterView* analogMeterView;
+@property (nonatomic, strong) UIImageView* noteIconView;
+@property (nonatomic, strong) UIImageView* stringIconView;
+@property (nonatomic, strong) UILabel* frequencyLabel;
 @property (nonatomic, assign) BOOL isTuned;
 @property (nonatomic, assign) CGFloat currentFrequency;
 @property (nonatomic, assign) CGFloat currentVariance;
-@property (nonatomic, retain) NSTimer* timer;
+@property (nonatomic, strong) NSTimer* timer;
+
+@property (nonatomic, strong) TMOProgressControl* progressControl;
 
 @end
 
@@ -44,8 +44,6 @@ static const CGFloat kNoteIconWidth = 70.0f;
 static const CGFloat kNoteIconHeight = 79.0f;
 static const CGFloat kFrequencyLabelHeight = 20.0f;
 static const CGFloat kFrequencyLabelUpdateInterval = 0.5f;
-static const CGFloat kProgressViewSquareArea = 10.0f;
-static const CGFloat kProgressViewMargin = 2.0f;
 
 @implementation TMOTunerViewController
 
@@ -53,7 +51,6 @@ static const CGFloat kProgressViewMargin = 2.0f;
 @synthesize note = m_note;
 @synthesize noteGroup = m_noteGroup;
 @synthesize analogMeterView = m_analogMeterView;
-@synthesize progressView = m_progressView;
 @synthesize noteIconView = m_noteIconView;
 @synthesize stringIconView = m_stringIconView;;
 @synthesize frequencyLabel = m_frequencyLabel;
@@ -61,21 +58,13 @@ static const CGFloat kProgressViewMargin = 2.0f;
 @synthesize currentFrequency = m_currentFrequency;
 @synthesize timer = m_timer;
 
+@synthesize progressControl = m_progressControl;
+
 #pragma mark - Memory management
 
 - (void) dealloc
 {
   self.theme = nil;
-  self.note = nil;;
-  self.noteGroup = nil;
-  self.analogMeterView = nil;
-  self.progressView = nil;
-  self.noteIconView = nil;
-  self.stringIconView = nil;
-  self.frequencyLabel = nil;
-  self.timer = nil;
-  
-  [super dealloc];
 }
 
 #pragma mark - Initializations
@@ -103,7 +92,20 @@ static const CGFloat kProgressViewMargin = 2.0f;
   [self.view addSubview: self.noteIconView];
   [self.view addSubview: self.stringIconView];
   [self.view addSubview: self.frequencyLabel];
-  [self.view addSubview: self.progressView];
+  [self.view addSubview: self.progressControl];
+  
+  /* Set progress control frame */
+  CGSize progressControlSize = self.progressControl.frame.size;
+  CGFloat progressControlWidth = self.progressControl.frame.size.width;
+  
+  CGFloat progressControlY = 90.0f;
+  CGFloat progressControlX
+    = (self.view.frame.size.width - progressControlWidth) * 0.5f;
+  
+  self.progressControl.frame = CGRectMake(progressControlX,
+                                          progressControlY,
+                                          progressControlSize.width,
+                                          progressControlSize.height);
   
   /* Update UI based on values */
   [self updateNoteIcon];
@@ -111,9 +113,6 @@ static const CGFloat kProgressViewMargin = 2.0f;
 
   [self.analogMeterView start];
   [self startUpdateFrequencyLabel];
-  
-  [self.progressView load];
-  [self.progressView startAnimations];
 }
 
 - (void) didReceiveMemoryWarning
@@ -122,6 +121,32 @@ static const CGFloat kProgressViewMargin = 2.0f;
 }
 
 #pragma mark - View Getters
+
+- (TMOProgressControl*) progressControl
+{
+  if (m_progressControl == nil)
+  {
+    m_progressControl = [[TMOProgressControl alloc] init];
+    
+    m_progressControl.numberOfPages = 4;
+    m_progressControl.currentPage = -1;
+    
+    [m_progressControl addTarget: self
+                          action: @selector(pageControlClicked:)
+                forControlEvents: UIControlEventValueChanged];
+    
+    m_progressControl.defersCurrentPageDisplay = YES;
+    m_progressControl.type = DDPageControlTypeOnFullOffEmpty;
+    
+    m_progressControl.onColor = [UIColor greenColor];
+    m_progressControl.offColor = [UIColor colorWithWhite: 0.7f
+                                                   alpha: 1.0f];
+    m_progressControl.indicatorDiameter = 10.0f;
+    m_progressControl.indicatorSpace = 10.0f;
+  }
+  
+  return m_progressControl;
+}
 
 - (TMOAnalogMeterView*) analogMeterView
 {
@@ -132,26 +157,6 @@ static const CGFloat kProgressViewMargin = 2.0f;
     m_analogMeterView = [[TMOAnalogMeterView alloc] initWithFrame: frame];
   }
   return m_analogMeterView;
-}
-
-- (TMOProgressView*) progressView
-{
-  if (m_progressView == nil)
-  {
-    CGFloat width = 84.0f;
-    CGFloat x = (self.view.frame.size.width - width) * 0.5f;
-    CGRect frame = CGRectMake(x, kProgressViewMargin,
-                              width, kProgressViewSquareArea);
-    
-    m_progressView = [[TMOProgressView alloc] initWithFrame: frame];
-    
-    m_progressView.backgroundColor = [UIColor clearColor];
-    
-    m_progressView.dataSource = self;
-    m_progressView.delegate = self;
-  }
-  
-  return m_progressView;
 }
 
 - (UIImageView*) noteIconView
@@ -202,7 +207,6 @@ static const CGFloat kProgressViewMargin = 2.0f;
   if (m_note == nil)
   {
     m_note = [[TMOUserSettings sharedInstance] selectedNote];
-    [m_note retain];
   }
   return m_note;
 }
@@ -212,7 +216,6 @@ static const CGFloat kProgressViewMargin = 2.0f;
   if (m_noteGroup == nil)
   {
     m_noteGroup = [[TMOUserSettings sharedInstance] selectedGroup];
-    [m_noteGroup retain];
   }
   return m_noteGroup;
 }
@@ -285,20 +288,32 @@ static const CGFloat kProgressViewMargin = 2.0f;
       
       self.frequencyLabel.textColor
         = [self.analogMeterView colorFromPercentDelta: self.currentVariance];
-      
     });
   }
 }
 
-- (CGFloat) varianceForFrequency: (CGFloat) frequency
-             withTargetFrequency: (CGFloat) target
+- (CGFloat) varianceForFrequency: (CGFloat)  frequency
+           withTargetFrequencies: (NSArray*) target
 {
   CGFloat variance = 0;
   
-  if (frequency != target && target != 0)
+  CGFloat closestTarget = [target[0] floatValue];
+  
+  for (int i = 0; i < target.count; i++)
   {
-    variance = (frequency - target) / target;
+    CGFloat targetFrequency = [target[i] floatValue];
+    
+    if (fabs(frequency - targetFrequency) < fabs(frequency - closestTarget))
+    {
+      closestTarget = targetFrequency;
+    }
   }
+  
+  if (frequency != closestTarget && closestTarget != 0)
+  {
+    variance = (frequency - closestTarget) / closestTarget;;
+  }
+  
   return variance;
 }
 
@@ -323,8 +338,8 @@ static const CGFloat kProgressViewMargin = 2.0f;
 {
   self.currentFrequency = newFrequency;
   
-  CGFloat newVariance = [self varianceForFrequency: self.currentFrequency
-                               withTargetFrequency: self.note.frequency];
+  CGFloat newVariance = [self varianceForFrequency: newFrequency
+                             withTargetFrequencies: self.note.frequencies];
   [self.analogMeterView updateToVariance: newVariance];
   self.currentVariance = newVariance;
   
@@ -339,38 +354,12 @@ static const CGFloat kProgressViewMargin = 2.0f;
   }
 }
 
-#pragma mark - TMOProgressViewDataSource
+#pragma mark -
+#pragma mark DDPageControl triggered actions
 
-- (NSInteger) progressCountWithView: (TMOProgressView*) view
+- (void) pageControlClicked: (id) sender
 {
-  return 5;
-}
-
-#pragma mark - TMOProgressViewDelegate
-
-- (UIView*) progressView: (TMOProgressView*) view
-                 atIndex: (NSInteger)        index
-{
-  CGFloat x = (  kProgressViewSquareArea
-               + ((kProgressViewSquareArea + kProgressViewMargin) * index));
-  CGFloat y = kNoteIconHeight + kFrequencyLabelHeight + kProgressViewMargin;
-  
-  CGRect frame = CGRectMake(x, y,
-                            kProgressViewSquareArea, kProgressViewSquareArea);
-  
-  return [[[TMOProgressDot alloc] initWithFrame: frame] autorelease];
-}
-
-- (NSTimeInterval) progressViewAnimationInterval: (TMOProgressView*) view
-{
-  return 3.0f;
-}
-
-- (BOOL) progressView: (TMOProgressView*) view
-   selectStateAtIndex: (NSInteger)        index
-{
-  /* TODO: Kevin implement this */
-  return (index == 2);
+  /* Nothing to do */
 }
 
 #pragma mark - Public methods
@@ -387,6 +376,29 @@ static const CGFloat kProgressViewMargin = 2.0f;
     [self updateNoteIcon];
     [self updateStringIcon];
   });
+}
+
+- (void) increaseProgress
+{
+  if (self.progressControl.currentPage < self.progressControl.numberOfPages)
+	{
+		self.progressControl.currentPage = ++self.progressControl.currentPage;
+
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+    {
+      [self.progressControl updateCurrentPageDisplay];
+    });
+	}
+}
+
+- (void) decreaseProgress
+{
+  if (self.progressControl.currentPage >= 0)
+	{
+		self.progressControl.currentPage = --self.progressControl.currentPage;
+		
+    [self.progressControl updateCurrentPageDisplay];
+	}
 }
 
 @end

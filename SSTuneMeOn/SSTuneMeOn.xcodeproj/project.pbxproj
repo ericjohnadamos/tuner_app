@@ -2076,6 +2076,7 @@
 		0AF9F81C1911B5AB00E1FB02 /* stage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F8001911B5AB00E1FB02 /* stage@2x.png */; };
 		0AF9F81D1911B5AB00E1FB02 /* tune_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F8011911B5AB00E1FB02 /* tune_indicator@2x.png */; };
 		0AF9F81E1911B5AB00E1FB02 /* tuner_pin_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9F8021911B5AB00E1FB02 /* tuner_pin_mask@2x.png */; };
+		251C75F419961D9300199515 /* TMOProgressControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 251C75F319961D9300199515 /* TMOProgressControl.m */; };
 		252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB618FC412E006266FD /* TMOStandardTheme.m */; };
 		252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DB918FC41C2006266FD /* TMOTheme.m */; };
 		252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 252E8DBD18FC42E9006266FD /* TMOButtonGenerator.m */; };
@@ -2094,8 +2095,6 @@
 		256B08A718CDED4500F856F9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B08A618CDED4500F856F9 /* XCTest.framework */; };
 		256B08A818CDED4500F856F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B088D18CDED4500F856F9 /* Foundation.framework */; };
 		256B08A918CDED4500F856F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B089118CDED4500F856F9 /* UIKit.framework */; };
-		256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 256B08AF18CDED4500F856F9 /* InfoPlist.strings */; };
-		256B08B318CDED4500F856F9 /* SSTuneMeOnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08B218CDED4500F856F9 /* SSTuneMeOnTests.m */; };
 		256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256B089F18CDED4500F856F9 /* Images.xcassets */; };
 		256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C118CDF36200F856F9 /* TMOSplashViewController.m */; };
 		256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B08C418CDF42E00F856F9 /* TMOMainViewController.m */; };
@@ -2111,8 +2110,28 @@
 		2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578738818F16D0300AC3D56 /* TMOLocalizedStrings.m */; };
 		2578738D18F16DDC00AC3D56 /* TMOLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */; };
 		2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2578739018F18E6E00AC3D56 /* TMOUserSettings.m */; };
-		2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */; };
 		2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2579DC6418D4009300B5DEB0 /* CAXException.cpp */; };
+		25A2BD861B2A9ADE006350A5 /* TMONoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2BD851B2A9ADE006350A5 /* TMONoteHelper.m */; };
+		25A2BD8A1B2AACAD006350A5 /* TMOKVOService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2BD891B2AACAD006350A5 /* TMOKVOService.m */; };
+		25B1399B1B1606F4009A4161 /* TMOPitchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B1399A1B1606F4009A4161 /* TMOPitchDetector.m */; };
+		25C9B49D1B726DDC00915284 /* EZAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B47B1B726DDC00915284 /* EZAudio.m */; };
+		25C9B49E1B726DDC00915284 /* EZAudioDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B47D1B726DDC00915284 /* EZAudioDevice.m */; };
+		25C9B49F1B726DDC00915284 /* EZAudioDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B47F1B726DDC00915284 /* EZAudioDisplayLink.m */; };
+		25C9B4A01B726DDC00915284 /* EZAudioFFT.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4811B726DDC00915284 /* EZAudioFFT.m */; };
+		25C9B4A11B726DDC00915284 /* EZAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4831B726DDC00915284 /* EZAudioFile.m */; };
+		25C9B4A21B726DDC00915284 /* EZAudioFloatConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4851B726DDC00915284 /* EZAudioFloatConverter.m */; };
+		25C9B4A31B726DDC00915284 /* EZAudioFloatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4871B726DDC00915284 /* EZAudioFloatData.m */; };
+		25C9B4A41B726DDC00915284 /* EZAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4891B726DDC00915284 /* EZAudioPlayer.m */; };
+		25C9B4A51B726DDC00915284 /* EZAudioPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B48B1B726DDC00915284 /* EZAudioPlot.m */; };
+		25C9B4A61B726DDC00915284 /* EZAudioPlotGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B48D1B726DDC00915284 /* EZAudioPlotGL.m */; };
+		25C9B4A71B726DDC00915284 /* EZAudioUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B48F1B726DDC00915284 /* EZAudioUtilities.m */; };
+		25C9B4A81B726DDC00915284 /* EZMicrophone.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4911B726DDC00915284 /* EZMicrophone.m */; };
+		25C9B4A91B726DDC00915284 /* EZOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4931B726DDC00915284 /* EZOutput.m */; };
+		25C9B4AA1B726DDC00915284 /* EZPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4951B726DDC00915284 /* EZPlot.m */; };
+		25C9B4AB1B726DDC00915284 /* EZRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4971B726DDC00915284 /* EZRecorder.m */; };
+		25C9B4AC1B726DDC00915284 /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B4981B726DDC00915284 /* TPCircularBuffer.c */; };
+		25C9B4AD1B726DDC00915284 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 25C9B49B1B726DDC00915284 /* CHANGELOG */; };
+		25C9B4AE1B726DDC00915284 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 25C9B49C1B726DDC00915284 /* VERSION */; };
 		25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */; };
 /* End PBXBuildFile section */
 
@@ -4206,6 +4225,8 @@
 		0AF9F8001911B5AB00E1FB02 /* stage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stage@2x.png"; path = "images/stage@2x.png"; sourceTree = "<group>"; };
 		0AF9F8011911B5AB00E1FB02 /* tune_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tune_indicator@2x.png"; path = "images/tune_indicator@2x.png"; sourceTree = "<group>"; };
 		0AF9F8021911B5AB00E1FB02 /* tuner_pin_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tuner_pin_mask@2x.png"; path = "images/tuner_pin_mask@2x.png"; sourceTree = "<group>"; };
+		251C75F219961D9300199515 /* TMOProgressControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressControl.h; sourceTree = "<group>"; };
+		251C75F319961D9300199515 /* TMOProgressControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressControl.m; sourceTree = "<group>"; };
 		252E8DB518FC412E006266FD /* TMOStandardTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOStandardTheme.h; sourceTree = "<group>"; };
 		252E8DB618FC412E006266FD /* TMOStandardTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOStandardTheme.m; sourceTree = "<group>"; };
 		252E8DB818FC41C2006266FD /* TMOTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOTheme.h; sourceTree = "<group>"; };
@@ -4220,7 +4241,7 @@
 		253596F718E4A0630031DECB /* TMODancingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMODancingAnimationView.m; sourceTree = "<group>"; };
 		25544A10195E59E500420476 /* TMOProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressView.h; sourceTree = "<group>"; };
 		25544A11195E59E500420476 /* TMOProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressView.m; sourceTree = "<group>"; };
-		256B088A18CDED4500F856F9 /* SSTuneMeOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSTuneMeOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		256B088A18CDED4500F856F9 /* Tune Me On.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Me On.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		256B088D18CDED4500F856F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		256B088F18CDED4500F856F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		256B089118CDED4500F856F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -4257,12 +4278,50 @@
 		2578738C18F16DDC00AC3D56 /* TMOLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TMOLocalizable.strings; sourceTree = "<group>"; };
 		2578738F18F18E6E00AC3D56 /* TMOUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOUserSettings.h; sourceTree = "<group>"; };
 		2578739018F18E6E00AC3D56 /* TMOUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOUserSettings.m; sourceTree = "<group>"; };
-		2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
-		2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
 		2579DC6218D4009300B5DEB0 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
 		2579DC6318D4009300B5DEB0 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
 		2579DC6418D4009300B5DEB0 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
 		2579DC6518D4009300B5DEB0 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		25A2BD841B2A9ADE006350A5 /* TMONoteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMONoteHelper.h; sourceTree = "<group>"; };
+		25A2BD851B2A9ADE006350A5 /* TMONoteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMONoteHelper.m; sourceTree = "<group>"; };
+		25A2BD881B2AACAD006350A5 /* TMOKVOService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOKVOService.h; sourceTree = "<group>"; };
+		25A2BD891B2AACAD006350A5 /* TMOKVOService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOKVOService.m; sourceTree = "<group>"; };
+		25B139991B1606F4009A4161 /* TMOPitchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOPitchDetector.h; sourceTree = "<group>"; };
+		25B1399A1B1606F4009A4161 /* TMOPitchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOPitchDetector.m; sourceTree = "<group>"; };
+		25C9B47A1B726DDC00915284 /* EZAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudio.h; sourceTree = "<group>"; };
+		25C9B47B1B726DDC00915284 /* EZAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudio.m; sourceTree = "<group>"; };
+		25C9B47C1B726DDC00915284 /* EZAudioDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioDevice.h; sourceTree = "<group>"; };
+		25C9B47D1B726DDC00915284 /* EZAudioDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioDevice.m; sourceTree = "<group>"; };
+		25C9B47E1B726DDC00915284 /* EZAudioDisplayLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioDisplayLink.h; sourceTree = "<group>"; };
+		25C9B47F1B726DDC00915284 /* EZAudioDisplayLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioDisplayLink.m; sourceTree = "<group>"; };
+		25C9B4801B726DDC00915284 /* EZAudioFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioFFT.h; sourceTree = "<group>"; };
+		25C9B4811B726DDC00915284 /* EZAudioFFT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioFFT.m; sourceTree = "<group>"; };
+		25C9B4821B726DDC00915284 /* EZAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioFile.h; sourceTree = "<group>"; };
+		25C9B4831B726DDC00915284 /* EZAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioFile.m; sourceTree = "<group>"; };
+		25C9B4841B726DDC00915284 /* EZAudioFloatConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioFloatConverter.h; sourceTree = "<group>"; };
+		25C9B4851B726DDC00915284 /* EZAudioFloatConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioFloatConverter.m; sourceTree = "<group>"; };
+		25C9B4861B726DDC00915284 /* EZAudioFloatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioFloatData.h; sourceTree = "<group>"; };
+		25C9B4871B726DDC00915284 /* EZAudioFloatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioFloatData.m; sourceTree = "<group>"; };
+		25C9B4881B726DDC00915284 /* EZAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioPlayer.h; sourceTree = "<group>"; };
+		25C9B4891B726DDC00915284 /* EZAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlayer.m; sourceTree = "<group>"; };
+		25C9B48A1B726DDC00915284 /* EZAudioPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioPlot.h; sourceTree = "<group>"; };
+		25C9B48B1B726DDC00915284 /* EZAudioPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlot.m; sourceTree = "<group>"; };
+		25C9B48C1B726DDC00915284 /* EZAudioPlotGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioPlotGL.h; sourceTree = "<group>"; };
+		25C9B48D1B726DDC00915284 /* EZAudioPlotGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlotGL.m; sourceTree = "<group>"; };
+		25C9B48E1B726DDC00915284 /* EZAudioUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioUtilities.h; sourceTree = "<group>"; };
+		25C9B48F1B726DDC00915284 /* EZAudioUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioUtilities.m; sourceTree = "<group>"; };
+		25C9B4901B726DDC00915284 /* EZMicrophone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZMicrophone.h; sourceTree = "<group>"; };
+		25C9B4911B726DDC00915284 /* EZMicrophone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZMicrophone.m; sourceTree = "<group>"; };
+		25C9B4921B726DDC00915284 /* EZOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZOutput.h; sourceTree = "<group>"; };
+		25C9B4931B726DDC00915284 /* EZOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZOutput.m; sourceTree = "<group>"; };
+		25C9B4941B726DDC00915284 /* EZPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZPlot.h; sourceTree = "<group>"; };
+		25C9B4951B726DDC00915284 /* EZPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZPlot.m; sourceTree = "<group>"; };
+		25C9B4961B726DDC00915284 /* EZRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZRecorder.h; sourceTree = "<group>"; };
+		25C9B4971B726DDC00915284 /* EZRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZRecorder.m; sourceTree = "<group>"; };
+		25C9B4981B726DDC00915284 /* TPCircularBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
+		25C9B4991B726DDC00915284 /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		25C9B49B1B726DDC00915284 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
+		25C9B49C1B726DDC00915284 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		25DC5ECE195B3DED00F907EA /* TMOProgressDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOProgressDot.h; sourceTree = "<group>"; };
 		25DC5ECF195B3DED00F907EA /* TMOProgressDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOProgressDot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -6462,6 +6521,15 @@
 			name = "Notes Organizer";
 			sourceTree = "<group>";
 		};
+		251C75F119961D6900199515 /* Progress Control */ = {
+			isa = PBXGroup;
+			children = (
+				251C75F219961D9300199515 /* TMOProgressControl.h */,
+				251C75F319961D9300199515 /* TMOProgressControl.m */,
+			);
+			name = "Progress Control";
+			sourceTree = "<group>";
+		};
 		252E8DBB18FC429E006266FD /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -6488,6 +6556,7 @@
 		253596F118E49CF60031DECB /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				251C75F119961D6900199515 /* Progress Control */,
 				253596F618E4A0630031DECB /* TMODancingAnimationView.h */,
 				253596F718E4A0630031DECB /* TMODancingAnimationView.m */,
 				2578737E18F153FD00AC3D56 /* TMOSplashView.h */,
@@ -6521,7 +6590,7 @@
 		256B088B18CDED4500F856F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				256B088A18CDED4500F856F9 /* SSTuneMeOn.app */,
+				256B088A18CDED4500F856F9 /* Tune Me On.app */,
 				256B08A518CDED4500F856F9 /* SSTuneMeOnTests.xctest */,
 			);
 			name = Products;
@@ -6614,8 +6683,11 @@
 		256B08D018CDF9E600F856F9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				25C9B4791B726DCE00915284 /* EZAudio */,
+				25A2BD871B2AAC86006350A5 /* Observers */,
+				25B139981B1606BF009A4161 /* Pitch Detector */,
 				2579DC6118D4005B00B5DEB0 /* Utilities */,
-				2579DC5C18D3FFD700B5DEB0 /* RIO */,
+				2579DC5C18D3FFD700B5DEB0 /* Frequency Listener */,
 				256B08D118CDF9EE00F856F9 /* Helpers */,
 			);
 			name = Core;
@@ -6626,6 +6698,8 @@
 			children = (
 				256B08D218CDFA0D00F856F9 /* TMOKeyHelper.h */,
 				256B08D318CDFA0D00F856F9 /* TMOKeyHelper.m */,
+				25A2BD841B2A9ADE006350A5 /* TMONoteHelper.h */,
+				25A2BD851B2A9ADE006350A5 /* TMONoteHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -6707,14 +6781,12 @@
 			name = "User Settings";
 			sourceTree = "<group>";
 		};
-		2579DC5C18D3FFD700B5DEB0 /* RIO */ = {
+		2579DC5C18D3FFD700B5DEB0 /* Frequency Listener */ = {
 			isa = PBXGroup;
 			children = (
-				2579DC5D18D4000C00B5DEB0 /* RIOInterface.h */,
-				2579DC5E18D4000C00B5DEB0 /* RIOInterface.mm */,
 				0AB919DB191BBE1100410C00 /* TMOFrequencyListener.h */,
 			);
-			name = RIO;
+			name = "Frequency Listener";
 			sourceTree = "<group>";
 		};
 		2579DC6118D4005B00B5DEB0 /* Utilities */ = {
@@ -6726,6 +6798,73 @@
 				2579DC6518D4009300B5DEB0 /* CAXException.h */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		25A2BD871B2AAC86006350A5 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				25A2BD881B2AACAD006350A5 /* TMOKVOService.h */,
+				25A2BD891B2AACAD006350A5 /* TMOKVOService.m */,
+			);
+			name = Observers;
+			sourceTree = "<group>";
+		};
+		25B139981B1606BF009A4161 /* Pitch Detector */ = {
+			isa = PBXGroup;
+			children = (
+				25B139991B1606F4009A4161 /* TMOPitchDetector.h */,
+				25B1399A1B1606F4009A4161 /* TMOPitchDetector.m */,
+			);
+			name = "Pitch Detector";
+			sourceTree = "<group>";
+		};
+		25C9B4791B726DCE00915284 /* EZAudio */ = {
+			isa = PBXGroup;
+			children = (
+				25C9B47A1B726DDC00915284 /* EZAudio.h */,
+				25C9B47B1B726DDC00915284 /* EZAudio.m */,
+				25C9B47C1B726DDC00915284 /* EZAudioDevice.h */,
+				25C9B47D1B726DDC00915284 /* EZAudioDevice.m */,
+				25C9B47E1B726DDC00915284 /* EZAudioDisplayLink.h */,
+				25C9B47F1B726DDC00915284 /* EZAudioDisplayLink.m */,
+				25C9B4801B726DDC00915284 /* EZAudioFFT.h */,
+				25C9B4811B726DDC00915284 /* EZAudioFFT.m */,
+				25C9B4821B726DDC00915284 /* EZAudioFile.h */,
+				25C9B4831B726DDC00915284 /* EZAudioFile.m */,
+				25C9B4841B726DDC00915284 /* EZAudioFloatConverter.h */,
+				25C9B4851B726DDC00915284 /* EZAudioFloatConverter.m */,
+				25C9B4861B726DDC00915284 /* EZAudioFloatData.h */,
+				25C9B4871B726DDC00915284 /* EZAudioFloatData.m */,
+				25C9B4881B726DDC00915284 /* EZAudioPlayer.h */,
+				25C9B4891B726DDC00915284 /* EZAudioPlayer.m */,
+				25C9B48A1B726DDC00915284 /* EZAudioPlot.h */,
+				25C9B48B1B726DDC00915284 /* EZAudioPlot.m */,
+				25C9B48C1B726DDC00915284 /* EZAudioPlotGL.h */,
+				25C9B48D1B726DDC00915284 /* EZAudioPlotGL.m */,
+				25C9B48E1B726DDC00915284 /* EZAudioUtilities.h */,
+				25C9B48F1B726DDC00915284 /* EZAudioUtilities.m */,
+				25C9B4901B726DDC00915284 /* EZMicrophone.h */,
+				25C9B4911B726DDC00915284 /* EZMicrophone.m */,
+				25C9B4921B726DDC00915284 /* EZOutput.h */,
+				25C9B4931B726DDC00915284 /* EZOutput.m */,
+				25C9B4941B726DDC00915284 /* EZPlot.h */,
+				25C9B4951B726DDC00915284 /* EZPlot.m */,
+				25C9B4961B726DDC00915284 /* EZRecorder.h */,
+				25C9B4971B726DDC00915284 /* EZRecorder.m */,
+				25C9B4981B726DDC00915284 /* TPCircularBuffer.c */,
+				25C9B4991B726DDC00915284 /* TPCircularBuffer.h */,
+				25C9B49A1B726DDC00915284 /* VERSION */,
+			);
+			name = EZAudio;
+			sourceTree = "<group>";
+		};
+		25C9B49A1B726DDC00915284 /* VERSION */ = {
+			isa = PBXGroup;
+			children = (
+				25C9B49B1B726DDC00915284 /* CHANGELOG */,
+				25C9B49C1B726DDC00915284 /* VERSION */,
+			);
+			path = VERSION;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -6745,7 +6884,7 @@
 			);
 			name = SSTuneMeOn;
 			productName = SSTuneMeOn;
-			productReference = 256B088A18CDED4500F856F9 /* SSTuneMeOn.app */;
+			productReference = 256B088A18CDED4500F856F9 /* Tune Me On.app */;
 			productType = "com.apple.product-type.application";
 		};
 		256B08A418CDED4500F856F9 /* SSTuneMeOnTests */ = {
@@ -6775,6 +6914,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Eric John Adamos";
 				TargetAttributes = {
+					256B088918CDED4500F856F9 = {
+						DevelopmentTeam = 942J3JFWZX;
+					};
 					256B08A418CDED4500F856F9 = {
 						TestTargetID = 256B088918CDED4500F856F9;
 					};
@@ -7192,6 +7334,7 @@
 				0A020EA31943FCAD00FC0322 /* dance_04_237@2x.png in Resources */,
 				0A0210771943FCAD00FC0322 /* dance_06_206@2x.png in Resources */,
 				0A020C481943FCAD00FC0322 /* dance_02_095@2x.png in Resources */,
+				25C9B4AD1B726DDC00915284 /* CHANGELOG in Resources */,
 				0A02109F1943FCAD00FC0322 /* dance_06_246@2x.png in Resources */,
 				0A020BAE1943FCAD00FC0322 /* dance_01_173@2x.png in Resources */,
 				0A0210F21943FCAD00FC0322 /* dance_07_039@2x.png in Resources */,
@@ -8119,6 +8262,7 @@
 				0A0211EF1943FCAD00FC0322 /* dance_07_292@2x.png in Resources */,
 				0A020B741943FCAD00FC0322 /* dance_01_115@2x.png in Resources */,
 				0A020E621943FCAD00FC0322 /* dance_04_172@2x.png in Resources */,
+				25C9B4AE1B726DDC00915284 /* VERSION in Resources */,
 				0A0211771943FCAD00FC0322 /* dance_07_172@2x.png in Resources */,
 				0A020C101943FCAD00FC0322 /* dance_02_039@2x.png in Resources */,
 				0A020E191943FCAD00FC0322 /* dance_04_099@2x.png in Resources */,
@@ -8876,7 +9020,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				256B08B118CDED4500F856F9 /* InfoPlist.strings in Resources */,
 				256B08BC18CDF0A900F856F9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8888,33 +9031,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C9B4A41B726DDC00915284 /* EZAudioPlayer.m in Sources */,
+				25C9B4AA1B726DDC00915284 /* EZPlot.m in Sources */,
 				252E8DC118FC483D006266FD /* TMOStandardThemeHelpers.m in Sources */,
 				256B089E18CDED4500F856F9 /* AppDelegate.m in Sources */,
+				25C9B4A11B726DDC00915284 /* EZAudioFile.m in Sources */,
 				256B08D418CDFA0D00F856F9 /* TMOKeyHelper.m in Sources */,
+				25C9B4A61B726DDC00915284 /* EZAudioPlotGL.m in Sources */,
 				0AA57AF419148716009A842F /* TMONoteSelectorView.m in Sources */,
+				25C9B49F1B726DDC00915284 /* EZAudioDisplayLink.m in Sources */,
+				25A2BD861B2A9ADE006350A5 /* TMONoteHelper.m in Sources */,
 				252E8DBE18FC42E9006266FD /* TMOButtonGenerator.m in Sources */,
+				25C9B4A91B726DDC00915284 /* EZOutput.m in Sources */,
 				0AF1ADF01913F5BF00DF37B5 /* TMONotesOrganizer.m in Sources */,
 				0AF1ADE91913DD6A00DF37B5 /* TMONote.m in Sources */,
+				25C9B4A31B726DDC00915284 /* EZAudioFloatData.m in Sources */,
 				0AF1ADEC1913F1E000DF37B5 /* TMONoteGroup.m in Sources */,
 				0AB919DA191BB99200410C00 /* TMOTunerViewController.m in Sources */,
 				256B089A18CDED4500F856F9 /* main.m in Sources */,
+				25C9B4A51B726DDC00915284 /* EZAudioPlot.m in Sources */,
+				25C9B4A21B726DDC00915284 /* EZAudioFloatConverter.m in Sources */,
+				25C9B49E1B726DDC00915284 /* EZAudioDevice.m in Sources */,
 				2578738318F160C600AC3D56 /* TMOTutorialView.m in Sources */,
 				2578738018F153FD00AC3D56 /* TMOSplashView.m in Sources */,
+				25B1399B1B1606F4009A4161 /* TMOPitchDetector.m in Sources */,
+				25C9B4AC1B726DDC00915284 /* TPCircularBuffer.c in Sources */,
 				253596F818E4A0630031DECB /* TMODancingAnimationView.m in Sources */,
 				2578738918F16D0300AC3D56 /* TMOLocalizedStrings.m in Sources */,
 				256B08C518CDF42E00F856F9 /* TMOMainViewController.m in Sources */,
 				0AAF864C194B221000700DBF /* TMOAnimationHelper.m in Sources */,
 				2578739118F18E6E00AC3D56 /* TMOUserSettings.m in Sources */,
+				251C75F419961D9300199515 /* TMOProgressControl.m in Sources */,
 				25DC5ED0195B3DED00F907EA /* TMOProgressDot.m in Sources */,
 				256B08C218CDF36200F856F9 /* TMOSplashViewController.m in Sources */,
 				2579DC6618D4009300B5DEB0 /* CAXException.cpp in Sources */,
 				0AA358111916456E000A5948 /* TMOAnalogMeterView.m in Sources */,
+				25C9B4A81B726DDC00915284 /* EZMicrophone.m in Sources */,
 				252E8DBA18FC41C2006266FD /* TMOTheme.m in Sources */,
+				25C9B4AB1B726DDC00915284 /* EZRecorder.m in Sources */,
+				25A2BD8A1B2AACAD006350A5 /* TMOKVOService.m in Sources */,
 				25544A12195E59E500420476 /* TMOProgressView.m in Sources */,
-				2579DC5F18D4000C00B5DEB0 /* RIOInterface.mm in Sources */,
 				252E8DB718FC412E006266FD /* TMOStandardTheme.m in Sources */,
+				25C9B4A01B726DDC00915284 /* EZAudioFFT.m in Sources */,
+				25C9B4A71B726DDC00915284 /* EZAudioUtilities.m in Sources */,
 				0AB1D0BF1911C967002E2BDF /* UIColor+HexString.m in Sources */,
 				0A392659195E9C6A00058DF9 /* TMOTuneEventHandler.m in Sources */,
+				25C9B49D1B726DDC00915284 /* EZAudio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8922,7 +9084,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				256B08B318CDED4500F856F9 /* SSTuneMeOnTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8960,6 +9121,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -8972,6 +9134,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -8988,10 +9151,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7s armv8 armv7";
 			};
 			name = Debug;
 		};
@@ -8999,6 +9163,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -9011,6 +9176,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -9021,24 +9187,31 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7s armv8 armv7";
 			};
 			name = Release;
 		};
 		256B08B718CDED4500F856F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSTuneMeOn/SSTuneMeOn-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "SSTuneMeOn/SSTuneMeOn-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "Tune Me On";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7s armv8 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9046,13 +9219,19 @@
 		256B08B818CDED4500F856F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSTuneMeOn/SSTuneMeOn-Prefix.pch";
 				INFOPLIST_FILE = "SSTuneMeOn/SSTuneMeOn-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "Tune Me On";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7s armv8 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

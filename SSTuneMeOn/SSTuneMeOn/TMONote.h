@@ -11,14 +11,12 @@
 @interface TMONote : NSObject
 
 @property (nonatomic, copy) NSString* name;
-@property (nonatomic, assign) CGFloat frequency;
+@property (nonatomic, strong) NSArray* frequencies;
 
 + (TMONote*) noteWithName: (NSString*) name
-                frequency: (CGFloat)   frequency;
+              frequencies: (NSArray*)  frequencies;
 
-- (id) initiWithName: (NSString*) name
-           frequency: (CGFloat)   frequency;
-
-- (BOOL) isEqualToNote: (TMONote*) aNote;
+- (id) initWithName: (NSString*) name
+        frequencies: (NSArray*)  frequencies;
 
 @end

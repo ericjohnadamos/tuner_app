@@ -25,9 +25,6 @@
 - (void) dealloc
 {
   self.fillColor = nil;
-  self.strokeColor = nil;
-  
-  [super dealloc];
 }
 
 #pragma mark - Lazy loaders
@@ -40,6 +37,11 @@
   }
   
   return m_fillColor;
+}
+
+- (void) setFillColor: (UIColor*) fillColor
+{
+  m_fillColor = fillColor;
 }
 
 - (UIColor*) strokeColor
@@ -87,6 +89,15 @@
             animated: (BOOL) animated
 {
   /* Handle the updates here */
+  
+  if (selected)
+  {
+    self.fillColor = [UIColor greenColor];
+  }
+  else
+  {
+    self.fillColor = [UIColor clearColor];
+  }
 }
 
 @end

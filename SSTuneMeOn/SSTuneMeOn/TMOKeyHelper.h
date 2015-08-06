@@ -11,8 +11,8 @@
 
 @interface TMOKeyHelper : NSObject
 
-@property (nonatomic, retain) NSMutableDictionary* keyMapping;
-@property (nonatomic, retain) NSMutableDictionary* frequencyMapping;
+@property (nonatomic, strong) NSMutableDictionary* keyMapping;
+@property (nonatomic, strong) NSMutableDictionary* frequencyMapping;
 
 #pragma mark - Key generation
 
