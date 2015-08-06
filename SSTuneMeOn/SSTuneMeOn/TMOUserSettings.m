@@ -20,7 +20,7 @@
 
 @end
 
-CGFloat kTuneVrianceThreshold = 0.5f;
+CGFloat kTuneVrianceThreshold = 0.1f;
 
 static TMOUserSettings* sm_userSettings = nil;
 
