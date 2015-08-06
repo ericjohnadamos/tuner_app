@@ -35,7 +35,7 @@ static BOOL sm_isActive = YES;
   
     CGFloat newVariance =
       [self varianceForFrequency: newFrequency
-             withTargetFrequency: targetNote.frequency];
+           withTargetFrequencies: targetNote.frequencies];
   
     BOOL isTuned = (ABS(newVariance) <= kTuneVrianceThreshold);
     
@@ -89,15 +89,28 @@ static BOOL sm_isActive = YES;
   }
 }
 
-- (CGFloat) varianceForFrequency: (CGFloat) frequency
-             withTargetFrequency: (CGFloat) target
+- (CGFloat) varianceForFrequency: (CGFloat)  frequency
+           withTargetFrequencies: (NSArray*) target
 {
   CGFloat variance = 0;
   
-  if (frequency != target && target != 0)
+  CGFloat closestTarget = [target[0] floatValue];
+  
+  for (int i = 0; i < target.count; i++)
   {
-    variance = (frequency - target) / target;
+    CGFloat targetFrequency = [target[i] floatValue];
+    
+    if (fabs(frequency - targetFrequency) < fabs(frequency - closestTarget))
+    {
+      closestTarget = targetFrequency;
+    }
   }
+  
+  if (frequency != closestTarget && closestTarget != 0)
+  {
+    variance = (frequency - closestTarget) / closestTarget;;
+  }
+  
   return variance;
 }
 

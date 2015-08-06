@@ -9,37 +9,30 @@
 #import "TMONote.h"
 
 @implementation TMONote
+
 @synthesize name = m_name;
-@synthesize frequency = m_frequency;
-
-#pragma mark - Memory management
-
+@synthesize frequencies = m_frequencies;
 
 #pragma mark - Static methods
 
 + (TMONote*) noteWithName: (NSString*) name
-                frequency: (CGFloat)   frequency
+              frequencies: (NSArray*)  frequencies
 {
   return [[self alloc] initWithName: name
-                           frequency: frequency];
+                        frequencies: frequencies];
 }
 
 #pragma mark - Public methods
 
 - (id) initWithName: (NSString*) name
-          frequency: (CGFloat)   frequency
+        frequencies: (NSArray*)  frequencies
 {
   if (self = [super init])
   {
     self.name = name;
-    self.frequency = frequency;
+    self.frequencies = frequencies;
   }
   return self;
-}
-
-- (BOOL) isEqualToNote: (TMONote*) aNote
-{
-  return aNote.frequency == self.frequency;
 }
 
 @end
